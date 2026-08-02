@@ -1,0 +1,410 @@
+[
+  {
+    "code": "AL",
+    "name": "Alabama",
+    "dd_agency": {"name": "Division of Developmental Disabilities", "url": "https://mh.alabama.gov/division-of-developmental-disabilities/"},
+    "medicaid": {"name": "Alabama Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=alabama"},
+    "ei_program": {"name": "Alabama Early Intervention", "url": "https://www.acei.ade.state.al.us/"},
+    "pti_center": {"name": "Disability Rights Alabama", "url": "https://www.disabilityrightsalabama.org/"}
+  },
+  {
+    "code": "AK",
+    "name": "Alaska",
+    "dd_agency": {"name": "Intellectual & Developmental Disabilities Unit", "url": "https://health.alaska.gov/en/senior-and-disabilities-services/developmental-disabilities/"},
+    "medicaid": {"name": "Alaska Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=alaska"},
+    "ei_program": {"name": "Alaska Early Intervention", "url": "https://health.alaska.gov/en/services/developmental-disabilities-resource-connection/"},
+    "pti_center": {"name": "Alaska Parent Training and Information Center", "url": "https://www.alaskaptc.org/"}
+  },
+  {
+    "code": "AZ",
+    "name": "Arizona",
+    "dd_agency": {"name": "Division of Developmental Disabilities", "url": "https://des.az.gov/ddd"},
+    "medicaid": {"name": "Arizona Medicaid", "url": "https://des.az.gov/medicaid"},
+    "ei_program": {"name": "Arizona Early Intervention Program", "url": "https://des.az.gov/azeiponline"},
+    "pti_center": {"name": "Raising Special Kids", "url": "https://raisingspecialkids.org/"}
+  },
+  {
+    "code": "AR",
+    "name": "Arkansas",
+    "dd_agency": {"name": "Division of Developmental Disabilities Services", "url": "https://humanservices.arkansas.gov/divisions-shared-services/developmental-disabilities-services/"},
+    "medicaid": {"name": "Arkansas Medicaid", "url": "https://www.medicaid.arkansas.gov/"},
+    "ei_program": {"name": "Arkansas Early Intervention Program", "url": "https://humanservices.arkansas.gov/divisions-shared-services/developmental-disabilities-services/"},
+    "pti_center": {"name": "Disability Rights Center of Arkansas", "url": "https://www.arcdisabilityrights.org/"}
+  },
+  {
+    "code": "CA",
+    "name": "California",
+    "dd_agency": {"name": "California Department of Developmental Services", "url": "https://www.dds.ca.gov/"},
+    "medicaid": {"name": "California Medicaid", "url": "https://www.dhcs.ca.gov/"},
+    "ei_program": {"name": "California Regional Centers", "url": "https://www.dds.ca.gov/regional-centers/"},
+    "pti_center": {"name": "Exceptional Needs Project", "url": "https://www.enp-pta.org/"}
+  },
+  {
+    "code": "CO",
+    "name": "Colorado",
+    "dd_agency": {"name": "Division of Intellectual and Developmental Disabilities", "url": "https://hcpf.colorado.gov/individuals-with-intellectual-developmental-disabilities-services-supports"},
+    "medicaid": {"name": "Colorado Medicaid", "url": "https://hcpf.colorado.gov/"},
+    "ei_program": {"name": "Colorado Early Care and Support", "url": "https://cdphe.colorado.gov/home-and-community-based-services-waiver-for-persons-with-intellectual-and-developmental"},
+    "pti_center": {"name": "The Legal Center for People with Disabilities", "url": "https://www.thelegalcenter.org/"}
+  },
+  {
+    "code": "CT",
+    "name": "Connecticut",
+    "dd_agency": {"name": "Connecticut Department of Developmental Services", "url": "https://portal.ct.gov/dds"},
+    "medicaid": {"name": "Connecticut Medicaid", "url": "https://portal.ct.gov/dss/health-and-addiction-services/medicaid"},
+    "ei_program": {"name": "Connecticut Early Intervention", "url": "https://portal.ct.gov/dds/early-intervention"},
+    "pti_center": {"name": "Connecticut Parent Advocacy Center", "url": "https://www.cpacusa.org/"}
+  },
+  {
+    "code": "DE",
+    "name": "Delaware",
+    "dd_agency": {"name": "Division of Developmental Disabilities Services", "url": "https://dhss.delaware.gov/ddds/"},
+    "medicaid": {"name": "Delaware Medicaid", "url": "https://dhss.delaware.gov/dhss/dmma/"},
+    "ei_program": {"name": "Delaware Early Intervention", "url": "https://dhss.delaware.gov/ddds/"},
+    "pti_center": {"name": "Parent Information Center", "url": "https://www.pikids.org/"}
+  },
+  {
+    "code": "DC",
+    "name": "District of Columbia",
+    "dd_agency": {"name": "Department on Disability Services", "url": "https://dds.dc.gov/"},
+    "medicaid": {"name": "DC Medicaid", "url": "https://dhcf.dc.gov/service/medicaid"},
+    "ei_program": {"name": "DC Early Intervention", "url": "https://osse.dc.gov/service/part-c-early-intervention"},
+    "pti_center": {"name": "Bazelon Center for Mental Health Law", "url": "https://www.bazelon.org/"}
+  },
+  {
+    "code": "FL",
+    "name": "Florida",
+    "dd_agency": {"name": "Agency for Persons with Disabilities", "url": "https://apd.myflorida.com/"},
+    "medicaid": {"name": "Florida Medicaid", "url": "https://www.myflorida.com/business/business-assistance/healthcare-professionals/medicaid-and-healthykids/"},
+    "ei_program": {"name": "Florida Birth to Three", "url": "https://www.floridahealth.gov/programs-and-services/womens-health/maternal-and-child-health/birth-to-three/"},
+    "pti_center": {"name": "Florida Disability Rights and Responsibilities", "url": "https://www.fdrr.org/"}
+  },
+  {
+    "code": "GA",
+    "name": "Georgia",
+    "dd_agency": {"name": "Division of Developmental and Intellectual Disabilities", "url": "https://dbhdd.georgia.gov/developmental-disabilities"},
+    "medicaid": {"name": "Georgia Medicaid", "url": "https://dch.georgia.gov/"},
+    "ei_program": {"name": "Georgia Early Intervention Program", "url": "https://www.georgia.gov/services-and-information/education/georgia-early-intervention-program"},
+    "pti_center": {"name": "Pathways Parent Center", "url": "https://www.pathwaysga.org/"}
+  },
+  {
+    "code": "HI",
+    "name": "Hawaii",
+    "dd_agency": {"name": "Developmental Disabilities Division", "url": "https://health.hawaii.gov/ddd/"},
+    "medicaid": {"name": "Hawaii Medicaid", "url": "https://medquest.hawaii.gov/"},
+    "ei_program": {"name": "Hawaii Early Intervention", "url": "https://health.hawaii.gov/ddd/"},
+    "pti_center": {"name": "Hawaii Disability Rights Center", "url": "https://www.hawaiidisabilityrights.org/"}
+  },
+  {
+    "code": "ID",
+    "name": "Idaho",
+    "dd_agency": {"name": "Bureau of Developmental Disability Services", "url": "https://www.idahohealthandwelfare.us/"},
+    "medicaid": {"name": "Idaho Medicaid", "url": "https://www.idahohealthandwelfare.us/medical/"},
+    "ei_program": {"name": "Idaho Early Intervention", "url": "https://www.idahohealthandwelfare.us/"},
+    "pti_center": {"name": "Community Advocates for Disability Rights", "url": "https://www.cadre.org/"}
+  },
+  {
+    "code": "IL",
+    "name": "Illinois",
+    "dd_agency": {"name": "Division of Developmental Disabilities", "url": "https://www.dhs.state.il.us/page.aspx?item=29761"},
+    "medicaid": {"name": "Illinois Medicaid", "url": "https://www2.illinois.gov/hfs/"},
+    "ei_program": {"name": "Illinois Early Intervention", "url": "https://www.dhs.state.il.us/page.aspx?item=29761"},
+    "pti_center": {"name": "Family Resource Center on Disabilities", "url": "https://www.frcd.org/"}
+  },
+  {
+    "code": "IN",
+    "name": "Indiana",
+    "dd_agency": {"name": "Division of Disability, Aging and Rehabilitative Services", "url": "https://www.in.gov/fssa/"},
+    "medicaid": {"name": "Indiana Medicaid", "url": "https://www.in.gov/fssa/about/divisions/managed-long-term-care/"},
+    "ei_program": {"name": "Indiana Early Intervention", "url": "https://www.in.gov/fssa/"},
+    "pti_center": {"name": "IN*SOURCE", "url": "https://www.insource.org/"}
+  },
+  {
+    "code": "IA",
+    "name": "Iowa",
+    "dd_agency": {"name": "Division of Disability Services", "url": "https://hhs.iowa.gov/health-prevention/disability-services"},
+    "medicaid": {"name": "Iowa Medicaid", "url": "https://hhs.iowa.gov/"},
+    "ei_program": {"name": "Iowa Early Intervention", "url": "https://hhs.iowa.gov/health-prevention/disability-services"},
+    "pti_center": {"name": "Iowa Parent and Educator Connection", "url": "https://www.iowaparentsandeducators.org/"}
+  },
+  {
+    "code": "KS",
+    "name": "Kansas",
+    "dd_agency": {"name": "Aging and Disability Services", "url": "https://www.kdads.ks.gov/"},
+    "medicaid": {"name": "Kansas Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=kansas"},
+    "ei_program": {"name": "Kansas Early Intervention", "url": "https://www.kdads.ks.gov/"},
+    "pti_center": {"name": "Kansas Parent Training and Information Project", "url": "https://kansasptip.org/"}
+  },
+  {
+    "code": "KY",
+    "name": "Kentucky",
+    "dd_agency": {"name": "Division of Developmental and Intellectual Disabilities", "url": "https://www.chfs.ky.gov/agencies/dbhdid/Pages/did.aspx"},
+    "medicaid": {"name": "Kentucky Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=kentucky"},
+    "ei_program": {"name": "Kentucky Early Intervention", "url": "https://www.chfs.ky.gov/agencies/dbhdid/Pages/did.aspx"},
+    "pti_center": {"name": "Kentucky Special Parent Involvement Network", "url": "https://www.kspin.org/"}
+  },
+  {
+    "code": "LA",
+    "name": "Louisiana",
+    "dd_agency": {"name": "Office for Citizens with DD", "url": "https://www.ldh.la.gov/"},
+    "medicaid": {"name": "Louisiana Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=louisiana"},
+    "ei_program": {"name": "Louisiana Early Intervention", "url": "https://www.ldh.la.gov/"},
+    "pti_center": {"name": "Advocacy Center for Persons with Disabilities", "url": "https://www.advocacylouisiana.org/"}
+  },
+  {
+    "code": "ME",
+    "name": "Maine",
+    "dd_agency": {"name": "Office of Aging and Disability Services", "url": "https://www.maine.gov/dhhs/oads"},
+    "medicaid": {"name": "Maine Medicaid", "url": "https://www.maine.gov/dhhs/ofi"},
+    "ei_program": {"name": "Maine Early Intervention", "url": "https://www.maine.gov/dhhs/oads"},
+    "pti_center": {"name": "Parent Advocacy Center", "url": "https://www.parentadvocacyonline.org/"}
+  },
+  {
+    "code": "MD",
+    "name": "Maryland",
+    "dd_agency": {"name": "Developmental Disabilities Administration", "url": "https://health.maryland.gov/dda/Pages/Home.aspx"},
+    "medicaid": {"name": "Maryland Medicaid", "url": "https://health.maryland.gov/mmcp/Pages/index.aspx"},
+    "ei_program": {"name": "Maryland Early Intervention Services", "url": "https://health.maryland.gov/dda/Pages/Home.aspx"},
+    "pti_center": {"name": "Parents' Place of Maryland", "url": "https://ppmd.org/"}
+  },
+  {
+    "code": "MA",
+    "name": "Massachusetts",
+    "dd_agency": {"name": "Department of Developmental Services", "url": "https://www.mass.gov/orgs/department-of-developmental-services"},
+    "medicaid": {"name": "Massachusetts Medicaid", "url": "https://www.mass.gov/listing/masshealth"},
+    "ei_program": {"name": "Massachusetts Early Intervention Program", "url": "https://www.mass.gov/orgs/department-of-developmental-services"},
+    "pti_center": {"name": "Federation for Children with Special Needs", "url": "https://fcsn.org/"}
+  },
+  {
+    "code": "MI",
+    "name": "Michigan",
+    "dd_agency": {"name": "Michigan Developmental Disabilities Council", "url": "https://www.michigan.gov/mdhhs"},
+    "medicaid": {"name": "Michigan Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=michigan"},
+    "ei_program": {"name": "Michigan Early Intervention", "url": "https://www.michigan.gov/mdhhs"},
+    "pti_center": {"name": "MISAN", "url": "https://www.misan.org/"}
+  },
+  {
+    "code": "MN",
+    "name": "Minnesota",
+    "dd_agency": {"name": "Disability Services Division", "url": "https://www.dhs.state.mn.us/"},
+    "medicaid": {"name": "Minnesota Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=minnesota"},
+    "ei_program": {"name": "Minnesota Early Childhood Intervention", "url": "https://www.dhs.state.mn.us/"},
+    "pti_center": {"name": "Parent Advocacy Coalition for Educational Rights", "url": "https://www.pacer.org/"}
+  },
+  {
+    "code": "MS",
+    "name": "Mississippi",
+    "dd_agency": {"name": "Bureau of Intellectual Disabilities", "url": "https://www.dmh.ms.gov/whoweare/idd-programs/"},
+    "medicaid": {"name": "Mississippi Medicaid", "url": "https://www.medicaid.ms.gov/"},
+    "ei_program": {"name": "Mississippi Early Intervention", "url": "https://www.dmh.ms.gov/whoweare/idd-programs/"},
+    "pti_center": {"name": "Mississippi Parent Training and Information Center", "url": "https://www.msptic.org/"}
+  },
+  {
+    "code": "MO",
+    "name": "Missouri",
+    "dd_agency": {"name": "Division of Developmental Disabilities", "url": "https://dmh.mo.gov/dev-disabilities"},
+    "medicaid": {"name": "Missouri Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=missouri"},
+    "ei_program": {"name": "Missouri Early Intervention", "url": "https://dmh.mo.gov/dev-disabilities"},
+    "pti_center": {"name": "Missouri Parent Training and Information", "url": "https://www.mopti.org/"}
+  },
+  {
+    "code": "MT",
+    "name": "Montana",
+    "dd_agency": {"name": "Developmental Disabilities Program", "url": "https://dphhs.mt.gov/"},
+    "medicaid": {"name": "Montana Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=montana"},
+    "ei_program": {"name": "Montana Early Intervention", "url": "https://dphhs.mt.gov/"},
+    "pti_center": {"name": "Montana Disability Rights Center", "url": "https://www.montanadisabilityrights.org/"}
+  },
+  {
+    "code": "NE",
+    "name": "Nebraska",
+    "dd_agency": {"name": "Division of Developmental Disabilities", "url": "https://dhhs.ne.gov/"},
+    "medicaid": {"name": "Nebraska Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=nebraska"},
+    "ei_program": {"name": "Nebraska Early Intervention", "url": "https://dhhs.ne.gov/"},
+    "pti_center": {"name": "Disability Rights Nebraska", "url": "https://www.disabilityrightsnebraska.org/"}
+  },
+  {
+    "code": "NV",
+    "name": "Nevada",
+    "dd_agency": {"name": "Aging & Disability Services Division", "url": "https://aging.nv.gov/"},
+    "medicaid": {"name": "Nevada Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=nevada"},
+    "ei_program": {"name": "Nevada Early Intervention", "url": "https://aging.nv.gov/"},
+    "pti_center": {"name": "Nevada Disability Advocacy and Law Center", "url": "https://www.ndalc.org/"}
+  },
+  {
+    "code": "NH",
+    "name": "New Hampshire",
+    "dd_agency": {"name": "Division of Long Term Supports and Services", "url": "https://www.dhhs.nh.gov/"},
+    "medicaid": {"name": "New Hampshire Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=new-hampshire"},
+    "ei_program": {"name": "New Hampshire Early Intervention", "url": "https://www.dhhs.nh.gov/"},
+    "pti_center": {"name": "Family Support Center", "url": "https://www.nh-fsc.org/"}
+  },
+  {
+    "code": "NJ",
+    "name": "New Jersey",
+    "dd_agency": {"name": "Division of Developmental Disabilities", "url": "https://nj.gov/humanservices/"},
+    "medicaid": {"name": "New Jersey Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=new-jersey"},
+    "ei_program": {"name": "New Jersey Early Intervention System", "url": "https://nj.gov/humanservices/"},
+    "pti_center": {"name": "NJPAC", "url": "https://www.njpac.org/"}
+  },
+  {
+    "code": "NM",
+    "name": "New Mexico",
+    "dd_agency": {"name": "Developmental Disabilities Support Division", "url": "https://www.env.nm.gov/"},
+    "medicaid": {"name": "New Mexico Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=new-mexico"},
+    "ei_program": {"name": "New Mexico Early Intervention", "url": "https://www.env.nm.gov/"},
+    "pti_center": {"name": "Parents Reaching Out", "url": "https://www.parentsreachingout.org/"}
+  },
+  {
+    "code": "NY",
+    "name": "New York",
+    "dd_agency": {"name": "Office for People With Developmental Disabilities", "url": "https://opwdd.ny.gov/"},
+    "medicaid": {"name": "New York Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=new-york"},
+    "ei_program": {"name": "New York Early Intervention Program", "url": "https://opwdd.ny.gov/"},
+    "pti_center": {"name": "New York Disability Advocacy Center", "url": "https://www.nydisabilityadvocacy.org/"}
+  },
+  {
+    "code": "NC",
+    "name": "North Carolina",
+    "dd_agency": {"name": "Division of Mental Health, Developmental Disabilities and Substance Use Services", "url": "https://www.ncdhhs.gov/divisions/mhddsus"},
+    "medicaid": {"name": "North Carolina Medicaid", "url": "https://medicaid.ncdhhs.gov/"},
+    "ei_program": {"name": "North Carolina Early Intervention", "url": "https://www.ncdhhs.gov/divisions/mhddsus"},
+    "pti_center": {"name": "Exceptional Children's Assistance Center", "url": "https://www.ecac-parentcenter.org/"}
+  },
+  {
+    "code": "ND",
+    "name": "North Dakota",
+    "dd_agency": {"name": "Developmental Disabilities Division", "url": "https://www.nd.gov/"},
+    "medicaid": {"name": "North Dakota Medicaid", "url": "https://www.hhs.nd.gov/"},
+    "ei_program": {"name": "North Dakota Early Intervention", "url": "https://www.nd.gov/"},
+    "pti_center": {"name": "North Dakota PTI", "url": "https://www.ndpti.org/"}
+  },
+  {
+    "code": "OH",
+    "name": "Ohio",
+    "dd_agency": {"name": "Department of Developmental Disabilities", "url": "https://dodd.ohio.gov/"},
+    "medicaid": {"name": "Ohio Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=ohio"},
+    "ei_program": {"name": "Ohio Early Intervention", "url": "https://dodd.ohio.gov/"},
+    "pti_center": {"name": "Disability Advocacy Center", "url": "https://www.disabilityadvocacycenter.org/"}
+  },
+  {
+    "code": "OK",
+    "name": "Oklahoma",
+    "dd_agency": {"name": "Developmental Disabilities Services", "url": "https://aem-prod.ok.gov/okdhs/services/dds.html"},
+    "medicaid": {"name": "Oklahoma Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=oklahoma"},
+    "ei_program": {"name": "Oklahoma Early Intervention", "url": "https://aem-prod.ok.gov/okdhs/services/dds.html"},
+    "pti_center": {"name": "Parents, Advocates, and Literacy Services", "url": "https://www.opal.ok.gov/"}
+  },
+  {
+    "code": "OR",
+    "name": "Oregon",
+    "dd_agency": {"name": "Office of Developmental Disabilities Services", "url": "https://www.oregon.gov/odhs/idd/pages/default.aspx"},
+    "medicaid": {"name": "Oregon Medicaid", "url": "https://www.oregon.gov/medicaid/"},
+    "ei_program": {"name": "Oregon Early Intervention", "url": "https://www.oregon.gov/odhs/idd/pages/default.aspx"},
+    "pti_center": {"name": "Oregon Parent Training and Information", "url": "https://www.oregonpti.org/"}
+  },
+  {
+    "code": "PA",
+    "name": "Pennsylvania",
+    "dd_agency": {"name": "Office of Developmental Programs", "url": "https://www.pa.gov/agencies/dhs/programs-services/intellectual-disabilities"},
+    "medicaid": {"name": "Pennsylvania Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=pennsylvania"},
+    "ei_program": {"name": "Pennsylvania Early Intervention", "url": "https://www.pa.gov/agencies/dhs/programs-services/intellectual-disabilities"},
+    "pti_center": {"name": "Disability Rights Pennsylvania", "url": "https://www.disabilityrightpa.org/"}
+  },
+  {
+    "code": "RI",
+    "name": "Rhode Island",
+    "dd_agency": {"name": "Division of Developmental Disabilities", "url": "https://bhddh.ri.gov/developmental-disabilities"},
+    "medicaid": {"name": "Rhode Island Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=rhode-island"},
+    "ei_program": {"name": "Rhode Island Early Intervention", "url": "https://bhddh.ri.gov/developmental-disabilities"},
+    "pti_center": {"name": "Rhode Island Parent Training and Information", "url": "https://www.ripti.org/"}
+  },
+  {
+    "code": "SC",
+    "name": "South Carolina",
+    "dd_agency": {"name": "Office of Intellectual and Developmental Disabilities", "url": "https://scdhhs.gov/resources/waivers/intellectual-disability-and-related-disabilities-idrd-waiver"},
+    "medicaid": {"name": "South Carolina Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=south-carolina"},
+    "ei_program": {"name": "South Carolina Early Intervention", "url": "https://scdhhs.gov/resources/waivers/intellectual-disability-and-related-disabilities-idrd-waiver"},
+    "pti_center": {"name": "South Carolina Parent Training and Information", "url": "https://www.scpti.org/"}
+  },
+  {
+    "code": "SD",
+    "name": "South Dakota",
+    "dd_agency": {"name": "Division of Developmental Disabilities Services", "url": "https://dakotaathome.sd.gov/"},
+    "medicaid": {"name": "South Dakota Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=south-dakota"},
+    "ei_program": {"name": "South Dakota Early Intervention", "url": "https://dakotaathome.sd.gov/"},
+    "pti_center": {"name": "South Dakota Parent Training and Information", "url": "https://www.sdpti.org/"}
+  },
+  {
+    "code": "TN",
+    "name": "Tennessee",
+    "dd_agency": {"name": "Department of Disability and Aging", "url": "https://www.tn.gov/disability-and-aging/services.html"},
+    "medicaid": {"name": "Tennessee Medicaid", "url": "https://www.tn.gov/medicaid"},
+    "ei_program": {"name": "Tennessee Early Intervention", "url": "https://www.tn.gov/disability-and-aging/services.html"},
+    "pti_center": {"name": "Tennessee Parent Training and Information", "url": "https://www.tnpti.org/"}
+  },
+  {
+    "code": "TX",
+    "name": "Texas",
+    "dd_agency": {"name": "IDD and Behavioral Health Services", "url": "https://www.hhs.texas.gov/services/disability"},
+    "medicaid": {"name": "Texas Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=texas"},
+    "ei_program": {"name": "Texas Early Intervention", "url": "https://www.hhs.texas.gov/services/disability"},
+    "pti_center": {"name": "PRIDEINT", "url": "https://www.prideint.org/"}
+  },
+  {
+    "code": "UT",
+    "name": "Utah",
+    "dd_agency": {"name": "Division of Services for People with Disabilities", "url": "https://dspd.utah.gov/"},
+    "medicaid": {"name": "Utah Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=utah"},
+    "ei_program": {"name": "Utah Early Intervention", "url": "https://dspd.utah.gov/"},
+    "pti_center": {"name": "Disability Law Center", "url": "https://www.disabilitylawcenter.org/"}
+  },
+  {
+    "code": "VT",
+    "name": "Vermont",
+    "dd_agency": {"name": "Developmental Disabilities Services Division", "url": "https://ddsd.vermont.gov/"},
+    "medicaid": {"name": "Vermont Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=vermont"},
+    "ei_program": {"name": "Vermont Early Intervention", "url": "https://ddsd.vermont.gov/"},
+    "pti_center": {"name": "Vermont Family Network", "url": "https://www.vermontfamilynetwork.org/"}
+  },
+  {
+    "code": "VA",
+    "name": "Virginia",
+    "dd_agency": {"name": "Division of Developmental Services", "url": "https://www.dbhds.virginia.gov/"},
+    "medicaid": {"name": "Virginia Medicaid", "url": "https://www.dmas.virginia.gov/"},
+    "ei_program": {"name": "Virginia Early Intervention", "url": "https://www.dbhds.virginia.gov/"},
+    "pti_center": {"name": "Family Centered Early Intervention", "url": "https://www.fceiconnect.org/"}
+  },
+  {
+    "code": "WA",
+    "name": "Washington",
+    "dd_agency": {"name": "DD Services Administration", "url": "https://www.dshs.wa.gov/"},
+    "medicaid": {"name": "Washington Medicaid", "url": "https://www.hca.wa.gov/"},
+    "ei_program": {"name": "Washington Early Intervention", "url": "https://www.dshs.wa.gov/"},
+    "pti_center": {"name": "Washington Parent Training and Information", "url": "https://www.wapti.org/"}
+  },
+  {
+    "code": "WV",
+    "name": "West Virginia",
+    "dd_agency": {"name": "Bureau for Behavioral Health and Health Facilities", "url": "https://dhhr.wv.gov/"},
+    "medicaid": {"name": "West Virginia Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=west-virginia"},
+    "ei_program": {"name": "West Virginia Early Intervention", "url": "https://dhhr.wv.gov/"},
+    "pti_center": {"name": "West Virginia Parent Training and Information", "url": "https://www.wvpti.org/"}
+  },
+  {
+    "code": "WI",
+    "name": "Wisconsin",
+    "dd_agency": {"name": "Division of Medicaid Services", "url": "https://www.dhs.wisconsin.gov/"},
+    "medicaid": {"name": "Wisconsin Medicaid", "url": "https://www.dhs.wisconsin.gov/medicaid/"},
+    "ei_program": {"name": "Wisconsin Early Intervention", "url": "https://www.dhs.wisconsin.gov/"},
+    "pti_center": {"name": "Wisconsin Family Assistance Center", "url": "https://www.wifac.org/"}
+  },
+  {
+    "code": "WY",
+    "name": "Wyoming",
+    "dd_agency": {"name": "Developmental Disabilities Section", "url": "https://health.wyo.gov/"},
+    "medicaid": {"name": "Wyoming Medicaid", "url": "https://www.medicaid.gov/state-overviews/stateprofile.html?state=wyoming"},
+    "ei_program": {"name": "Wyoming Early Intervention", "url": "https://health.wyo.gov/"},
+    "pti_center": {"name": "Wyoming Parent Information Center", "url": "https://www.wypic.org/"}
+  }
+]
