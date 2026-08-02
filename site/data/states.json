@@ -44,7 +44,7 @@
     "name": "Arizona",
     "dd_agency": {
       "name": "Division of Developmental Disabilities",
-      "url": "https://health.arizona.gov/div_prevention-behavioral-health-services/developmental-disability-services"
+      "url": "https://des.az.gov"
     },
     "medicaid": {
       "name": "Arizona Medicaid",
@@ -52,7 +52,7 @@
     },
     "ei_program": {
       "name": "Arizona Early Intervention Program",
-      "url": "https://health.arizona.gov/div_prevention-behavioral-health-services/developmental-disability-services"
+      "url": "https://des.az.gov"
     },
     "pti_center": {
       "name": "Raising Special Kids",
@@ -324,15 +324,15 @@
     "name": "Kansas",
     "dd_agency": {
       "name": "Aging and Disability Services",
-      "url": "https://www.kdads.ks.gov/services/developmental-disabilities"
+      "url": "https://www.kdads.ks.gov"
     },
     "medicaid": {
       "name": "Kansas Medicaid",
-      "url": "https://www.kdads.ks.gov/services/medicaid"
+      "url": "https://www.kdads.ks.gov"
     },
     "ei_program": {
       "name": "Kansas Early Intervention",
-      "url": "https://www.kdads.ks.gov/services/early-intervention"
+      "url": "https://www.kdads.ks.gov"
     },
     "pti_center": {
       "name": "Kansas Parent Training and Information Project",
@@ -424,15 +424,15 @@
     "name": "Massachusetts",
     "dd_agency": {
       "name": "Department of Developmental Services",
-      "url": "https://www.mass.gov/"
+      "url": "https://www.mass.gov/dds"
     },
     "medicaid": {
       "name": "Massachusetts Medicaid",
-      "url": "https://www.mass.gov/"
+      "url": "https://www.mass.gov/dds"
     },
     "ei_program": {
       "name": "Massachusetts Early Intervention Program",
-      "url": "https://www.mass.gov/"
+      "url": "https://www.mass.gov/dds"
     },
     "pti_center": {
       "name": "Federation for Children with Special Needs",
