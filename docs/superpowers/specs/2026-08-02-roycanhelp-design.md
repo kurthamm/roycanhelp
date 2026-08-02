@@ -1,4 +1,4 @@
-# disabilitiessupport.org — Design Spec
+# roycanhelp.org — Design Spec
 
 **Date:** 2026-08-02
 **Owners:** Roy (site owner/editor), Kurt (infrastructure)
@@ -69,7 +69,7 @@ everything from there via chat.
 
 ## Roy's chat service
 
-- **URL:** `https://disabilitiessupport.org/<unadvertised-path>/` — single
+- **URL:** `https://roycanhelp.org/<unadvertised-path>/` — single
   chat page, `X-Robots-Tag: noindex, nofollow`, not linked or in the sitemap.
 - **Auth:** one shared password over HTTPS; session cookie after login.
 - **Backend:** small Node service (systemd unit, listens on 127.0.0.1,
@@ -101,7 +101,7 @@ everything from there via chat.
 
 - **Host:** existing DigitalOcean droplet (Civitae-Server, 165.245.140.51),
   alongside mediprimer.
-- **DNS:** Cloudflare zone `disabilitiessupport.org` (already active, zero
+- **DNS:** Cloudflare zone `roycanhelp.org` (already active, zero
   records). A record → 165.245.140.51, **grey-cloud/DNS-only** so
   fail2ban/GeoIP see real client IPs. Kurt approves record creation before it
   is made.
