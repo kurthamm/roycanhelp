@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Fetch and populate states
   fetch('data/states.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    })
     .then(states => {
       states.forEach(state => {
         const option = document.createElement('option');
@@ -47,35 +50,60 @@ document.addEventListener('DOMContentLoaded', () => {
           localStorage.setItem('lastState', state.code);
           renderState(state);
         } else {
-          card.innerHTML = '';
+          clearCard();
         }
       });
+    })
+    .catch(err => {
+      const msg = document.createElement('p');
+      msg.textContent = 'Couldn\'t load the state list — refresh, or yell at Roy.';
+      msg.style.color = '#c41e3a';
+      msg.style.fontWeight = 'bold';
+      card.appendChild(msg);
+      console.error('State data fetch failed:', err);
     });
 
   function renderState(state) {
-    const html = `
-      <div class="state-info">
-        <h2>${state.name}</h2>
-        <div class="state-services">
-          <div class="service">
-            <h3>${state.dd_agency.name}</h3>
-            <a href="${state.dd_agency.url}" target="_blank">Visit →</a>
-          </div>
-          <div class="service">
-            <h3>${state.medicaid.name}</h3>
-            <a href="${state.medicaid.url}" target="_blank">Visit →</a>
-          </div>
-          <div class="service">
-            <h3>${state.ei_program.name}</h3>
-            <a href="${state.ei_program.url}" target="_blank">Visit →</a>
-          </div>
-          <div class="service">
-            <h3>${state.pti_center.name}</h3>
-            <a href="${state.pti_center.url}" target="_blank">Visit →</a>
-          </div>
-        </div>
-      </div>
-    `;
-    card.innerHTML = html;
+    card.innerHTML = '';
+    const wrapper = document.createElement('div');
+    wrapper.className = 'state-info';
+
+    const heading = document.createElement('h2');
+    heading.textContent = state.name;
+    wrapper.appendChild(heading);
+
+    const services = document.createElement('div');
+    services.className = 'state-services';
+
+    const serviceData = [
+      { label: state.dd_agency.name, url: state.dd_agency.url },
+      { label: state.medicaid.name, url: state.medicaid.url },
+      { label: state.ei_program.name, url: state.ei_program.url },
+      { label: state.pti_center.name, url: state.pti_center.url }
+    ];
+
+    serviceData.forEach(svc => {
+      const div = document.createElement('div');
+      div.className = 'service';
+
+      const h3 = document.createElement('h3');
+      h3.textContent = svc.label;
+      div.appendChild(h3);
+
+      const a = document.createElement('a');
+      a.href = svc.url;
+      a.target = '_blank';
+      a.textContent = 'Visit →';
+      div.appendChild(a);
+
+      services.appendChild(div);
+    });
+
+    wrapper.appendChild(services);
+    card.appendChild(wrapper);
+  }
+
+  function clearCard() {
+    card.innerHTML = '';
   }
 });
