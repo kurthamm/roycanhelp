@@ -661,7 +661,7 @@ Note: the SDK spawns the bundled Claude Code CLI; with `ProtectHome=true` confir
 
 - [ ] **Step 1: DNS — ASK KURT FIRST** (explicit approval gate)
 
-Create via Cloudflare API once approved: A record `roycanhelp.org` → `165.245.140.51`, **proxied=false** (grey cloud), TTL auto. Verify: `dig +short roycanhelp.org` returns the IP.
+Create via Cloudflare API once approved: A record `roycanhelp.org` → `165.245.140.51`, **proxied=false** (grey cloud), TTL auto. Also (Kurt 2026-08-02): `roycanhelp.com` (zone active in Cloudflare) must redirect to the .org — A record `roycanhelp.com` → `165.245.140.51` grey-cloud, certbot cert covering `roycanhelp.com`, and a dedicated nginx server block doing `return 301 https://roycanhelp.org$request_uri;`. Verify: `dig +short roycanhelp.org` and `dig +short roycanhelp.com` return the IP.
 
 - [ ] **Step 2: Minimal HTTP vhost + certbot**
 
