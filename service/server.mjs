@@ -2,8 +2,9 @@ import express from 'express';
 import { makeSession, verifySession, checkPassword } from './auth.mjs';
 import { commitAll, undoLast } from './gitops.mjs';
 import { logUsage } from './usage.mjs';
-import { mkdirSync, existsSync, writeFileSync } from 'node:fs';
+import { mkdirSync, existsSync, writeFileSync, readFileSync, appendFileSync } from 'node:fs';
 import { join, resolve, sep } from 'node:path';
+import { randomUUID } from 'node:crypto';
 
 const REQUIRED_ENV = [
   'ANTHROPIC_API_KEY',
@@ -12,6 +13,7 @@ const REQUIRED_ENV = [
   'SITE_DIR',
   'SITE_REPO_DIR',
   'USAGE_LOG',
+  'QUESTIONS_FILE',
   'PORT',
 ];
 
@@ -207,6 +209,111 @@ export function createApp({ env, runTurn }) {
       res.json({ reverted: last.message });
     } catch (err) {
       res.status(409).send(err.message);
+    }
+  });
+
+  // Ask Roy endpoint (public)
+  app.post('/api/ask', express.json(), (req, res) => {
+    const { question, website } = req.body;
+
+    // Check for honeypot
+    if (website) {
+      return res.json({ ok: true });
+    }
+
+    // Reject empty questions
+    if (!question || !String(question).trim()) {
+      return res.status(400).send('Question cannot be empty');
+    }
+
+    // Reject questions over 2000 chars
+    if (String(question).length > 2000) {
+      return res.status(413).send('Question too long (max 2000 characters)');
+    }
+
+    // Append to QUESTIONS_FILE
+    try {
+      const questionRecord = {
+        id: randomUUID(),
+        ts: new Date().toISOString(),
+        question: String(question).trim(),
+      };
+      appendFileSync(env.QUESTIONS_FILE, JSON.stringify(questionRecord) + '\n');
+      res.json({ ok: true });
+    } catch (err) {
+      console.error('Failed to store question:', err);
+      res.status(500).send(err.message);
+    }
+  });
+
+  // Get questions endpoint (auth)
+  app.get('/api/questions', requireAuth, (req, res) => {
+    try {
+      const questions = [];
+      if (existsSync(env.QUESTIONS_FILE)) {
+        const content = readFileSync(env.QUESTIONS_FILE, 'utf8');
+        const lines = content.split('\n').filter(l => l.trim());
+        for (const line of lines) {
+          try {
+            questions.push(JSON.parse(line));
+          } catch (e) {
+            console.error('Failed to parse question line:', e);
+          }
+        }
+      }
+      res.json(questions);
+    } catch (err) {
+      console.error('Failed to read questions:', err);
+      res.status(500).send(err.message);
+    }
+  });
+
+  // Delete question endpoint (auth)
+  app.post('/api/questions/delete', requireAuth, express.json(), (req, res) => {
+    const { id } = req.body;
+    if (!id) {
+      return res.status(400).send('Missing id');
+    }
+
+    try {
+      if (!existsSync(env.QUESTIONS_FILE)) {
+        return res.status(404).send('Question not found');
+      }
+
+      const content = readFileSync(env.QUESTIONS_FILE, 'utf8');
+      const lines = content.split('\n').filter(l => l.trim());
+      const filtered = [];
+      let found = false;
+
+      for (const line of lines) {
+        try {
+          const q = JSON.parse(line);
+          if (q.id === id) {
+            found = true;
+          } else {
+            filtered.push(line);
+          }
+        } catch (e) {
+          console.error('Failed to parse question line:', e);
+          filtered.push(line);
+        }
+      }
+
+      if (!found) {
+        return res.status(404).send('Question not found');
+      }
+
+      // Rewrite file without the deleted question
+      if (filtered.length === 0) {
+        writeFileSync(env.QUESTIONS_FILE, '');
+      } else {
+        writeFileSync(env.QUESTIONS_FILE, filtered.join('\n') + '\n');
+      }
+
+      res.json({ ok: true });
+    } catch (err) {
+      console.error('Failed to delete question:', err);
+      res.status(500).send(err.message);
     }
   });
 

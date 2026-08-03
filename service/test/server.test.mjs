@@ -81,7 +81,7 @@ test('missing env vars throws error listing all missing', async () => {
   const env = { PORT: '3000' };
   assert.throws(
     () => createApp({ env, runTurn: fakeRunTurn() }),
-    /ANTHROPIC_API_KEY.*CHAT_PASSWORD.*SESSION_SECRET.*SITE_DIR.*SITE_REPO_DIR.*USAGE_LOG/
+    /ANTHROPIC_API_KEY.*CHAT_PASSWORD.*SESSION_SECRET.*SITE_DIR.*SITE_REPO_DIR.*USAGE_LOG.*QUESTIONS_FILE/
   );
 });
 
@@ -94,6 +94,7 @@ test('login with wrong password returns 401 and logs LOGIN FAIL', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -127,6 +128,7 @@ test('login with correct password sets session cookie', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -157,6 +159,7 @@ test('GET / without auth returns login form', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -179,6 +182,7 @@ test('GET / with valid auth returns chat.html', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -212,6 +216,7 @@ test('POST /api/message without auth returns 401', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -236,6 +241,7 @@ test('POST /api/message with auth streams SSE, commits, and logs usage', async (
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -302,6 +308,7 @@ test('POST /api/message with sessionId resumes agent conversation', async () => 
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurnWithTracking());
@@ -361,6 +368,7 @@ test('POST /api/undo without auth returns 401', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -384,6 +392,7 @@ test('POST /api/undo with auth reverts last chat commit', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -433,6 +442,7 @@ test('POST /api/undo on non-chat commit returns 409 with error', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -471,6 +481,7 @@ test('POST /api/upload without auth returns 401', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -495,6 +506,7 @@ test('POST /api/upload with auth and valid png creates file and commit', async (
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -545,6 +557,7 @@ test('POST /api/upload with path traversal filename returns 400', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -582,6 +595,7 @@ test('POST /api/upload with unsupported format returns 415', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -619,6 +633,7 @@ test('POST /api/upload with duplicate filename returns 409', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -667,6 +682,7 @@ test('POST /api/upload with >15MB stream returns 413 and no file written', async
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -713,6 +729,7 @@ test('POST /api/upload with pdf creates file in files/ and commit', async () => 
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -763,6 +780,7 @@ test('POST /api/upload with docx creates file in files/', async () => {
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -806,6 +824,7 @@ test('POST /api/upload with unsupported document format returns 415', async () =
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -843,6 +862,7 @@ test('login page submits to a relative path (works behind /admin/ prefix)', asyn
     SITE_DIR: repoDir,
     SITE_REPO_DIR: repoDir,
     USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
   const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
@@ -851,6 +871,312 @@ test('login page submits to a relative path (works behind /admin/ prefix)', asyn
     const html = await res.text();
     assert.match(html, /fetch\('api\/login'/);
     assert.doesNotMatch(html, /action="\/api\/login"/);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/ask without honeypot stores question with id and ts', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/ask`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: 'Where can I find help?', website: '' }),
+    });
+    assert.equal(res.status, 200);
+    const data = await res.json();
+    assert.equal(data.ok, true);
+
+    const content = readFileSync(questionsFile, 'utf8');
+    const lines = content.trim().split('\n');
+    assert.equal(lines.length, 1);
+    const q = JSON.parse(lines[0]);
+    assert.ok(q.id, 'question has id');
+    assert.ok(q.ts, 'question has ts');
+    assert.equal(q.question, 'Where can I find help?');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/ask with honeypot (website non-empty) returns 200 but stores nothing', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/ask`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: 'This is spam', website: 'http://spam.com' }),
+    });
+    assert.equal(res.status, 200);
+    const data = await res.json();
+    assert.equal(data.ok, true);
+
+    // Verify nothing was stored
+    assert.equal(existsSync(questionsFile), false, 'questions file should not exist');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/ask with empty question returns 400', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/ask`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: '', website: '' }),
+    });
+    assert.equal(res.status, 400);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/ask with >2000 char question returns 413', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const longQuestion = 'a'.repeat(2001);
+    const res = await fetch(`${baseUrl}/api/ask`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: longQuestion, website: '' }),
+    });
+    assert.equal(res.status, 413);
+  } finally {
+    close();
+  }
+});
+
+test('GET /api/questions without auth returns 401', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/questions`);
+    assert.equal(res.status, 401);
+  } finally {
+    close();
+  }
+});
+
+test('GET /api/questions with auth returns pending questions as array', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
+  writeFileSync(questionsFile, '{"id":"2","ts":"2026-01-01T00:01:00Z","question":"Q2"}\n', { flag: 'a' });
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Get questions
+    const res = await fetch(`${baseUrl}/api/questions`, {
+      headers: { 'Cookie': sessionCookie },
+    });
+    assert.equal(res.status, 200);
+    const questions = await res.json();
+    assert.ok(Array.isArray(questions));
+    assert.equal(questions.length, 2);
+    assert.equal(questions[0].id, '1');
+    assert.equal(questions[0].question, 'Q1');
+    assert.equal(questions[1].id, '2');
+    assert.equal(questions[1].question, 'Q2');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/delete without auth returns 401', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/questions/delete`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: 'test-id' }),
+    });
+    assert.equal(res.status, 401);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/delete with auth removes question by id', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
+  writeFileSync(questionsFile, '{"id":"2","ts":"2026-01-01T00:01:00Z","question":"Q2"}\n', { flag: 'a' });
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Delete question with id 1
+    const delRes = await fetch(`${baseUrl}/api/questions/delete`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: '1' }),
+    });
+    assert.equal(delRes.status, 200);
+
+    // Verify question was deleted
+    const content = readFileSync(questionsFile, 'utf8');
+    const lines = content.trim().split('\n').filter(l => l);
+    assert.equal(lines.length, 1);
+    const remaining = JSON.parse(lines[0]);
+    assert.equal(remaining.id, '2');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/delete with unknown id returns 404', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Try to delete unknown question
+    const delRes = await fetch(`${baseUrl}/api/questions/delete`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: 'nonexistent' }),
+    });
+    assert.equal(delRes.status, 404);
   } finally {
     close();
   }
