@@ -16,6 +16,19 @@ const MINIMAL_PNG = Buffer.from([
   0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82,
 ]);
 
+// Minimal PDF buffer (valid PDF header)
+const MINIMAL_PDF = Buffer.from('%PDF-1.4\n%EOF\n', 'utf8');
+
+// Minimal DOCX buffer (ZIP-based format with valid magic bytes)
+const MINIMAL_DOCX = Buffer.from([
+  0x50, 0x4b, 0x03, 0x04, 0x14, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00,
+  0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+  0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x5b, 0x43, 0x6f, 0x6e, 0x74, 0x65,
+  0x6e, 0x74, 0x5f, 0x54, 0x79, 0x70, 0x65, 0x73, 0x5d, 0x2e, 0x78, 0x6d,
+  0x6c, 0x50, 0x4b, 0x05, 0x06, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01,
+  0x39, 0x00, 0x00, 0x00, 0x31, 0x00, 0x00, 0x00, 0x00, 0x00,
+]);
+
 // Test fixture: temp git repo
 function repo() {
   const dir = mkdtempSync(join(tmpdir(), 'repo-'));
@@ -686,6 +699,136 @@ test('POST /api/upload with >15MB stream returns 413 and no file written', async
     // Verify file was NOT written
     const imagePath = join(repoDir, 'images', 'toolarge.png');
     assert.equal(existsSync(imagePath), false, 'File should not be written');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/upload with pdf creates file in files/ and commit', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Upload PDF
+    const uploadRes = await fetch(`${baseUrl}/api/upload`, {
+      method: 'POST',
+      headers: {
+        'X-Filename': 'document.pdf',
+        'Cookie': sessionCookie,
+      },
+      body: MINIMAL_PDF,
+    });
+    assert.equal(uploadRes.status, 200);
+    const data = await uploadRes.json();
+    assert.equal(data.path, 'files/document.pdf');
+
+    // Verify file exists in files/ directory
+    const filePath = join(repoDir, 'files', 'document.pdf');
+    assert.ok(existsSync(filePath));
+    const content = readFileSync(filePath);
+    assert.deepStrictEqual(content, MINIMAL_PDF);
+
+    // Verify commit was made
+    const git = (...a) => execFileSync('git', a, { cwd: repoDir, encoding: 'utf8' });
+    const stdout = git('log', '-1', '--oneline');
+    assert.match(stdout, /Roy: uploaded/);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/upload with docx creates file in files/', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Upload DOCX
+    const uploadRes = await fetch(`${baseUrl}/api/upload`, {
+      method: 'POST',
+      headers: {
+        'X-Filename': 'document.docx',
+        'Cookie': sessionCookie,
+      },
+      body: MINIMAL_DOCX,
+    });
+    assert.equal(uploadRes.status, 200);
+    const data = await uploadRes.json();
+    assert.equal(data.path, 'files/document.docx');
+
+    // Verify file exists in files/ directory
+    const filePath = join(repoDir, 'files', 'document.docx');
+    assert.ok(existsSync(filePath));
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/upload with unsupported document format returns 415', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Try to upload unsupported doc format
+    const uploadRes = await fetch(`${baseUrl}/api/upload`, {
+      method: 'POST',
+      headers: {
+        'X-Filename': 'bad.exe',
+        'Cookie': sessionCookie,
+      },
+      body: MINIMAL_PDF,
+    });
+    assert.equal(uploadRes.status, 415);
   } finally {
     close();
   }

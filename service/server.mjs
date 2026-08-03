@@ -213,25 +213,33 @@ export function createApp({ env, runTurn }) {
         return res.status(400).send('Path traversal not allowed');
       }
 
-      // Validate file extension
+      // Validate file extension and determine target directory
       const ext = filename.split('.').pop().toLowerCase();
-      const allowedExts = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'];
-      if (!allowedExts.includes(ext)) {
+      const imageExts = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'];
+      const documentExts = ['pdf', 'doc', 'docx', 'txt', 'rtf', 'odt'];
+
+      let targetDir, pathPrefix;
+      if (imageExts.includes(ext)) {
+        targetDir = join(env.SITE_DIR, 'images');
+        pathPrefix = 'images';
+      } else if (documentExts.includes(ext)) {
+        targetDir = join(env.SITE_DIR, 'files');
+        pathPrefix = 'files';
+      } else {
         return res.status(415).send('Unsupported file format');
       }
 
-      // Ensure images directory exists
-      const imagesDir = join(env.SITE_DIR, 'images');
+      // Ensure target directory exists
       try {
-        mkdirSync(imagesDir, { recursive: true });
+        mkdirSync(targetDir, { recursive: true });
       } catch (err) {
         if (err.code !== 'EEXIST') throw err;
       }
 
-      // Defense-in-depth: resolve the final path and verify it's within images dir
-      const filepath = resolve(imagesDir, filename);
-      const imageDirResolved = resolve(imagesDir);
-      if (!filepath.startsWith(imageDirResolved + sep)) {
+      // Defense-in-depth: resolve the final path and verify it's within target dir
+      const filepath = resolve(targetDir, filename);
+      const targetDirResolved = resolve(targetDir);
+      if (!filepath.startsWith(targetDirResolved + sep)) {
         return res.status(400).send('Invalid file path');
       }
 
@@ -260,7 +268,7 @@ export function createApp({ env, runTurn }) {
       // Commit
       await commitAll(env.SITE_REPO_DIR, `Roy: uploaded ${filename}`);
 
-      res.json({ path: `images/${filename}` });
+      res.json({ path: `${pathPrefix}/${filename}` });
     } catch (err) {
       console.error('Upload error:', err);
       res.status(500).send(err.message);

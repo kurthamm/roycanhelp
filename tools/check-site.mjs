@@ -24,6 +24,8 @@ export function checkSite(root) {
     const refs = [...html.matchAll(/(?:href|src)="([^"#?]+[^"]*?)"/g)].map(m => m[1].split(/[#?]/)[0]);
     for (const ref of refs) {
       if (!ref || /^(https?:|mailto:|tel:|\/\/|data:)/.test(ref)) continue;
+      // Allow /admin/ as a special case (chat service mount point, served by nginx, not a file)
+      if (ref === '/admin/') continue;
       const target = ref.startsWith('/') ? join(root, ref) : resolve(dirname(f), ref);
       if (!existsSync(target)) errors.push(`${f}: broken internal link -> ${ref}`);
     }

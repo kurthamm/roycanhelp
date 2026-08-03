@@ -187,7 +187,7 @@
       <button id="send-btn">Send</button>
       <button id="undo-btn">Undo last change</button>
     </div>
-    <input type="file" id="file-input" style="display:none" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml">
+    <input type="file" id="file-input" style="display:none" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,application/rtf,application/vnd.oasis.opendocument.text">
   </div>
 
   <script>
@@ -386,14 +386,10 @@
       }
     }
 
-    // Upload image
-    async function uploadImage(file) {
-      if (!file.type.startsWith('image/')) {
-        addMessageToDOM('assistant', 'Error: Please select an image file');
-        return;
-      }
-
+    // Upload file (image or document)
+    async function uploadFile(file) {
       const filename = file.name.toLowerCase().replace(/[^a-z0-9._-]/g, '-');
+      const isImage = file.type.startsWith('image/');
       const chunks = [];
       const reader = file.stream().getReader();
 
@@ -415,24 +411,42 @@
           const data = await uploadRes.json();
           messageInput.value += `[uploaded: ${data.path}]\n`;
 
-          // Show thumbnail preview
-          const reader2 = new FileReader();
-          reader2.onload = (e) => {
-            const preview = document.createElement('img');
-            preview.src = e.target.result;
-            preview.style.maxWidth = '200px';
-            preview.style.maxHeight = '200px';
-            preview.style.borderRadius = '4px';
-            preview.style.marginTop = '0.5rem';
+          if (isImage) {
+            // Show thumbnail preview for images
+            const reader2 = new FileReader();
+            reader2.onload = (e) => {
+              const preview = document.createElement('img');
+              preview.src = e.target.result;
+              preview.style.maxWidth = '200px';
+              preview.style.maxHeight = '200px';
+              preview.style.borderRadius = '4px';
+              preview.style.marginTop = '0.5rem';
+              const msg = document.createElement('div');
+              msg.className = 'message user';
+              msg.appendChild(preview);
+              msg.innerHTML += `<br>[uploaded: ${data.path}]`;
+              transcript.appendChild(msg);
+              transcript.scrollTop = transcript.scrollHeight;
+              saveTranscript();
+            };
+            reader2.readAsDataURL(file);
+          } else {
+            // Show filename chip for documents
             const msg = document.createElement('div');
             msg.className = 'message user';
-            msg.appendChild(preview);
+            const chip = document.createElement('span');
+            chip.style.display = 'inline-block';
+            chip.style.background = 'rgba(139, 0, 0, 0.1)';
+            chip.style.padding = '0.5rem 0.75rem';
+            chip.style.borderRadius = '4px';
+            chip.style.marginTop = '0.5rem';
+            chip.innerHTML = `📄 ${filename}`;
+            msg.appendChild(chip);
             msg.innerHTML += `<br>[uploaded: ${data.path}]`;
             transcript.appendChild(msg);
             transcript.scrollTop = transcript.scrollHeight;
             saveTranscript();
-          };
-          reader2.readAsDataURL(file);
+          }
         } else if (uploadRes.status === 409) {
           addMessageToDOM('assistant', 'Error: File already exists');
         } else {
@@ -451,7 +465,7 @@
     attachBtn.addEventListener('click', () => fileInput.click());
     fileInput.addEventListener('change', (e) => {
       if (e.target.files[0]) {
-        uploadImage(e.target.files[0]);
+        uploadFile(e.target.files[0]);
         e.target.value = '';
       }
     });
@@ -474,7 +488,7 @@
       e.stopPropagation();
       transcript.style.opacity = '1';
       if (e.dataTransfer.files[0]) {
-        uploadImage(e.dataTransfer.files[0]);
+        uploadFile(e.dataTransfer.files[0]);
       }
     });
 
