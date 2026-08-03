@@ -833,3 +833,25 @@ test('POST /api/upload with unsupported document format returns 415', async () =
     close();
   }
 });
+
+test('login page submits to a relative path (works behind /admin/ prefix)', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const res = await fetch(`${baseUrl}/`);
+    const html = await res.text();
+    assert.match(html, /fetch\('api\/login'/);
+    assert.doesNotMatch(html, /action="\/api\/login"/);
+  } finally {
+    close();
+  }
+});
