@@ -24,8 +24,12 @@ function parseCookies(cookieHeader) {
   if (!cookieHeader) return {};
   const cookies = {};
   cookieHeader.split(';').forEach(cookie => {
-    const [name, value] = cookie.trim().split('=');
-    if (name && value) cookies[name] = value;
+    const eqIdx = cookie.trim().indexOf('=');
+    if (eqIdx > 0) {
+      const name = cookie.trim().substring(0, eqIdx);
+      const value = cookie.trim().substring(eqIdx + 1);
+      if (name) cookies[name] = value;
+    }
   });
   return cookies;
 }
@@ -138,7 +142,7 @@ export function createApp({ env, runTurn }) {
   });
 
   app.post('/api/message', requireAuth, async (req, res) => {
-    const { message } = req.body;
+    const { message, sessionId } = req.body;
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
@@ -146,17 +150,12 @@ export function createApp({ env, runTurn }) {
     try {
       const { sessionId: newSessionId, usage, summary } = await runTurn({
         message,
-        sessionId: req.agentSession,
+        sessionId: sessionId || req.agentSession,
         siteDir: env.SITE_DIR,
         onText: (text) => {
           res.write(`event: text\ndata: ${text}\n\n`);
         },
       });
-
-      // Store new session ID for cookie (set before writing done event)
-      const newSessionCookie = newSessionId
-        ? `agentsession=${newSessionId}; Path=/; HttpOnly; Secure; SameSite=Strict`
-        : null;
 
       // Commit the message
       const messageShort = message.substring(0, 60);
@@ -167,13 +166,13 @@ export function createApp({ env, runTurn }) {
       if (usage) {
         logUsage(env.USAGE_LOG, {
           ts: new Date().toISOString(),
-          sessionId: newSessionId || req.agentSession,
+          sessionId: newSessionId || sessionId || req.agentSession,
           input_tokens: usage.input_tokens,
           output_tokens: usage.output_tokens,
         });
       }
 
-      // Include new session in done event and set cookie header via Set-Cookie trailer (if supported)
+      // Include new session in done event
       const doneData = { summary, committed };
       if (newSessionId) {
         doneData.sessionId = newSessionId;

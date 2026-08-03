@@ -260,10 +260,15 @@
       transcript.appendChild(working);
 
       try {
+        // Get stored agent session ID
+        const storedSessionId = localStorage.getItem('roy-agent-session-id');
         const response = await fetch('api/message', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: msg }),
+          body: JSON.stringify({
+            message: msg,
+            ...(storedSessionId && { sessionId: storedSessionId }),
+          }),
         });
 
         if (!response.ok) {
@@ -272,36 +277,83 @@
 
         working.remove();
         let assistantText = '';
+        let buffer = '';
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
 
+        // Parse SSE frames
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
           const chunk = decoder.decode(value, { stream: true });
-          const lines = chunk.split('\n');
-          for (const line of lines) {
-            if (line.startsWith('data: ')) {
-              const data = line.slice(6);
-              if (response.headers.get('content-type')?.includes('event-stream')) {
-                // Parse SSE format
-                if (data && !data.startsWith('event:')) {
-                  try {
-                    assistantText += data;
-                  } catch (e) {
-                    assistantText += data;
-                  }
-                }
+          buffer += chunk;
+
+          // Process complete frames (separated by \n\n)
+          const frames = buffer.split('\n\n');
+          // Keep the last incomplete frame in buffer
+          buffer = frames.pop() || '';
+
+          for (const frame of frames) {
+            if (!frame.trim()) continue;
+
+            let eventType = 'text';
+            let eventData = '';
+            const lines = frame.split('\n');
+
+            for (const line of lines) {
+              if (line.startsWith('event: ')) {
+                eventType = line.slice(7);
+              } else if (line.startsWith('data: ')) {
+                eventData = line.slice(6);
               }
+            }
+
+            if (eventType === 'text') {
+              assistantText += eventData;
+              if (assistantText && !assistantText.startsWith('working')) {
+                transcript.querySelector('.working')?.remove?.();
+              }
+              // Update or create assistant message as we receive text
+              let assistantMsg = transcript.querySelector('.message.assistant:last-of-type');
+              if (!assistantMsg || assistantMsg.querySelector('.working')) {
+                assistantMsg = document.createElement('div');
+                assistantMsg.className = 'message assistant';
+                transcript.appendChild(assistantMsg);
+              }
+              assistantMsg.innerHTML = linkifyText(escapeHtml(assistantText));
+              transcript.scrollTop = transcript.scrollHeight;
+            } else if (eventType === 'done') {
+              try {
+                const doneData = JSON.parse(eventData);
+                if (doneData.sessionId) {
+                  localStorage.setItem('roy-agent-session-id', doneData.sessionId);
+                }
+              } catch (e) {
+                // Not JSON, skip
+              }
+            } else if (eventType === 'error') {
+              addMessageToDOM('assistant', `Error: ${eventData}`);
             }
           }
         }
 
-        if (assistantText) {
+        // Process any remaining buffer data
+        if (buffer.trim()) {
+          const lines = buffer.split('\n');
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              assistantText += line.slice(6);
+            }
+          }
+        }
+
+        if (assistantText && !transcript.querySelector('.message.assistant:last-of-type')?.textContent?.trim()) {
           addMessageToDOM('assistant', assistantText);
         }
+        transcript.querySelector('.working')?.remove?.();
       } catch (err) {
         addMessageToDOM('assistant', `Error: ${err.message}`);
+        transcript.querySelector('.working')?.remove?.();
       } finally {
         sendBtn.disabled = false;
         messageInput.focus();

@@ -245,6 +245,85 @@ test('POST /api/message with auth streams SSE, commits, and logs usage', async (
     assert.match(text, /event: done/);
     assert.match(text, /summary.*first delta/);
     assert.match(text, /committed.*true/);
+    // Extract sessionId from done event
+    const doneMatch = text.match(/event: done\ndata: ({.*?})\n\n/);
+    assert.ok(doneMatch, 'done event contains JSON');
+    const doneData = JSON.parse(doneMatch[1]);
+    assert.ok(doneData.sessionId, 'done event contains sessionId');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/message with sessionId resumes agent conversation', async () => {
+  const repoDir = repo();
+  let receivedSessionIds = [];
+  const fakeRunTurnWithTracking = () => {
+    return async ({ message, sessionId, onText, siteDir }) => {
+      receivedSessionIds.push(sessionId);
+      onText('response');
+      const { writeFileSync } = await import('node:fs');
+      const { join } = await import('node:path');
+      writeFileSync(join(siteDir, 'chat.log'), `${message}\n`, { flag: 'a' });
+      return {
+        sessionId: sessionId ? `resumed-${sessionId}` : 'new-session-456',
+        usage: { input_tokens: 10, output_tokens: 20 },
+        summary: 'response',
+      };
+    };
+  };
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurnWithTracking());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // First message - no sessionId
+    const res1 = await fetch(`${baseUrl}/api/message`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ message: 'first' }),
+    });
+    const text1 = await res1.text();
+    const doneMatch1 = text1.match(/event: done\ndata: ({.*?})\n\n/);
+    const doneData1 = JSON.parse(doneMatch1[1]);
+    const firstSessionId = doneData1.sessionId;
+    assert.equal(firstSessionId, 'new-session-456');
+
+    // Second message - with sessionId from first response
+    const res2 = await fetch(`${baseUrl}/api/message`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ message: 'second', sessionId: firstSessionId }),
+    });
+    const text2 = await res2.text();
+    const doneMatch2 = text2.match(/event: done\ndata: ({.*?})\n\n/);
+    const doneData2 = JSON.parse(doneMatch2[1]);
+    assert.equal(doneData2.sessionId, `resumed-${firstSessionId}`);
+
+    // Verify server received sessionIds correctly
+    assert.equal(receivedSessionIds[0], undefined, 'first message has no sessionId');
+    assert.equal(receivedSessionIds[1], firstSessionId, 'second message received sessionId');
   } finally {
     close();
   }
