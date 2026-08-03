@@ -43,6 +43,21 @@
         <p>Parents ask me things. A lot of things. Some I know. Some I had to learn the hard way. Here's what I've learned from listening, and what keeps coming up again and again. Questions are published anonymously only if answered. Don't use your child's real name. No personal details.</p>
       </section>
 
+      <section style="margin-top: 3rem; padding: 2rem; background-color: var(--yellow); border: 3px solid var(--ink); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+        <h2>Got a question?</h2>
+        <p>Ask away. Your question stays private until and unless I answer it. No names, no personal details. Just the question and the answer Roy learns from it.</p>
+
+        <form id="ask-form">
+          <textarea id="question-text" placeholder="Type your question here. Keep it under 2000 characters. No names, no personal medical/legal details." style="width: 100%; min-height: 8rem; padding: 0.75rem; font-size: 1rem; font-family: Georgia, serif; border: 2px solid #1a1a1a; border-radius: 4px;" required></textarea>
+
+          <input type="text" id="website-honeypot" name="website" style="display: none;">
+
+          <button type="submit" style="margin-top: 1rem; padding: 0.75rem 1.5rem; background-color: var(--red); color: var(--bg); border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1rem;">Send Question</button>
+
+          <p id="form-status" style="margin-top: 1rem; color: var(--red); font-weight: bold;"></p>
+        </form>
+      </section>
+
       <section id="qa-controls">
         <div style="margin: 2rem 0;">
           <input type="text" id="qa-search" placeholder="Search questions..." style="width: 100%; padding: 0.75rem; font-size: 1rem; border: 2px solid #d62828; border-radius: 4px;">
@@ -197,21 +212,6 @@
             <p><em>Citation: IDEA 34 CFR 300.301 (evaluation timeline); 34 CFR 300.303</em></p>
           </div>
         </div>
-      </section>
-
-      <section style="margin-top: 3rem; padding: 2rem; background-color: var(--yellow); border: 3px solid var(--ink); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
-        <h2>Got a question?</h2>
-        <p>Ask away. Your question stays private until and unless I answer it. No names, no personal details. Just the question and the answer Roy learns from it.</p>
-
-        <form id="ask-form">
-          <textarea id="question-text" placeholder="Type your question here. Keep it under 2000 characters. No names, no personal medical/legal details." style="width: 100%; min-height: 8rem; padding: 0.75rem; font-size: 1rem; font-family: Georgia, serif; border: 2px solid #1a1a1a; border-radius: 4px;" required></textarea>
-
-          <input type="text" id="website-honeypot" name="website" style="display: none;">
-
-          <button type="submit" style="margin-top: 1rem; padding: 0.75rem 1.5rem; background-color: var(--red); color: var(--bg); border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1rem;">Send Question</button>
-
-          <p id="form-status" style="margin-top: 1rem; color: var(--red); font-weight: bold;"></p>
-        </form>
       </section>
     </article>
   </main>
