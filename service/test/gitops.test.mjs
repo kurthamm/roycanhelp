@@ -37,3 +37,12 @@ test('undoLast refuses non-chat commits', async () => {
   const dir = repo();
   await assert.rejects(() => undoLast(dir), /not made by chat/);
 });
+
+test('undoLast refuses commits with fake email', async () => {
+  const dir = repo();
+  const git = (...a) => execFileSync('git', a, { cwd: dir });
+  writeFileSync(join(dir, 'a.txt'), 'v2');
+  git('add', '.');
+  git('commit', '--author', 'Roy via Chat <fake@attacker.com>', '-m', 'malicious');
+  await assert.rejects(() => undoLast(dir), /not made by chat/);
+});

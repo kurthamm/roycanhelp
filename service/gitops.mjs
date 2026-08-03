@@ -6,6 +6,11 @@ export const CHAT_AUTHOR = 'Roy via Chat <chat@roycanhelp.org>';
 
 const git = (dir, ...args) => run('git', args, { cwd: dir });
 
+// Parse CHAT_AUTHOR to extract expected author name and email
+const match = CHAT_AUTHOR.match(/^(.+)\s<(.+)>$/);
+const EXPECTED_AUTHOR = match[1];
+const EXPECTED_EMAIL = match[2];
+
 export async function commitAll(repoDir, message) {
   await git(repoDir, 'add', '-A');
   const { stdout: status } = await git(repoDir, 'status', '--porcelain');
@@ -15,14 +20,14 @@ export async function commitAll(repoDir, message) {
 }
 
 export async function lastChange(repoDir) {
-  const { stdout } = await git(repoDir, 'log', '-1', '--format=%H%x00%an%x00%s');
-  const [hash, author, message] = stdout.trim().split('\0');
-  return { hash, author, message };
+  const { stdout } = await git(repoDir, 'log', '-1', '--format=%H%x00%an%x00%ae%x00%s');
+  const [hash, author, email, message] = stdout.trim().split('\0');
+  return { hash, author, email, message };
 }
 
 export async function undoLast(repoDir) {
   const last = await lastChange(repoDir);
-  if (last.author !== 'Roy via Chat') throw new Error('last commit was not made by chat');
+  if (last.author !== EXPECTED_AUTHOR || last.email !== EXPECTED_EMAIL) throw new Error('last commit was not made by chat');
   await git(repoDir, 'revert', '--no-edit', 'HEAD');
   return last;
 }
