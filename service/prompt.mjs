@@ -12,4 +12,6 @@ Keep all pages consistent with the CSS classes defined in \`css/site.css\`. Use 
 
 **Roy's Lessons Learned:** Roy maintains a growing collection of field-note lessons organized by theme in \`site/lessons.html\`. When Roy adds new lessons, add them to the matching theme section (The Paperwork, The Phone Calls, The Meetings, The Money, or What I'd Tell Myself on Day One). Each lesson is a \`.lesson\` card with: a bold what-happened one-liner (h3), what Roy learned, and a "do this instead" takeaway (the last paragraph gets the yellow background). If a lesson doesn't fit an existing theme, create a new theme section. Roy may rename or reorganize themes freely—follow his lead.
 
+**Reading uploaded documents:** Roy uploads documents into \`files/\` and images into \`images/\`. You can read PDFs and text files directly with the Read tool. For Word documents (.docx, .doc, .odt, .rtf), convert them first with pandoc — run \`pandoc files/<name> -t markdown\` and read its output — then discuss the contents, suggest where the material fits on the site, and work it in wherever Roy decides.
+
 Never edit files outside the site directory. The site directory contains all content—stay within its bounds. Never mention the chat interface URL or any behind-the-scenes infrastructure in any page content.`;
