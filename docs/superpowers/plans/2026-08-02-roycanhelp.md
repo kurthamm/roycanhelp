@@ -574,6 +574,22 @@ git commit -m "feat: chat HTTP service with SSE streaming and undo"
 
 ---
 
+### Task 8b: Image upload (added 2026-08-02 per Kurt)
+
+**Files:**
+- Modify: `service/server.mjs`, `service/public/chat.html`
+- Test: `service/test/server.test.mjs` (extend)
+
+**Interfaces:**
+- Consumes: auth middleware, `commitAll` from Task 6, `createApp` DI from Task 8.
+- Produces: `POST api/upload` (auth, multipart or raw body with `X-Filename` header — implementer's choice, documented): accepts png/jpg/jpeg/gif/webp/svg up to 15 MB; sanitizes the filename to `[a-z0-9-_.]` (reject path separators/traversal outright — 400, not silent rename); writes to `<SITE_DIR>/images/` (create dir if absent); auto-commits via `commitAll` ("Roy: uploaded <name>"); returns `{path: "images/<name>"}`. Duplicate name → 409, not overwrite.
+- chat.html gains a 📎 attach button + drag-drop onto the composer; after upload it inserts `[uploaded: images/<name>]` into the textarea so Roy's next message can tell the agent where to put it, and shows a thumbnail preview in the transcript.
+
+- [ ] **Step 1: TDD** — extend server tests: upload w/o auth → 401; valid png (small fixture buffer) → 200 {path}, file exists in temp SITE_DIR, chat-authored commit created; `../evil.png` filename → 400; `.exe` → 415; duplicate → 409.
+- [ ] **Step 2: Implement + wire UI. Step 3: `npm test` + `make check`. Step 4: Commit** `feat: image upload for Roy's chat`
+
+---
+
 ### Task 9: Local end-to-end smoke test
 
 **Files:** none new (fixes only).
@@ -690,6 +706,7 @@ server {
     proxy_http_version 1.1;
     proxy_set_header X-Forwarded-For $remote_addr;
     proxy_read_timeout 600s;    # long agent turns
+    client_max_body_size 20m;   # image uploads
     proxy_buffering off;        # SSE
   }
   location /<CHAT_SLUG>/api/login {
