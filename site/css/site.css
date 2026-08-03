@@ -300,6 +300,93 @@ footer a:hover {
   color: var(--bg);
 }
 
+/* Journey timeline */
+.journey {
+  list-style: none;
+  margin: 3rem auto;
+  max-width: 46rem;
+  padding: 0 1rem;
+}
+
+.journey li {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-left: 4rem;
+}
+
+.journey li:before {
+  content: attr(data-step);
+  position: absolute;
+  left: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--red);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.1rem;
+  font-family: 'Archivo Black', Impact, sans-serif;
+}
+
+.journey .stage {
+  background-color: var(--bg);
+  border: 3px solid var(--ink);
+  padding: 1.5rem;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.journey .stage h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.journey .stage p {
+  margin-bottom: 0.75rem;
+}
+
+.journey a.read-more {
+  display: inline-block;
+  background-color: var(--red);
+  color: var(--bg);
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  margin-top: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.journey a.read-more:hover {
+  background-color: var(--yellow);
+  color: var(--ink);
+}
+
+/* Journey navigation */
+.journey-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--yellow);
+  border: 3px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.journey-nav a {
+  flex: 1;
+  text-align: center;
+}
+
+.journey-nav a:first-child {
+  margin-right: 1rem;
+}
+
+.journey-nav a:last-child {
+  margin-left: 1rem;
+}
+
 /* Utility: clearfix for floats */
 .clearfix::after {
   content: "";
