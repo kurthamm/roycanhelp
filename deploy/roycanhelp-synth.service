@@ -1,0 +1,16 @@
+[Unit]
+Description=roycanhelp.org weekly wisdom synthesis
+After=network.target
+
+[Service]
+Type=oneshot
+User=roychat
+EnvironmentFile=/etc/roycanhelp/env
+WorkingDirectory=/var/www/roycanhelp/service
+ExecStart=/usr/bin/node synthesize.mjs
+StandardOutput=append:/var/log/roycanhelp/synthesis.log
+StandardError=append:/var/log/roycanhelp/synthesis.log
+ReadWritePaths=/var/www/roycanhelp /var/log/roycanhelp /var/lib/roychat
+
+[Install]
+WantedBy=multi-user.target

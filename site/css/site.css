@@ -103,7 +103,11 @@ main, article, section {
 nav {
   background-color: var(--red);
   padding: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
+}
+
+nav.nav-primary {
+  margin-bottom: 1rem;
 }
 
 nav ul {
@@ -115,9 +119,27 @@ nav ul {
   margin: 0 auto;
 }
 
+nav.nav-primary ul {
+  padding: 0;
+}
+
+nav.nav-secondary ul {
+  padding: 0;
+}
+
 nav li {
   flex: 1 1 auto;
+  min-width: 100px;
+}
+
+nav.nav-primary li {
+  flex: 1 1 auto;
   min-width: 120px;
+}
+
+nav.nav-secondary li {
+  flex: 1 1 auto;
+  min-width: 90px;
 }
 
 nav a {
@@ -129,6 +151,18 @@ nav a {
   font-weight: 700;
   border-bottom: 3px solid transparent;
   font-size: 0.9rem;
+}
+
+nav.nav-primary a {
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+nav.nav-secondary a {
+  padding: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 nav a:hover, nav a:focus {
