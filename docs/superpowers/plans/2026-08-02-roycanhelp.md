@@ -798,3 +798,16 @@ Full production test: from a phone, visit the chat URL, log in, request a visibl
 - Spec coverage: voice (T2/T3/T7 prompt), situation guides + qualify + glossary + about (T3), states (T4), chat auth (T5/T8/T11), agent + live publish + auto-commit (T6–T8, T10), undo (T6/T8), usage logging (T7), DNS/TLS/nginx/noindex (T11), fail2ban + backups (T12), success criteria exercised in T9 and T12 Step 3.
 - Deliberately out of plan (per spec): notifications, per-user accounts, SEO tooling.
 - Type consistency: `runTurn` signature (T7) matches T8 injection; gitops names consistent across T6/T8; env var names consistent across T8/T10.
+
+### Task 13: Ask Roy + Roy's Wisdom (added 2026-08-02 per Kurt)
+
+Vision: public question box feeds a private queue; Roy answers (with AI-drafted starting point), deletes, or leaves pending; answered Q&As publish anonymized to a searchable Ask Roy page; a weekly synthesis distills unique insights into Roy's Wisdom, which Roy can also add to from chat.
+
+- [ ] Server: POST /api/ask (public via nginx, rate-limited, honeypot field, 2000-char cap) appends {id, ts, question} to QUESTIONS_FILE (jsonl, outside site/); GET /api/questions (auth) lists pending; POST /api/questions/delete {id} (auth) removes. TDD.
+- [ ] Chat UI: pending-questions panel (count badge, list, per-question Answer/Delete buttons; Answer inserts a prompt asking the agent to draft an answer in Roy's voice from site content for Roy's approval before posting).
+- [ ] Pages: site/ask-roy.html (client-side search + topic tags + collapsed Q&A cards + public question form) and site/roys-wisdom.html (question-shaped sections); nav + footer on all pages updated identically.
+- [ ] Seed: research-backed common questions, South Carolina (BabyNet, DDSN waivers, Healthy Connections, TEFRA, Ryan's Law, Family Connection SC) + federal; ~12 Q&As in Roy's voice with citations; first Wisdom distillation from the seed.
+- [ ] prompt.mjs: conventions for posting approved answers (anonymize asker, card format, tag), adding to Wisdom, never posting without Roy's say-so.
+- [ ] Synthesis: script run by systemd timer (weekly) invoking runTurn: read Q&As added since last marker, update roys-wisdom.html with unique insights only, commit; marker in /var/lib/roychat.
+- [ ] nginx: location /api/ask → service with its own limit_req zone.
+- [ ] All voice rules hold (no em dashes, no invented biography, no Kurt). `make check` green.
