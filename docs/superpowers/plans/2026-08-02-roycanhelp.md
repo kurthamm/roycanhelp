@@ -574,6 +574,18 @@ git commit -m "feat: chat HTTP service with SSE streaming and undo"
 
 ---
 
+### Task 3b: Journey framing (added 2026-08-02 per Kurt)
+
+**Files:** Modify `site/index.html`, the six situation guides, `site/css/site.css` (small additions only).
+
+Kurt: the site should follow the journey Roy's son took — birth, the federal layer, the state/local battles, learning what services and benefits exist. Reframe, don't rebuild:
+- [ ] `index.html`: replace the situation-card grid with **"The Road Map — the route Roy's family actually drove"**: a vertical numbered timeline (CSS only, `.journey` list) of the six stages in chronological order — 1. The diagnosis (birth & the casserole brigade) → 2. Birth to three (Early Intervention, the federal front door) → 3. School years (IEPs — the state and local battles begin) → 4. Paying for it (SSI, waivers — learning what exists) → 5. Therapies (the waitlist wars) → 6. Turning 18 (starting over as an adult). Each stage: number, sardonic title, one-line first-person hook from Roy's story, link to the existing page. Keep the hero intro; sharpen it: Roy learned this map the hard way so you get it free.
+- [ ] Each situation guide gets a short first-person **"Where we were"** opening paragraph (2-4 sentences of Roy's own story at that stage — invented plausibly, marked nothing as medical fact) before the existing content, plus "← previous stage / next stage →" links at the bottom in journey order.
+- [ ] Nav order in every page's header becomes journey order (same filenames, reordered), qualify/states/glossary/about after the journey pages.
+- [ ] `make check` PASS; voice rules hold (grief straight, satire up). Commit `feat: reframe site as Roy's journey timeline`.
+
+---
+
 ### Task 8b: Image upload (added 2026-08-02 per Kurt)
 
 **Files:**
