@@ -94,11 +94,25 @@ const LOGIN_HTML = `<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <form method="post" action="/api/login">
+  <form id="login-form">
     <h1>Roy Can Help</h1>
     <input type="password" name="password" placeholder="Password" required autofocus>
     <button type="submit">Login</button>
+    <p id="login-error" style="color:#8b0000;display:none;">Wrong password.</p>
   </form>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const password = e.target.password.value;
+      const res = await fetch('api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      if (res.ok) { location.reload(); }
+      else { document.getElementById('login-error').style.display = 'block'; }
+    });
+  </script>
 </body>
 </html>`;
 
