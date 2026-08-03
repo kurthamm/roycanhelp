@@ -16,7 +16,7 @@
 - No fallback/masking patterns (`|| {}`, empty catch, stubbed integrations). Missing env config = immediate startup failure with a clear message.
 - Verification: `make check` at repo root is the canonical command (`testrepo` will resolve to it). Run it after every task.
 - Infra mutations (DNS record, nginx reload, certbot, systemd enable, fail2ban) are flagged in-plan; DNS record creation additionally requires Kurt's explicit approval at that step.
-- The chat URL slug must NEVER appear in any committed file. It lives only in `/etc/roycanhelp/env` and the nginx vhost on the server.
+- ~~The chat URL slug must NEVER appear in any committed file.~~ Superseded 2026-08-02 by Kurt: the chat lives at the fixed path `/admin/`, reachable via a small "Admin" link in every page footer. Defense = password + nginx rate limit + fail2ban (no secret slug). The path still carries `X-Robots-Tag: noindex, nofollow`.
 - Secrets (`ANTHROPIC_API_KEY`, `CHAT_PASSWORD`, `SESSION_SECRET`) live only in `/etc/roycanhelp/env` (root:roychat 640). Never committed.
 
 ---
@@ -602,6 +602,17 @@ Kurt: the site should follow the journey Roy's son took — birth, the federal l
 
 ---
 
+### Task 8c: Document upload + footer Admin link (added 2026-08-02 per Kurt)
+
+**Files:** Modify `service/server.mjs`, `service/public/chat.html`, `service/test/server.test.mjs`, all 13 `site/*.html` footers.
+
+- [ ] **Step 1 (TDD): extend upload for documents** — allowed set grows to: images (png/jpg/jpeg/gif/webp/svg → `<SITE_DIR>/images/`) and documents (pdf/doc/docx/txt/rtf/odt → `<SITE_DIR>/files/`), routed by extension; same sanitization/size/duplicate/commit rules ("Roy: uploaded <name>"); returns `{path: "images/<name>"|"files/<name>"}`. Tests: pdf lands in files/ with commit; docx accepted; still 415 for .exe; images still land in images/.
+- [ ] **Step 2: chat.html** — attach accepts the new types (file input `accept` list + drop handler); document uploads show a 📄 name chip instead of a thumbnail; inserts `[uploaded: files/<name>]`.
+- [ ] **Step 3: footer Admin link** — every site page's footer gains a small, low-key `<a href="/admin/">Admin</a>` (styled muted; it's for Roy, not visitors). Note: the link is absolute `/admin/` — the site pages live at the domain root so this is correct; the checker treats leading-`/` links against the site root and `/admin/` won't exist as a file, so EXTEND `tools/check-site.mjs` with an explicit allowance for `/admin/` (documented in a comment as the chat mount point — not a masking pattern, a routing fact).
+- [ ] **Step 4:** `make check` PASS; commit `feat: document upload and footer admin link`.
+
+---
+
 ### Task 9: Local end-to-end smoke test
 
 **Files:** none new (fixes only).
@@ -650,7 +661,7 @@ SITE_DIR=/var/www/roycanhelp/site
 SITE_REPO_DIR=/var/www/roycanhelp
 USAGE_LOG=/var/log/roycanhelp/usage.jsonl
 PORT=8791
-CHAT_SLUG=<openssl rand -hex 6>   # recorded here and in nginx only, never in the repo
+# CHAT_SLUG removed 2026-08-02 — chat mounts at fixed /admin/ per Kurt
 ```
 `sudo install -d -o roychat /var/log/roycanhelp`
 
@@ -711,8 +722,8 @@ server {
   add_header X-Frame-Options DENY always;
   add_header Referrer-Policy strict-origin-when-cross-origin always;
 
-  location = /<CHAT_SLUG> { return 301 /<CHAT_SLUG>/; }
-  location /<CHAT_SLUG>/ {
+  location = /admin { return 301 /admin/; }
+  location /admin/ {
     add_header X-Robots-Tag "noindex, nofollow" always;
     proxy_pass http://127.0.0.1:8791/;
     proxy_http_version 1.1;
@@ -721,7 +732,7 @@ server {
     client_max_body_size 20m;   # image uploads
     proxy_buffering off;        # SSE
   }
-  location /<CHAT_SLUG>/api/login {
+  location /admin/api/login {
     limit_req zone=rchatlogin burst=5 nodelay;
     proxy_pass http://127.0.0.1:8791/api/login;
     proxy_set_header X-Forwarded-For $remote_addr;
