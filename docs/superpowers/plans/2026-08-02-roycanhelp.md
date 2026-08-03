@@ -586,6 +586,19 @@ Kurt: the site should follow the journey Roy's son took — birth, the federal l
 
 ---
 
+### Task 3c: Roy's Lessons Learned section (added 2026-08-02 per Kurt)
+
+**Files:** Create `site/lessons.html`; modify all site page navs (new item after Turning 18: "Roy's Lessons"), `service/prompt.mjs`.
+
+Kurt: a key part of the site is Roy's lessons learned — NOT a blog; a section Roy organizes and grows however he wants.
+- [ ] `lessons.html`: "Roy's Lessons Learned (or: Scar Tissue, Organized)" — field-notes format, grouped by theme, no dates: **The Paperwork · The Phone Calls · The Meetings · The Money · What I'd Tell Myself on Day One**. Seed 2–3 lessons per theme, each a `.lesson` card: bold what-happened one-liner → what Roy learned → "do this instead" takeaway. First-person, sardonic, punch-up rules hold; grief straight. Intro paragraph tells the reader (and future Roy) this section grows every time he learns something new the hard way.
+- [ ] `.lesson` card styles in css/site.css (hand-drawn border family, yellow takeaway strip).
+- [ ] Nav: add "Roy's Lessons" identically to every site page (after Turning 18, before Do You Qualify).
+- [ ] `service/prompt.mjs`: teach the agent the convention — new lessons from Roy go into lessons.html under the matching theme (create a new theme if none fits); Roy may rename/reorganize the section freely.
+- [ ] `make check` PASS (nav consistency); service tests still pass. Commit `feat: Roy's Lessons Learned section`.
+
+---
+
 ### Task 8b: Image upload (added 2026-08-02 per Kurt)
 
 **Files:**
