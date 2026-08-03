@@ -1,0 +1,12 @@
+{
+  "name": "roycanhelp-chat",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test 'test/**/*.test.mjs'"
+  },
+  "dependencies": {
+    "express": "^4",
+    "@anthropic-ai/claude-agent-sdk": "latest"
+  }
+}

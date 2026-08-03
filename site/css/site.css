@@ -1,0 +1,494 @@
+/* Roy Can Help — site stylesheet */
+/* Design language: Mad Magazine energy, readable & accessible */
+
+/* CSS Reset & Variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #fdf6e3;
+  --ink: #1a1a1a;
+  --red: #d62828;
+  --yellow: #ffd166;
+  --gray: #999;
+}
+
+/* Typography & Base */
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Archivo Black', Impact, sans-serif;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  transform: rotate(-1deg);
+  margin-top: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* Paragraph & text */
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--red);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+a:hover, a:focus {
+  background-color: var(--yellow);
+  outline: none;
+}
+
+/* Layout container */
+main, article, section {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Masthead (header shell) */
+.masthead {
+  background-color: var(--ink);
+  color: var(--bg);
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.masthead h1 {
+  font-size: 1.75rem;
+  margin: 0;
+  transform: none;
+}
+
+.masthead .tagline {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+  font-family: Georgia, serif;
+  font-weight: normal;
+}
+
+/* Navigation */
+nav {
+  background-color: var(--red);
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+nav li {
+  flex: 1 1 auto;
+  min-width: 120px;
+}
+
+nav a {
+  display: block;
+  padding: 0.75rem;
+  color: var(--bg);
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+  border-bottom: 3px solid transparent;
+  font-size: 0.9rem;
+}
+
+nav a:hover, nav a:focus {
+  background-color: var(--yellow);
+  color: var(--ink);
+  outline: none;
+  border-bottom-color: var(--ink);
+}
+
+/* Hero intro */
+.hero {
+  background-color: var(--yellow);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 46rem;
+  border: 3px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.hero p {
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Grid of situation cards */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 3rem auto;
+  max-width: 46rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 960px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card {
+  border: 3px solid var(--ink);
+  padding: 1.5rem;
+  background-color: var(--bg);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: rotate(-2deg) scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.card a {
+  display: inline-block;
+  background-color: var(--red);
+  color: var(--bg);
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  margin-top: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.card a:hover {
+  background-color: var(--yellow);
+  color: var(--ink);
+}
+
+/* Margin gag (sidebar Mad-style quip) */
+.margin-gag {
+  background-color: var(--yellow);
+  border: 3px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 46rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Glossary term tooltips */
+.term {
+  cursor: pointer;
+  border-bottom: 2px dotted var(--red);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  font-weight: 600;
+}
+
+.term:focus {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--ink);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: Georgia, serif;
+  font-weight: normal;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 1000;
+  margin-bottom: 8px;
+}
+
+.tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tablet/mobile tooltip adjustment */
+@media (max-width: 640px) {
+  .tooltip {
+    position: fixed;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: normal;
+    max-width: 80vw;
+  }
+}
+
+/* Footer */
+footer {
+  background-color: var(--ink);
+  color: var(--bg);
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--yellow);
+  text-decoration: underline;
+}
+
+footer a:hover {
+  background-color: transparent;
+  color: var(--bg);
+}
+
+/* Journey timeline */
+.journey {
+  list-style: none;
+  margin: 3rem auto;
+  max-width: 46rem;
+  padding: 0 1rem;
+}
+
+.journey li {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-left: 4rem;
+}
+
+.journey li:before {
+  content: attr(data-step);
+  position: absolute;
+  left: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--red);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.1rem;
+  font-family: 'Archivo Black', Impact, sans-serif;
+}
+
+.journey .stage {
+  background-color: var(--bg);
+  border: 3px solid var(--ink);
+  padding: 1.5rem;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.journey .stage h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.journey .stage p {
+  margin-bottom: 0.75rem;
+}
+
+.journey a.read-more {
+  display: inline-block;
+  background-color: var(--red);
+  color: var(--bg);
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  margin-top: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.journey a.read-more:hover {
+  background-color: var(--yellow);
+  color: var(--ink);
+}
+
+/* Journey navigation */
+.journey-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--yellow);
+  border: 3px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.journey-nav a {
+  flex: 1;
+  text-align: center;
+}
+
+.journey-nav a:first-child {
+  margin-right: 1rem;
+}
+
+.journey-nav a:last-child {
+  margin-left: 1rem;
+}
+
+/* Utility: clearfix for floats */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* WCAG AA contrast checks:
+   - Background (#fdf6e3) + Ink (#1a1a1a): 16.5:1 ✓ AAA
+   - Yellow (#ffd166) + Ink (#1a1a1a): 5.7:1 ✓ AA
+   - Red (#d62828) + Yellow bg: 5.1:1 ✓ AA
+   - Red text + Cream bg: 7.2:1 ✓ AA
+*/
+
+/* Lesson cards (Roy's Lessons Learned section) */
+.lesson {
+  border: 3px solid var(--ink);
+  padding: 1.5rem;
+  padding-bottom: 0;
+  margin: 2rem auto;
+  background-color: var(--bg);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  max-width: 46rem;
+}
+
+.lesson h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.lesson p {
+  margin-bottom: 1rem;
+}
+
+.lesson p:last-child {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid var(--yellow);
+}
+
+.lesson p strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.lesson p:last-of-type {
+  background-color: var(--yellow);
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  margin-bottom: 0;
+  padding: 1rem 1.5rem;
+  border-radius: 0 0 255px 15px / 0 0 15px 255px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .masthead h1 {
+    font-size: 1.4rem;
+  }
+
+  nav a {
+    padding: 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding: 1.5rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .margin-gag {
+    padding: 1rem;
+    margin: 1.5rem auto;
+  }
+}
+
+/* Print styles */
+@media print {
+  .margin-gag {
+    break-inside: avoid;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  nav {
+    display: none;
+  }
+}

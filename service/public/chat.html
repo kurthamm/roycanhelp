@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roy Can Help - Chat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #f5f1eb;
+      --ink: #2c2c2c;
+      --red: #8b0000;
+      --yellow: #ffd700;
+      color-scheme: light dark;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --cream: #2a2a28;
+        --ink: #e8e4dc;
+      }
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background: var(--cream);
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      padding: 1rem;
+      border-bottom: 2px solid var(--red);
+      background: var(--cream);
+    }
+
+    header h1 {
+      font-size: 1.25rem;
+      color: var(--red);
+    }
+
+    .transcript-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .message {
+      padding: 0.75rem;
+      border-radius: 4px;
+      line-height: 1.6;
+    }
+
+    .message.user {
+      background: rgba(139, 0, 0, 0.1);
+      margin-left: 1rem;
+      border-left: 3px solid var(--red);
+    }
+
+    .message.assistant {
+      background: rgba(255, 215, 0, 0.05);
+      margin-right: 1rem;
+    }
+
+    .message a {
+      color: var(--red);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .working {
+      display: inline-block;
+      font-style: italic;
+      color: var(--red);
+      opacity: 0.7;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .working.active {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .input-area {
+      padding: 1rem;
+      border-top: 1px solid #d4c9be;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: var(--cream);
+    }
+
+    .input-controls {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    textarea {
+      flex: 1;
+      padding: 0.75rem;
+      border: 1px solid #d4c9be;
+      border-radius: 4px;
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      resize: vertical;
+      min-height: 80px;
+      background: inherit;
+      color: inherit;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    button:hover {
+      background: #6b0000;
+    }
+
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .button-row button {
+      flex: 1;
+    }
+
+    @media (max-width: 600px) {
+      .button-row {
+        flex-direction: column;
+      }
+
+      .message.user {
+        margin-left: 0;
+      }
+
+      .message.assistant {
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Roy Can Help</h1>
+  </header>
+
+  <div class="transcript-container" id="transcript"></div>
+
+  <div class="input-area">
+    <textarea id="message-input" placeholder="Ask Roy for help..." autofocus></textarea>
+    <div class="button-row">
+      <button id="attach-btn">📎 Attach</button>
+      <button id="send-btn">Send</button>
+      <button id="undo-btn">Undo last change</button>
+    </div>
+    <input type="file" id="file-input" style="display:none" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,application/rtf,application/vnd.oasis.opendocument.text">
+  </div>
+
+  <script>
+    const transcript = document.getElementById('transcript');
+    const messageInput = document.getElementById('message-input');
+    const sendBtn = document.getElementById('send-btn');
+    const undoBtn = document.getElementById('undo-btn');
+    const STORAGE_KEY = 'roy-chat-transcript';
+
+    // Load transcript from localStorage
+    function loadTranscript() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        try {
+          const messages = JSON.parse(stored);
+          messages.forEach(msg => addMessageToDOM(msg.role, msg.text, false));
+        } catch (e) {
+          console.error('Failed to load transcript:', e);
+        }
+      }
+    }
+
+    // Save transcript to localStorage
+    function saveTranscript() {
+      const messages = [];
+      document.querySelectorAll('.message').forEach(el => {
+        const role = el.classList.contains('user') ? 'user' : 'assistant';
+        const text = el.textContent;
+        messages.push({ role, text });
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    }
+
+    // Add message to DOM and render links
+    function addMessageToDOM(role, text, save = true) {
+      const msg = document.createElement('div');
+      msg.className = `message ${role}`;
+      msg.innerHTML = linkifyText(escapeHtml(text));
+      transcript.appendChild(msg);
+      if (save) saveTranscript();
+      transcript.scrollTop = transcript.scrollHeight;
+    }
+
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Convert URLs to clickable links
+    function linkifyText(text) {
+      const urlRegex = /(https?:\/\/[^\s]+)/g;
+      return text.replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
+    }
+
+    // Send message
+    async function sendMessage() {
+      const msg = messageInput.value.trim();
+      if (!msg) return;
+
+      messageInput.value = '';
+      sendBtn.disabled = true;
+      addMessageToDOM('user', msg);
+
+      const working = document.createElement('div');
+      working.className = 'message assistant';
+      const span = document.createElement('span');
+      span.className = 'working active';
+      span.textContent = 'working…';
+      working.appendChild(span);
+      transcript.appendChild(working);
+
+      try {
+        // Get stored agent session ID
+        const storedSessionId = localStorage.getItem('roy-agent-session-id');
+        const response = await fetch('api/message', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: msg,
+            ...(storedSessionId && { sessionId: storedSessionId }),
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        working.remove();
+        let assistantText = '';
+        let buffer = '';
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+
+        // Parse SSE frames
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value, { stream: true });
+          buffer += chunk;
+
+          // Process complete frames (separated by \n\n)
+          const frames = buffer.split('\n\n');
+          // Keep the last incomplete frame in buffer
+          buffer = frames.pop() || '';
+
+          for (const frame of frames) {
+            if (!frame.trim()) continue;
+
+            let eventType = 'text';
+            let eventData = '';
+            const lines = frame.split('\n');
+
+            for (const line of lines) {
+              if (line.startsWith('event: ')) {
+                eventType = line.slice(7);
+              } else if (line.startsWith('data: ')) {
+                eventData = line.slice(6);
+              }
+            }
+
+            if (eventType === 'text') {
+              assistantText += eventData;
+              if (assistantText && !assistantText.startsWith('working')) {
+                transcript.querySelector('.working')?.remove?.();
+              }
+              // Update or create assistant message as we receive text
+              let assistantMsg = transcript.querySelector('.message.assistant:last-of-type');
+              if (!assistantMsg || assistantMsg.querySelector('.working')) {
+                assistantMsg = document.createElement('div');
+                assistantMsg.className = 'message assistant';
+                transcript.appendChild(assistantMsg);
+              }
+              assistantMsg.innerHTML = linkifyText(escapeHtml(assistantText));
+              transcript.scrollTop = transcript.scrollHeight;
+            } else if (eventType === 'done') {
+              try {
+                const doneData = JSON.parse(eventData);
+                if (doneData.sessionId) {
+                  localStorage.setItem('roy-agent-session-id', doneData.sessionId);
+                }
+              } catch (e) {
+                // Not JSON, skip
+              }
+            } else if (eventType === 'error') {
+              addMessageToDOM('assistant', `Error: ${eventData}`);
+            }
+          }
+        }
+
+        // Process any remaining buffer data
+        if (buffer.trim()) {
+          const lines = buffer.split('\n');
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              assistantText += line.slice(6);
+            }
+          }
+        }
+
+        if (assistantText && !transcript.querySelector('.message.assistant:last-of-type')?.textContent?.trim()) {
+          addMessageToDOM('assistant', assistantText);
+        }
+        transcript.querySelector('.working')?.remove?.();
+      } catch (err) {
+        addMessageToDOM('assistant', `Error: ${err.message}`);
+        transcript.querySelector('.working')?.remove?.();
+      } finally {
+        sendBtn.disabled = false;
+        messageInput.focus();
+      }
+    }
+
+    // Undo last change
+    async function undoLastChange() {
+      if (!confirm('Undo last change? This will revert the last commit.')) return;
+
+      try {
+        const response = await fetch('api/undo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          addMessageToDOM('assistant', `Reverted: ${data.reverted}`);
+        } else if (response.status === 409) {
+          const error = await response.text();
+          addMessageToDOM('assistant', `Cannot undo: ${error}`);
+        } else {
+          throw new Error(`HTTP ${response.status}`);
+        }
+      } catch (err) {
+        addMessageToDOM('assistant', `Error: ${err.message}`);
+      }
+    }
+
+    // Upload file (image or document)
+    async function uploadFile(file) {
+      const filename = file.name.toLowerCase().replace(/[^a-z0-9._-]/g, '-');
+      const isImage = file.type.startsWith('image/');
+      const chunks = [];
+      const reader = file.stream().getReader();
+
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value);
+        }
+        const buffer = await new Blob(chunks).arrayBuffer();
+
+        const uploadRes = await fetch('api/upload', {
+          method: 'POST',
+          headers: { 'X-Filename': filename },
+          body: new Uint8Array(buffer),
+        });
+
+        if (uploadRes.ok) {
+          const data = await uploadRes.json();
+          messageInput.value += `[uploaded: ${data.path}]\n`;
+
+          if (isImage) {
+            // Show thumbnail preview for images
+            const reader2 = new FileReader();
+            reader2.onload = (e) => {
+              const preview = document.createElement('img');
+              preview.src = e.target.result;
+              preview.style.maxWidth = '200px';
+              preview.style.maxHeight = '200px';
+              preview.style.borderRadius = '4px';
+              preview.style.marginTop = '0.5rem';
+              const msg = document.createElement('div');
+              msg.className = 'message user';
+              msg.appendChild(preview);
+              msg.innerHTML += `<br>[uploaded: ${data.path}]`;
+              transcript.appendChild(msg);
+              transcript.scrollTop = transcript.scrollHeight;
+              saveTranscript();
+            };
+            reader2.readAsDataURL(file);
+          } else {
+            // Show filename chip for documents
+            const msg = document.createElement('div');
+            msg.className = 'message user';
+            const chip = document.createElement('span');
+            chip.style.display = 'inline-block';
+            chip.style.background = 'rgba(139, 0, 0, 0.1)';
+            chip.style.padding = '0.5rem 0.75rem';
+            chip.style.borderRadius = '4px';
+            chip.style.marginTop = '0.5rem';
+            chip.innerHTML = `📄 ${filename}`;
+            msg.appendChild(chip);
+            msg.innerHTML += `<br>[uploaded: ${data.path}]`;
+            transcript.appendChild(msg);
+            transcript.scrollTop = transcript.scrollHeight;
+            saveTranscript();
+          }
+        } else if (uploadRes.status === 409) {
+          addMessageToDOM('assistant', 'Error: File already exists');
+        } else {
+          const error = await uploadRes.text();
+          addMessageToDOM('assistant', `Error: ${error}`);
+        }
+      } catch (err) {
+        addMessageToDOM('assistant', `Error: ${err.message}`);
+      }
+    }
+
+    // Event listeners
+    const attachBtn = document.getElementById('attach-btn');
+    const fileInput = document.getElementById('file-input');
+
+    attachBtn.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files[0]) {
+        uploadFile(e.target.files[0]);
+        e.target.value = '';
+      }
+    });
+
+    // Drag and drop
+    transcript.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      transcript.style.opacity = '0.7';
+    });
+
+    transcript.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      transcript.style.opacity = '1';
+    });
+
+    transcript.addEventListener('drop', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      transcript.style.opacity = '1';
+      if (e.dataTransfer.files[0]) {
+        uploadFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    sendBtn.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+    undoBtn.addEventListener('click', undoLastChange);
+
+    // Load transcript on page load
+    loadTranscript();
+  </script>
+</body>
+</html>

@@ -16,7 +16,7 @@
 - No fallback/masking patterns (`|| {}`, empty catch, stubbed integrations). Missing env config = immediate startup failure with a clear message.
 - Verification: `make check` at repo root is the canonical command (`testrepo` will resolve to it). Run it after every task.
 - Infra mutations (DNS record, nginx reload, certbot, systemd enable, fail2ban) are flagged in-plan; DNS record creation additionally requires Kurt's explicit approval at that step.
-- The chat URL slug must NEVER appear in any committed file. It lives only in `/etc/roycanhelp/env` and the nginx vhost on the server.
+- ~~The chat URL slug must NEVER appear in any committed file.~~ Superseded 2026-08-02 by Kurt: the chat lives at the fixed path `/admin/`, reachable via a small "Admin" link in every page footer. Defense = password + nginx rate limit + fail2ban (no secret slug). The path still carries `X-Robots-Tag: noindex, nofollow`.
 - Secrets (`ANTHROPIC_API_KEY`, `CHAT_PASSWORD`, `SESSION_SECRET`) live only in `/etc/roycanhelp/env` (root:roychat 640). Never committed.
 
 ---
@@ -574,6 +574,58 @@ git commit -m "feat: chat HTTP service with SSE streaming and undo"
 
 ---
 
+### Task 3b: Journey framing (added 2026-08-02 per Kurt)
+
+**Files:** Modify `site/index.html`, the six situation guides, `site/css/site.css` (small additions only).
+
+Kurt: the site should follow the journey Roy's son took — birth, the federal layer, the state/local battles, learning what services and benefits exist. Reframe, don't rebuild:
+- [ ] `index.html`: replace the situation-card grid with **"The Road Map — the route Roy's family actually drove"**: a vertical numbered timeline (CSS only, `.journey` list) of the six stages in chronological order — 1. The diagnosis (birth & the casserole brigade) → 2. Birth to three (Early Intervention, the federal front door) → 3. School years (IEPs — the state and local battles begin) → 4. Paying for it (SSI, waivers — learning what exists) → 5. Therapies (the waitlist wars) → 6. Turning 18 (starting over as an adult). Each stage: number, sardonic title, one-line first-person hook from Roy's story, link to the existing page. Keep the hero intro; sharpen it: Roy learned this map the hard way so you get it free.
+- [ ] Each situation guide gets a short first-person **"Where we were"** opening paragraph (2-4 sentences of Roy's own story at that stage — invented plausibly, marked nothing as medical fact) before the existing content, plus "← previous stage / next stage →" links at the bottom in journey order.
+- [ ] Nav order in every page's header becomes journey order (same filenames, reordered), qualify/states/glossary/about after the journey pages.
+- [ ] `make check` PASS; voice rules hold (grief straight, satire up). Commit `feat: reframe site as Roy's journey timeline`.
+
+---
+
+### Task 3c: Roy's Lessons Learned section (added 2026-08-02 per Kurt)
+
+**Files:** Create `site/lessons.html`; modify all site page navs (new item after Turning 18: "Roy's Lessons"), `service/prompt.mjs`.
+
+Kurt: a key part of the site is Roy's lessons learned — NOT a blog; a section Roy organizes and grows however he wants.
+- [ ] `lessons.html`: "Roy's Lessons Learned (or: Scar Tissue, Organized)" — field-notes format, grouped by theme, no dates: **The Paperwork · The Phone Calls · The Meetings · The Money · What I'd Tell Myself on Day One**. Seed 2–3 lessons per theme, each a `.lesson` card: bold what-happened one-liner → what Roy learned → "do this instead" takeaway. First-person, sardonic, punch-up rules hold; grief straight. Intro paragraph tells the reader (and future Roy) this section grows every time he learns something new the hard way.
+- [ ] `.lesson` card styles in css/site.css (hand-drawn border family, yellow takeaway strip).
+- [ ] Nav: add "Roy's Lessons" identically to every site page (after Turning 18, before Do You Qualify).
+- [ ] `service/prompt.mjs`: teach the agent the convention — new lessons from Roy go into lessons.html under the matching theme (create a new theme if none fits); Roy may rename/reorganize the section freely.
+- [ ] `make check` PASS (nav consistency); service tests still pass. Commit `feat: Roy's Lessons Learned section`.
+
+---
+
+### Task 8b: Image upload (added 2026-08-02 per Kurt)
+
+**Files:**
+- Modify: `service/server.mjs`, `service/public/chat.html`
+- Test: `service/test/server.test.mjs` (extend)
+
+**Interfaces:**
+- Consumes: auth middleware, `commitAll` from Task 6, `createApp` DI from Task 8.
+- Produces: `POST api/upload` (auth, multipart or raw body with `X-Filename` header — implementer's choice, documented): accepts png/jpg/jpeg/gif/webp/svg up to 15 MB; sanitizes the filename to `[a-z0-9-_.]` (reject path separators/traversal outright — 400, not silent rename); writes to `<SITE_DIR>/images/` (create dir if absent); auto-commits via `commitAll` ("Roy: uploaded <name>"); returns `{path: "images/<name>"}`. Duplicate name → 409, not overwrite.
+- chat.html gains a 📎 attach button + drag-drop onto the composer; after upload it inserts `[uploaded: images/<name>]` into the textarea so Roy's next message can tell the agent where to put it, and shows a thumbnail preview in the transcript.
+
+- [ ] **Step 1: TDD** — extend server tests: upload w/o auth → 401; valid png (small fixture buffer) → 200 {path}, file exists in temp SITE_DIR, chat-authored commit created; `../evil.png` filename → 400; `.exe` → 415; duplicate → 409.
+- [ ] **Step 2: Implement + wire UI. Step 3: `npm test` + `make check`. Step 4: Commit** `feat: image upload for Roy's chat`
+
+---
+
+### Task 8c: Document upload + footer Admin link (added 2026-08-02 per Kurt)
+
+**Files:** Modify `service/server.mjs`, `service/public/chat.html`, `service/test/server.test.mjs`, all 13 `site/*.html` footers.
+
+- [ ] **Step 1 (TDD): extend upload for documents** — allowed set grows to: images (png/jpg/jpeg/gif/webp/svg → `<SITE_DIR>/images/`) and documents (pdf/doc/docx/txt/rtf/odt → `<SITE_DIR>/files/`), routed by extension; same sanitization/size/duplicate/commit rules ("Roy: uploaded <name>"); returns `{path: "images/<name>"|"files/<name>"}`. Tests: pdf lands in files/ with commit; docx accepted; still 415 for .exe; images still land in images/.
+- [ ] **Step 2: chat.html** — attach accepts the new types (file input `accept` list + drop handler); document uploads show a 📄 name chip instead of a thumbnail; inserts `[uploaded: files/<name>]`.
+- [ ] **Step 3: footer Admin link** — every site page's footer gains a small, low-key `<a href="/admin/">Admin</a>` (styled muted; it's for Roy, not visitors). Note: the link is absolute `/admin/` — the site pages live at the domain root so this is correct; the checker treats leading-`/` links against the site root and `/admin/` won't exist as a file, so EXTEND `tools/check-site.mjs` with an explicit allowance for `/admin/` (documented in a comment as the chat mount point — not a masking pattern, a routing fact).
+- [ ] **Step 4:** `make check` PASS; commit `feat: document upload and footer admin link`.
+
+---
+
 ### Task 9: Local end-to-end smoke test
 
 **Files:** none new (fixes only).
@@ -622,7 +674,7 @@ SITE_DIR=/var/www/roycanhelp/site
 SITE_REPO_DIR=/var/www/roycanhelp
 USAGE_LOG=/var/log/roycanhelp/usage.jsonl
 PORT=8791
-CHAT_SLUG=<openssl rand -hex 6>   # recorded here and in nginx only, never in the repo
+# CHAT_SLUG removed 2026-08-02 — chat mounts at fixed /admin/ per Kurt
 ```
 `sudo install -d -o roychat /var/log/roycanhelp`
 
@@ -661,7 +713,7 @@ Note: the SDK spawns the bundled Claude Code CLI; with `ProtectHome=true` confir
 
 - [ ] **Step 1: DNS — ASK KURT FIRST** (explicit approval gate)
 
-Create via Cloudflare API once approved: A record `roycanhelp.org` → `165.245.140.51`, **proxied=false** (grey cloud), TTL auto. Verify: `dig +short roycanhelp.org` returns the IP.
+Create via Cloudflare API once approved: A record `roycanhelp.org` → `165.245.140.51`, **proxied=false** (grey cloud), TTL auto. Also (Kurt 2026-08-02): `roycanhelp.com` AND `disabilitiessupport.org` (both zones active in Cloudflare, zero records) must redirect to the .org — A records for each → `165.245.140.51` grey-cloud, certbot certs covering both, and a shared nginx server block (`server_name roycanhelp.com disabilitiessupport.org;`) doing `return 301 https://roycanhelp.org$request_uri;`. Verify: `dig +short` on all three domains returns the IP, and `curl -sI https://roycanhelp.com/ https://disabilitiessupport.org/` both 301 to https://roycanhelp.org/.
 
 - [ ] **Step 2: Minimal HTTP vhost + certbot**
 
@@ -683,16 +735,17 @@ server {
   add_header X-Frame-Options DENY always;
   add_header Referrer-Policy strict-origin-when-cross-origin always;
 
-  location = /<CHAT_SLUG> { return 301 /<CHAT_SLUG>/; }
-  location /<CHAT_SLUG>/ {
+  location = /admin { return 301 /admin/; }
+  location /admin/ {
     add_header X-Robots-Tag "noindex, nofollow" always;
     proxy_pass http://127.0.0.1:8791/;
     proxy_http_version 1.1;
     proxy_set_header X-Forwarded-For $remote_addr;
     proxy_read_timeout 600s;    # long agent turns
+    client_max_body_size 20m;   # image uploads
     proxy_buffering off;        # SSE
   }
-  location /<CHAT_SLUG>/api/login {
+  location /admin/api/login {
     limit_req zone=rchatlogin burst=5 nodelay;
     proxy_pass http://127.0.0.1:8791/api/login;
     proxy_set_header X-Forwarded-For $remote_addr;
