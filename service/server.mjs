@@ -2,6 +2,8 @@ import express from 'express';
 import { makeSession, verifySession, checkPassword } from './auth.mjs';
 import { commitAll, undoLast } from './gitops.mjs';
 import { logUsage } from './usage.mjs';
+import { mkdirSync, existsSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 const REQUIRED_ENV = [
   'ANTHROPIC_API_KEY',
@@ -104,7 +106,6 @@ export function createApp({ env, runTurn }) {
   validateEnv(env);
 
   const app = express();
-  app.use(express.json());
 
   // Middleware to check auth
   const requireAuth = (req, res, next) => {
@@ -141,7 +142,7 @@ export function createApp({ env, runTurn }) {
     res.json({ ok: true });
   });
 
-  app.post('/api/message', requireAuth, async (req, res) => {
+  app.post('/api/message', requireAuth, express.json(), async (req, res) => {
     const { message, sessionId } = req.body;
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
@@ -192,6 +193,68 @@ export function createApp({ env, runTurn }) {
       res.json({ reverted: last.message });
     } catch (err) {
       res.status(409).send(err.message);
+    }
+  });
+
+  // Upload endpoint with manual body parsing
+  app.post('/api/upload', requireAuth, async (req, res) => {
+    try {
+      const filename = req.get('x-filename');
+      if (!filename) {
+        return res.status(400).send('Missing X-Filename header');
+      }
+
+      // Validate filename: only alphanumeric, dash, underscore, dot
+      // Reject path separators and traversal attempts
+      if (!/^[a-z0-9._-]+$/i.test(filename)) {
+        return res.status(400).send('Invalid filename characters');
+      }
+      if (filename.includes('/') || filename.includes('\\') || filename.includes('..')) {
+        return res.status(400).send('Path traversal not allowed');
+      }
+
+      // Validate file extension
+      const ext = filename.split('.').pop().toLowerCase();
+      const allowedExts = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'];
+      if (!allowedExts.includes(ext)) {
+        return res.status(415).send('Unsupported file format');
+      }
+
+      // Collect raw body
+      let buffer = Buffer.alloc(0);
+      const chunks = [];
+      for await (const chunk of req) {
+        if (Buffer.byteLength(buffer) + Buffer.byteLength(chunk) > 15 * 1024 * 1024) {
+          return res.status(413).send('Payload too large');
+        }
+        chunks.push(chunk);
+      }
+      buffer = Buffer.concat(chunks);
+
+      // Ensure images directory exists
+      const imagesDir = join(env.SITE_DIR, 'images');
+      try {
+        mkdirSync(imagesDir, { recursive: true });
+      } catch (err) {
+        if (err.code !== 'EEXIST') throw err;
+      }
+
+      const filepath = join(imagesDir, filename);
+      // Check for duplicate
+      if (existsSync(filepath)) {
+        return res.status(409).send('File already exists');
+      }
+
+      // Write file
+      writeFileSync(filepath, buffer);
+
+      // Commit
+      await commitAll(env.SITE_REPO_DIR, `Roy: uploaded ${filename}`);
+
+      res.json({ path: `images/${filename}` });
+    } catch (err) {
+      console.error('Upload error:', err);
+      res.status(500).send(err.message);
     }
   });
 

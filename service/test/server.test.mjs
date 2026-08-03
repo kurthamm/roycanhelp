@@ -1,10 +1,20 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, existsSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createApp } from '../server.mjs';
+
+// Minimal PNG buffer (1x1 transparent pixel)
+const MINIMAL_PNG = Buffer.from([
+  0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0x00, 0x00, 0x00, 0x0d,
+  0x49, 0x48, 0x44, 0x52, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
+  0x08, 0x06, 0x00, 0x00, 0x00, 0x1f, 0x15, 0xc4, 0x89, 0x00, 0x00, 0x00,
+  0x0a, 0x49, 0x44, 0x41, 0x54, 0x78, 0x9c, 0x63, 0x00, 0x01, 0x00, 0x00,
+  0x05, 0x00, 0x01, 0x0d, 0x0a, 0x2d, 0xb4, 0x00, 0x00, 0x00, 0x00, 0x49,
+  0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82,
+]);
 
 // Test fixture: temp git repo
 function repo() {
@@ -434,6 +444,202 @@ test('POST /api/undo on non-chat commit returns 409 with error', async () => {
     assert.equal(undoRes.status, 409);
     const body = await undoRes.text();
     assert.match(body, /not made by chat/);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/upload without auth returns 401', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/upload`, {
+      method: 'POST',
+      headers: { 'X-Filename': 'test.png' },
+      body: MINIMAL_PNG,
+    });
+    assert.equal(res.status, 401);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/upload with auth and valid png creates file and commit', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Upload image
+    const uploadRes = await fetch(`${baseUrl}/api/upload`, {
+      method: 'POST',
+      headers: {
+        'X-Filename': 'test.png',
+        'Cookie': sessionCookie,
+      },
+      body: MINIMAL_PNG,
+    });
+    assert.equal(uploadRes.status, 200);
+    const data = await uploadRes.json();
+    assert.equal(data.path, 'images/test.png');
+
+    // Verify file exists
+    const imagePath = join(repoDir, 'images', 'test.png');
+    assert.ok(existsSync(imagePath));
+    const content = readFileSync(imagePath);
+    assert.deepStrictEqual(content, MINIMAL_PNG);
+
+    // Verify commit was made
+    const git = (...a) => execFileSync('git', a, { cwd: repoDir, encoding: 'utf8' });
+    const stdout = git('log', '-1', '--oneline');
+    assert.match(stdout, /Roy: uploaded/);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/upload with path traversal filename returns 400', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Try to upload with path traversal
+    const uploadRes = await fetch(`${baseUrl}/api/upload`, {
+      method: 'POST',
+      headers: {
+        'X-Filename': '../evil.png',
+        'Cookie': sessionCookie,
+      },
+      body: MINIMAL_PNG,
+    });
+    assert.equal(uploadRes.status, 400);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/upload with unsupported format returns 415', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Try to upload unsupported format
+    const uploadRes = await fetch(`${baseUrl}/api/upload`, {
+      method: 'POST',
+      headers: {
+        'X-Filename': 'bad.exe',
+        'Cookie': sessionCookie,
+      },
+      body: MINIMAL_PNG,
+    });
+    assert.equal(uploadRes.status, 415);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/upload with duplicate filename returns 409', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // First upload
+    const uploadRes1 = await fetch(`${baseUrl}/api/upload`, {
+      method: 'POST',
+      headers: {
+        'X-Filename': 'test.png',
+        'Cookie': sessionCookie,
+      },
+      body: MINIMAL_PNG,
+    });
+    assert.equal(uploadRes1.status, 200);
+
+    // Duplicate upload
+    const uploadRes2 = await fetch(`${baseUrl}/api/upload`, {
+      method: 'POST',
+      headers: {
+        'X-Filename': 'test.png',
+        'Cookie': sessionCookie,
+      },
+      body: MINIMAL_PNG,
+    });
+    assert.equal(uploadRes2.status, 409);
   } finally {
     close();
   }

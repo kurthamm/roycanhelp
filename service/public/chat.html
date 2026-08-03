@@ -183,9 +183,11 @@
   <div class="input-area">
     <textarea id="message-input" placeholder="Ask Roy for help..." autofocus></textarea>
     <div class="button-row">
+      <button id="attach-btn">📎 Attach</button>
       <button id="send-btn">Send</button>
       <button id="undo-btn">Undo last change</button>
     </div>
+    <input type="file" id="file-input" style="display:none" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml">
   </div>
 
   <script>
@@ -384,7 +386,98 @@
       }
     }
 
+    // Upload image
+    async function uploadImage(file) {
+      if (!file.type.startsWith('image/')) {
+        addMessageToDOM('assistant', 'Error: Please select an image file');
+        return;
+      }
+
+      const filename = file.name.toLowerCase().replace(/[^a-z0-9._-]/g, '-');
+      const chunks = [];
+      const reader = file.stream().getReader();
+
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value);
+        }
+        const buffer = await new Blob(chunks).arrayBuffer();
+
+        const uploadRes = await fetch('api/upload', {
+          method: 'POST',
+          headers: { 'X-Filename': filename },
+          body: new Uint8Array(buffer),
+        });
+
+        if (uploadRes.ok) {
+          const data = await uploadRes.json();
+          messageInput.value += `[uploaded: ${data.path}]\n`;
+
+          // Show thumbnail preview
+          const reader2 = new FileReader();
+          reader2.onload = (e) => {
+            const preview = document.createElement('img');
+            preview.src = e.target.result;
+            preview.style.maxWidth = '200px';
+            preview.style.maxHeight = '200px';
+            preview.style.borderRadius = '4px';
+            preview.style.marginTop = '0.5rem';
+            const msg = document.createElement('div');
+            msg.className = 'message user';
+            msg.appendChild(preview);
+            msg.innerHTML += `<br>[uploaded: ${data.path}]`;
+            transcript.appendChild(msg);
+            transcript.scrollTop = transcript.scrollHeight;
+            saveTranscript();
+          };
+          reader2.readAsDataURL(file);
+        } else if (uploadRes.status === 409) {
+          addMessageToDOM('assistant', 'Error: File already exists');
+        } else {
+          const error = await uploadRes.text();
+          addMessageToDOM('assistant', `Error: ${error}`);
+        }
+      } catch (err) {
+        addMessageToDOM('assistant', `Error: ${err.message}`);
+      }
+    }
+
     // Event listeners
+    const attachBtn = document.getElementById('attach-btn');
+    const fileInput = document.getElementById('file-input');
+
+    attachBtn.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files[0]) {
+        uploadImage(e.target.files[0]);
+        e.target.value = '';
+      }
+    });
+
+    // Drag and drop
+    transcript.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      transcript.style.opacity = '0.7';
+    });
+
+    transcript.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      transcript.style.opacity = '1';
+    });
+
+    transcript.addEventListener('drop', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      transcript.style.opacity = '1';
+      if (e.dataTransfer.files[0]) {
+        uploadImage(e.dataTransfer.files[0]);
+      }
+    });
+
     sendBtn.addEventListener('click', sendMessage);
     messageInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' && !e.shiftKey) {
