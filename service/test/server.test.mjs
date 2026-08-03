@@ -644,3 +644,49 @@ test('POST /api/upload with duplicate filename returns 409', async () => {
     close();
   }
 });
+
+test('POST /api/upload with >15MB stream returns 413 and no file written', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Create a large buffer (16 MB) by streaming chunks
+    const chunkSize = 1024 * 1024; // 1 MB chunks
+    const numChunks = 17; // 17 MB total
+    const largeBuffer = Buffer.alloc(numChunks * chunkSize);
+
+    // Upload oversized file
+    const uploadRes = await fetch(`${baseUrl}/api/upload`, {
+      method: 'POST',
+      headers: {
+        'X-Filename': 'toolarge.png',
+        'Cookie': sessionCookie,
+      },
+      body: largeBuffer,
+    });
+    assert.equal(uploadRes.status, 413);
+
+    // Verify file was NOT written
+    const imagePath = join(repoDir, 'images', 'toolarge.png');
+    assert.equal(existsSync(imagePath), false, 'File should not be written');
+  } finally {
+    close();
+  }
+});

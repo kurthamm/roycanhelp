@@ -3,7 +3,7 @@ import { makeSession, verifySession, checkPassword } from './auth.mjs';
 import { commitAll, undoLast } from './gitops.mjs';
 import { logUsage } from './usage.mjs';
 import { mkdirSync, existsSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve, sep } from 'node:path';
 
 const REQUIRED_ENV = [
   'ANTHROPIC_API_KEY',
@@ -220,17 +220,6 @@ export function createApp({ env, runTurn }) {
         return res.status(415).send('Unsupported file format');
       }
 
-      // Collect raw body
-      let buffer = Buffer.alloc(0);
-      const chunks = [];
-      for await (const chunk of req) {
-        if (Buffer.byteLength(buffer) + Buffer.byteLength(chunk) > 15 * 1024 * 1024) {
-          return res.status(413).send('Payload too large');
-        }
-        chunks.push(chunk);
-      }
-      buffer = Buffer.concat(chunks);
-
       // Ensure images directory exists
       const imagesDir = join(env.SITE_DIR, 'images');
       try {
@@ -239,11 +228,31 @@ export function createApp({ env, runTurn }) {
         if (err.code !== 'EEXIST') throw err;
       }
 
-      const filepath = join(imagesDir, filename);
+      // Defense-in-depth: resolve the final path and verify it's within images dir
+      const filepath = resolve(imagesDir, filename);
+      const imageDirResolved = resolve(imagesDir);
+      if (!filepath.startsWith(imageDirResolved + sep)) {
+        return res.status(400).send('Invalid file path');
+      }
+
       // Check for duplicate
       if (existsSync(filepath)) {
         return res.status(409).send('File already exists');
       }
+
+      // Collect raw body with accumulated byte tracking
+      const chunks = [];
+      let accumulatedBytes = 0;
+      const MAX_SIZE = 15 * 1024 * 1024; // 15 MB
+
+      for await (const chunk of req) {
+        accumulatedBytes += chunk.length;
+        if (accumulatedBytes > MAX_SIZE) {
+          return res.status(413).send('Payload too large');
+        }
+        chunks.push(chunk);
+      }
+      const buffer = Buffer.concat(chunks);
 
       // Write file
       writeFileSync(filepath, buffer);
