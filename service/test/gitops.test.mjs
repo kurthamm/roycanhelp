@@ -46,3 +46,14 @@ test('undoLast refuses commits with fake email', async () => {
   git('commit', '--author', 'Roy via Chat <fake@attacker.com>', '-m', 'malicious');
   await assert.rejects(() => undoLast(dir), /not made by chat/);
 });
+
+test('undoLast refuses to revert a revert', async () => {
+  const dir = repo();
+  const git = (...a) => execFileSync('git', a, { cwd: dir });
+  writeFileSync(join(dir, 'a.txt'), 'v2');
+  await commitAll(dir, 'Roy: edit');
+  const last = await lastChange(dir);
+  // Create a revert commit as chat author (simulating what would happen in production)
+  git('commit', '--allow-empty', '--author', 'Roy via Chat <chat@roycanhelp.org>', '-m', `Revert "${last.message}"`);
+  await assert.rejects(() => undoLast(dir), /already undone/);
+});
