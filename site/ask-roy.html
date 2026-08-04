@@ -8,6 +8,7 @@
   <script src="js/site.js"></script>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
   <header class="masthead">
     <h1>Roy Can Help</h1>
     <p class="tagline">A field guide from a dad who's been in the waiting room</p>
@@ -36,9 +37,9 @@
     </ul>
   </nav>
 
-  <main>
+  <main id="main" tabindex="-1">
     <article>
-      <h1>Ask Roy</h1>
+      <h2>Ask Roy</h2>
 
       <section class="hero">
         <p>Parents ask me things. A lot of things. Some I know. Some I had to learn the hard way. Here's what I've learned from listening, and what keeps coming up again and again. Questions are published anonymously only if answered. Don't use your child's real name. No personal details.</p>
@@ -49,9 +50,10 @@
         <p>Ask away. Your question stays private until and unless I answer it. No names, no personal details. Just the question and the answer Roy learns from it.</p>
 
         <form id="ask-form">
+          <label for="question-text">Your question:</label>
           <textarea id="question-text" placeholder="Type your question here. Keep it under 2000 characters. No names, no personal medical/legal details." style="width: 100%; min-height: 8rem; padding: 0.75rem; font-size: 1rem; font-family: Georgia, serif; border: 2px solid #1a1a1a; border-radius: 4px;" required></textarea>
 
-          <input type="text" id="website-honeypot" name="website" style="display: none;">
+          <input type="text" id="website-honeypot" name="website" style="display: none;" tabindex="-1" aria-hidden="true">
 
           <button type="submit" style="margin-top: 1rem; padding: 0.75rem 1.5rem; background-color: var(--red); color: var(--bg); border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1rem;">Send Question</button>
 
@@ -61,16 +63,17 @@
 
       <section id="qa-controls">
         <div style="margin: 2rem 0;">
+          <label for="qa-search">Search questions:</label>
           <input type="text" id="qa-search" placeholder="Search questions..." style="width: 100%; padding: 0.75rem; font-size: 1rem; border: 2px solid #d62828; border-radius: 4px;">
         </div>
 
         <div style="margin: 2rem 0;">
-          <button class="tag-button" data-tag="all">All</button>
-          <button class="tag-button" data-tag="sc">South Carolina</button>
-          <button class="tag-button" data-tag="school">School & IEPs</button>
-          <button class="tag-button" data-tag="money">Money & Benefits</button>
-          <button class="tag-button" data-tag="diagnosis">Getting a Diagnosis</button>
-          <button class="tag-button" data-tag="adult">Turning 18 & Beyond</button>
+          <button class="tag-button" data-tag="all" aria-pressed="true">All</button>
+          <button class="tag-button" data-tag="sc" aria-pressed="false">South Carolina</button>
+          <button class="tag-button" data-tag="school" aria-pressed="false">School & IEPs</button>
+          <button class="tag-button" data-tag="money" aria-pressed="false">Money & Benefits</button>
+          <button class="tag-button" data-tag="diagnosis" aria-pressed="false">Getting a Diagnosis</button>
+          <button class="tag-button" data-tag="adult" aria-pressed="false">Turning 18 & Beyond</button>
         </div>
       </section>
 
@@ -220,7 +223,7 @@
 
   <footer>
     <p><strong>I'm a dad, not a doctor or a lawyer.</strong> Everything here reflects my experience and research, but it's not medical advice, legal advice, or a substitute for talking to professionals. Your state, your insurance, your kid. All different. Use this as a starting point, not the gospel.</p>
-    <p><a href="about.html">About Roy Can Help</a> · <a href="/admin/" style="color: #999; text-decoration: none; font-size: 0.9em;">Admin</a> · © 2025</p>
+    <p><a href="about.html">About Roy Can Help</a> · <a href="/admin/" class="admin-link">Admin</a> · © 2025</p>
   </footer>
 
   <script>
@@ -246,8 +249,12 @@
 
       tagButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-          tagButtons.forEach(b => b.style.opacity = '0.6');
+          tagButtons.forEach(b => {
+            b.style.opacity = '0.6';
+            b.setAttribute('aria-pressed', 'false');
+          });
           btn.style.opacity = '1';
+          btn.setAttribute('aria-pressed', 'true');
           activeTag = btn.dataset.tag;
           filterCards();
         });
