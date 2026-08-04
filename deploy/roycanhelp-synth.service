@@ -1,5 +1,5 @@
 [Unit]
-Description=roycanhelp.org weekly wisdom synthesis
+Description=roycanhelp.org weekly takeaway sweep
 After=network.target
 
 [Service]
