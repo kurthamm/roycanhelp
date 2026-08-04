@@ -47,8 +47,8 @@
   --space-xl: clamp(2rem, 4vw, 3rem);
 
   /* Content width constraints */
-  --measure-prose: 70ch;
-  --measure-wide: 90ch;
+  --measure-prose: clamp(45ch, 60vw, 78ch);
+  --measure-wide: min(1240px, 92vw);
   --container-width-full: 100%;
   --container-width-prose: min(var(--measure-prose), calc(100% - 2rem));
   --container-width-wide: min(var(--measure-wide), calc(100% - 2rem));
@@ -232,7 +232,7 @@ article, section {
   background-color: var(--color-bg);
   color: var(--color-text);
   padding: var(--space-lg) var(--space-sm) 0;
-  text-align: center;
+  text-align: left;
   border-bottom: 3px solid var(--color-border);
   position: relative;
   z-index: 50;
@@ -270,7 +270,7 @@ nav.nav-primary ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0 auto;
   padding: 0;
 }
@@ -321,7 +321,7 @@ nav.nav-secondary ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0 auto;
   padding: 0;
   gap: clamp(0.25rem, 1vw, 0.5rem);
