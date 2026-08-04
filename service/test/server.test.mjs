@@ -59,9 +59,21 @@ function fakeRunTurn() {
   };
 }
 
+// Fake runDraftTurn for testing
+function fakeRunDraftTurn() {
+  return async ({ message, siteDir, onText }) => {
+    // Simulate a drafted answer
+    onText('This is a drafted answer based on the site content.');
+    return {
+      usage: { input_tokens: 20, output_tokens: 30 },
+      summary: 'This is a drafted answer based on the site content.',
+    };
+  };
+}
+
 // Helper to start server and get fetch
-async function setupServer(env, runTurn) {
-  const app = createApp({ env, runTurn });
+async function setupServer(env, runTurn, runDraftTurn) {
+  const app = createApp({ env, runTurn, runDraftTurn });
   return new Promise((resolve, reject) => {
     const server = app.listen(0, '127.0.0.1', () => {
       const { port } = server.address();
@@ -97,7 +109,7 @@ test('login with wrong password returns 401 and logs LOGIN FAIL', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     let output = '';
     const originalLog = console.log;
@@ -131,7 +143,7 @@ test('login with correct password sets session cookie', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/login`, {
       method: 'POST',
@@ -162,7 +174,7 @@ test('GET / without auth returns login form', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/`);
     assert.equal(res.status, 200);
@@ -185,7 +197,7 @@ test('GET / with valid auth returns chat.html', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // First login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -219,7 +231,7 @@ test('POST /api/message without auth returns 401', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/message`, {
       method: 'POST',
@@ -244,7 +256,7 @@ test('POST /api/message with auth streams SSE, commits, and logs usage', async (
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // First login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -371,7 +383,7 @@ test('POST /api/undo without auth returns 401', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/undo`, {
       method: 'POST',
@@ -395,7 +407,7 @@ test('POST /api/undo with auth reverts last chat commit', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login and send message to create a chat commit
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -445,7 +457,7 @@ test('POST /api/undo on non-chat commit returns 409 with error', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -484,7 +496,7 @@ test('POST /api/upload without auth returns 401', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/upload`, {
       method: 'POST',
@@ -509,7 +521,7 @@ test('POST /api/upload with auth and valid png creates file and commit', async (
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -560,7 +572,7 @@ test('POST /api/upload with path traversal filename returns 400', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -598,7 +610,7 @@ test('POST /api/upload with unsupported format returns 415', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -636,7 +648,7 @@ test('POST /api/upload with duplicate filename returns 409', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -685,7 +697,7 @@ test('POST /api/upload with >15MB stream returns 413 and no file written', async
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -732,7 +744,7 @@ test('POST /api/upload with pdf creates file in files/ and commit', async () => 
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -783,7 +795,7 @@ test('POST /api/upload with docx creates file in files/', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -827,7 +839,7 @@ test('POST /api/upload with unsupported document format returns 415', async () =
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -865,7 +877,7 @@ test('login page submits to a relative path (works behind /admin/ prefix)', asyn
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/`);
     const html = await res.text();
@@ -889,7 +901,7 @@ test('POST /api/ask without honeypot stores question with id and ts', async () =
     QUESTIONS_FILE: questionsFile,
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/ask`, {
       method: 'POST',
@@ -925,7 +937,7 @@ test('POST /api/ask with honeypot (website non-empty) returns 200 but stores not
     QUESTIONS_FILE: questionsFile,
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/ask`, {
       method: 'POST',
@@ -956,7 +968,7 @@ test('POST /api/ask with empty question returns 400', async () => {
     QUESTIONS_FILE: questionsFile,
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/ask`, {
       method: 'POST',
@@ -982,7 +994,7 @@ test('POST /api/ask with >2000 char question returns 413', async () => {
     QUESTIONS_FILE: questionsFile,
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const longQuestion = 'a'.repeat(2001);
     const res = await fetch(`${baseUrl}/api/ask`, {
@@ -1008,7 +1020,7 @@ test('GET /api/questions without auth returns 401', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/questions`);
     assert.equal(res.status, 401);
@@ -1035,7 +1047,7 @@ test('GET /api/questions with auth returns pending questions as array', async ()
   writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
   writeFileSync(questionsFile, '{"id":"2","ts":"2026-01-01T00:01:00Z","question":"Q2"}\n', { flag: 'a' });
 
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -1075,7 +1087,7 @@ test('POST /api/questions/delete without auth returns 401', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/questions/delete`, {
       method: 'POST',
@@ -1106,7 +1118,7 @@ test('POST /api/questions/delete with auth removes question by id', async () => 
   writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
   writeFileSync(questionsFile, '{"id":"2","ts":"2026-01-01T00:01:00Z","question":"Q2"}\n', { flag: 'a' });
 
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -1156,7 +1168,7 @@ test('POST /api/questions/delete with unknown id returns 404', async () => {
   // Pre-populate questions file
   writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
 
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -1194,7 +1206,7 @@ test('POST /api/questions/update without auth returns 401', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/questions/update`, {
       method: 'POST',
@@ -1225,7 +1237,7 @@ test('POST /api/questions/update with auth updates question text by id', async (
   writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Original Q1"}\n');
   writeFileSync(questionsFile, '{"id":"2","ts":"2026-01-01T00:01:00Z","question":"Q2"}\n', { flag: 'a' });
 
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -1280,7 +1292,7 @@ test('POST /api/questions/update with empty question returns 400', async () => {
   // Pre-populate questions file
   writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
 
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -1323,7 +1335,7 @@ test('POST /api/questions/update with unknown id returns 404', async () => {
   // Pre-populate questions file
   writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
 
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -1361,7 +1373,7 @@ test('GET /api/wisdom-sections without auth returns 401', async () => {
     QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
     PORT: '0',
   };
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     const res = await fetch(`${baseUrl}/api/wisdom-sections`);
     assert.equal(res.status, 401);
@@ -1398,7 +1410,7 @@ test('GET /api/wisdom-sections with auth returns h2 section headings from roys-w
 </html>`;
   writeFileSync(join(repoDir, 'roys-wisdom.html'), wisdomHtml);
 
-  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
   try {
     // Login
     const loginRes = await fetch(`${baseUrl}/api/login`, {
@@ -1420,6 +1432,375 @@ test('GET /api/wisdom-sections with auth returns h2 section headings from roys-w
     assert.equal(sections[0], 'First Section');
     assert.equal(sections[1], 'Second Section');
     assert.equal(sections[2], 'Third Section');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/update with draft field updates draft', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Update question with draft
+    const updateRes = await fetch(`${baseUrl}/api/questions/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: '1', draft: 'This is a draft answer.' }),
+    });
+    assert.equal(updateRes.status, 200);
+
+    // Verify draft was saved
+    const content = readFileSync(questionsFile, 'utf8');
+    const q = JSON.parse(content.trim());
+    assert.equal(q.draft, 'This is a draft answer.');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/update with section field updates section', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Update question with section
+    const updateRes = await fetch(`${baseUrl}/api/questions/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: '1', section: 'My Section' }),
+    });
+    assert.equal(updateRes.status, 200);
+
+    // Verify section was saved
+    const content = readFileSync(questionsFile, 'utf8');
+    const q = JSON.parse(content.trim());
+    assert.equal(q.section, 'My Section');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/draft without auth returns 401', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/questions/draft`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: 'test-id' }),
+    });
+    assert.equal(res.status, 401);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/draft with auth streams SSE draft answer', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Where can I find help?"}\n');
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Draft answer
+    const draftRes = await fetch(`${baseUrl}/api/questions/draft`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: '1' }),
+    });
+    assert.equal(draftRes.status, 200);
+    assert.equal(draftRes.headers.get('content-type'), 'text/event-stream');
+
+    // Read SSE stream
+    const text = await draftRes.text();
+    assert.match(text, /event: text\ndata:/);
+    assert.match(text, /event: done/);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/publish without auth returns 401', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/questions/publish`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: 'test-id' }),
+    });
+    assert.equal(res.status, 401);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/publish with auth inserts card into existing section', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const wisdomFile = join(repoDir, 'roys-wisdom.html');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Create wisdom file with a section
+  const wisdomHtml = `<!DOCTYPE html>
+<html>
+<head><title>Roy's Wisdom</title></head>
+<body>
+<article>
+<h1>Roy's Wisdom</h1>
+<h2>Test Section</h2>
+<p>Existing content</p>
+</article>
+</body>
+</html>`;
+  writeFileSync(wisdomFile, wisdomHtml);
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"What is a test?","draft":"This is a test answer.","section":"Test Section"}\n');
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Publish question
+    const publishRes = await fetch(`${baseUrl}/api/questions/publish`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: '1' }),
+    });
+    assert.equal(publishRes.status, 200);
+
+    // Verify card was inserted
+    const wisdomContent = readFileSync(wisdomFile, 'utf8');
+    assert.match(wisdomContent, /class="lesson"/);
+    assert.match(wisdomContent, /What is a test\?/);
+    assert.match(wisdomContent, /This is a test answer\./);
+
+    // Verify question was removed from queue
+    const questionsContent = readFileSync(questionsFile, 'utf8');
+    assert.equal(questionsContent.trim(), '');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/publish creates new section if not found', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const wisdomFile = join(repoDir, 'roys-wisdom.html');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Create wisdom file without the section
+  const wisdomHtml = `<!DOCTYPE html>
+<html>
+<head><title>Roy's Wisdom</title></head>
+<body>
+<article>
+<h1>Roy's Wisdom</h1>
+<h2>Existing Section</h2>
+<p>Content</p>
+</article>
+</body>
+</html>`;
+  writeFileSync(wisdomFile, wisdomHtml);
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"New topic?","draft":"New answer.","section":"New Section"}\n');
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Publish question
+    const publishRes = await fetch(`${baseUrl}/api/questions/publish`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: '1' }),
+    });
+    assert.equal(publishRes.status, 200);
+
+    // Verify new section was created
+    const wisdomContent = readFileSync(wisdomFile, 'utf8');
+    assert.match(wisdomContent, /<h2>New Section<\/h2>/);
+    assert.match(wisdomContent, /class="lesson"/);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/publish without draft returns 400', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Pre-populate questions file without draft
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn(), fakeRunDraftTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Try to publish without draft
+    const publishRes = await fetch(`${baseUrl}/api/questions/publish`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: '1' }),
+    });
+    assert.equal(publishRes.status, 400);
   } finally {
     close();
   }

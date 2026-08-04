@@ -47,6 +47,39 @@
       color: var(--red);
     }
 
+    .main-container {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      gap: 0;
+    }
+
+    .chat-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .workspace-column {
+      display: none;
+      width: 26rem;
+      border-left: 2px solid #d4c9be;
+      background: var(--cream);
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .workspace-column.visible {
+      display: flex;
+    }
+
+    @media (min-width: 1000px) {
+      .workspace-column {
+        display: flex;
+      }
+    }
+
     .transcript-container {
       flex: 1;
       overflow-y: auto;
@@ -164,10 +197,14 @@
       color: #5a5248;
       font-style: italic;
     }
+
     .questions-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       padding: 1rem;
-      border-top: 2px solid #d4c9be;
       background: rgba(255, 215, 0, 0.02);
+      overflow: hidden;
     }
 
     .questions-header {
@@ -177,7 +214,8 @@
       gap: 0.5rem;
       font-weight: bold;
       color: var(--red);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
+      flex-shrink: 0;
     }
 
     .questions-header:hover {
@@ -196,12 +234,14 @@
 
     .questions-list {
       display: none;
+      flex-direction: column;
       gap: 1rem;
+      overflow-y: auto;
+      flex: 1;
     }
 
     .questions-list.visible {
       display: flex;
-      flex-direction: column;
     }
 
     .question-card {
@@ -315,6 +355,63 @@
       justify-content: flex-start;
     }
 
+    .answer-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .answer-field label {
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: var(--red);
+    }
+
+    .answer-textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d4c9be;
+      border-radius: 4px;
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      min-height: 8rem;
+      resize: vertical;
+      background: inherit;
+      color: inherit;
+    }
+
+    .answer-textarea:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
+    }
+
+    .answer-status {
+      font-size: 0.85rem;
+      font-weight: bold;
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      display: none;
+    }
+
+    .answer-status.drafting {
+      display: block;
+      background: rgba(255, 215, 0, 0.3);
+      color: #997700;
+    }
+
+    .answer-status.saved {
+      display: block;
+      background: rgba(45, 106, 79, 0.2);
+      color: #2d6a4f;
+    }
+
+    .answer-status.error {
+      display: block;
+      background: rgba(139, 0, 0, 0.2);
+      color: var(--red);
+    }
+
     .question-actions button {
       padding: 0.5rem 1rem;
       font-size: 0.9rem;
@@ -326,8 +423,10 @@
       font-weight: bold;
     }
 
-    .question-actions .btn-draft {
+    .question-actions .btn-redraft {
       background: #666;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.75rem;
     }
 
     .question-actions .btn-delete {
@@ -354,14 +453,20 @@
     <h1>Roy Can Help</h1>
   </header>
 
-  <div class="transcript-container" id="transcript"></div>
-
-  <div class="questions-panel" id="questions-panel" style="display:none;">
-    <div class="questions-header" id="questions-toggle">
-      <span>Questions from visitors</span>
-      <span class="questions-count" id="questions-badge">0</span>
+  <div class="main-container">
+    <div class="chat-column">
+      <div class="transcript-container" id="transcript"></div>
     </div>
-    <div class="questions-list" id="questions-list"></div>
+
+    <div class="workspace-column" id="workspace-column">
+      <div class="questions-panel" id="questions-panel">
+        <div class="questions-header" id="questions-toggle">
+          <span>Questions from visitors</span>
+          <span class="questions-count" id="questions-badge">0</span>
+        </div>
+        <div class="questions-list" id="questions-list"></div>
+      </div>
+    </div>
   </div>
 
   <div class="input-area">
@@ -696,7 +801,7 @@
         if (!res.ok) return;
         const questions = await res.json();
 
-        const panel = document.getElementById('questions-panel');
+        const workspaceColumn = document.getElementById('workspace-column');
         const badge = document.getElementById('questions-badge');
         const list = document.getElementById('questions-list');
 
@@ -708,7 +813,7 @@
           empty.className = 'questions-empty';
           empty.textContent = 'No questions waiting. When someone asks one on the Ask Roy page, it shows up here.';
           list.appendChild(empty);
-          panel.style.display = 'block';
+          workspaceColumn.classList.add('visible');
           list.classList.add('visible');
           return;
         }
@@ -789,17 +894,160 @@
           meta.textContent = 'Submitted: ' + date;
           card.appendChild(meta);
 
+          // Answer field
+          const answerField = document.createElement('div');
+          answerField.className = 'answer-field';
+          const answerLabel = document.createElement('label');
+          answerLabel.textContent = 'Answer:';
+          const answerTextarea = document.createElement('textarea');
+          answerTextarea.className = 'answer-textarea';
+          answerTextarea.value = q.draft || '';
+          answerTextarea.dataset.originalValue = q.draft || '';
+          const answerStatus = document.createElement('div');
+          answerStatus.className = 'answer-status';
+          answerField.appendChild(answerLabel);
+          answerField.appendChild(answerTextarea);
+          answerField.appendChild(answerStatus);
+          card.appendChild(answerField);
+
+          // If no draft exists, request one automatically when card renders
+          if (!q.draft) {
+            answerStatus.textContent = 'Drafting...';
+            answerStatus.className = 'answer-status drafting';
+
+            (async () => {
+              try {
+                const draftRes = await fetch('api/questions/draft', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ id: q.id }),
+                });
+
+                if (!draftRes.ok) {
+                  answerStatus.textContent = 'Failed to draft answer';
+                  answerStatus.className = 'answer-status error';
+                  return;
+                }
+
+                let draftText = '';
+                const reader = draftRes.body.getReader();
+                const decoder = new TextDecoder();
+                let buffer = '';
+
+                while (true) {
+                  const { done, value } = await reader.read();
+                  if (done) break;
+                  const chunk = decoder.decode(value, { stream: true });
+                  buffer += chunk;
+
+                  // Process complete frames (separated by \n\n)
+                  const frames = buffer.split('\n\n');
+                  buffer = frames.pop() || '';
+
+                  for (const frame of frames) {
+                    if (!frame.trim()) continue;
+
+                    let eventType = 'text';
+                    let eventData = '';
+                    const lines = frame.split('\n');
+
+                    for (const line of lines) {
+                      if (line.startsWith('event: ')) {
+                        eventType = line.slice(7);
+                      } else if (line.startsWith('data: ')) {
+                        eventData = line.slice(6);
+                      }
+                    }
+
+                    if (eventType === 'text') {
+                      draftText += eventData;
+                      answerTextarea.value = draftText;
+                      answerTextarea.dataset.originalValue = draftText;
+                    }
+                  }
+                }
+
+                // Process remaining buffer
+                if (buffer.trim()) {
+                  const lines = buffer.split('\n');
+                  for (const line of lines) {
+                    if (line.startsWith('data: ')) {
+                      draftText += line.slice(6);
+                    }
+                  }
+                  answerTextarea.value = draftText;
+                  answerTextarea.dataset.originalValue = draftText;
+                }
+
+                // Save the draft to the server
+                if (draftText.trim()) {
+                  const updateRes = await fetch('api/questions/update', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: q.id, draft: draftText }),
+                  });
+                  if (updateRes.ok) {
+                    answerStatus.textContent = 'Draft ready';
+                    answerStatus.className = 'answer-status saved';
+                    setTimeout(() => {
+                      if (answerStatus.className === 'answer-status saved') {
+                        answerStatus.className = 'answer-status';
+                      }
+                    }, 2000);
+                  }
+                }
+              } catch (err) {
+                answerStatus.textContent = 'Error drafting: ' + err.message;
+                answerStatus.className = 'answer-status error';
+              }
+            })();
+          }
+
+          // Save answer on blur
+          answerTextarea.addEventListener('blur', async () => {
+            const newText = answerTextarea.value.trim();
+            if (newText === answerTextarea.dataset.originalValue) return;
+
+            answerStatus.textContent = 'Saving...';
+            answerStatus.className = 'answer-status saving';
+            try {
+              const updateRes = await fetch('api/questions/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: q.id, draft: newText }),
+              });
+              if (updateRes.ok) {
+                answerTextarea.dataset.originalValue = newText;
+                answerStatus.textContent = 'Saved';
+                answerStatus.className = 'answer-status saved';
+                setTimeout(() => {
+                  if (answerStatus.className === 'answer-status saved') {
+                    answerStatus.className = 'answer-status';
+                  }
+                }, 2000);
+              } else {
+                answerStatus.textContent = 'Failed to save';
+                answerStatus.className = 'answer-status error';
+              }
+            } catch (err) {
+              answerStatus.textContent = 'Error: ' + err.message;
+              answerStatus.className = 'answer-status error';
+            }
+          });
+
           // Wisdom section field
           const sectionField = document.createElement('div');
           sectionField.className = 'question-section-field';
           const sectionLabel = document.createElement('label');
           sectionLabel.textContent = 'Publish to section:';
           const sectionSelect = document.createElement('select');
+          sectionSelect.value = q.section || '';
           sectionSelect.innerHTML = '<option value="">Select a section...</option>';
           for (const section of sections) {
             const option = document.createElement('option');
             option.value = section;
             option.textContent = section;
+            if (q.section === section) option.selected = true;
             sectionSelect.appendChild(option);
           }
           const newSectionOption = document.createElement('option');
@@ -821,6 +1069,14 @@
               newSectionInput.focus();
             } else {
               newSectionInput.classList.remove('visible');
+              // Save the section choice
+              if (sectionSelect.value) {
+                const updateRes = fetch('api/questions/update', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ id: q.id, section: sectionSelect.value }),
+                });
+              }
             }
           });
 
@@ -830,34 +1086,152 @@
           const actions = document.createElement('div');
           actions.className = 'question-actions';
 
-          const draftBtn = document.createElement('button');
-          draftBtn.className = 'btn-draft';
-          draftBtn.textContent = 'Draft answer';
-          draftBtn.addEventListener('click', () => {
-            const currentText = questionTextarea.value;
-            const prompt = `Visitor question: "${currentText}". Draft an answer in my voice using the site's researched content, with citations, and show it to me here. Do not post it to the site until I say so.`;
-            messageInput.value = prompt;
-            messageInput.focus();
+          const redraftBtn = document.createElement('button');
+          redraftBtn.className = 'btn-redraft';
+          redraftBtn.textContent = 'Redraft';
+          redraftBtn.addEventListener('click', async () => {
+            answerStatus.textContent = 'Drafting...';
+            answerStatus.className = 'answer-status drafting';
+            answerTextarea.value = '';
+            answerTextarea.dataset.originalValue = '';
+
+            try {
+              const draftRes = await fetch('api/questions/draft', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: q.id }),
+              });
+
+              if (!draftRes.ok) {
+                answerStatus.textContent = 'Failed to draft';
+                answerStatus.className = 'answer-status error';
+                return;
+              }
+
+              let draftText = '';
+              const reader = draftRes.body.getReader();
+              const decoder = new TextDecoder();
+              let buffer = '';
+
+              while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                const chunk = decoder.decode(value, { stream: true });
+                buffer += chunk;
+
+                const frames = buffer.split('\n\n');
+                buffer = frames.pop() || '';
+
+                for (const frame of frames) {
+                  if (!frame.trim()) continue;
+
+                  let eventType = 'text';
+                  let eventData = '';
+                  const lines = frame.split('\n');
+
+                  for (const line of lines) {
+                    if (line.startsWith('event: ')) {
+                      eventType = line.slice(7);
+                    } else if (line.startsWith('data: ')) {
+                      eventData = line.slice(6);
+                    }
+                  }
+
+                  if (eventType === 'text') {
+                    draftText += eventData;
+                    answerTextarea.value = draftText;
+                    answerTextarea.dataset.originalValue = draftText;
+                  }
+                }
+              }
+
+              if (buffer.trim()) {
+                const lines = buffer.split('\n');
+                for (const line of lines) {
+                  if (line.startsWith('data: ')) {
+                    draftText += line.slice(6);
+                  }
+                }
+                answerTextarea.value = draftText;
+                answerTextarea.dataset.originalValue = draftText;
+              }
+
+              if (draftText.trim()) {
+                const updateRes = await fetch('api/questions/update', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ id: q.id, draft: draftText }),
+                });
+                if (updateRes.ok) {
+                  answerStatus.textContent = 'Draft ready';
+                  answerStatus.className = 'answer-status saved';
+                  setTimeout(() => {
+                    if (answerStatus.className === 'answer-status saved') {
+                      answerStatus.className = 'answer-status';
+                    }
+                  }, 2000);
+                }
+              }
+            } catch (err) {
+              answerStatus.textContent = 'Error: ' + err.message;
+              answerStatus.className = 'answer-status error';
+            }
           });
-          actions.appendChild(draftBtn);
+          actions.appendChild(redraftBtn);
 
           const publishBtn = document.createElement('button');
           publishBtn.className = 'btn-publish';
           publishBtn.textContent = 'Publish to Wisdom';
-          publishBtn.addEventListener('click', () => {
-            const currentText = questionTextarea.value;
+          publishBtn.addEventListener('click', async () => {
             const selectedSection = sectionSelect.value;
+            let sectionName = selectedSection;
+
             if (!selectedSection || selectedSection === '__new__') {
-              const newSectionName = newSectionInput.value.trim();
-              if (!newSectionName) {
+              sectionName = newSectionInput.value.trim();
+              if (!sectionName) {
                 alert('Please select or create a section');
                 return;
               }
+              // Save the new section
+              await fetch('api/questions/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: q.id, section: sectionName }),
+              });
             }
-            const sectionName = selectedSection === '__new__' ? newSectionInput.value.trim() : selectedSection;
-            const prompt = `Publish this question and the answer you just drafted to Roy's Wisdom under the section "${sectionName}". Format it as a .lesson card matching the others: the question as the heading, my answer beneath, keep the citations. Anonymize the asker completely. Then delete nothing; I will clear the question myself.`;
-            messageInput.value = prompt;
-            messageInput.focus();
+
+            if (!answerTextarea.value.trim()) {
+              alert('Please draft an answer first');
+              return;
+            }
+
+            // Publish the question
+            try {
+              const publishRes = await fetch('api/questions/publish', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: q.id }),
+              });
+
+              if (publishRes.ok) {
+                card.remove();
+                const remaining = list.querySelectorAll('.question-card').length;
+                if (remaining === 0) {
+                  const empty = document.createElement('p');
+                  empty.className = 'questions-empty';
+                  empty.textContent = 'No questions waiting. When someone asks one on the Ask Roy page, it shows up here.';
+                  list.appendChild(empty);
+                  badge.textContent = '0';
+                } else {
+                  badge.textContent = remaining;
+                }
+              } else {
+                const error = await publishRes.text();
+                alert('Failed to publish: ' + error);
+              }
+            } catch (err) {
+              alert('Error: ' + err.message);
+            }
           });
           actions.appendChild(publishBtn);
 
@@ -897,7 +1271,7 @@
           list.appendChild(card);
         }
 
-        panel.style.display = 'block';
+        workspaceColumn.classList.add('visible');
         list.classList.add('visible');
       } catch (err) {
         console.error('Failed to load questions:', err);

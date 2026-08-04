@@ -118,7 +118,7 @@ const LOGIN_HTML = `<!DOCTYPE html>
 </body>
 </html>`;
 
-export function createApp({ env, runTurn }) {
+export function createApp({ env, runTurn, runDraftTurn }) {
   validateEnv(env);
 
   const app = express();
@@ -317,13 +317,20 @@ export function createApp({ env, runTurn }) {
     }
   });
 
-  // Update question endpoint (auth)
+  // Update question endpoint (auth) - updates question, draft, or section
   app.post('/api/questions/update', requireAuth, express.json(), (req, res) => {
-    const { id, question } = req.body;
+    const { id, question, draft, section } = req.body;
     if (!id) {
       return res.status(400).send('Missing id');
     }
-    if (!question || !String(question).trim()) {
+
+    // At least one field must be provided
+    if (question === undefined && draft === undefined && section === undefined) {
+      return res.status(400).send('At least one of question, draft, or section must be provided');
+    }
+
+    // If question is provided, it cannot be empty
+    if (question !== undefined && (!String(question).trim())) {
       return res.status(400).send('Question cannot be empty');
     }
 
@@ -342,7 +349,9 @@ export function createApp({ env, runTurn }) {
           const q = JSON.parse(line);
           if (q.id === id) {
             found = true;
-            q.question = String(question).trim();
+            if (question !== undefined) q.question = String(question).trim();
+            if (draft !== undefined) q.draft = String(draft);
+            if (section !== undefined) q.section = String(section);
             updated.push(JSON.stringify(q));
           } else {
             updated.push(line);
@@ -362,6 +371,187 @@ export function createApp({ env, runTurn }) {
       res.json({ ok: true });
     } catch (err) {
       console.error('Failed to update question:', err);
+      res.status(500).send(err.message);
+    }
+  });
+
+  // Draft answer endpoint (auth) - generates a draft answer for a question
+  app.post('/api/questions/draft', requireAuth, express.json(), async (req, res) => {
+    const { id } = req.body;
+    if (!id) {
+      return res.status(400).send('Missing id');
+    }
+
+    try {
+      if (!existsSync(env.QUESTIONS_FILE)) {
+        return res.status(404).send('Question not found');
+      }
+
+      const content = readFileSync(env.QUESTIONS_FILE, 'utf8');
+      const lines = content.split('\n').filter(l => l.trim());
+      let question = null;
+
+      for (const line of lines) {
+        try {
+          const q = JSON.parse(line);
+          if (q.id === id) {
+            question = q;
+            break;
+          }
+        } catch (e) {
+          console.error('Failed to parse question line:', e);
+        }
+      }
+
+      if (!question) {
+        return res.status(404).send('Question not found');
+      }
+
+      res.setHeader('Content-Type', 'text/event-stream');
+      res.setHeader('Cache-Control', 'no-cache');
+      res.setHeader('Connection', 'keep-alive');
+
+      // Build prompt for drafting answer (read-only mode)
+      const draftPrompt = `A visitor asked: "${question.question}"
+
+Draft a short answer to this question in my voice, grounded in the site's existing content. Include citations to specific pages. Keep it concise, plain prose suitable for a Wisdom card, with no preamble or chat pleasantries. Answer only, no explanation or discussion.`;
+
+      try {
+        const { usage, summary } = await runDraftTurn({
+          message: draftPrompt,
+          siteDir: env.SITE_DIR,
+          onText: (text) => {
+            res.write(`event: text\ndata: ${text}\n\n`);
+          },
+        });
+
+        res.write(`event: done\ndata: ${JSON.stringify({ ok: true })}\n\n`);
+        res.end();
+      } catch (err) {
+        res.write(`event: error\ndata: ${err.message}\n\n`);
+        res.end();
+      }
+    } catch (err) {
+      console.error('Failed to draft answer:', err);
+      res.status(500).send(err.message);
+    }
+  });
+
+  // Publish question to Wisdom endpoint (auth)
+  app.post('/api/questions/publish', requireAuth, express.json(), async (req, res) => {
+    const { id } = req.body;
+    if (!id) {
+      return res.status(400).send('Missing id');
+    }
+
+    try {
+      if (!existsSync(env.QUESTIONS_FILE)) {
+        return res.status(404).send('Question not found');
+      }
+
+      const content = readFileSync(env.QUESTIONS_FILE, 'utf8');
+      const lines = content.split('\n').filter(l => l.trim());
+      let question = null;
+      let questionIndex = -1;
+
+      for (let i = 0; i < lines.length; i++) {
+        try {
+          const q = JSON.parse(lines[i]);
+          if (q.id === id) {
+            question = q;
+            questionIndex = i;
+            break;
+          }
+        } catch (e) {
+          console.error('Failed to parse question line:', e);
+        }
+      }
+
+      if (!question || !question.draft || !question.section) {
+        return res.status(400).send('Question must have draft and section before publishing');
+      }
+
+      // Escape HTML entities
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      // Build the lesson card HTML
+      const questionText = escapeHtml(question.question);
+      const answerText = escapeHtml(question.draft);
+
+      // Split answer into paragraphs, wrap last in strong if it reads like takeaway
+      const paragraphs = answerText.split('\n').filter(p => p.trim());
+      const lessonContent = paragraphs.map((p, idx) => {
+        // Wrap final paragraph in strong to match existing format
+        if (idx === paragraphs.length - 1 && paragraphs.length > 1) {
+          return `<p><strong>${p}</strong></p>`;
+        }
+        return `<p>${p}</p>`;
+      }).join('');
+
+      const lessonCard = `<div class="lesson">
+<h3>${questionText}</h3>
+${lessonContent}
+</div>`;
+
+      // Read roys-wisdom.html
+      const wisdomPath = join(env.SITE_DIR, 'roys-wisdom.html');
+      let wisdomContent = '';
+      if (existsSync(wisdomPath)) {
+        wisdomContent = readFileSync(wisdomPath, 'utf8');
+      }
+
+      // Find the section and insert the card
+      const sectionRegex = new RegExp(`(<h2>${escapeHtml(question.section)}</h2>.*?)(?=<h2>|</article>|$)`, 's');
+      const sectionMatch = wisdomContent.match(sectionRegex);
+
+      let updatedWisdom;
+      if (sectionMatch) {
+        // Section exists: insert card before the next h2 or closing tag
+        const insertPoint = sectionMatch.index + sectionMatch[1].length;
+        updatedWisdom = wisdomContent.slice(0, insertPoint) + '\n' + lessonCard + '\n' + wisdomContent.slice(insertPoint);
+      } else {
+        // Section doesn't exist: create it
+        // Find the closing </article> tag
+        const articleEndMatch = wisdomContent.match(/<\/article>/);
+        if (articleEndMatch) {
+          const insertPoint = articleEndMatch.index;
+          const newSection = `<h2>${escapeHtml(question.section)}</h2>
+${lessonCard}
+`;
+          updatedWisdom = wisdomContent.slice(0, insertPoint) + newSection + wisdomContent.slice(insertPoint);
+        } else {
+          // No article tag, append at end
+          updatedWisdom = wisdomContent + `
+<h2>${escapeHtml(question.section)}</h2>
+${lessonCard}
+`;
+        }
+      }
+
+      // Write updated wisdom file
+      writeFileSync(wisdomPath, updatedWisdom);
+
+      // Commit the change
+      const committed = await commitAll(env.SITE_REPO_DIR, 'Roy: published a visitor question to Wisdom');
+
+      // Remove the question from the queue
+      const updatedLines = lines.filter((_, idx) => idx !== questionIndex);
+      if (updatedLines.length === 0) {
+        writeFileSync(env.QUESTIONS_FILE, '');
+      } else {
+        writeFileSync(env.QUESTIONS_FILE, updatedLines.join('\n') + '\n');
+      }
+
+      res.json({ ok: true, path: wisdomPath });
+    } catch (err) {
+      console.error('Failed to publish question:', err);
       res.status(500).send(err.message);
     }
   });
@@ -482,8 +672,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
 
   // Lazy-load agent only when running server
-  const { runTurn } = await import('./agent.mjs');
-  const app = createApp({ env, runTurn });
+  const { runTurn, runDraftTurn } = await import('./agent.mjs');
+  const app = createApp({ env, runTurn, runDraftTurn });
   app.listen(parseInt(env.PORT, 10), '127.0.0.1', () => {
     console.log(`Server running on port ${env.PORT}`);
   });
