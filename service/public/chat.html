@@ -200,32 +200,132 @@
 
     .question-card {
       background: white;
-      padding: 1rem;
+      padding: 1.5rem;
       border-radius: 4px;
-      border-left: 3px solid var(--yellow);
+      border-left: 4px solid var(--yellow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    .question-text {
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
+    .question-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .question-field label {
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: var(--red);
+    }
+
+    .question-textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d4c9be;
+      border-radius: 4px;
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      min-height: 6rem;
+      resize: vertical;
+      background: inherit;
+      color: inherit;
+    }
+
+    .question-textarea:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
+    }
+
+    .question-status {
+      font-size: 0.85rem;
+      font-weight: bold;
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      display: none;
+    }
+
+    .question-status.saving {
+      display: block;
+      background: rgba(255, 215, 0, 0.3);
+      color: #997700;
+    }
+
+    .question-status.saved {
+      display: block;
+      background: rgba(45, 106, 79, 0.2);
+      color: #2d6a4f;
+    }
+
+    .question-status.error {
+      display: block;
+      background: rgba(139, 0, 0, 0.2);
+      color: var(--red);
     }
 
     .question-meta {
       font-size: 0.85rem;
       color: #999;
-      margin-bottom: 0.75rem;
+    }
+
+    .question-section-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .question-section-field select,
+    .question-section-field input {
+      padding: 0.5rem;
+      border: 1px solid #d4c9be;
+      border-radius: 4px;
+      font-family: Georgia, serif;
+      font-size: 0.95rem;
+      background: inherit;
+      color: inherit;
+    }
+
+    .question-section-field select:focus,
+    .question-section-field input:focus {
+      outline: none;
+      border-color: var(--red);
+    }
+
+    .new-section-input {
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .new-section-input.visible {
+      display: block;
     }
 
     .question-actions {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
+      justify-content: flex-start;
     }
 
     .question-actions button {
       padding: 0.5rem 1rem;
       font-size: 0.9rem;
       flex: 0;
+    }
+
+    .question-actions .btn-publish {
+      background: var(--red);
+      font-weight: bold;
+    }
+
+    .question-actions .btn-draft {
+      background: #666;
+    }
+
+    .question-actions .btn-delete {
+      background: #999;
     }
 
     @media (max-width: 600px) {
@@ -327,6 +427,8 @@
       const msg = messageInput.value.trim();
       if (!msg) return;
 
+      // Save the message before clearing
+      const userMessage = messageInput.value;
       messageInput.value = '';
       sendBtn.disabled = true;
       addMessageToDOM('user', msg);
@@ -432,8 +534,10 @@
         }
         transcript.querySelector('.working')?.remove?.();
       } catch (err) {
-        addMessageToDOM('assistant', `Error: ${err.message}`);
+        // Connection failed - restore message and show error
         transcript.querySelector('.working')?.remove?.();
+        messageInput.value = userMessage;
+        addMessageToDOM('assistant', 'The connection dropped before that finished. Your message is still here, press Send to try again.');
       } finally {
         sendBtn.disabled = false;
         messageInput.focus();
@@ -594,36 +698,157 @@
         badge.textContent = questions.length;
         list.innerHTML = '';
 
+        // Load wisdom sections
+        let sections = [];
+        try {
+          const sectionsRes = await fetch('api/wisdom-sections');
+          if (sectionsRes.ok) {
+            sections = await sectionsRes.json();
+          }
+        } catch (e) {
+          console.error('Failed to load wisdom sections:', e);
+        }
+
         for (const q of questions) {
           const card = document.createElement('div');
           card.className = 'question-card';
+          card.dataset.questionId = q.id;
 
-          const text = document.createElement('div');
-          text.className = 'question-text';
-          text.textContent = q.question;
-          card.appendChild(text);
+          // Question textarea
+          const questionField = document.createElement('div');
+          questionField.className = 'question-field';
+          const questionLabel = document.createElement('label');
+          questionLabel.textContent = 'Question:';
+          const questionTextarea = document.createElement('textarea');
+          questionTextarea.className = 'question-textarea';
+          questionTextarea.value = q.question;
+          questionTextarea.dataset.originalValue = q.question;
+          const questionStatus = document.createElement('div');
+          questionStatus.className = 'question-status';
+          questionField.appendChild(questionLabel);
+          questionField.appendChild(questionTextarea);
+          questionField.appendChild(questionStatus);
+          card.appendChild(questionField);
 
+          // Save on blur
+          questionTextarea.addEventListener('blur', async () => {
+            const newText = questionTextarea.value.trim();
+            if (newText === questionTextarea.dataset.originalValue) return;
+            if (!newText) {
+              questionStatus.textContent = 'Question cannot be empty';
+              questionStatus.className = 'question-status error';
+              questionTextarea.value = questionTextarea.dataset.originalValue;
+              return;
+            }
+            questionStatus.textContent = 'Saving...';
+            questionStatus.className = 'question-status saving';
+            try {
+              const updateRes = await fetch('api/questions/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: q.id, question: newText }),
+              });
+              if (updateRes.ok) {
+                questionTextarea.dataset.originalValue = newText;
+                questionStatus.textContent = 'Saved';
+                questionStatus.className = 'question-status saved';
+                setTimeout(() => {
+                  if (questionStatus.className === 'question-status saved') {
+                    questionStatus.className = 'question-status';
+                  }
+                }, 2000);
+              } else {
+                questionStatus.textContent = 'Failed to save';
+                questionStatus.className = 'question-status error';
+              }
+            } catch (err) {
+              questionStatus.textContent = 'Error: ' + err.message;
+              questionStatus.className = 'question-status error';
+            }
+          });
+
+          // Meta
           const meta = document.createElement('div');
           meta.className = 'question-meta';
           const date = new Date(q.ts).toLocaleDateString() + ' ' + new Date(q.ts).toLocaleTimeString();
-          meta.textContent = date;
+          meta.textContent = 'Submitted: ' + date;
           card.appendChild(meta);
 
+          // Wisdom section field
+          const sectionField = document.createElement('div');
+          sectionField.className = 'question-section-field';
+          const sectionLabel = document.createElement('label');
+          sectionLabel.textContent = 'Publish to section:';
+          const sectionSelect = document.createElement('select');
+          sectionSelect.innerHTML = '<option value="">Select a section...</option>';
+          for (const section of sections) {
+            const option = document.createElement('option');
+            option.value = section;
+            option.textContent = section;
+            sectionSelect.appendChild(option);
+          }
+          const newSectionOption = document.createElement('option');
+          newSectionOption.value = '__new__';
+          newSectionOption.textContent = 'New section...';
+          sectionSelect.appendChild(newSectionOption);
+          sectionField.appendChild(sectionLabel);
+          sectionField.appendChild(sectionSelect);
+
+          const newSectionInput = document.createElement('input');
+          newSectionInput.type = 'text';
+          newSectionInput.placeholder = 'New section name';
+          newSectionInput.className = 'new-section-input';
+          sectionField.appendChild(newSectionInput);
+
+          sectionSelect.addEventListener('change', () => {
+            if (sectionSelect.value === '__new__') {
+              newSectionInput.classList.add('visible');
+              newSectionInput.focus();
+            } else {
+              newSectionInput.classList.remove('visible');
+            }
+          });
+
+          card.appendChild(sectionField);
+
+          // Actions
           const actions = document.createElement('div');
           actions.className = 'question-actions';
 
-          const answerBtn = document.createElement('button');
-          answerBtn.textContent = 'Answer';
-          answerBtn.addEventListener('click', () => {
-            const prompt = `Visitor question: "${q.question}". Draft an answer in my voice using the site's researched content, with citations, and show it to me here. Do not post it to the site until I say so.`;
+          const draftBtn = document.createElement('button');
+          draftBtn.className = 'btn-draft';
+          draftBtn.textContent = 'Draft answer';
+          draftBtn.addEventListener('click', () => {
+            const currentText = questionTextarea.value;
+            const prompt = `Visitor question: "${currentText}". Draft an answer in my voice using the site's researched content, with citations, and show it to me here. Do not post it to the site until I say so.`;
             messageInput.value = prompt;
             messageInput.focus();
           });
-          actions.appendChild(answerBtn);
+          actions.appendChild(draftBtn);
+
+          const publishBtn = document.createElement('button');
+          publishBtn.className = 'btn-publish';
+          publishBtn.textContent = 'Publish to Wisdom';
+          publishBtn.addEventListener('click', () => {
+            const currentText = questionTextarea.value;
+            const selectedSection = sectionSelect.value;
+            if (!selectedSection || selectedSection === '__new__') {
+              const newSectionName = newSectionInput.value.trim();
+              if (!newSectionName) {
+                alert('Please select or create a section');
+                return;
+              }
+            }
+            const sectionName = selectedSection === '__new__' ? newSectionInput.value.trim() : selectedSection;
+            const prompt = `Publish this question and the answer you just drafted to Roy's Wisdom under the section "${sectionName}". Format it as a .lesson card matching the others: the question as the heading, my answer beneath, keep the citations. Anonymize the asker completely. Then delete nothing; I will clear the question myself.`;
+            messageInput.value = prompt;
+            messageInput.focus();
+          });
+          actions.appendChild(publishBtn);
 
           const deleteBtn = document.createElement('button');
+          deleteBtn.className = 'btn-delete';
           deleteBtn.textContent = 'Delete';
-          deleteBtn.style.background = '#999';
           deleteBtn.addEventListener('click', async () => {
             if (!confirm('Delete this question?')) return;
             try {

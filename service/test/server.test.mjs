@@ -1181,3 +1181,246 @@ test('POST /api/questions/delete with unknown id returns 404', async () => {
     close();
   }
 });
+
+test('POST /api/questions/update without auth returns 401', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/questions/update`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: 'test-id', question: 'new text' }),
+    });
+    assert.equal(res.status, 401);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/update with auth updates question text by id', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Original Q1"}\n');
+  writeFileSync(questionsFile, '{"id":"2","ts":"2026-01-01T00:01:00Z","question":"Q2"}\n', { flag: 'a' });
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Update question with id 1
+    const updateRes = await fetch(`${baseUrl}/api/questions/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: '1', question: 'Updated Q1' }),
+    });
+    assert.equal(updateRes.status, 200);
+    const data = await updateRes.json();
+    assert.equal(data.ok, true);
+
+    // Verify question was updated
+    const content = readFileSync(questionsFile, 'utf8');
+    const lines = content.trim().split('\n').filter(l => l);
+    const q1 = JSON.parse(lines[0]);
+    assert.equal(q1.id, '1');
+    assert.equal(q1.question, 'Updated Q1');
+    const q2 = JSON.parse(lines[1]);
+    assert.equal(q2.id, '2');
+    assert.equal(q2.question, 'Q2');
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/update with empty question returns 400', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Try to update with empty question
+    const updateRes = await fetch(`${baseUrl}/api/questions/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: '1', question: '' }),
+    });
+    assert.equal(updateRes.status, 400);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/questions/update with unknown id returns 404', async () => {
+  const repoDir = repo();
+  const questionsFile = join(repoDir, 'questions.jsonl');
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: questionsFile,
+    PORT: '0',
+  };
+
+  // Pre-populate questions file
+  writeFileSync(questionsFile, '{"id":"1","ts":"2026-01-01T00:00:00Z","question":"Q1"}\n');
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Try to update unknown question
+    const updateRes = await fetch(`${baseUrl}/api/questions/update`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': sessionCookie,
+      },
+      body: JSON.stringify({ id: 'nonexistent', question: 'Updated text' }),
+    });
+    assert.equal(updateRes.status, 404);
+  } finally {
+    close();
+  }
+});
+
+test('GET /api/wisdom-sections without auth returns 401', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/wisdom-sections`);
+    assert.equal(res.status, 401);
+  } finally {
+    close();
+  }
+});
+
+test('GET /api/wisdom-sections with auth returns h2 section headings from roys-wisdom.html', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
+    PORT: '0',
+  };
+
+  // Create a minimal roys-wisdom.html with sections
+  const wisdomHtml = `<!DOCTYPE html>
+<html>
+<head><title>Roy's Wisdom</title></head>
+<body>
+<h1>Roy's Wisdom</h1>
+<h2>First Section</h2>
+<p>Content here</p>
+<h2>Second Section</h2>
+<p>More content</p>
+<h2>Third Section</h2>
+</body>
+</html>`;
+  writeFileSync(join(repoDir, 'roys-wisdom.html'), wisdomHtml);
+
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    // Login
+    const loginRes = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'correct-password' }),
+    });
+    const setCookie = loginRes.headers.get('set-cookie');
+    const sessionCookie = setCookie.split(';')[0];
+
+    // Get wisdom sections
+    const res = await fetch(`${baseUrl}/api/wisdom-sections`, {
+      headers: { 'Cookie': sessionCookie },
+    });
+    assert.equal(res.status, 200);
+    const sections = await res.json();
+    assert.ok(Array.isArray(sections));
+    assert.equal(sections.length, 3);
+    assert.equal(sections[0], 'First Section');
+    assert.equal(sections[1], 'Second Section');
+    assert.equal(sections[2], 'Third Section');
+  } finally {
+    close();
+  }
+});

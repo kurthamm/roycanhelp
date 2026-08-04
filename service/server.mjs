@@ -317,6 +317,79 @@ export function createApp({ env, runTurn }) {
     }
   });
 
+  // Update question endpoint (auth)
+  app.post('/api/questions/update', requireAuth, express.json(), (req, res) => {
+    const { id, question } = req.body;
+    if (!id) {
+      return res.status(400).send('Missing id');
+    }
+    if (!question || !String(question).trim()) {
+      return res.status(400).send('Question cannot be empty');
+    }
+
+    try {
+      if (!existsSync(env.QUESTIONS_FILE)) {
+        return res.status(404).send('Question not found');
+      }
+
+      const content = readFileSync(env.QUESTIONS_FILE, 'utf8');
+      const lines = content.split('\n').filter(l => l.trim());
+      const updated = [];
+      let found = false;
+
+      for (const line of lines) {
+        try {
+          const q = JSON.parse(line);
+          if (q.id === id) {
+            found = true;
+            q.question = String(question).trim();
+            updated.push(JSON.stringify(q));
+          } else {
+            updated.push(line);
+          }
+        } catch (e) {
+          console.error('Failed to parse question line:', e);
+          updated.push(line);
+        }
+      }
+
+      if (!found) {
+        return res.status(404).send('Question not found');
+      }
+
+      // Rewrite file with updated question
+      writeFileSync(env.QUESTIONS_FILE, updated.join('\n') + '\n');
+      res.json({ ok: true });
+    } catch (err) {
+      console.error('Failed to update question:', err);
+      res.status(500).send(err.message);
+    }
+  });
+
+  // Get wisdom sections endpoint (auth)
+  app.get('/api/wisdom-sections', requireAuth, (req, res) => {
+    try {
+      const wisdomFile = join(env.SITE_DIR, 'roys-wisdom.html');
+      if (!existsSync(wisdomFile)) {
+        return res.status(404).send('Wisdom file not found');
+      }
+
+      const content = readFileSync(wisdomFile, 'utf8');
+      const sections = [];
+      const h2Regex = /<h2>([^<]+)<\/h2>/g;
+      let match;
+
+      while ((match = h2Regex.exec(content)) !== null) {
+        sections.push(match[1]);
+      }
+
+      res.json(sections);
+    } catch (err) {
+      console.error('Failed to read wisdom sections:', err);
+      res.status(500).send(err.message);
+    }
+  });
+
   // Upload endpoint with manual body parsing
   app.post('/api/upload', requireAuth, async (req, res) => {
     try {
