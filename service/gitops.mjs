@@ -38,5 +38,10 @@ export async function undoLast(repoDir) {
   if (last.author !== EXPECTED_AUTHOR || last.email !== EXPECTED_EMAIL) throw new Error('last commit was not made by chat');
   if (last.message.startsWith('Revert ')) throw new Error('nothing to undo — the last change was already undone; ask in chat to restore older versions');
   await git(repoDir, 'revert', '--no-edit', 'HEAD');
+  try {
+    await git(repoDir, 'push', 'origin', 'HEAD:main');
+  } catch (err) {
+    console.error(`PUSH FAILED after undo: ${err.message}`);
+  }
   return last;
 }
