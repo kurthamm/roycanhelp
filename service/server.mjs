@@ -26,6 +26,24 @@ function writeQuestions(file, questions) {
   writeFileSync(file, questions.map((q) => JSON.stringify(q)).join('\n') + (questions.length ? '\n' : ''));
 }
 
+// The model sometimes wraps a draft in conversation. The card needs the answer only.
+// Drafts arrive with light markdown. Convert links and bold; everything else stays literal.
+function markdownToHtml(escaped) {
+  return escaped
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+}
+
+function stripDraftChatter(text) {
+  let out = (text || '').trim();
+  const lead = /^(here'?s?|here is)\b[^\n]*:\s*$/i;
+  const trail = /^(say the word|let me know|tell me which|want me to|i can publish|shall i)\b/i;
+  let lines = out.split('\n');
+  while (lines.length && (lines[0].trim() === '' || lines[0].trim() === '---' || lead.test(lines[0].trim()))) lines.shift();
+  while (lines.length && (lines[lines.length - 1].trim() === '' || lines[lines.length - 1].trim() === '---' || trail.test(lines[lines.length - 1].trim()))) lines.pop();
+  return lines.join('\n').trim();
+}
+
 function validateEnv(env) {
   const missing = REQUIRED_ENV.filter(key => !env[key]);
   if (missing.length > 0) {
@@ -423,7 +441,14 @@ export function createApp({ env, runTurn, runDraftTurn }) {
       // Build prompt for drafting answer (read-only mode)
       const draftPrompt = `A visitor asked: "${question.question}"
 
-Draft a short answer to this question in my voice, grounded in the site's existing content. Include citations to specific pages. Keep it concise, plain prose suitable for a Wisdom card, with no preamble or chat pleasantries. Answer only, no explanation or discussion.`;
+Write the answer itself and nothing else.
+
+Rules for your output:
+- Output ONLY the answer text. No preamble, no "here is the draft", no sign off, no offer to publish, no asking which section, no horizontal rules, no headings, no restating of the question.
+- Your entire response is pasted directly into a card on the site, so the first character must be the first word of the answer and the last character must be the end of the answer.
+- Roy's voice: first person, plain language, sardonic about bureaucracy but never about kids or families.
+- Ground it in the site's existing researched content and cite the regulation or the page where a claim comes from.
+- A few short paragraphs. End with one sentence of what to actually do.`;
 
       try {
         const { usage, summary } = await runDraftTurn({
@@ -435,14 +460,16 @@ Draft a short answer to this question in my voice, grounded in the site's existi
           },
         });
 
+        const cleaned = stripDraftChatter(summary);
+
         // Persist the final answer so it survives a reload and is not re-drafted.
         const updated = readQuestions(env.QUESTIONS_FILE).map((q) =>
-          q.id === id ? { ...q, draft: summary } : q
+          q.id === id ? { ...q, draft: cleaned } : q
         );
         writeQuestions(env.QUESTIONS_FILE, updated);
         if (usage) logUsage(env.USAGE_LOG, { ts: new Date().toISOString(), kind: 'draft', ...usage });
 
-        res.write(`event: done\ndata: ${JSON.stringify({ ok: true, draft: summary })}\n\n`);
+        res.write(`event: done\ndata: ${JSON.stringify({ ok: true, draft: cleaned })}\n\n`);
         res.end();
       } catch (err) {
         res.write(`event: error\ndata: ${err.message}\n\n`);
@@ -500,16 +527,14 @@ Draft a short answer to this question in my voice, grounded in the site's existi
 
       // Build the lesson card HTML
       const questionText = escapeHtml(question.question);
-      const answerText = escapeHtml(question.draft);
-
-      // Split answer into paragraphs, wrap last in strong if it reads like takeaway
-      const paragraphs = answerText.split('\n').filter(p => p.trim());
+      // Escape first, then convert the small amount of markdown the draft may contain.
+      const paragraphs = escapeHtml(question.draft).split('\n').filter((p) => p.trim());
       const lessonContent = paragraphs.map((p, idx) => {
-        // Wrap final paragraph in strong to match existing format
+        const body = markdownToHtml(p);
         if (idx === paragraphs.length - 1 && paragraphs.length > 1) {
-          return `<p><strong>${p}</strong></p>`;
+          return `<p><strong>${body}</strong></p>`;
         }
-        return `<p>${p}</p>`;
+        return `<p>${body}</p>`;
       }).join('');
 
       const lessonCard = `<div class="lesson">
