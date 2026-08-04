@@ -52,10 +52,12 @@
       display: flex;
       overflow: hidden;
       gap: 0;
+      min-height: 0;
     }
 
     .chat-column {
       flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -80,6 +82,12 @@
       .workspace-column {
         display: flex;
       }
+    }
+
+    .chat-column .input-area {
+      flex-shrink: 0;
+      border-top: 2px solid #d4c9be;
+      border-right: none;
     }
 
     .transcript-container {
@@ -492,6 +500,14 @@
   <div class="main-container">
     <div class="chat-column">
       <div class="transcript-container" id="transcript"></div>
+      <div class="input-area">
+        <textarea id="message-input" placeholder="Tell me what to change on your site..." autofocus></textarea>
+        <div class="button-row">
+          <button id="attach-btn">📎 Attach</button>
+          <button id="send-btn">Send</button>
+        </div>
+        <input type="file" id="file-input" style="display:none" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,application/rtf,application/vnd.oasis.opendocument.text">
+      </div>
     </div>
 
     <div class="splitter" id="splitter" role="separator" aria-orientation="vertical"
@@ -508,14 +524,6 @@
     </div>
   </div>
 
-  <div class="input-area">
-    <textarea id="message-input" placeholder="Tell me what to change on your site..." autofocus></textarea>
-    <div class="button-row">
-      <button id="attach-btn">📎 Attach</button>
-      <button id="send-btn">Send</button>
-    </div>
-    <input type="file" id="file-input" style="display:none" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,application/rtf,application/vnd.oasis.opendocument.text">
-  </div>
 
   <script>
     const transcript = document.getElementById('transcript');
