@@ -795,6 +795,74 @@
     undoBtn.addEventListener('click', undoLastChange);
 
     // Load questions from queue
+    // One implementation of the drafting stream, used by both the automatic draft
+    // and the Redraft button. Narration goes to the status line; the finished
+    // answer arrives once, on the done event.
+    async function requestDraft(id, answerTextarea, answerStatus) {
+      answerStatus.textContent = 'Drafting...';
+      answerStatus.className = 'answer-status drafting';
+      answerTextarea.value = '';
+      answerTextarea.dataset.originalValue = '';
+      try {
+        const res = await fetch('api/questions/draft', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id }),
+        });
+        if (!res.ok) {
+          answerStatus.textContent = 'Could not start drafting. Press Redraft to try again.';
+          answerStatus.className = 'answer-status error';
+          return;
+        }
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let draft = '';
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const frames = buffer.split('\n\n');
+          buffer = frames.pop() || '';
+          for (const frame of frames) {
+            if (!frame.trim()) continue;
+            let type = '';
+            let data = '';
+            for (const line of frame.split('\n')) {
+              if (line.startsWith('event: ')) type = line.slice(7).trim();
+              else if (line.startsWith('data: ')) data = line.slice(6);
+            }
+            if (type === 'progress') {
+              try {
+                const note = (JSON.parse(data).text || '').trim().split('\n')[0];
+                if (note) answerStatus.textContent = 'Working: ' + note.slice(0, 70);
+              } catch (e) {
+                answerStatus.textContent = 'Working...';
+              }
+            } else if (type === 'done') {
+              try { draft = (JSON.parse(data).draft || '').trim(); } catch (e) { draft = ''; }
+            } else if (type === 'error') {
+              answerStatus.textContent = 'Drafting failed. Press Redraft to try again.';
+              answerStatus.className = 'answer-status error';
+              return;
+            }
+          }
+        }
+        if (draft) {
+          answerTextarea.value = draft;
+          answerTextarea.dataset.originalValue = draft;
+          answerStatus.textContent = 'Draft ready';
+          answerStatus.className = 'answer-status saved';
+        } else {
+          answerStatus.textContent = 'The draft came back empty. Press Redraft to try again.';
+          answerStatus.className = 'answer-status error';
+        }
+      } catch (err) {
+        answerStatus.textContent = 'The connection dropped while drafting. Press Redraft to try again.';
+        answerStatus.className = 'answer-status error';
+      }
+    }
+
     async function loadQuestions() {
       try {
         const res = await fetch('api/questions');
@@ -910,98 +978,9 @@
           answerField.appendChild(answerStatus);
           card.appendChild(answerField);
 
-          // If no draft exists, request one automatically when card renders
+          // Draft automatically the first time a question appears.
           if (!q.draft) {
-            answerStatus.textContent = 'Drafting...';
-            answerStatus.className = 'answer-status drafting';
-
-            (async () => {
-              try {
-                const draftRes = await fetch('api/questions/draft', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ id: q.id }),
-                });
-
-                if (!draftRes.ok) {
-                  answerStatus.textContent = 'Failed to draft answer';
-                  answerStatus.className = 'answer-status error';
-                  return;
-                }
-
-                let draftText = '';
-                const reader = draftRes.body.getReader();
-                const decoder = new TextDecoder();
-                let buffer = '';
-
-                while (true) {
-                  const { done, value } = await reader.read();
-                  if (done) break;
-                  const chunk = decoder.decode(value, { stream: true });
-                  buffer += chunk;
-
-                  // Process complete frames (separated by \n\n)
-                  const frames = buffer.split('\n\n');
-                  buffer = frames.pop() || '';
-
-                  for (const frame of frames) {
-                    if (!frame.trim()) continue;
-
-                    let eventType = 'text';
-                    let eventData = '';
-                    const lines = frame.split('\n');
-
-                    for (const line of lines) {
-                      if (line.startsWith('event: ')) {
-                        eventType = line.slice(7);
-                      } else if (line.startsWith('data: ')) {
-                        eventData = line.slice(6);
-                      }
-                    }
-
-                    // Progress events are the agent thinking out loud. They belong in
-                    // the status line, never in the answer box.
-                    if (eventType === 'progress') {
-                      try {
-                        const note = JSON.parse(eventData).text.trim().split('\n')[0];
-                        if (note) answerStatus.textContent = 'Working: ' + note.slice(0, 80);
-                      } catch (e) {
-                        answerStatus.textContent = 'Working...';
-                      }
-                    }
-                    // The finished answer arrives once, on done.
-                    if (eventType === 'done') {
-                      try {
-                        draftText = (JSON.parse(eventData).draft || '').trim();
-                      } catch (e) {
-                        draftText = '';
-                      }
-                      answerTextarea.value = draftText;
-                      answerTextarea.dataset.originalValue = draftText;
-                    }
-                    if (eventType === 'error') {
-                      answerStatus.textContent = 'Drafting failed. Press Redraft to try again.';
-                      answerStatus.className = 'answer-status error';
-                    }
-                  }
-                }
-
-                if (draftText.trim()) {
-                  {
-                    answerStatus.textContent = 'Draft ready';
-                    answerStatus.className = 'answer-status saved';
-                    setTimeout(() => {
-                      if (answerStatus.className === 'answer-status saved') {
-                        answerStatus.className = 'answer-status';
-                      }
-                    }, 2000);
-                  }
-                }
-              } catch (err) {
-                answerStatus.textContent = 'Error drafting: ' + err.message;
-                answerStatus.className = 'answer-status error';
-              }
-            })();
+            requestDraft(q.id, answerTextarea, answerStatus);
           }
 
           // Save answer on blur
@@ -1090,94 +1069,7 @@
           const redraftBtn = document.createElement('button');
           redraftBtn.className = 'btn-redraft';
           redraftBtn.textContent = 'Redraft';
-          redraftBtn.addEventListener('click', async () => {
-            answerStatus.textContent = 'Drafting...';
-            answerStatus.className = 'answer-status drafting';
-            answerTextarea.value = '';
-            answerTextarea.dataset.originalValue = '';
-
-            try {
-              const draftRes = await fetch('api/questions/draft', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: q.id }),
-              });
-
-              if (!draftRes.ok) {
-                answerStatus.textContent = 'Failed to draft';
-                answerStatus.className = 'answer-status error';
-                return;
-              }
-
-              let draftText = '';
-              const reader = draftRes.body.getReader();
-              const decoder = new TextDecoder();
-              let buffer = '';
-
-              while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-                const chunk = decoder.decode(value, { stream: true });
-                buffer += chunk;
-
-                const frames = buffer.split('\n\n');
-                buffer = frames.pop() || '';
-
-                for (const frame of frames) {
-                  if (!frame.trim()) continue;
-
-                  let eventType = 'text';
-                  let eventData = '';
-                  const lines = frame.split('\n');
-
-                  for (const line of lines) {
-                    if (line.startsWith('event: ')) {
-                      eventType = line.slice(7);
-                    } else if (line.startsWith('data: ')) {
-                      eventData = line.slice(6);
-                    }
-                  }
-
-                  if (eventType === 'text') {
-                    draftText += eventData;
-                    answerTextarea.value = draftText;
-                    answerTextarea.dataset.originalValue = draftText;
-                  }
-                }
-              }
-
-              if (buffer.trim()) {
-                const lines = buffer.split('\n');
-                for (const line of lines) {
-                  if (line.startsWith('data: ')) {
-                    draftText += line.slice(6);
-                  }
-                }
-                answerTextarea.value = draftText;
-                answerTextarea.dataset.originalValue = draftText;
-              }
-
-              if (draftText.trim()) {
-                const updateRes = await fetch('api/questions/update', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ id: q.id, draft: draftText }),
-                });
-                if (updateRes.ok) {
-                  answerStatus.textContent = 'Draft ready';
-                  answerStatus.className = 'answer-status saved';
-                  setTimeout(() => {
-                    if (answerStatus.className === 'answer-status saved') {
-                      answerStatus.className = 'answer-status';
-                    }
-                  }, 2000);
-                }
-              }
-            } catch (err) {
-              answerStatus.textContent = 'Error: ' + err.message;
-              answerStatus.className = 'answer-status error';
-            }
-          });
+          redraftBtn.addEventListener('click', () => requestDraft(q.id, answerTextarea, answerStatus));
           actions.appendChild(redraftBtn);
 
           const publishBtn = document.createElement('button');
