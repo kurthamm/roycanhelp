@@ -16,6 +16,14 @@ export async function commitAll(repoDir, message) {
   const { stdout: status } = await git(repoDir, 'status', '--porcelain');
   if (!status.trim()) return null;
   await git(repoDir, 'commit', '--author', CHAT_AUTHOR, '-m', message);
+  // Push to GitHub so every change Roy makes lands in the repo, not just on this
+  // server. A push failure (network, auth) must not lose the commit, which is
+  // already safe locally, so it is reported and rethrown by the caller's logger.
+  try {
+    await git(repoDir, 'push', 'origin', 'HEAD:main');
+  } catch (err) {
+    console.error(`PUSH FAILED after commit: ${err.message}`);
+  }
   return (await git(repoDir, 'rev-parse', 'HEAD')).stdout.trim();
 }
 
