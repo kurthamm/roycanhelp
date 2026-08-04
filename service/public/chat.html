@@ -63,7 +63,9 @@
 
     .workspace-column {
       display: none;
-      width: 26rem;
+      width: var(--workspace-width, 26rem);
+      min-width: 18rem;
+      max-width: 70vw;
       border-left: 2px solid #d4c9be;
       background: var(--cream);
       flex-direction: column;
@@ -75,6 +77,7 @@
     }
 
     @media (min-width: 1000px) {
+      .splitter { display: block; }
       .workspace-column {
         display: flex;
       }
@@ -196,6 +199,36 @@
       padding: 0.75rem 0.25rem;
       color: #5a5248;
       font-style: italic;
+    }
+
+    .splitter {
+      display: none;
+      flex: 0 0 10px;
+      cursor: col-resize;
+      background: transparent;
+      border: none;
+      padding: 0;
+      position: relative;
+    }
+    .splitter::before {
+      content: "";
+      position: absolute;
+      inset: 0 4px;
+      background: #d4c9be;
+      border-radius: 2px;
+    }
+    .splitter:hover::before,
+    .splitter:focus-visible::before {
+      background: var(--red);
+      inset: 0 3px;
+    }
+    .splitter:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 2px;
+    }
+    body.is-resizing {
+      cursor: col-resize;
+      user-select: none;
     }
 
     .questions-panel {
@@ -374,7 +407,7 @@
       border-radius: 4px;
       font-family: Georgia, serif;
       font-size: 1rem;
-      min-height: 8rem;
+      min-height: 14rem;
       resize: vertical;
       background: inherit;
       color: inherit;
@@ -457,6 +490,9 @@
     <div class="chat-column">
       <div class="transcript-container" id="transcript"></div>
     </div>
+
+    <div class="splitter" id="splitter" role="separator" aria-orientation="vertical"
+         aria-label="Resize the chat and questions areas" tabindex="0"></div>
 
     <div class="workspace-column" id="workspace-column">
       <div class="questions-panel" id="questions-panel">
@@ -798,6 +834,51 @@
     // One implementation of the drafting stream, used by both the automatic draft
     // and the Redraft button. Narration goes to the status line; the finished
     // answer arrives once, on the done event.
+    // Draggable splitter between the chat and the questions workspace.
+    (function setupSplitter() {
+      const splitter = document.getElementById('splitter');
+      const root = document.documentElement;
+      const saved = localStorage.getItem('roy-workspace-width');
+      if (saved) root.style.setProperty('--workspace-width', saved);
+
+      const clamp = (px) => Math.min(Math.max(px, 288), window.innerWidth * 0.7);
+      const setWidth = (px) => {
+        const value = clamp(px) + 'px';
+        root.style.setProperty('--workspace-width', value);
+        localStorage.setItem('roy-workspace-width', value);
+      };
+
+      let dragging = false;
+      const onMove = (e) => {
+        if (!dragging) return;
+        const x = e.touches ? e.touches[0].clientX : e.clientX;
+        setWidth(window.innerWidth - x);
+      };
+      const stop = () => {
+        dragging = false;
+        document.body.classList.remove('is-resizing');
+      };
+      const start = (e) => {
+        dragging = true;
+        document.body.classList.add('is-resizing');
+        e.preventDefault();
+      };
+
+      splitter.addEventListener('mousedown', start);
+      splitter.addEventListener('touchstart', start, { passive: false });
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('touchmove', onMove, { passive: false });
+      window.addEventListener('mouseup', stop);
+      window.addEventListener('touchend', stop);
+
+      splitter.addEventListener('keydown', (e) => {
+        const current = document.getElementById('workspace-column').getBoundingClientRect().width;
+        if (e.key === 'ArrowLeft') { setWidth(current + 32); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { setWidth(current - 32); e.preventDefault(); }
+      });
+      splitter.addEventListener('dblclick', () => setWidth(416));
+    })();
+
     async function requestDraft(id, answerTextarea, answerStatus) {
       answerStatus.textContent = 'Drafting...';
       answerStatus.className = 'answer-status drafting';
