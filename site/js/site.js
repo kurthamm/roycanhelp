@@ -1,6 +1,46 @@
 // Roy Can Help — glossary tooltips + state picker
 // Glossary tooltips: <span class="term" data-def="...">word</span>
 document.addEventListener('DOMContentLoaded', () => {
+  // Secondary navigation disclosure control (mobile)
+  const toggle = document.querySelector('.nav-secondary-toggle');
+  const navSecondary = document.getElementById('nav-secondary');
+
+  if (toggle && navSecondary) {
+    toggle.addEventListener('click', () => {
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !isExpanded);
+      navSecondary.setAttribute('aria-expanded', !isExpanded);
+    });
+
+    // Close menu when clicking on a link (for mobile)
+    const secondaryLinks = navSecondary.querySelectorAll('a');
+    secondaryLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        navSecondary.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Sticky header: check if we should apply sticky styles
+  const masthead = document.querySelector('.masthead');
+  const navPrimary = document.querySelector('nav.nav-primary');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (masthead && !prefersReduced) {
+    const stickyThreshold = masthead.offsetHeight + navPrimary.offsetHeight;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > stickyThreshold) {
+        masthead.classList.add('sticky-compact');
+        navPrimary.classList.add('sticky-compact');
+      } else {
+        masthead.classList.remove('sticky-compact');
+        navPrimary.classList.remove('sticky-compact');
+      }
+    });
+  }
+
   // Glossary tooltips
   let tooltipCounter = 0;
   for (const el of document.querySelectorAll('.term')) {

@@ -115,106 +115,229 @@ main, article, section {
   padding: 0 1rem;
 }
 
-/* Masthead (header shell) */
+/* Masthead & Navigation: Connected Header Unit */
 .masthead {
-  background-color: var(--ink);
-  color: var(--bg);
-  padding: 2rem 1rem;
+  background-color: var(--bg);
+  color: var(--ink);
+  padding: 2rem 1rem 0;
   text-align: center;
-  margin-bottom: 2rem;
+  border-bottom: 3px solid var(--ink);
+  position: relative;
+  z-index: 50;
 }
 
 .masthead .site-name {
-  font-size: 1.75rem;
+  font-size: 2rem;
   margin: 0;
-  transform: none;
+  font-weight: 900;
+  font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  letter-spacing: -0.02em;
+  transform: rotate(-0.5deg);
 }
 
 .masthead .tagline {
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
-  opacity: 0.9;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0;
+  opacity: 0.85;
   font-family: Georgia, serif;
   font-weight: normal;
+  margin-bottom: 1.5rem;
 }
 
-/* Navigation */
-nav {
-  background-color: var(--red);
-  padding: 0;
-  margin-bottom: 0;
-}
-
+/* Primary Navigation: Main destinations */
 nav.nav-primary {
-  margin-bottom: 1rem;
+  background-color: var(--bg);
+  padding: 1rem 1rem 0;
+  margin: 0;
+  border-bottom: 2px solid var(--ink);
 }
 
-nav ul {
+nav.nav-primary ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 46rem;
   margin: 0 auto;
-}
-
-nav.nav-primary ul {
   padding: 0;
-}
-
-nav.nav-secondary ul {
-  padding: 0;
-}
-
-nav li {
-  flex: 1 1 auto;
-  min-width: 100px;
 }
 
 nav.nav-primary li {
-  flex: 1 1 auto;
-  min-width: 120px;
-}
-
-nav.nav-secondary li {
-  flex: 1 1 auto;
-  min-width: 90px;
-}
-
-nav a {
-  display: block;
-  padding: 0.75rem;
-  color: var(--bg);
-  text-decoration: none;
-  text-align: center;
-  font-weight: 700;
-  border-bottom: 3px solid transparent;
-  font-size: 0.9rem;
+  flex: 0 1 auto;
+  min-width: auto;
 }
 
 nav.nav-primary a {
-  padding: 0.75rem;
-  font-size: 0.95rem;
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  color: var(--ink);
+  text-decoration: none;
+  text-align: center;
   font-weight: 700;
+  font-size: 0.95rem;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+nav.nav-primary a:hover {
+  color: var(--red);
+}
+
+nav.nav-primary a:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* Active navigation indicator */
+nav.nav-primary a[aria-current="page"] {
+  color: var(--red);
+  font-weight: 900;
+  border-bottom: 3px solid var(--red);
+  padding-bottom: calc(0.75rem - 3px);
+}
+
+/* Secondary Navigation: Topics index */
+nav.nav-secondary {
+  background-color: var(--bg);
+  padding: 0.75rem 1rem 1rem;
+  margin: 0;
+  border-bottom: 1px solid var(--gray);
+}
+
+nav.nav-secondary ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0;
+  gap: 0.5rem;
+}
+
+nav.nav-secondary li {
+  flex: 0 1 auto;
+  min-width: auto;
 }
 
 nav.nav-secondary a {
-  padding: 0.6rem;
-  font-size: 0.8rem;
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  color: var(--ink);
+  text-decoration: none;
+  text-align: center;
   font-weight: 600;
+  font-size: 0.8rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-nav a:hover, nav a:focus {
+nav.nav-secondary a:hover {
   background-color: var(--yellow);
   color: var(--ink);
-  outline: none;
-  border-bottom-color: var(--ink);
 }
 
-nav a:focus-visible {
+nav.nav-secondary a:focus-visible {
   outline: 3px solid var(--red);
   outline-offset: 2px;
+}
+
+nav.nav-secondary a[aria-current="page"] {
   background-color: var(--yellow);
+  color: var(--ink);
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+/* Mobile: Secondary nav disclosure control */
+.nav-secondary-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--ink);
+  font-weight: 700;
+  padding: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.nav-secondary-toggle:hover {
+  background-color: var(--yellow);
+}
+
+.nav-secondary-toggle:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .nav-secondary-toggle {
+    display: block;
+  }
+
+  nav.nav-secondary {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-bottom: none;
+  }
+
+  nav.nav-secondary[aria-expanded="true"] {
+    max-height: 500px;
+    padding: 0.75rem 1rem 1rem;
+    border-bottom: 1px solid var(--gray);
+  }
+
+  nav.nav-secondary ul {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  nav.nav-secondary li {
+    width: 100%;
+  }
+
+  nav.nav-secondary a {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+  }
+}
+
+/* Sticky compact header on scroll */
+.masthead.sticky-compact {
+  padding: 0.5rem 1rem;
+  border-bottom: 3px solid var(--ink);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.masthead.sticky-compact .site-name {
+  font-size: 1.3rem;
+  margin: 0.25rem 0;
+}
+
+.masthead.sticky-compact .tagline {
+  display: none;
+}
+
+/* Scrolled state: compact primary nav in header */
+nav.nav-primary.sticky-compact {
+  position: sticky;
+  top: 60px;
+  z-index: 99;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+nav.nav-primary.sticky-compact a {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
 }
 
 /* Hero intro */
@@ -545,13 +668,30 @@ footer a:hover {
     font-size: 1.5rem;
   }
 
-  .masthead .site-name {
-    font-size: 1.4rem;
+  .masthead {
+    padding: 1.5rem 1rem 0;
   }
 
-  nav a {
-    padding: 0.6rem;
+  .masthead .site-name {
+    font-size: 1.5rem;
+  }
+
+  .masthead .tagline {
     font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  nav.nav-primary {
+    padding: 0.75rem 1rem 0;
+  }
+
+  nav.nav-primary a {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  nav.nav-primary a[aria-current="page"] {
+    padding-bottom: calc(0.6rem - 3px);
   }
 
   .hero {
