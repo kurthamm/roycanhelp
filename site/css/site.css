@@ -968,3 +968,26 @@ nav.nav-secondary ul {
 /* Hidden tooltips must not stretch the page */
 .tooltip:not(.visible) { display: none; }
 .term { position: relative; }
+
+
+/* Secondary nav: distribute evenly so rows stay balanced instead of orphaning items */
+@media (min-width: 769px) {
+  nav.nav-secondary ul {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    justify-content: stretch;
+    gap: 0.25rem clamp(0.25rem, 1vw, 0.75rem);
+  }
+  nav.nav-secondary li { min-width: 0; }
+  nav.nav-secondary a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (min-width: 769px) and (max-width: 1099px) {
+  nav.nav-secondary ul { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
