@@ -1,6 +1,6 @@
 import express from 'express';
 import { makeSession, verifySession, checkPassword } from './auth.mjs';
-import { commitAll, undoLast } from './gitops.mjs';
+import { commitAll } from './gitops.mjs';
 import { logUsage } from './usage.mjs';
 import { mkdirSync, existsSync, writeFileSync, readFileSync, appendFileSync } from 'node:fs';
 import { join, resolve, sep } from 'node:path';
@@ -227,15 +227,6 @@ export function createApp({ env, runTurn, runDraftTurn }) {
     } catch (err) {
       res.write(`event: error\ndata: ${err.message}\n\n`);
       res.end();
-    }
-  });
-
-  app.post('/api/undo', requireAuth, async (req, res) => {
-    try {
-      const last = await undoLast(env.SITE_REPO_DIR);
-      res.json({ reverted: last.message });
-    } catch (err) {
-      res.status(409).send(err.message);
     }
   });
 
