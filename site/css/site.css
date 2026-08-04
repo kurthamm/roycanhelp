@@ -904,7 +904,7 @@ main > article > section > * {
 
 /* Wide screens: sticky table of contents beside the prose */
 @media (min-width: 1100px) {
-  main {
+  main:has(> .page-toc) {
     display: grid;
     grid-template-columns: 15rem minmax(0, 1fr);
     gap: clamp(2rem, 4vw, 4rem);
