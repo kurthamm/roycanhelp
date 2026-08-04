@@ -124,7 +124,7 @@ main, article, section {
   margin-bottom: 2rem;
 }
 
-.masthead h1 {
+.masthead .site-name {
   font-size: 1.75rem;
   margin: 0;
   transform: none;
@@ -545,7 +545,7 @@ footer a:hover {
     font-size: 1.5rem;
   }
 
-  .masthead h1 {
+  .masthead .site-name {
     font-size: 1.4rem;
   }
 
