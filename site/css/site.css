@@ -775,7 +775,8 @@ footer a:hover {
 
 .lesson p:last-of-type {
   background-color: var(--color-highlight);
-  color: var(--color-bg);
+  /* Ink on the yellow strip. Cream on yellow measured 1.3:1 and was unreadable. */
+  color: var(--color-text);
   margin-left: calc(-1 * var(--space-md));
   margin-right: calc(-1 * var(--space-md));
   margin-bottom: 0;
