@@ -2,6 +2,7 @@ import { query } from '@anthropic-ai/claude-agent-sdk';
 import { ROY_SYSTEM_PROMPT } from './prompt.mjs';
 
 const ALLOWED_TOOLS = [
+  'WebFetch', 'WebSearch',
   'Read', 'Edit', 'Write', 'Glob', 'Grep',
   'Bash(make:*)', 'Bash(git status:*)', 'Bash(git log:*)', 'Bash(git diff:*)', 'Bash(pandoc:*)',
 ];
