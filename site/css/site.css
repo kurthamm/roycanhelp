@@ -466,6 +466,11 @@ footer a:hover {
   color: var(--ink);
 }
 
+.lesson ul {
+  margin: 1rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
 .lesson p:last-of-type {
   background-color: var(--yellow);
   margin-left: -1.5rem;
