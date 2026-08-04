@@ -12,17 +12,19 @@
   <header class="masthead">
     <p class="site-name">Roy Can Help</p>
     <p class="tagline">A field guide from a dad who's been in the waiting room</p>
+
+    <nav class="nav-primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ask-roy.html" aria-current="page">Ask Roy</a></li>
+        <li><a href="roys-wisdom.html">Roy's Wisdom</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <nav>
-    <ul class="nav-primary">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="ask-roy.html">Ask Roy</a></li>
-      <li><a href="roys-wisdom.html">Roy's Wisdom</a></li>
-    </ul>
-  </nav>
-  <nav>
-    <ul class="nav-secondary">
+  <button class="nav-secondary-toggle" aria-expanded="false" aria-controls="nav-secondary">Topics</button>
+  <nav class="nav-secondary" id="nav-secondary" aria-expanded="false">
+    <ul>
       <li><a href="diagnosis.html">The Diagnosis</a></li>
       <li><a href="early-intervention.html">Birth to Three</a></li>
       <li><a href="school-ieps.html">School Years</a></li>
