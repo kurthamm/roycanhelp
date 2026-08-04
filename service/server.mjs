@@ -17,6 +17,15 @@ const REQUIRED_ENV = [
   'PORT',
 ];
 
+// Question queue helpers: one JSON record per line.
+function readQuestions(file) {
+  if (!existsSync(file)) return [];
+  return readFileSync(file, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l));
+}
+function writeQuestions(file, questions) {
+  writeFileSync(file, questions.map((q) => JSON.stringify(q)).join('\n') + (questions.length ? '\n' : ''));
+}
+
 function validateEnv(env) {
   const missing = REQUIRED_ENV.filter(key => !env[key]);
   if (missing.length > 0) {
@@ -420,12 +429,20 @@ Draft a short answer to this question in my voice, grounded in the site's existi
         const { usage, summary } = await runDraftTurn({
           message: draftPrompt,
           siteDir: env.SITE_DIR,
+          // Progress only. JSON encode so multi line text cannot break SSE framing.
           onText: (text) => {
-            res.write(`event: text\ndata: ${text}\n\n`);
+            res.write(`event: progress\ndata: ${JSON.stringify({ text })}\n\n`);
           },
         });
 
-        res.write(`event: done\ndata: ${JSON.stringify({ ok: true })}\n\n`);
+        // Persist the final answer so it survives a reload and is not re-drafted.
+        const updated = readQuestions(env.QUESTIONS_FILE).map((q) =>
+          q.id === id ? { ...q, draft: summary } : q
+        );
+        writeQuestions(env.QUESTIONS_FILE, updated);
+        if (usage) logUsage(env.USAGE_LOG, { ts: new Date().toISOString(), kind: 'draft', ...usage });
+
+        res.write(`event: done\ndata: ${JSON.stringify({ ok: true, draft: summary })}\n\n`);
         res.end();
       } catch (err) {
         res.write(`event: error\ndata: ${err.message}\n\n`);

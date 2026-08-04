@@ -959,34 +959,35 @@
                       }
                     }
 
-                    if (eventType === 'text') {
-                      draftText += eventData;
+                    // Progress events are the agent thinking out loud. They belong in
+                    // the status line, never in the answer box.
+                    if (eventType === 'progress') {
+                      try {
+                        const note = JSON.parse(eventData).text.trim().split('\n')[0];
+                        if (note) answerStatus.textContent = 'Working: ' + note.slice(0, 80);
+                      } catch (e) {
+                        answerStatus.textContent = 'Working...';
+                      }
+                    }
+                    // The finished answer arrives once, on done.
+                    if (eventType === 'done') {
+                      try {
+                        draftText = (JSON.parse(eventData).draft || '').trim();
+                      } catch (e) {
+                        draftText = '';
+                      }
                       answerTextarea.value = draftText;
                       answerTextarea.dataset.originalValue = draftText;
                     }
-                  }
-                }
-
-                // Process remaining buffer
-                if (buffer.trim()) {
-                  const lines = buffer.split('\n');
-                  for (const line of lines) {
-                    if (line.startsWith('data: ')) {
-                      draftText += line.slice(6);
+                    if (eventType === 'error') {
+                      answerStatus.textContent = 'Drafting failed. Press Redraft to try again.';
+                      answerStatus.className = 'answer-status error';
                     }
                   }
-                  answerTextarea.value = draftText;
-                  answerTextarea.dataset.originalValue = draftText;
                 }
 
-                // Save the draft to the server
                 if (draftText.trim()) {
-                  const updateRes = await fetch('api/questions/update', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id: q.id, draft: draftText }),
-                  });
-                  if (updateRes.ok) {
+                  {
                     answerStatus.textContent = 'Draft ready';
                     answerStatus.className = 'answer-status saved';
                     setTimeout(() => {
