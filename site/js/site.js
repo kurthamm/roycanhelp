@@ -156,3 +156,40 @@ document.addEventListener('DOMContentLoaded', () => {
     card.innerHTML = '';
   }
 });
+
+
+// Build an on-this-page index from the article's section headings (wide screens only).
+document.addEventListener('DOMContentLoaded', () => {
+  const main = document.getElementById('main');
+  const article = main && main.querySelector('article');
+  if (!main || !article) return;
+  const headings = [...article.querySelectorAll('h2')].filter(h => h.textContent.trim());
+  if (headings.length < 3) return;
+
+  const toc = document.createElement('nav');
+  toc.className = 'page-toc';
+  toc.setAttribute('aria-label', 'On this page');
+  const title = document.createElement('h2');
+  title.textContent = 'On this page';
+  const list = document.createElement('ol');
+  headings.forEach((h, i) => {
+    if (!h.id) h.id = 'section-' + (i + 1);
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.trim();
+    li.append(a);
+    list.append(li);
+  });
+  toc.append(title, list);
+  main.prepend(toc);
+
+  const links = [...list.querySelectorAll('a')];
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      links.forEach(l => l.classList.toggle('is-current', l.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  headings.forEach(h => spy.observe(h));
+});
