@@ -158,6 +158,12 @@
       flex: 1;
     }
 
+    .questions-empty {
+      margin: 0;
+      padding: 0.75rem 0.25rem;
+      color: #5a5248;
+      font-style: italic;
+    }
     .questions-panel {
       padding: 1rem;
       border-top: 2px solid #d4c9be;
@@ -689,7 +695,6 @@
         const res = await fetch('api/questions');
         if (!res.ok) return;
         const questions = await res.json();
-        if (questions.length === 0) return;
 
         const panel = document.getElementById('questions-panel');
         const badge = document.getElementById('questions-badge');
@@ -697,6 +702,16 @@
 
         badge.textContent = questions.length;
         list.innerHTML = '';
+
+        if (questions.length === 0) {
+          const empty = document.createElement('p');
+          empty.className = 'questions-empty';
+          empty.textContent = 'No questions waiting. When someone asks one on the Ask Roy page, it shows up here.';
+          list.appendChild(empty);
+          panel.style.display = 'block';
+          list.classList.add('visible');
+          return;
+        }
 
         // Load wisdom sections
         let sections = [];
@@ -861,7 +876,11 @@
                 card.remove();
                 const remaining = list.querySelectorAll('.question-card').length;
                 if (remaining === 0) {
-                  panel.style.display = 'none';
+                  const empty = document.createElement('p');
+                  empty.className = 'questions-empty';
+                  empty.textContent = 'No questions waiting. When someone asks one on the Ask Roy page, it shows up here.';
+                  list.appendChild(empty);
+                  badge.textContent = '0';
                 } else {
                   badge.textContent = remaining;
                 }
