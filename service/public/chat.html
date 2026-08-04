@@ -513,7 +513,6 @@
     <div class="button-row">
       <button id="attach-btn">📎 Attach</button>
       <button id="send-btn">Send</button>
-      <button id="undo-btn">Undo last change</button>
     </div>
     <input type="file" id="file-input" style="display:none" accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,application/rtf,application/vnd.oasis.opendocument.text">
   </div>
@@ -522,7 +521,6 @@
     const transcript = document.getElementById('transcript');
     const messageInput = document.getElementById('message-input');
     const sendBtn = document.getElementById('send-btn');
-    const undoBtn = document.getElementById('undo-btn');
     const STORAGE_KEY = 'roy-chat-transcript';
 
     // Load transcript from localStorage
@@ -694,30 +692,6 @@
       }
     }
 
-    // Undo last change
-    async function undoLastChange() {
-      if (!confirm('Undo last change? This will revert the last commit.')) return;
-
-      try {
-        const response = await fetch('api/undo', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          addMessageToDOM('assistant', `Reverted: ${data.reverted}`);
-        } else if (response.status === 409) {
-          const error = await response.text();
-          addMessageToDOM('assistant', `Cannot undo: ${error}`);
-        } else {
-          throw new Error(`HTTP ${response.status}`);
-        }
-      } catch (err) {
-        addMessageToDOM('assistant', `Error: ${err.message}`);
-      }
-    }
-
     // Upload file (image or document)
     async function uploadFile(file) {
       const filename = file.name.toLowerCase().replace(/[^a-z0-9._-]/g, '-');
@@ -831,7 +805,6 @@
         sendMessage();
       }
     });
-    undoBtn.addEventListener('click', undoLastChange);
 
     // Load questions from queue
     // One implementation of the drafting stream, used by both the automatic draft
