@@ -32,10 +32,11 @@ body {
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Archivo Black', Impact, sans-serif;
+  font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-weight: 900;
   line-height: 1.2;
   margin: 1.5rem 0 0.75rem 0;
+  letter-spacing: -0.02em;
 }
 
 h1 {
@@ -69,6 +70,44 @@ a:hover, a:focus {
   outline: none;
 }
 
+a:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* Admin link styling */
+.admin-link {
+  color: #666666;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.admin-link:hover {
+  text-decoration: underline;
+}
+
+.admin-link:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* Skip link - visually hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--red);
+  color: var(--bg);
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 /* Layout container */
 main, article, section {
   max-width: 46rem;
@@ -85,7 +124,7 @@ main, article, section {
   margin-bottom: 2rem;
 }
 
-.masthead h1 {
+.masthead .site-name {
   font-size: 1.75rem;
   margin: 0;
   transform: none;
@@ -170,6 +209,12 @@ nav a:hover, nav a:focus {
   color: var(--ink);
   outline: none;
   border-bottom-color: var(--ink);
+}
+
+nav a:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+  background-color: var(--yellow);
 }
 
 /* Hero intro */
@@ -274,6 +319,11 @@ nav a:hover, nav a:focus {
   outline-offset: 2px;
 }
 
+.term:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+
 .tooltip {
   position: absolute;
   bottom: 100%;
@@ -362,7 +412,8 @@ footer a:hover {
   justify-content: center;
   font-weight: 900;
   font-size: 1.1rem;
-  font-family: 'Archivo Black', Impact, sans-serif;
+  font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .journey .stage {
@@ -494,7 +545,7 @@ footer a:hover {
     font-size: 1.5rem;
   }
 
-  .masthead h1 {
+  .masthead .site-name {
     font-size: 1.4rem;
   }
 
