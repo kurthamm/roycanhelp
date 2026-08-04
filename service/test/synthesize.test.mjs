@@ -1,58 +1,158 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, writeFileSync, mkdirSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
-import { execFileSync } from 'node:child_process';
-import { hasNewQuestions } from '../synthesize.mjs';
+import { findCardsMissingTakeaway } from '../synthesize.mjs';
 
-function repo() {
-  const dir = mkdtempSync(join(tmpdir(), 'repo-'));
-  const git = (...a) => execFileSync('git', a, { cwd: dir });
-  git('init', '-b', 'main');
-  git('config', 'user.email', 'test@test'); git('config', 'user.name', 'Test');
-  mkdirSync(join(dir, 'site'), { recursive: true });
-  writeFileSync(join(dir, 'site', 'ask-roy.html'), '<p>v1</p>');
-  git('add', '.'); git('commit', '-m', 'seed');
-  return dir;
-}
-
-test('hasNewQuestions returns true when ask-roy.html changed since marker', async () => {
-  const dir = repo();
-  const git = (...a) => execFileSync('git', a, { cwd: dir, encoding: 'utf8' });
-  const markerHash = git('rev-parse', 'HEAD').trim();
-
-  // Make a change to ask-roy.html
-  writeFileSync(join(dir, 'site', 'ask-roy.html'), '<p>v2</p>');
-  execFileSync('git', ['add', '.'], { cwd: dir });
-  execFileSync('git', ['commit', '-m', 'update ask-roy'], { cwd: dir });
-
-  const hasNew = await hasNewQuestions(dir, markerHash);
-  assert.equal(hasNew, true);
+test('findCardsMissingTakeaway: card with strong takeaway is not flagged', () => {
+  const html = `
+    <div class="lesson">
+      <h3>Test Card</h3>
+      <p>This is the body.</p>
+      <p><strong>This is the takeaway.</strong></p>
+    </div>
+  `;
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 0, 'Card with strong takeaway should not be flagged');
 });
 
-test('hasNewQuestions returns false when ask-roy.html unchanged since marker', async () => {
-  const dir = repo();
-  const git = (...a) => execFileSync('git', a, { cwd: dir, encoding: 'utf8' });
-  const markerHash = git('rev-parse', 'HEAD').trim();
-
-  // Make a change to a different file
-  writeFileSync(join(dir, 'other.txt'), 'change');
-  execFileSync('git', ['add', '.'], { cwd: dir });
-  execFileSync('git', ['commit', '-m', 'update other file'], { cwd: dir });
-
-  const hasNew = await hasNewQuestions(dir, markerHash);
-  assert.equal(hasNew, false);
+test('findCardsMissingTakeaway: card with plain text last paragraph is flagged', () => {
+  const html = `
+    <div class="lesson">
+      <h3>Test Card</h3>
+      <p>This is the body.</p>
+      <p>This is plain text, not wrapped in strong.</p>
+    </div>
+  `;
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 1, 'Card with plain text last paragraph should be flagged');
+  assert.equal(result[0].heading, 'Test Card');
 });
 
-test('hasNewQuestions returns true for null marker (first run)', async () => {
-  const dir = repo();
-  const hasNew = await hasNewQuestions(dir, null);
-  assert.equal(hasNew, true);
+test('findCardsMissingTakeaway: card with single paragraph is flagged', () => {
+  const html = `
+    <div class="lesson">
+      <h3>Single Para Card</h3>
+      <p>Just one paragraph, not in strong.</p>
+    </div>
+  `;
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 1, 'Card with single plain paragraph should be flagged');
+  assert.equal(result[0].heading, 'Single Para Card');
 });
 
-test('hasNewQuestions treats invalid marker as first run', async () => {
-  const dir = repo();
-  const hasNew = await hasNewQuestions(dir, 'nonexistent0000000');
-  assert.equal(hasNew, true);
+test('findCardsMissingTakeaway: card with partial strong in last paragraph is flagged', () => {
+  const html = `
+    <div class="lesson">
+      <h3>Partial Strong Card</h3>
+      <p>Text with <strong>only partial</strong> strong wrapping.</p>
+    </div>
+  `;
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 1, 'Card with partial strong wrapping should be flagged');
+});
+
+test('findCardsMissingTakeaway: card with strong containing links is not flagged', () => {
+  const html = `
+    <div class="lesson">
+      <h3>Card with Link</h3>
+      <p>Some body text.</p>
+      <p><strong>Visit <a href="https://example.com">our site</a> for details.</strong></p>
+    </div>
+  `;
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 0, 'Card with strong wrapping entire paragraph including links should not be flagged');
+});
+
+test('findCardsMissingTakeaway: multiple cards, mixed results', () => {
+  const html = `
+    <div class="lesson">
+      <h3>Good Card</h3>
+      <p>Body text.</p>
+      <p><strong>Good takeaway.</strong></p>
+    </div>
+    <div class="lesson">
+      <h3>Missing Takeaway 1</h3>
+      <p>Body text.</p>
+      <p>Plain text at end.</p>
+    </div>
+    <div class="lesson">
+      <h3>Missing Takeaway 2</h3>
+      <p>Single paragraph.</p>
+    </div>
+  `;
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 2, 'Should find two cards with missing takeaways');
+  assert.equal(result[0].heading, 'Missing Takeaway 1');
+  assert.equal(result[1].heading, 'Missing Takeaway 2');
+});
+
+test('findCardsMissingTakeaway: handles HTML entities in heading', () => {
+  const html = `
+    <div class="lesson">
+      <h3>Card with &quot;quotes&quot;</h3>
+      <p>Body.</p>
+      <p>Missing takeaway.</p>
+    </div>
+  `;
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 1);
+  assert(result[0].heading.includes('&quot;') || result[0].heading.includes('quote'));
+});
+
+test('findCardsMissingTakeaway: empty input returns empty array', () => {
+  const html = '';
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 0);
+});
+
+test('findCardsMissingTakeaway: malformed input does not throw', () => {
+  const html = '<div class="lesson"><h3>No close div';
+  assert.doesNotThrow(() => {
+    findCardsMissingTakeaway(html);
+  });
+});
+
+test('findCardsMissingTakeaway: card with <em> in strong takeaway is not flagged', () => {
+  const html = `
+    <div class="lesson">
+      <h3>Card with Emphasis</h3>
+      <p>Body.</p>
+      <p><strong>Do this <em>now</em> instead.</strong></p>
+    </div>
+  `;
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 0, 'Strong tag wrapping entire paragraph with nested HTML should not be flagged');
+});
+
+test('findCardsMissingTakeaway: card with citation in paragraph before last is not confused', () => {
+  const html = `
+    <div class="lesson">
+      <h3>Citation Card</h3>
+      <p>Main content.</p>
+      <p><em>Citation: some source</em></p>
+      <p><strong>Takeaway.</strong></p>
+    </div>
+  `;
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 0, 'Card should check only the last paragraph');
+});
+
+test('findCardsMissingTakeaway: indexing tracks multiple cards correctly', () => {
+  const html = `
+    <div class="lesson">
+      <h3>Card 0</h3>
+      <p><strong>Good.</strong></p>
+    </div>
+    <div class="lesson">
+      <h3>Card 1</h3>
+      <p>Missing.</p>
+    </div>
+    <div class="lesson">
+      <h3>Card 2</h3>
+      <p><strong>Good.</strong></p>
+    </div>
+  `;
+  const result = findCardsMissingTakeaway(html);
+  assert.equal(result.length, 1);
+  assert.equal(result[0].heading, 'Card 1');
+  assert.equal(result[0].index, 1);
 });

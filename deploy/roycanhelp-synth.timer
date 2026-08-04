@@ -1,5 +1,5 @@
 [Unit]
-Description=Weekly wisdom synthesis for roycanhelp.org
+Description=Weekly takeaway sweep for roycanhelp.org
 Requires=roycanhelp-synth.service
 
 [Timer]
