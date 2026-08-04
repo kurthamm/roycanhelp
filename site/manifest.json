@@ -1,0 +1,32 @@
+{
+  "name": "Roy Can Help: a field guide from a dad who's been in the waiting room",
+  "short_name": "Roy Can Help",
+  "description": "A field guide for parents of children with disabilities. Practical advice from a dad who's been in the waiting room.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "browser",
+  "theme_color": "#1a1a1a",
+  "background_color": "#fdf6e3",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}
