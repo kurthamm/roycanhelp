@@ -156,3 +156,22 @@ test('findCardsMissingTakeaway: indexing tracks multiple cards correctly', () =>
   assert.equal(result[0].heading, 'Card 1');
   assert.equal(result[0].index, 1);
 });
+
+test('a card using the label style takeaway is not flagged', () => {
+  const html = `<div class="lesson">
+    <h3>I tried to keep a filing cabinet.</h3>
+    <p><strong>What happened:</strong> It became a storage unit.</p>
+    <p><strong>Do this instead:</strong> Scan everything to a cloud folder.</p>
+  </div>`;
+  assert.deepEqual(findCardsMissingTakeaway(html), []);
+});
+
+test('a card ending in a plain citation line is flagged', () => {
+  const html = `<div class="lesson">
+    <h3>Something</h3>
+    <p><strong>Do this instead:</strong> Ask in writing.</p>
+    <p>Citation: 34 CFR 300.301</p>
+  </div>`;
+  const found = findCardsMissingTakeaway(html);
+  assert.equal(found.length, 1);
+});

@@ -30,14 +30,16 @@ export function findCardsMissingTakeaway(html) {
       lastParagraph = paraMatch[1];
     }
 
-    // Check if the last paragraph is a single <strong> wrapping the entire content
-    // Valid: <p><strong>text</strong></p> or <p><strong>text with <a> links</strong></p>
-    // Invalid: <p>text</p>, <p>text<strong>partial</strong></p>, <p><strong>partial</strong> text</p>
+    // The page uses two takeaway shapes, both valid:
+    //   <p><strong>the whole sentence</strong></p>
+    //   <p><strong>Do this instead:</strong> the sentence</p>
+    // So a card has a takeaway when its final paragraph opens with a <strong>.
+    // Anything else (plain prose, a citation line, a list) means it is missing one.
     if (lastParagraph !== null) {
       const trimmed = lastParagraph.trim();
-      const isFullyWrapped = /^<strong>[\s\S]*<\/strong>$/.test(trimmed);
+      const hasTakeaway = /^<strong>/.test(trimmed);
 
-      if (!isFullyWrapped) {
+      if (!hasTakeaway) {
         cards.push({
           heading,
           cardHtml: match[0],
