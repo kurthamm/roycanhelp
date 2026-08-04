@@ -1059,3 +1059,34 @@ nav.nav-secondary ul {
     text-align: left;
   }
 }
+
+
+/* Footer: one treatment on every page. Dark ground, so every child element
+   must set its own readable color rather than inheriting page styles. */
+footer .footer-disclaimer {
+  color: var(--color-bg);
+  font-size: 0.95rem;
+  max-width: var(--measure-prose);
+  margin: 0 auto var(--space-md);
+}
+footer .footer-links,
+footer .footer-legal {
+  color: var(--color-bg);
+  text-align: center;
+  margin: 0 auto var(--space-sm);
+}
+footer .footer-links a,
+footer .footer-legal a {
+  color: var(--color-highlight);
+}
+footer a.admin-link {
+  color: #b8ae9f;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+footer a.admin-link:hover,
+footer a.admin-link:focus-visible {
+  color: var(--color-highlight);
+}
+/* The journey prev and next belongs with the page content, never in the footer. */
+footer .journey-nav { display: none; }
