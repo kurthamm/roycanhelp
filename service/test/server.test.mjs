@@ -1600,7 +1600,9 @@ test('POST /api/questions/draft with auth streams SSE draft answer', async () =>
 
     // Read SSE stream
     const text = await draftRes.text();
-    assert.match(text, /event: text\ndata:/);
+    // Progress carries the agent's narration; the finished answer arrives on done.
+    assert.match(text, /event: progress\ndata: \{"text":/);
+    assert.match(text, /event: done\ndata: .*"draft":/);
     assert.match(text, /event: done/);
   } finally {
     close();
