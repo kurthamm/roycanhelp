@@ -793,7 +793,7 @@ test('POST /api/ask without honeypot stores question with id and ts', async () =
     const res = await fetch(`${baseUrl}/api/ask`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: 'Where can I find help?', website: '' }),
+      body: JSON.stringify({ question: 'Where can I find help?', consent: true, website: '' }),
     });
     assert.equal(res.status, 200);
     const data = await res.json();
@@ -829,7 +829,7 @@ test('POST /api/ask with honeypot (website non-empty) returns 200 but stores not
     const res = await fetch(`${baseUrl}/api/ask`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: 'This is spam', website: 'http://spam.com' }),
+      body: JSON.stringify({ question: 'This is spam', consent: true, website: 'http://spam.com' }),
     });
     assert.equal(res.status, 200);
     const data = await res.json();
@@ -860,7 +860,7 @@ test('POST /api/ask with empty question returns 400', async () => {
     const res = await fetch(`${baseUrl}/api/ask`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: '', website: '' }),
+      body: JSON.stringify({ question: '', consent: true, website: '' }),
     });
     assert.equal(res.status, 400);
   } finally {
@@ -887,7 +887,7 @@ test('POST /api/ask with >2000 char question returns 413', async () => {
     const res = await fetch(`${baseUrl}/api/ask`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: longQuestion, website: '' }),
+      body: JSON.stringify({ question: longQuestion, consent: true, website: '' }),
     });
     assert.equal(res.status, 413);
   } finally {
@@ -1690,6 +1690,59 @@ test('POST /api/questions/publish without draft returns 400', async () => {
       body: JSON.stringify({ id: '1' }),
     });
     assert.equal(publishRes.status, 400);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/ask without consent is refused', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const res = await fetch(`${baseUrl}/api/ask`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: 'A real question', website: '' }),
+    });
+    assert.equal(res.status, 400);
+    assert.equal(existsSync(join(repoDir, 'questions.jsonl')), false);
+  } finally {
+    close();
+  }
+});
+
+test('POST /api/ask records the consent with the question', async () => {
+  const repoDir = repo();
+  const env = {
+    ANTHROPIC_API_KEY: 'test-key',
+    CHAT_PASSWORD: 'correct-password',
+    SESSION_SECRET: 'test-secret',
+    SITE_DIR: repoDir,
+    SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'),
+    QUESTIONS_FILE: join(repoDir, 'questions.jsonl'),
+    PORT: '0',
+  };
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    await fetch(`${baseUrl}/api/ask`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: 'A real question', consent: true, website: '' }),
+    });
+    const stored = JSON.parse(readFileSync(join(repoDir, 'questions.jsonl'), 'utf8').trim());
+    assert.equal(stored.consent, true);
+    assert.ok(stored.consentedAt);
   } finally {
     close();
   }

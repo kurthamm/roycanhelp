@@ -232,7 +232,7 @@ export function createApp({ env, runTurn, runDraftTurn }) {
 
   // Ask Roy endpoint (public)
   app.post('/api/ask', express.json(), (req, res) => {
-    const { question, website } = req.body;
+    const { question, website, consent } = req.body;
 
     // Check for honeypot
     if (website) {
@@ -242,6 +242,12 @@ export function createApp({ env, runTurn, runDraftTurn }) {
     // Reject empty questions
     if (!question || !String(question).trim()) {
       return res.status(400).send('Question cannot be empty');
+    }
+
+    // The form states the terms and asks for agreement. Enforce it here too, so
+    // consent is a real condition of storing the question rather than a checkbox.
+    if (consent !== true) {
+      return res.status(400).send('Consent is required before a question can be sent');
     }
 
     // Reject questions over 2000 chars
@@ -254,7 +260,7 @@ export function createApp({ env, runTurn, runDraftTurn }) {
       const questionRecord = {
         id: randomUUID(),
         ts: new Date().toISOString(),
-        question: String(question).trim(),
+        question: String(question).trim(), consent: true, consentedAt: new Date().toISOString(),
       };
       appendFileSync(env.QUESTIONS_FILE, JSON.stringify(questionRecord) + '\n');
       res.json({ ok: true });
