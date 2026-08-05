@@ -864,8 +864,15 @@
     })();
 
     async function requestDraft(id, answerTextarea, answerStatus) {
-      answerStatus.textContent = 'Drafting...';
+      answerStatus.textContent = 'Drafting, this takes a minute or two...';
       answerStatus.className = 'answer-status drafting';
+      const startedAt = Date.now();
+      const ticker = setInterval(() => {
+        const secs = Math.round((Date.now() - startedAt) / 1000);
+        if (answerStatus.className.includes('drafting')) {
+          answerStatus.textContent = answerStatus.textContent.replace(/ \(\d+s\)$/, '') + ' (' + secs + 's)';
+        }
+      }, 1000);
       answerTextarea.value = '';
       answerTextarea.dataset.originalValue = '';
       try {
@@ -913,6 +920,7 @@
             }
           }
         }
+        clearInterval(ticker);
         if (draft) {
           answerTextarea.value = draft;
           answerTextarea.dataset.originalValue = draft;
@@ -923,6 +931,7 @@
           answerStatus.className = 'answer-status error';
         }
       } catch (err) {
+        clearInterval(ticker);
         answerStatus.textContent = 'The connection dropped while drafting. Press Redraft to try again.';
         answerStatus.className = 'answer-status error';
       }

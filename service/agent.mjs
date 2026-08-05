@@ -82,6 +82,9 @@ export async function runDraftTurn({ message, siteDir, onText }) {
     options: {
       cwd: siteDir,
       allowedTools: READ_ONLY_TOOLS,
+      // Drafting is a read-and-write-a-paragraph job, not deep reasoning, so use
+      // the fast model. Roy is watching a spinner while this runs.
+      model: 'claude-sonnet-5',
       permissionMode: 'acceptEdits',
       settingSources: [],
       systemPrompt: { type: 'preset', preset: 'claude_code', append: ROY_SYSTEM_PROMPT },
