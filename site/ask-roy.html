@@ -85,13 +85,18 @@
 
       <section style="margin-top: 3rem; padding: 2rem; background-color: var(--yellow); border: 3px solid var(--ink); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
         <h2>Got a question?</h2>
-        <p>Ask away. Your question stays private until and unless I answer it. No names, no personal details. Just the question and the answer Roy learns from it.</p>
+        <p>Ask away. Your question is not posted publicly unless I pick it to answer, and if I do, I edit it and strip out anything identifying first. Please help me out by leaving that stuff off to begin with. See how I handle questions in the <a href="privacy.html">privacy policy</a>.</p>
 
         <form id="ask-form">
           <label for="question-text">Your question:</label>
-          <textarea id="question-text" placeholder="Type your question here. Keep it under 2000 characters. No names, no personal medical/legal details." style="width: 100%; min-height: 8rem; padding: 0.75rem; font-size: 1rem; font-family: Georgia, serif; border: 2px solid #1a1a1a; border-radius: 4px;" required></textarea>
+          <textarea id="question-text" placeholder="Type your question here. Keep it under 2000 characters. Please leave out names, birth dates, addresses, school or provider names, case or claim numbers, insurance details, and medical records." style="width: 100%; min-height: 8rem; padding: 0.75rem; font-size: 1rem; font-family: Georgia, serif; border: 2px solid #1a1a1a; border-radius: 4px;" required></textarea>
 
           <input type="text" id="website-honeypot" name="website" style="display: none;" tabindex="-1" aria-hidden="true">
+
+          <p class="consent-row">
+            <input type="checkbox" id="consent" required>
+            <label for="consent">I am at least 18. I understand this is not a confidential medical, legal, or benefits service, and that Roy may edit, anonymize, and publish my question with his answer.</label>
+          </p>
 
           <button type="submit" style="margin-top: 1rem; padding: 0.75rem 1.5rem; background-color: var(--red); color: var(--bg); border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1rem;">Send Question</button>
 
@@ -101,7 +106,7 @@
 
       <section style="margin-top: 3rem; padding: 2rem; background-color: rgba(212, 201, 190, 0.3); border-radius: 8px;">
         <p><strong>Answers live on Roy's Wisdom.</strong> When I get to a question, it becomes a lesson on <a href="roys-wisdom.html">Roy's Wisdom</a> where it belongs with the rest of what I've learned. Check there for what others have asked.</p>
-        <p style="margin-top: 1rem;"><strong>Privacy note:</strong> Your question stays private until I answer it. No names, no personal details. Just the question and the answer Roy learns from it.</p>
+        <p style="margin-top: 1rem;"><strong>What happens to your question.</strong> It is stored on my server and read by me. It is not published unless I choose to answer it, and then only after I edit and anonymize it. To write a draft answer, the text of your question is sent to an AI service (Anthropic) that I use as a tool. This is not a confidential medical, legal, or benefits service, so please do not send anything you would not want a stranger to read. The details are in the <a href="privacy.html">privacy policy</a> and the <a href="terms.html">terms of use</a>.</p>
       </section>
     </article>
   </main>
@@ -126,19 +131,26 @@
         if (honeypot) return; // Bot protection
 
         const question = document.getElementById('question-text').value;
+        const consent = document.getElementById('consent').checked;
         statusDiv.textContent = '';
+
+        if (!consent) {
+          statusDiv.textContent = 'Please tick the box first so I know you understand how questions are handled.';
+          return;
+        }
 
         try {
           const response = await fetch('/admin/api/ask', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question })
+            body: JSON.stringify({ question, consent: true })
           });
 
           if (response.ok) {
             statusDiv.textContent = 'Sent. Roy reads everything, answers what he can.';
             statusDiv.style.color = '#2d6a4f';
             document.getElementById('question-text').value = '';
+            document.getElementById('consent').checked = false;
           } else {
             statusDiv.textContent = 'Something went wrong. Try again in a moment.';
           }
