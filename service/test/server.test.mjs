@@ -1747,3 +1747,44 @@ test('POST /api/ask records the consent with the question', async () => {
     close();
   }
 });
+
+test('publishing a new section places it above the page closing note', async () => {
+  const repoDir = repo();
+  const wisdom = `<article>
+      <section>
+        <h2>Existing</h2>
+        <div class="lesson"><h3>Old</h3><p>Text</p></div>
+      </section>
+
+      <section class="margin-gag">
+        <p>These are just things I learned.</p>
+      </section>
+    </article>`;
+  writeFileSync(join(repoDir, 'roys-wisdom.html'), wisdom);
+  const env = {
+    ANTHROPIC_API_KEY: 'k', CHAT_PASSWORD: 'p', SESSION_SECRET: 's',
+    SITE_DIR: repoDir, SITE_REPO_DIR: repoDir,
+    USAGE_LOG: join(repoDir, 'usage.log'), QUESTIONS_FILE: join(repoDir, 'questions.jsonl'), PORT: '0',
+  };
+  writeFileSync(env.QUESTIONS_FILE, JSON.stringify({
+    id: 'q1', ts: new Date().toISOString(), question: 'A question?', draft: 'An answer.', section: 'Adult Children',
+  }) + '\n');
+  const { fetch, baseUrl, close } = await setupServer(env, fakeRunTurn());
+  try {
+    const login = await fetch(`${baseUrl}/api/login`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: 'p' }),
+    });
+    const cookie = login.headers.get('set-cookie').split(';')[0];
+    const res = await fetch(`${baseUrl}/api/questions/publish`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', cookie },
+      body: JSON.stringify({ id: 'q1' }),
+    });
+    assert.equal(res.status, 200);
+    const out = readFileSync(join(repoDir, 'roys-wisdom.html'), 'utf8');
+    assert.ok(out.indexOf('Adult Children') < out.indexOf('margin-gag'),
+      'new section must come before the closing note');
+  } finally {
+    close();
+  }
+});

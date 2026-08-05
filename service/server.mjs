@@ -556,9 +556,12 @@ ${lessonContent}
         const insertPoint = sectionMatch.index + sectionMatch[1].length;
         updatedWisdom = wisdomContent.slice(0, insertPoint) + '\n' + lessonCard + '\n' + wisdomContent.slice(insertPoint);
       } else {
-        // Section doesn't exist: create it
-        // Find the closing </article> tag
-        const articleEndMatch = wisdomContent.match(/<\/article>/);
+        // Section doesn't exist: create it. It must land above the page's closing
+        // note, which is the trailing margin-gag section and always reads last.
+        const closingNote = wisdomContent.lastIndexOf('<section class="margin-gag">');
+        const articleEndMatch = closingNote !== -1
+          ? { index: closingNote, 0: '' }
+          : wisdomContent.match(/<\/article>/);
         if (articleEndMatch) {
           const insertPoint = articleEndMatch.index;
           const newSection = `<h2>${escapeHtml(question.section)}</h2>
