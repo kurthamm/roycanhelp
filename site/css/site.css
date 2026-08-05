@@ -603,7 +603,7 @@ footer {
   background-color: var(--color-text);
   color: var(--color-bg);
   text-align: center;
-  padding: var(--space-lg) var(--space-sm);
+  padding: var(--space-md) var(--space-sm);
   margin-top: var(--space-xl);
   font-size: clamp(0.8rem, 1.5vw, 0.9rem);
 }
@@ -1108,4 +1108,19 @@ footer .journey-nav { display: none; }
 }
 .consent-row label {
   font-size: 0.95rem;
+}
+
+
+/* Footer sizing: enough room to read, no more. */
+footer .footer-disclaimer {
+  max-width: 90ch;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+footer .footer-links,
+footer .footer-legal {
+  margin-bottom: 0.4rem;
+}
+footer .footer-legal {
+  margin-bottom: 0;
 }
