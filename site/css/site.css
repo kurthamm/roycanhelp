@@ -1124,3 +1124,15 @@ footer .footer-legal {
 footer .footer-legal {
   margin-bottom: 0;
 }
+
+
+/* Masthead to menu: close the dead space under the tagline. */
+.masthead {
+  padding-bottom: 0.35rem;
+}
+.masthead .tagline {
+  margin-bottom: 0;
+}
+nav.nav-primary {
+  padding-top: 0.35rem;
+}
