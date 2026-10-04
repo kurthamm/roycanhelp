@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily live SEO audit for roycanhelp.org
+Requires=roycanhelp-seo.service
+
+[Timer]
+OnCalendar=*-*-* 05:30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

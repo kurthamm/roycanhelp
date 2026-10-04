@@ -22,8 +22,14 @@ the last change. He can also upload images and documents.
 ## Commands
 
 ```sh
-make check   # canonical verification: tools tests + service tests + site checker
+make check     # canonical verification: tools tests + service tests + site checker + SEO rules
+make sitemap   # regenerate site/sitemap.xml from the pages and git history
+make seo-live  # fetch the live site like a search engine and report problems
 ```
+
+## SEO
+
+`tools/seo.mjs` enforces the SEO rules on every page: one H1, a title of at most 65 characters, a 70 to 160 character meta description, a canonical URL that matches the page, `og:image`, image alt text, valid JSON-LD, and a sitemap that lists exactly the indexable pages. `make check` runs it. `deploy/roycanhelp-seo.timer` runs the live audit daily (status codes, response time, www and http redirects, `/admin/` noindex) and logs to `/var/log/roycanhelp/seo.log`; a failing audit shows as a failed unit.
 
 ## Production (DigitalOcean droplet, alongside mediprimer)
 
