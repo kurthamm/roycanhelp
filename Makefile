@@ -8,8 +8,12 @@ check:
 sitemap:
 	node tools/seo.mjs sitemap site
 
+# Rebuild the JSON-LD blocks and Wisdom anchors on every page (safe to re-run).
+structured:
+	node tools/structured-data.mjs site
+
 # Fetch the live site the way a search engine does and report problems.
 seo-live:
 	node tools/seo.mjs live
 
-.PHONY: check sitemap seo-live
+.PHONY: check sitemap structured seo-live
