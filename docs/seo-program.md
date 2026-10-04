@@ -33,6 +33,25 @@ No account. Claude generates a key file in `site/` and the editor pings on every
 ### 5. Server logs for crawl data
 One nginx change so the site has its own access log: add `access_log /var/log/nginx/roycanhelp.access.log;` to the roycanhelp.org server blocks, then `sudo nginx -t && sudo systemctl reload nginx`. Logrotate default covers it. The program reads this for Googlebot and Bingbot visits, 404s, and referrers.
 
+### 7. Rank tracking vendor (where the site falls in the results)
+Search Console reports the average position only for searches that already produced impressions. It cannot say "you are on page 4 for this phrase" or who is ahead of you. A rank tracker fills that gap by running a fixed list of searches every week and recording where roycanhelp.org appears and which sites rank above it.
+
+Recommended: a pay-as-you-go SERP API, because the program can call it directly and a fixed list of about 50 searches checked weekly costs very little. Check current prices on each site before signing up.
+- **DataForSEO** (dataforseo.com): pay as you go, SERP API with location and mobile/desktop, returns full top 100. First choice.
+- **Serper.dev**: cheaper and simpler Google results API, top 100 per query. Good fallback.
+- **SerpApi**: well known, more expensive, monthly plans.
+
+Dashboards for humans (optional, not needed by the program): SE Ranking, Nightwatch, AccuRanker, Semrush, Ahrefs. Ahrefs and Semrush are the best for backlink data but are costly; Ahrefs Webmaster Tools is free for your own verified site and shows who links to you.
+
+Setup:
+1. Sign up for DataForSEO (or Serper), add a small prepaid balance, and copy the API login/key.
+2. Add to `/etc/roycanhelp/env`: `DATAFORSEO_LOGIN=...` and `DATAFORSEO_PASSWORD=...` (or `SERPER_API_KEY=...`).
+3. Decide location: United States nationwide, or South Carolina for the state-specific searches. Both can be tracked.
+4. Claude drafts the tracked-search list from Roy's Wisdom questions and page topics (for example "what is BabyNet", "SSI for children with autism", "IEP evaluation timeline South Carolina"). You and Roy approve it. About 50 searches to start.
+5. Sign up (free) for Ahrefs Webmaster Tools, verify with the same Cloudflare TXT method, and Claude reads who links to the site.
+
+The weekly report then shows, per search: this week's position and page, change since last week, the three sites directly above, and whether Google shows an answer box or video that Roy could target.
+
 ### 6. Hand-off to Claude
 Tell Claude: "setup done". It checks each credential, runs a first report, and turns on the timers.
 
@@ -42,7 +61,7 @@ Tell Claude: "setup done". It checks each credential, runs a first report, and t
 |---|---|---|
 | On every Roy publish | IndexNow ping, sitemap and structured data rebuild, `make check` | Bing told within seconds |
 | Daily 05:30 | Live audit: every page's status, speed, title, description, canonical, redirects, noindex on /admin/ | `/var/log/roycanhelp/seo.log`, failed unit if broken |
-| Weekly (Mon 06:00) | Search Console: queries, pages, clicks, impressions, CTR, position, 28 days against the previous 28. URL Inspection on every sitemap URL (indexed? last crawled? which canonical did Google choose?). Bing stats. PageSpeed and Core Web Vitals on key pages. Server log: bot visits, 404s, referrers. Roy's commits for the same window. | `/var/lib/roychat/seo/latest.md` plus dated archive |
+| Weekly (Mon 06:00) | Rank tracker positions for the approved search list. Search Console: queries, pages, clicks, impressions, CTR, position, 28 days against the previous 28. URL Inspection on every sitemap URL (indexed? last crawled? which canonical did Google choose?). Bing stats. PageSpeed and Core Web Vitals on key pages. Server log: bot visits, 404s, referrers. Roy's commits for the same window. | `/var/lib/roychat/seo/latest.md` plus dated archive |
 | Monthly | Content gaps: queries with impressions but no page that answers them. Outreach list for links. | Section of the weekly report |
 
 The weekly report is plain English and ends with at most five recommendations ranked by expected payoff:
