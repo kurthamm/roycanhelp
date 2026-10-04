@@ -1,0 +1,12 @@
+[Unit]
+Description=roycanhelp.org live SEO audit
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=roychat
+WorkingDirectory=/var/www/roycanhelp
+ExecStart=/usr/bin/node tools/seo.mjs live
+StandardOutput=append:/var/log/roycanhelp/seo.log
+StandardError=append:/var/log/roycanhelp/seo.log
+ReadWritePaths=/var/log/roycanhelp
