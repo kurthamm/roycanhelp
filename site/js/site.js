@@ -224,3 +224,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { rootMargin: '-20% 0px -70% 0px' });
   headings.forEach(h => spy.observe(h));
 });
+
+// Copy buttons for the ready-to-send letters
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.letter').forEach(box => {
+    if (!navigator.clipboard) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-letter';
+    btn.textContent = 'Copy this letter';
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(box.innerText.trim()).then(
+        () => { btn.textContent = 'Copied'; setTimeout(() => { btn.textContent = 'Copy this letter'; }, 2000); },
+        () => { btn.textContent = 'Could not copy. Select the text instead.'; }
+      );
+    });
+    box.after(btn);
+  });
+});
