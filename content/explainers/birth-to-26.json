@@ -1,0 +1,55 @@
+{
+  "slug": "birth-to-26",
+  "group": "Start Here",
+  "anchor": "turning-18",
+  "title": "The Road From Birth to 26",
+  "description": "A timeline of the dates and rules that matter from Early Intervention to age 26, with what to put on your calendar and where to read more.",
+  "summary": "Every date that matters from Early Intervention to age 26, in order, with links.",
+  "h1": "The Road From Birth to 26: Dates to Put on Your Calendar",
+  "intro": "Nobody hands you a map. This is one: the stops on the road from Early Intervention to age 26, what happens at each one, the date to put on your calendar, and where to read more. Roy walked it with his son. The rules are federal, so the road is the same in any state, though the details differ.",
+  "sections": [
+    {
+      "h2": "Birth to 3: Early Intervention",
+      "html": "        <p>This is where it starts for many families. Anyone can make the referral, including you, and you do not need a diagnosis first. The program has a 45 day clock from the day it gets the referral to finish the first evaluation and write the first plan.</p>\n        <p class=\"date-box\"><strong>Put on your calendar:</strong> the date you made the referral, and 45 days after it.</p>\n        <p>Read next: <a href=\"early-intervention.html\">Birth to Three</a>, <a href=\"fine-print-early-intervention.html\">Early Intervention fine print</a>, <a href=\"request-letters.html\">Ready-to-Send Letters</a>.</p>"
+    },
+    {
+      "h2": "Before 3: The Handoff to School",
+      "html": "        <p>Early Intervention does not roll into school on its own. The program has to notify the school district, and a transition meeting is supposed to happen well before the third birthday. Some states also let families keep Early Intervention going past three.</p>\n        <p class=\"date-box\"><strong>Put on your calendar:</strong> your child&#39;s third birthday, and the date 90 days before it. Ask for the transition meeting as early as 9 months before.</p>\n        <p>Read next: <a href=\"fine-print-early-intervention.html\">Early Intervention fine print</a>, <a href=\"school-ieps.html\">School Years</a>.</p>"
+    },
+    {
+      "h2": "School Years: Every Year and Every Three Years",
+      "html": "        <p>Once there is an IEP, the team has to review it at least once a year, and your child has to be re-evaluated at least every three years, unless you and the school agree it is not needed. You are on the team the whole way.</p>\n        <p class=\"date-box\"><strong>Put on your calendar:</strong> the IEP anniversary every year, and the three year re-evaluation date.</p>\n        <p>Read next: <a href=\"school-ieps.html\">School Years</a>, <a href=\"iep-meeting-decoded.html\">The IEP Meeting, Decoded</a>, <a href=\"fine-print-school.html\">school fine print</a>, <a href=\"fine-print-behavior.html\">behavior fine print</a>.</p>"
+    },
+    {
+      "h2": "By 16 (or Sooner): The Plan for After School",
+      "html": "        <p>No later than the first IEP in effect when your child turns 16, the plan has to include goals for life after school and the services to reach them. Your child is invited to that meeting.</p>\n        <p class=\"date-box\"><strong>Put on your calendar:</strong> the IEP meeting closest to your child&#39;s 16th birthday, and ask whether it can happen earlier.</p>\n        <p>Read next: <a href=\"fine-print-18-26.html\">Turning 18 and 26 fine print</a>, <a href=\"turning-18.html\">Ages 14 to 26</a>.</p>"
+    },
+    {
+      "h2": "One Year Before the Age of Majority: Rights May Move",
+      "html": "        <p>In states that transfer school rights at the age of majority, the IEP has to include a statement, no later than one year before, that your child has been told about the rights that will move to them. Ask your state what its age of majority is and what it does about decision-making.</p>\n        <p class=\"date-box\"><strong>Put on your calendar:</strong> one year before your state&#39;s age of majority.</p>\n        <p>Read next: <a href=\"fine-print-18-26.html\">Turning 18 and 26 fine print</a>.</p>"
+    },
+    {
+      "h2": "18: SSI Looks Again, and Parent Income Stops Counting",
+      "html": "        <p>Two things change with SSI around 18. Social Security reviews eligibility under the adult rules, within a year of the 18th birthday. And the rule that counted parent income stops applying after the month your child turns 18, so a family that was turned down because of income may be able to apply again.</p>\n        <p class=\"date-box\"><strong>Put on your calendar:</strong> the 18th birthday. Gather medical records in the months before it.</p>\n        <p>Read next: <a href=\"fine-print-ssi.html\">SSI fine print</a>, <a href=\"ssi-deeming.html\">SSI Deeming</a>, <a href=\"fine-print-able.html\">ABLE accounts</a>, <a href=\"protecting-benefits.html\">Protecting Benefits</a>.</p>"
+    },
+    {
+      "h2": "26: Health Coverage on a Parent&#39;s Plan Ends",
+      "html": "        <p>A plan that offers dependent coverage has to keep offering it until the child turns 26. After that, you need a plan B, and some plans or state laws may have a rule for adult children with disabilities. Ask well ahead.</p>\n        <p class=\"date-box\"><strong>Put on your calendar:</strong> six months before the 26th birthday: write to the plan.</p>\n        <p>Read next: <a href=\"fine-print-18-26.html\">Turning 18 and 26 fine print</a>, <a href=\"request-letters.html\">Ready-to-Send Letters</a>, <a href=\"turning-18.html\">Ages 14 to 26</a>.</p>"
+    },
+    {
+      "h2": "Anytime: When Somebody Says No",
+      "html": "        <p>A no can come at any stop on this road: the school, the program, Medicaid, Social Security. Almost every no has to come with a written reason and a way to ask again, and almost every way to ask again has a deadline.</p>\n        <p>Start with the <a href=\"fight-plan.html\">disagree-in-writing guide</a>, then the letters on <a href=\"request-letters.html\">Ready-to-Send Letters</a>. Your state&#39;s <a href=\"states.html\">parent rights and parent center</a> are on the Your State page.</p>"
+    }
+  ],
+  "see_also": [
+    "fine-print-school",
+    "fine-print-18-26",
+    "request-letters",
+    "ask-this"
+  ],
+  "checked": "Each rule behind a stop on this timeline was checked against the text of the regulation (34 CFR 300.303, 300.320, 300.324, 303.209, 303.303 and 303.310; 20 CFR 416.987 and 416.1165; 45 CFR 147.120) at ecfr.gov. Your state may add rules and dates of its own.",
+  "sources": [
+    "https://www.ecfr.gov/current/title-34/subtitle-B/chapter-III/part-300",
+    "https://www.ecfr.gov/current/title-34/subtitle-B/chapter-III/part-303"
+  ]
+}
