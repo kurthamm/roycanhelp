@@ -284,3 +284,10 @@ ul.checks li:before { content: ""; position: absolute; left: 0.2rem; top: 0.95re
 .rule-quote { background: var(--blue-soft); border-left: 6px solid var(--blue); border-radius: 12px; padding: 0.9rem 1.1rem; font-style: italic; }
 .rule-cite { font-style: normal; font-weight: 800; white-space: nowrap; }
 .say-this { background: var(--sun-soft, #fff4c2); border-radius: 12px; padding: 0.9rem 1.1rem; }
+
+/* ---------- Ready-to-send letters ---------- */
+.letter { background: #fff; border: 2px dashed var(--blue); border-radius: 14px; padding: 1rem 1.25rem; margin: 1rem 0 0.5rem; }
+.letter p { margin: 0 0 0.75rem; }
+.letter-why { font-size: 0.95em; }
+.copy-letter { display: inline-block; margin: 0 0 0.75rem; padding: 0.5rem 1rem; border: 0; border-radius: 999px; background: var(--blue); color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+.copy-letter:hover, .copy-letter:focus-visible { background: var(--blue-deep); }
