@@ -2,6 +2,7 @@ import express from 'express';
 import { makeSession, verifySession, checkPassword } from './auth.mjs';
 import { commitAll } from './gitops.mjs';
 import { logUsage } from './usage.mjs';
+import { mountGptRelay } from './gpt-relay.mjs';
 import { mkdirSync, existsSync, writeFileSync, readFileSync, appendFileSync } from 'node:fs';
 import { join, resolve, sep } from 'node:path';
 import { randomUUID } from 'node:crypto';
@@ -700,6 +701,13 @@ ${lessonCard}
       res.status(500).send(err.message);
     }
   });
+
+  // Optional: lets Roy's private custom GPT drive this same editor. Off unless the key is configured.
+  if (env.GPT_ACTION_KEY) {
+    mountGptRelay(app, { env, runTurn, commit: commitAll, logUsage, origin: 'https://roycanhelp.org' });
+  } else {
+    console.log('GPT relay disabled: GPT_ACTION_KEY is not set');
+  }
 
   return app;
 }
