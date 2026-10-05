@@ -1,0 +1,39 @@
+{
+  "slug": "fine-print-moving",
+  "group": "School",
+  "anchor": "school-ieps",
+  "title": "The Fine Print on Moving With an IEP",
+  "description": "Moving districts or states with an IEP: the new school must provide comparable services right away, and the old school must send the records.",
+  "summary": "Moving with an IEP: comparable services right away, an evaluation if needed, and the records.",
+  "short_answer": "When a child with an IEP moves to a new district in the same state, or to a new state, the new school must provide FAPE, including services comparable to the old IEP, until it adopts the old IEP or writes a new one (after an evaluation, for out-of-state moves, if it decides one is needed). The new school must promptly request the records, and the old one must promptly respond.",
+  "h1": "The Fine Print on Moving With an IEP",
+  "intro": "Moving is hard enough with a child who has an IEP. A South Carolina parent asked what happens when a child transfers in, and the answer is in the federal rule. Here are the exact sentences, so you can point to them.",
+  "sections": [
+    {
+      "h2": "Moving to a New District in the Same State",
+      "html": "        <p>Families move. The IEP is supposed to move with the child, and nobody is supposed to start from zero. The federal rule gives the new district a job to do right away.</p>\n        <p class=\"rule-quote\">The federal rule says: &ldquo;If a child with a disability (who had an IEP that was in effect in a previous public agency in the same State) transfers to a new public agency in the same State, and enrolls in a new school within the same school year, the new public agency (in consultation with the parents) must provide FAPE to the child (including services comparable to those described in the child&#39;s IEP from the previous public agency), until the new public agency either-&rdquo; <span class=\"rule-cite\">(34 CFR 300.323)</span></p>\n        <p>It then lists the two ways that ends. The district adopts the old IEP, or it writes and adopts a new one. Either way, services comparable to the old IEP are supposed to continue in between, and the new district talks with you.</p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;My child moved from another district in South Carolina with an IEP in effect. What comparable services will start now, and when is the meeting to adopt the old IEP or write a new one? Please put it in writing.&rdquo;</p>"
+    },
+    {
+      "h2": "Moving From Another State",
+      "html": "        <p>A move across state lines has one more step. The new state may want its own evaluation.</p>\n        <p class=\"rule-quote\">The federal rule says: &ldquo;If a child with a disability (who had an IEP that was in effect in a previous public agency in another State) transfers to a public agency in a new State, and enrolls in a new school within the same school year, the new public agency (in consultation with the parents) must provide the child with FAPE (including services comparable to those described in the child&#39;s IEP from the previous public agency), until the new public agency- 1. Conducts an evaluation pursuant to §§ 300.304 through 300.306 (if determined to be necessary by the new public agency); and 2. Develops, adopts, and implements a new IEP, if appropriate&rdquo; <span class=\"rule-cite\">(34 CFR 300.323)</span></p>\n        <p>Same idea: comparable services come first, then the evaluation if the new district decides it is needed.</p>"
+    },
+    {
+      "h2": "The Old School Is Supposed to Send the Records",
+      "html": "        <p>You should not have to carry the file across the state by hand, though it never hurts to have your own copy.</p>\n        <p class=\"rule-quote\">The federal rule says: &ldquo;The new public agency in which the child enrolls must take reasonable steps to promptly obtain the child&#39;s records, including the IEP and supporting documents and any other records relating to the provision of special education or related services to the child&rdquo; <span class=\"rule-cite\">(34 CFR 300.323)</span></p>\n        <p class=\"rule-quote\">The federal rule says: &ldquo;The previous public agency in which the child was enrolled must take reasonable steps to promptly respond to the request from the new public agency.&rdquo; <span class=\"rule-cite\">(34 CFR 300.323)</span></p>\n        <p>Ask for a copy of the IEP and evaluations before you leave. The <a href=\"fine-print-sc-records.html\">South Carolina records page</a> explains why. And ask the new district to name who is handling the transfer.</p>"
+    },
+    {
+      "h2": "A Way to Ask That Works",
+      "html": "        <p>Bring the IEP with you on day one, hand it to someone, and send an email the same day saying you did. Put the question in writing: what services start now. The people at the front desk are probably handling a lot of new families, and a clear email gets passed to the right person. The <a href=\"fine-print-school.html\">school fine print</a> has more on your rights at the meeting.</p>"
+    }
+  ],
+  "see_also": [
+    "fine-print-school",
+    "fine-print-sc-records",
+    "school-ieps",
+    "request-letters"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against the text of 34 CFR 300.323 at ecfr.gov. These rules apply when the child enrolls in the new school in the same school year; your state may add details.",
+  "sources": [
+    "https://www.ecfr.gov/current/title-34/subtitle-B/chapter-III/part-300/subpart-D/section-300.323"
+  ]
+}
