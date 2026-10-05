@@ -1,0 +1,50 @@
+{
+  "slug": "fine-print-school",
+  "group": "School",
+  "anchor": "school-ieps",
+  "title": "The Fine Print Nobody Hands You at School",
+  "description": "Rights in the special education rules that most parents never hear about, each with the exact sentence from the rule and what to say.",
+  "summary": "A second opinion at the school's expense, records before the meeting, and other rules nobody mentions.",
+  "h1": "The Fine Print Nobody Hands You at School",
+  "intro": "Nobody sits you down and reads you the rulebook. These are real rules, written in the federal special education regulations, that tip toward your child. Each one comes with the exact sentence, so you can point to it, and something polite to say.",
+  "sections": [
+    {
+      "h2": "When You Disagree With the School's Evaluation",
+      "html": "        <p>This one surprises people. If you think the school got the evaluation wrong, you do not have to just live with it. You can ask for a second opinion, and the school can be the one to pay for it.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;A parent has the right to an independent educational evaluation at public expense if the parent disagrees with an evaluation obtained by the public agency&rdquo; <span class=\"rule-cite\">(34 CFR 300.502)</span></p>\n        <p>Then the school has a choice to make. It either pays for the outside evaluation or goes to a hearing to defend its own. It does not get to sit on it.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;the public agency may not require the parent to provide an explanation and may not unreasonably delay either providing the independent educational evaluation at public expense or filing a due process complaint&rdquo; <span class=\"rule-cite\">(34 CFR 300.502)</span></p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;I disagree with the evaluation. I am requesting an independent educational evaluation at public expense. Please send me, in writing, where I can get one and what your criteria are.&rdquo;</p>"
+    },
+    {
+      "h2": "While Everybody Argues, Nothing Changes",
+      "html": "        <p>If you and the school end up in a formal dispute, your child does not get moved around while it plays out. The services they have stay where they are.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;the child involved in the complaint must remain in his or her current educational placement&rdquo; <span class=\"rule-cite\">(34 CFR 300.518)</span></p>\n        <p>The exception is when you and the school agree otherwise. This is called &ldquo;stay put,&rdquo; and it is why a calm written disagreement is not a risk to what your child has today.</p>"
+    },
+    {
+      "h2": "The Records Nobody Offers",
+      "html": "        <p>You can look at your child&#39;s school records. All of them that the school keeps under the special education rules. And the school has a clock.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;The agency must comply with a request without unnecessary delay and before any meeting regarding an IEP, or any hearing pursuant to § 300.507 or §§ 300.530 through 300.532, or resolution session pursuant to § 300.510, and in no case more than 45 days after the request has been made.&rdquo; <span class=\"rule-cite\">(34 CFR 300.613)</span></p>\n        <p>Read that again: <strong>before any IEP meeting</strong>. Ask early, in writing. You can also send someone to review them for you, and you can ask the school to explain what the records mean.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;The right to have a representative of the parent inspect and review the records.&rdquo; <span class=\"rule-cite\">(34 CFR 300.613)</span></p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;I would like to review all of my child&#39;s education records before the IEP meeting. When can I expect them?&rdquo;</p>"
+    },
+    {
+      "h2": "The Meeting Notice Has to Tell You Who Is Coming",
+      "html": "        <p>The notice for an IEP meeting is not just a date. It has to say what the meeting is for, where it is, and who will be there. If your notice does not, ask.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;Indicate the purpose, time, and location of the meeting and who will be in attendance&rdquo; <span class=\"rule-cite\">(34 CFR 300.322)</span></p>\n        <p>The meeting also has to be set for a time that works for you, not just for them.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;Scheduling the meeting at a mutually agreed on time and place.&rdquo; <span class=\"rule-cite\">(34 CFR 300.322)</span></p>\n        <p>The <a href=\"iep-meeting-decoded.html\">IEP Meeting, Decoded</a> page goes through who gets a chair.</p>"
+    },
+    {
+      "h2": "A Copy of the IEP Is Free",
+      "html": "        <p>No one needs you to sign before you can take it home and read it. The school has to hand you a copy, and it cannot charge for it.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;The public agency must give the parent a copy of the child's IEP at no cost to the parent.&rdquo; <span class=\"rule-cite\">(34 CFR 300.322)</span></p>"
+    },
+    {
+      "h2": "At 16, the Meeting Is About the Future",
+      "html": "        <p>Starting no later than the first IEP in effect when your child turns 16, the meeting notice has to say that the team will talk about life after school, and that your child is invited.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;That a purpose of the meeting will be the consideration of the postsecondary goals and transition services for the child&rdquo; <span class=\"rule-cite\">(34 CFR 300.322)</span></p>\n        <p>Roy&#39;s <a href=\"turning-18.html\">Ages 14 to 26</a> page is the place to see what comes next.</p>"
+    },
+    {
+      "h2": "A Way to Ask That Works",
+      "html": "        <p>None of this needs a speech. A short, friendly, written request is enough: what you are asking for, which rule it comes from, and a thank you. Most people across the table are stretched thin, and a clear request makes their job easier. If the answer is still no, the <a href=\"fight-plan.html\">disagree-in-writing guide</a> shows the next steps.</p>"
+    }
+  ],
+  "see_also": [
+    "school-ieps",
+    "ask-this",
+    "iep-meeting-decoded",
+    "fight-plan"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against the text of 34 CFR 300.322, 300.502, 300.518 and 300.613 at ecfr.gov.",
+  "sources": [
+    "https://www.ecfr.gov/current/title-34/subtitle-B/chapter-III/part-300"
+  ]
+}
