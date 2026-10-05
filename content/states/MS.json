@@ -2,10 +2,10 @@
   "code": "MS",
   "name": "Mississippi",
   "part_b": {
-    "name": null,
-    "url": null,
+    "name": "Procedural Safeguards (Mississippi Department of Education)",
+    "url": "https://www.mdek12.org/sites/default/files/Offices/MDE/OAE/OSE/special-education-library/procedural-20safeguards-20webinar-2_20151118112430_2894355eee.pdf?sfvrsn=2",
     "pdf": null,
-    "checked": "Not found"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "part_c": {
     "name": null,
@@ -14,9 +14,10 @@
     "checked": "Not found"
   },
   "parent_center": {
-    "name": null,
-    "url": null,
-    "checked": "Not found"
+    "name": "Mississippi Parent Training and Information Center",
+    "url": "http://www.mspti.org/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "note": "Mississippi Department of Education website (mdek12.org) returns HTTP 403 (Forbidden); pages not accessible to automated research"
 }

@@ -2,10 +2,10 @@
   "code": "ND",
   "name": "North Dakota",
   "part_b": {
-    "name": null,
-    "url": null,
+    "name": "Parent Guide to Special Education (North Dakota)",
+    "url": "https://www.nd.gov/dpi/sites/www/files/documents/SpeEd/Guidelines/Parent%20Guide%20to%20Special%20Education%202018.pdf",
     "pdf": null,
-    "checked": "Removed: linked the State Performance Plan, not the parent rights notice."
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "part_c": {
     "name": "Early Intervention Services (DHHS Developmental Disabilities)",
@@ -14,9 +14,10 @@
     "checked": "Verified through ND DHHS Developmental Disabilities division; Direct contact recommended"
   },
   "parent_center": {
-    "name": "Pathfinders (ND PTI)",
-    "url": "https://pathfindersfamily.org/",
-    "checked": "Operational PTI center; phone: (701) 837-7500"
+    "name": "Pathfinder Family Center (North Dakota)",
+    "url": "https://pathfinder-nd.org/pfc/index.php",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "note": "Part C administered by DHHS; Contact state directly for complete early intervention procedural safeguards"
 }

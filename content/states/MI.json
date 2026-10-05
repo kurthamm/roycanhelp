@@ -2,10 +2,10 @@
   "code": "MI",
   "name": "Michigan",
   "part_b": {
-    "name": null,
-    "url": null,
+    "name": "Procedural Safeguards Notice (Michigan Department of Education)",
+    "url": "https://www.michigan.gov/-/media/Project/Websites/mde/specialeducation/proc-safe/Procedural_Safeguards_Notice.pdf?rev=b38501b73e7649fcb913042c3b36c5cc",
     "pdf": null,
-    "checked": "Not found"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "part_c": {
     "name": null,

@@ -1,1 +1,22 @@
-{"code":"OK","name":"Oklahoma","part_b":{"name":null,"url":null,"pdf":null,"checked":"State Education Agency migrated to oklahoma.gov/education; specific procedural safeguards page not located"},"part_c":{"name":null,"url":null,"pdf":null,"checked":"Not found"},"parent_center":{"name":null,"url":null,"checked":"PTI center not verified"},"note":"Oklahoma State Department of Education URL redirects to oklahoma.gov. Procedural safeguards information not accessible via WebFetch or curl. Recommend contacting (405) 521-3301."}
+{
+  "code": "OK",
+  "name": "Oklahoma",
+  "part_b": {
+    "name": "Parents Rights (Oklahoma State Department of Education)",
+    "url": "https://oklahoma.gov/content/dam/ok/en/osde/documents/services/special-education/parents-rights/Parent%20Rights%20-%20September%202024.pdf",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Not found"
+  },
+  "parent_center": {
+    "name": null,
+    "url": null,
+    "checked": "PTI center not verified"
+  },
+  "note": "Oklahoma State Department of Education URL redirects to oklahoma.gov. Procedural safeguards information not accessible via WebFetch or curl. Recommend contacting (405) 521-3301."
+}

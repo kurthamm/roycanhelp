@@ -2,21 +2,22 @@
   "code": "DC",
   "name": "District of Columbia",
   "part_b": {
-    "name": "DC Office of the State Superintendent - Special Education",
-    "url": "https://osse.dc.gov/service/special-education",
+    "name": "Rights of Parents of Students with Disabilities: IDEA Part B Notice of Procedural Safeguards",
+    "url": "https://osse.dc.gov/publication/rights-parents-students-disabilities-idea-part-b-notice-procedural-safeguards",
     "pdf": null,
-    "checked": "OSSE URL returns HTTP 403; procedural safeguards document not located, 2026-10-05"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "part_c": {
-    "name": "DC Office of the State Superintendent - Early Intervention Program",
-    "url": "https://osse.dc.gov/service/early-intervention-program",
+    "name": "Families Have Rights: IDEA Part C Procedural Safeguards",
+    "url": "https://osse.dc.gov/publication/families-have-rights-idea-part-c-procedural-safeguards",
     "pdf": null,
-    "checked": "OSSE administers early intervention; procedural safeguards not confirmed, 2026-10-05"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "parent_center": {
-    "name": "DC Coalition of Parent Centers",
-    "url": "https://dcparentcoalition.org/",
-    "checked": "Organization identified; website accessibility needs verification, 2026-10-05"
+    "name": "Advocates for Justice and Education (DC)",
+    "url": "https://www.aje-dc.org/training-2/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "note": "OSSE services are blocked by HTTP 403 restrictions. Direct contact with OSSE at (202) 727-6436 recommended for official procedural safeguards notices and family rights documents."
 }

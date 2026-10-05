@@ -2,21 +2,22 @@
   "code": "MT",
   "name": "Montana",
   "part_b": {
-    "name": null,
-    "url": "http://opi.mt.gov/Educators/School-Climate-Student-Wellness/Special-Education/",
+    "name": "Procedural Safeguards (Montana Office of Public Instruction)",
+    "url": "https://opi.mt.gov/Portals/182/Page%20Files/Special%20Education/Guides/Procedural%20Safeguards.pdf",
     "pdf": null,
-    "checked": "Montana OPI Special Education page exists and contains special education resources; procedural safeguards document page not directly identified"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "part_c": {
-    "name": null,
-    "url": null,
+    "name": "Part C Early Intervention Guidance and Forms (Montana)",
+    "url": "https://dphhs.mt.gov/ecfsd/childcare/montanamilestones/part-c-early-intervention-guidance-and-forms",
     "pdf": null,
-    "checked": "Not found"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "parent_center": {
     "name": "Montana Empowerment Center",
-    "url": null,
-    "checked": "Mentioned on OPI Special Education page as family support organization"
+    "url": "https://mtempowermentcenter.org/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "note": "Montana OPI special education page confirmed; links to procedural safeguards and Part C documents not extracted in automated research"
 }

@@ -8,10 +8,10 @@
     "checked": "Main special education page confirmed accessible; procedural safeguards document not located on second pass, 2026-10-05"
   },
   "part_c": {
-    "name": null,
-    "url": null,
+    "name": "Alabama Early Intervention (Department of Rehabilitation Services)",
+    "url": "https://www.rehab.alabama.gov/services/ei",
     "pdf": null,
-    "checked": "Alabama Department of Public Health administers early intervention; procedural safeguards not located, 2026-10-05"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "parent_center": {
     "name": "Alabama Parent Teacher Center (APTC)",

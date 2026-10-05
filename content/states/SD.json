@@ -1,1 +1,23 @@
-{"code":"SD","name":"South Dakota","part_b":{"name":null,"url":null,"pdf":null,"checked":"South Dakota Department of Education (doe.sd.gov) homepage accessed but procedural safeguards notice not located on main page"},"part_c":{"name":null,"url":null,"pdf":null,"checked":"Not located"},"parent_center":{"name":null,"url":null,"checked":"Not verified"},"note":"South Dakota Department of Education website exists but procedural safeguards documents not directly accessible via homepage. Recommend contacting (605) 773-3134 or visiting special education section of doe.sd.gov."}
+{
+  "code": "SD",
+  "name": "South Dakota",
+  "part_b": {
+    "name": "Parental Rights and Procedural Safeguards (South Dakota Department of Education)",
+    "url": "https://doe.sd.gov/sped/parentalrights.aspx",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Not located"
+  },
+  "parent_center": {
+    "name": "South Dakota Parent Connection",
+    "url": "https://sdparent.org/about/information-center/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "note": "South Dakota Department of Education website exists but procedural safeguards documents not directly accessible via homepage. Recommend contacting (605) 773-3134 or visiting special education section of doe.sd.gov."
+}

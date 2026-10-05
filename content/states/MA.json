@@ -8,10 +8,10 @@
     "checked": "Located on Massachusetts DOE Families & Guardians page; updated May 2025; available in multiple languages"
   },
   "part_c": {
-    "name": null,
-    "url": null,
+    "name": "Early Intervention Family Rights and Procedural Safeguards (Massachusetts)",
+    "url": "https://www.mass.gov/lists/early-intervention-family-rights-procedural-safeguards-forms",
     "pdf": null,
-    "checked": "Not found"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "parent_center": {
     "name": "Federation for Children with Special Needs (FCSN)",

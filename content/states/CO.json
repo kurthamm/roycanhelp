@@ -2,10 +2,10 @@
   "code": "CO",
   "name": "Colorado",
   "part_b": {
-    "name": "Colorado Department of Education - Special Education",
-    "url": "https://cde.colorado.gov/special-education",
+    "name": "Dispute Resolution and Procedural Safeguards (Colorado Department of Education)",
+    "url": "https://ed.cde.state.co.us/spedlaw",
     "pdf": null,
-    "checked": "Main special education page identified; site not accessible on second pass, 2026-10-05"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "part_c": {
     "name": "Colorado Department of Human Services - Early Intervention",

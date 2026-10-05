@@ -14,9 +14,10 @@
     "checked": "HTTP accessible (via redirect); DDS administers Part C"
   },
   "parent_center": {
-    "name": "California Parent Center",
-    "url": "https://www.caparentcenter.org/",
-    "checked": "Verified through Parent Center Hub"
+    "name": "DREDF Parent Training and Information Center (California)",
+    "url": "https://dredf.org/vertical/pti/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "note": "Both Part B and C pages confirmed accessible. California CDE maintains procedural safeguards at /sp/se/ps/ path."
 }

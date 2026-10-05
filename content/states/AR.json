@@ -2,10 +2,10 @@
   "code": "AR",
   "name": "Arkansas",
   "part_b": {
-    "name": "Arkansas Department of Education - Special Education",
-    "url": "https://www.arkansased.gov/divisions/special-education/",
+    "name": "Procedural Safeguards Notice (Arkansas Department of Education)",
+    "url": "https://arksped.ade.arkansas.gov/documents/grantsanddata/Procedural_Safeguards_Notice.pdf",
     "pdf": null,
-    "checked": "Special education portal URL identified; site not fully accessible on second pass, 2026-10-05"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "part_c": {
     "name": "Arkansas Early Intervention Program",
@@ -14,9 +14,10 @@
     "checked": "DHS administers early intervention program; procedural safeguards not confirmed, 2026-10-05"
   },
   "parent_center": {
-    "name": "Arkansas Parents, Families & Friends (PTI)",
-    "url": "https://www.arkansaspti.org/",
-    "checked": "Organization identified through Parent Center Hub; website needs verification, 2026-10-05"
+    "name": "The Center for Exceptional Families (Arkansas)",
+    "url": "https://thecenterforexceptionalfamilies.org/programs/parent-training-and-information-centers/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "note": "Arkansas education website difficult to access during research. Recommend contacting Arkansas Department of Education and DHS directly for official procedural safeguards notices for Part B and Part C."
 }
