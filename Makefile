@@ -3,6 +3,7 @@ check:
 	@if [ -d service/test ]; then cd service && npm test; fi
 	node tools/check-site.mjs site
 	node tools/seo.mjs check site
+	node tools/voice-check.mjs site
 
 # Regenerate site/sitemap.xml from the pages and their git history.
 sitemap:
