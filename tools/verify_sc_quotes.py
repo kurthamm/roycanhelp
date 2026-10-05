@@ -7,12 +7,15 @@ def norm(t): return re.sub(r'[^a-z0-9]+', ' ', html.unescape(re.sub(r'<(script|s
 cache = {}
 def page(u):
     if u in cache: return cache[u]
-    t = subprocess.run(['curl', '-sL', '-A', UA, '--max-time', '40', u], capture_output=True, text=True).stdout
-    if len(norm(t)) < 300:
-        try: t = subprocess.run(['/snap/bin/chromium', '--headless=new', '--no-sandbox', '--disable-gpu', '--virtual-time-budget=8000', '--dump-dom', u], capture_output=True, text=True, timeout=60).stdout
-        except subprocess.TimeoutExpired: t = ''
-    if u.lower().endswith('.pdf') or b'%PDF' in t.encode('latin1', 'ignore')[:8]:
-        subprocess.run(['curl', '-sL', '-A', UA, '-o', '/tmp/_scq.pdf', u]); t = subprocess.run(['pdftotext', '/tmp/_scq.pdf', '-'], capture_output=True, text=True).stdout
+    raw = subprocess.run(['curl', '-sL', '-A', UA, '--max-time', '60', u], capture_output=True).stdout
+    if raw[:4] == b'%PDF':
+        open('/tmp/_scq.pdf', 'wb').write(raw)
+        t = subprocess.run(['pdftotext', '/tmp/_scq.pdf', '-'], capture_output=True).stdout.decode('utf-8', 'ignore')
+    else:
+        t = raw.decode('utf-8', 'ignore')
+        if len(norm(t)) < 300:
+            try: t = subprocess.run(['/snap/bin/chromium', '--headless=new', '--no-sandbox', '--disable-gpu', '--virtual-time-budget=8000', '--dump-dom', u], capture_output=True, timeout=60).stdout.decode('utf-8', 'ignore')
+            except subprocess.TimeoutExpired: t = ''
     cache[u] = norm(t); return cache[u]
 jobs = []
 for f in sorted(glob.glob('content/sc/*.json')):
