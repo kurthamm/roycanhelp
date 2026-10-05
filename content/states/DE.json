@@ -1,0 +1,22 @@
+{
+  "code": "DE",
+  "name": "Delaware",
+  "part_b": {
+    "name": "Delaware Department of Education - Special Education",
+    "url": "https://delaware.gov/education/special-education/",
+    "pdf": null,
+    "checked": "Main special education department page"
+  },
+  "part_c": {
+    "name": "Delaware DHSS - Early Care",
+    "url": "https://dhss.delaware.gov/divisions/family-services/",
+    "pdf": null,
+    "checked": "DHSS administers early intervention"
+  },
+  "parent_center": {
+    "name": "Parent Information Center (PIC)",
+    "url": "https://www.picofdel.org/",
+    "checked": "Verified through Parent Center Hub"
+  },
+  "note": "URLs identified for both agencies. Parent Information Center can assist with locating official resources."
+}

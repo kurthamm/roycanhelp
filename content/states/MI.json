@@ -1,0 +1,22 @@
+{
+  "code": "MI",
+  "name": "Michigan",
+  "part_b": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Not found"
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Not found"
+  },
+  "parent_center": {
+    "name": null,
+    "url": null,
+    "checked": "Not found"
+  },
+  "note": "Michigan Department of Education website (michigan.gov/mde) returns HTTP 403 (Forbidden); pages not accessible to automated research"
+}

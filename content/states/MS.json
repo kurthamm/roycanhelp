@@ -1,0 +1,22 @@
+{
+  "code": "MS",
+  "name": "Mississippi",
+  "part_b": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Not found"
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Not found"
+  },
+  "parent_center": {
+    "name": null,
+    "url": null,
+    "checked": "Not found"
+  },
+  "note": "Mississippi Department of Education website (mdek12.org) returns HTTP 403 (Forbidden); pages not accessible to automated research"
+}

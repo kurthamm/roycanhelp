@@ -1,1022 +1,880 @@
-[
+{
+ "checked": "October 2026",
+ "states": [
   {
-    "code": "AL",
-    "name": "Alabama",
-    "dd_agency": {
-      "name": "Division of Developmental Disabilities",
-      "url": "https://mh.alabama.gov/division-of-developmental-disabilities/"
-    },
-    "medicaid": {
-      "name": "Alabama Medicaid",
-      "url": "https://medicaid.alabama.gov/"
-    },
-    "ei_program": {
-      "name": "Alabama Early Intervention",
-      "url": "https://www.acei.ade.state.al.us/"
-    },
-    "pti_center": {
-      "name": "Disability Rights Alabama",
-      "url": "https://www.disabilityrightsalabama.org/"
-    }
+   "code": "AL",
+   "name": "Alabama",
+   "rights_school": {
+    "name": "Alabama Department of Education - Special Education",
+    "url": "https://www.alabamaachieves.org/special-education/"
+   },
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Part B page accessible. Procedural safeguards may be available through ALSDE contact or on subpages. ADPH operates Part C early intervention.",
+   "dd_agency": {
+    "name": "Division of Developmental Disabilities",
+    "url": "https://mh.alabama.gov/division-of-developmental-disabilities/"
+   }
   },
   {
-    "code": "AK",
-    "name": "Alaska",
-    "dd_agency": {
-      "name": "Intellectual & Developmental Disabilities Unit",
-      "url": "https://health.alaska.gov/en/senior-and-disabilities-services/developmental-disabilities/"
-    },
-    "medicaid": {
-      "name": "Alaska Medicaid",
-      "url": "https://dhss.alaska.gov/dsds/Pages/default.aspx"
-    },
-    "ei_program": {
-      "name": "Alaska Early Intervention",
-      "url": "https://health.alaska.gov/en/services/developmental-disabilities-resource-connection/"
-    },
-    "pti_center": {
-      "name": "Alaska Parent Training and Information Center",
-      "url": "https://www.alaskaptc.org/"
-    }
+   "code": "AK",
+   "name": "Alaska",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Alaska education website not responding during research. Recommend contacting AK Dept of Education directly for procedural safeguards and Part C information.",
+   "medicaid": {
+    "name": "Alaska Medicaid",
+    "url": "https://dhss.alaska.gov/dsds/Pages/default.aspx"
+   },
+   "dd_agency": {
+    "name": "Intellectual & Developmental Disabilities Unit",
+    "url": "https://health.alaska.gov/en/senior-and-disabilities-services/developmental-disabilities/"
+   }
   },
   {
-    "code": "AZ",
-    "name": "Arizona",
-    "dd_agency": {
-      "name": "Division of Developmental Disabilities",
-      "url": "https://des.az.gov"
-    },
-    "medicaid": {
-      "name": "Arizona Medicaid",
-      "url": "https://www.azahcccs.gov/"
-    },
-    "ei_program": {
-      "name": "Arizona Early Intervention Program",
-      "url": "https://des.az.gov"
-    },
-    "pti_center": {
-      "name": "Raising Special Kids",
-      "url": "https://raisingspecialkids.org/"
-    }
+   "code": "AZ",
+   "name": "Arizona",
+   "rights_school": {
+    "name": "Arizona Department of Education - Special Education",
+    "url": "https://www.azed.gov/special-education/"
+   },
+   "rights_ei": null,
+   "parent_center": {
+    "name": "Raising Special Kids (Arizona PTI)",
+    "url": "https://www.raisingspecialkids.org/"
+   },
+   "note": "AZ Dept of Education site requires direct visit. Raising Special Kids can provide parent resources.",
+   "medicaid": {
+    "name": "Arizona Medicaid",
+    "url": "https://www.azahcccs.gov/"
+   }
   },
   {
-    "code": "AR",
-    "name": "Arkansas",
-    "dd_agency": {
-      "name": "Division of Developmental Disabilities Services",
-      "url": "https://humanservices.arkansas.gov/divisions-shared-services/developmental-disabilities-services/"
-    },
-    "medicaid": {
-      "name": "Arkansas Medicaid",
-      "url": "https://www.medicaid.arkansas.gov/"
-    },
-    "ei_program": {
-      "name": "Arkansas Early Intervention Program",
-      "url": "https://humanservices.arkansas.gov/divisions-shared-services/developmental-disabilities-services/"
-    },
-    "pti_center": {
-      "name": "Disability Rights Center of Arkansas",
-      "url": "https://www.arcdisabilityrights.org/"
-    }
+   "code": "AR",
+   "name": "Arkansas",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "URLs identified for both Part B and C. May require direct website visit to locate procedural safeguards documents."
   },
   {
-    "code": "CA",
-    "name": "California",
-    "dd_agency": {
-      "name": "California Department of Developmental Services",
-      "url": "https://www.dds.ca.gov/"
-    },
-    "medicaid": {
-      "name": "California Medicaid",
-      "url": "https://www.dhcs.ca.gov/"
-    },
-    "ei_program": {
-      "name": "California Regional Centers",
-      "url": "https://www.dds.ca.gov/services/"
-    },
-    "pti_center": {
-      "name": "Exceptional Needs Project",
-      "url": "https://www.enp-pta.org/"
-    }
+   "code": "CA",
+   "name": "California",
+   "rights_school": {
+    "name": "California Department of Education - Special Education Services",
+    "url": "https://www.cde.ca.gov/sp/se/"
+   },
+   "rights_ei": {
+    "name": "California Early Start Program",
+    "url": "https://www.dds.ca.gov/consumers/regional-centers/early-start/"
+   },
+   "parent_center": null,
+   "note": "Both Part B and C pages confirmed accessible. California CDE maintains procedural safeguards at /sp/se/ps/ path.",
+   "medicaid": {
+    "name": "California Medicaid",
+    "url": "https://www.dhcs.ca.gov/"
+   },
+   "dd_agency": {
+    "name": "California Department of Developmental Services",
+    "url": "https://www.dds.ca.gov/"
+   }
   },
   {
-    "code": "CO",
-    "name": "Colorado",
-    "dd_agency": {
-      "name": "Division of Intellectual and Developmental Disabilities",
-      "url": "https://hcpf.colorado.gov/individuals-with-intellectual-developmental-disabilities-services-supports"
-    },
-    "medicaid": {
-      "name": "Colorado Medicaid",
-      "url": "https://hcpf.colorado.gov/"
-    },
-    "ei_program": {
-      "name": "Colorado Early Care and Support",
-      "url": "https://cdphe.colorado.gov/home-and-community-based-services-waiver-for-persons-with-intellectual-and-developmental"
-    },
-    "pti_center": {
-      "name": "The Legal Center for People with Disabilities",
-      "url": "https://www.thelegalcenter.org/"
-    }
+   "code": "CO",
+   "name": "Colorado",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": {
+    "name": "The PEAK Parent Center",
+    "url": "https://www.peakparent.org/"
+   },
+   "note": "PEAK Parent Center accessible and can provide resources. Recommended to contact state agencies directly for official procedural safeguards documents.",
+   "medicaid": {
+    "name": "Colorado Medicaid",
+    "url": "https://hcpf.colorado.gov/"
+   },
+   "dd_agency": {
+    "name": "Division of Intellectual and Developmental Disabilities",
+    "url": "https://hcpf.colorado.gov/individuals-with-intellectual-developmental-disabilities-services-supports"
+   }
   },
   {
-    "code": "CT",
-    "name": "Connecticut",
-    "dd_agency": {
-      "name": "Connecticut Department of Developmental Services",
-      "url": "https://portal.ct.gov/dds"
-    },
-    "medicaid": {
-      "name": "Connecticut Medicaid",
-      "url": "https://portal.ct.gov/husky"
-    },
-    "ei_program": {
-      "name": "Connecticut Early Intervention",
-      "url": "https://portal.ct.gov/oec/early-care-and-education/early-intervention"
-    },
-    "pti_center": {
-      "name": "Connecticut Parent Advocacy Center",
-      "url": "https://www.cpacusa.org/"
-    }
+   "code": "CT",
+   "name": "Connecticut",
+   "rights_school": {
+    "name": "Connecticut Department of Education - Special Education",
+    "url": "https://portal.ct.gov/SDE/Special-Education/"
+   },
+   "rights_ei": null,
+   "parent_center": {
+    "name": "Connecticut Parent Advocate Center (PAC)",
+    "url": "https://www.cpac.org/"
+   },
+   "note": "Both SDE and DDS portals accessible. Check these sites for procedural safeguards notices and family rights documents.",
+   "medicaid": {
+    "name": "Connecticut Medicaid",
+    "url": "https://portal.ct.gov/husky"
+   },
+   "dd_agency": {
+    "name": "Connecticut Department of Developmental Services",
+    "url": "https://portal.ct.gov/dds"
+   }
   },
   {
-    "code": "DE",
-    "name": "Delaware",
-    "dd_agency": {
-      "name": "Division of Developmental Disabilities Services",
-      "url": "https://dhss.delaware.gov/ddds/"
-    },
-    "medicaid": {
-      "name": "Delaware Medicaid",
-      "url": "https://dhss.delaware.gov/dmma/"
-    },
-    "ei_program": {
-      "name": "Delaware Early Intervention",
-      "url": "https://dhss.delaware.gov/ddds/"
-    },
-    "pti_center": {
-      "name": "Parent Information Center",
-      "url": "https://www.pikids.org/"
-    }
+   "code": "DE",
+   "name": "Delaware",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": {
+    "name": "Parent Information Center (PIC)",
+    "url": "https://www.picofdel.org/"
+   },
+   "note": "URLs identified for both agencies. Parent Information Center can assist with locating official resources.",
+   "medicaid": {
+    "name": "Delaware Medicaid",
+    "url": "https://dhss.delaware.gov/dmma/"
+   },
+   "dd_agency": {
+    "name": "Division of Developmental Disabilities Services",
+    "url": "https://dhss.delaware.gov/ddds/"
+   }
   },
   {
-    "code": "DC",
-    "name": "District of Columbia",
-    "dd_agency": {
-      "name": "Department on Disability Services",
-      "url": "https://dds.dc.gov/"
-    },
-    "medicaid": {
-      "name": "DC Medicaid",
-      "url": "https://dhcf.dc.gov/service/medicaid"
-    },
-    "ei_program": {
-      "name": "DC Early Intervention",
-      "url": "https://osse.dc.gov/"
-    },
-    "pti_center": {
-      "name": "Bazelon Center for Mental Health Law",
-      "url": "https://www.bazelon.org/"
-    }
+   "code": "DC",
+   "name": "District of Columbia",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Both services managed by OSSE. Recommend contacting OSSE directly for procedural safeguards and family rights notices.",
+   "medicaid": {
+    "name": "DC Medicaid",
+    "url": "https://dhcf.dc.gov/service/medicaid"
+   },
+   "dd_agency": {
+    "name": "Department on Disability Services",
+    "url": "https://dds.dc.gov/"
+   }
   },
   {
-    "code": "FL",
-    "name": "Florida",
-    "dd_agency": {
-      "name": "Agency for Persons with Disabilities",
-      "url": "https://apd.myflorida.com/"
-    },
-    "medicaid": {
-      "name": "Florida Medicaid",
-      "url": "https://ahca.myflorida.com/medicaid.html"
-    },
-    "ei_program": {
-      "name": "Florida Birth to Three",
-      "url": "https://www.floridahealth.gov/programs-and-services/childrens-health/early-steps/"
-    },
-    "pti_center": {
-      "name": "Florida Disability Rights and Responsibilities",
-      "url": "https://www.fdrr.org/"
-    }
+   "code": "FL",
+   "name": "Florida",
+   "rights_school": null,
+   "rights_ei": {
+    "name": "Your Rights - Early Steps",
+    "url": "https://floridaearlysteps.com/your-rights/"
+   },
+   "parent_center": null,
+   "note": "Florida has three PTI centers under FND umbrella, each serving different regions of the state. FLDOE Part B notice is publicly available but the direct PDF URLs are blocked by site security; parents can access through FLDOE's parent info portal or request from school district.",
+   "medicaid": {
+    "name": "Florida Medicaid",
+    "url": "https://ahca.myflorida.com/medicaid.html"
+   },
+   "dd_agency": {
+    "name": "Agency for Persons with Disabilities",
+    "url": "https://apd.myflorida.com/"
+   }
   },
   {
-    "code": "GA",
-    "name": "Georgia",
-    "dd_agency": {
-      "name": "Division of Developmental and Intellectual Disabilities",
-      "url": "https://dbhdd.georgia.gov"
-    },
-    "medicaid": {
-      "name": "Georgia Medicaid",
-      "url": "https://dbhdd.georgia.gov"
-    },
-    "ei_program": {
-      "name": "Georgia Early Intervention Program",
-      "url": "https://dbhdd.georgia.gov"
-    },
-    "pti_center": {
-      "name": "Pathways Parent Center",
-      "url": "https://www.pathwaysga.org/"
-    }
+   "code": "GA",
+   "name": "Georgia",
+   "rights_school": {
+    "name": "PROCEDURAL SAFEGUARDS/PARENT RIGHTS (Rule 160-4-7-.09)",
+    "url": "https://apps.gadoe.org/sboe/SBOE%20Rules/160-4-7-.09.pdf"
+   },
+   "rights_ei": {
+    "name": "Notice of Infant/Toddler and Family Rights Under Babies Can't Wait",
+    "url": "https://dph.georgia.gov/document/document/english-parent-rights-bookletpdf/download"
+   },
+   "parent_center": null,
+   "note": "Georgia Part C program is called Babies Can't Wait and is administered by the Department of Public Health. Parent to Parent of Georgia serves as both state PTI and PTAC (Parent Technical Assistance Center) for Southeast Region B."
   },
   {
-    "code": "HI",
-    "name": "Hawaii",
-    "dd_agency": {
-      "name": "Developmental Disabilities Division",
-      "url": "https://health.hawaii.gov/ddd/"
-    },
-    "medicaid": {
-      "name": "Hawaii Medicaid",
-      "url": "https://medquest.hawaii.gov/"
-    },
-    "ei_program": {
-      "name": "Hawaii Early Intervention",
-      "url": "https://health.hawaii.gov/ddd/"
-    },
-    "pti_center": {
-      "name": "Hawaii Disability Rights Center",
-      "url": "https://www.hawaiidisabilityrights.org/"
-    }
+   "code": "HI",
+   "name": "Hawaii",
+   "rights_school": {
+    "name": "Procedural Safeguards Notice for Parents and Students Under IDEA and Hawaii Law",
+    "url": "https://spinhawaii.org/wp-content/uploads/2015/06/ProceduralSafeguardsNotice.pdf"
+   },
+   "rights_ei": {
+    "name": "Hawaii IDEA Part C Early Intervention Policies and Procedures",
+    "url": "https://health.hawaii.gov/eis/files/2025/03/HawaiiIDEAPartCEIPoliciesandProcedures-FINAL-07.1.2024-OSEP-Approved.pdf"
+   },
+   "parent_center": null,
+   "note": "Hawaii's Part C program is administered by the Department of Health, Early Intervention Services (EIS). The PTI serves Hawaii and Pacific Island territories including American Samoa, Guam, FSM, Marshall Islands, Northern Mariana Islands, and Palau.",
+   "medicaid": {
+    "name": "Hawaii Medicaid",
+    "url": "https://medquest.hawaii.gov/"
+   },
+   "dd_agency": {
+    "name": "Developmental Disabilities Division",
+    "url": "https://health.hawaii.gov/ddd/"
+   }
   },
   {
-    "code": "ID",
-    "name": "Idaho",
-    "dd_agency": {
-      "name": "Bureau of Developmental Disability Services",
-      "url": "https://www.idahohealthandwelfare.us/"
-    },
-    "medicaid": {
-      "name": "Idaho Medicaid",
-      "url": "https://www.idahohealthandwelfare.us/medical/"
-    },
-    "ei_program": {
-      "name": "Idaho Early Intervention",
-      "url": "https://www.idahohealthandwelfare.us/"
-    },
-    "pti_center": {
-      "name": "Community Advocates for Disability Rights",
-      "url": "https://www.cadre.org/"
-    }
+   "code": "ID",
+   "name": "Idaho",
+   "rights_school": {
+    "name": "Idaho Special Education Manual 2025 (includes Procedural Safeguards Notice)",
+    "url": "https://www.sde.idaho.gov/wp-content/uploads/2026/07/Idaho-Special-Education-Manual-2025.pdf"
+   },
+   "rights_ei": {
+    "name": "Infant Toddler Program - Provider Resources",
+    "url": "https://healthandwelfare.idaho.gov/providers/infant-toddler-program/infant-toddler-program-provider-resources"
+   },
+   "parent_center": null,
+   "note": "Idaho's Part C program is administered by the Department of Health and Welfare. IPUL also serves as PTAC (Parent Technical Assistance Center) for Region D."
   },
   {
-    "code": "IL",
-    "name": "Illinois",
-    "dd_agency": {
-      "name": "Division of Developmental Disabilities",
-      "url": "https://www.dhs.state.il.us/page.aspx?item=29761"
-    },
-    "medicaid": {
-      "name": "Illinois Medicaid",
-      "url": "https://www2.illinois.gov/hfs/"
-    },
-    "ei_program": {
-      "name": "Illinois Early Intervention",
-      "url": "https://www.dhs.state.il.us/page.aspx?item=29761"
-    },
-    "pti_center": {
-      "name": "Family Resource Center on Disabilities",
-      "url": "https://www.frcd.org/"
-    }
+   "code": "IL",
+   "name": "Illinois",
+   "rights_school": {
+    "name": "Notice of Procedural Safeguards for Parents/Guardians of Students (ISBE 34-57J)",
+    "url": "https://www.isbe.net/SPEDReqNotConForms/nc_proc_sfgrds_34-57j.pdf"
+   },
+   "rights_ei": {
+    "name": "Early Intervention Services - For Parents",
+    "url": "https://idec.illinois.gov/forparents/early-intervention.html"
+   },
+   "parent_center": null,
+   "note": "Illinois Part C is administered by the Department of Early Childhood (IDEC). Illinois has two PTI centers: Family Resource Center on Disabilities (serving Chicago area) and Family Matters (serving most of rest of state). For most of state outside Cook County area, Family Matters is the primary PTI.",
+   "medicaid": {
+    "name": "Illinois Medicaid",
+    "url": "https://www2.illinois.gov/hfs/"
+   },
+   "dd_agency": {
+    "name": "Division of Developmental Disabilities",
+    "url": "https://www.dhs.state.il.us/page.aspx?item=29761"
+   }
   },
   {
-    "code": "IN",
-    "name": "Indiana",
-    "dd_agency": {
-      "name": "Division of Disability, Aging and Rehabilitative Services",
-      "url": "https://www.in.gov/fssa/"
-    },
-    "medicaid": {
-      "name": "Indiana Medicaid",
-      "url": "https://www.in.gov/fssa/"
-    },
-    "ei_program": {
-      "name": "Indiana Early Intervention",
-      "url": "https://www.in.gov/fssa/"
-    },
-    "pti_center": {
-      "name": "IN*SOURCE",
-      "url": "https://www.insource.org/"
-    }
+   "code": "IN",
+   "name": "Indiana",
+   "rights_school": {
+    "name": "Notice of Procedural Safeguards",
+    "url": "https://www.in.gov/doe/files/Notice-of-Procedural-Safeguards-English-August-2025.pdf"
+   },
+   "rights_ei": {
+    "name": "Guide to Family Rights and Procedural Safeguards",
+    "url": "https://www.in.gov/fssa/ddars/files/IN-GuidetoFamilyRightsProceduralSafeguards.pdf"
+   },
+   "parent_center": null,
+   "note": "Indiana's Part C program is called First Steps and serves infants and toddlers birth to age 3. IN*SOURCE works with families from birth to age 26.",
+   "medicaid": {
+    "name": "Indiana Medicaid",
+    "url": "https://www.in.gov/fssa/"
+   }
   },
   {
-    "code": "IA",
-    "name": "Iowa",
-    "dd_agency": {
-      "name": "Division of Disability Services",
-      "url": "https://hhs.iowa.gov/health-prevention/disability-services"
-    },
-    "medicaid": {
-      "name": "Iowa Medicaid",
-      "url": "https://hhs.iowa.gov/"
-    },
-    "ei_program": {
-      "name": "Iowa Early Intervention",
-      "url": "https://hhs.iowa.gov/health-prevention/disability-services"
-    },
-    "pti_center": {
-      "name": "Iowa Parent and Educator Connection",
-      "url": "https://www.iowaparentsandeducators.org/"
-    }
+   "code": "IA",
+   "name": "Iowa",
+   "rights_school": {
+    "name": "Procedural Safeguards Manual: Rights of Parents of Students with Disabilities",
+    "url": "https://educate.iowa.gov/media/2041/download?inline="
+   },
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Iowa's Part C program is called Early ACCESS and is a partnership between Iowa Departments of Education, Public Health, Human Services, and University of Iowa Child Health Specialty Clinics. ASK Resource Center serves the entire state.",
+   "medicaid": {
+    "name": "Iowa Medicaid",
+    "url": "https://hhs.iowa.gov/"
+   }
   },
   {
-    "code": "KS",
-    "name": "Kansas",
-    "dd_agency": {
-      "name": "Aging and Disability Services",
-      "url": "https://www.kdads.ks.gov"
-    },
-    "medicaid": {
-      "name": "Kansas Medicaid",
-      "url": "https://www.kdads.ks.gov"
-    },
-    "ei_program": {
-      "name": "Kansas Early Intervention",
-      "url": "https://www.kdads.ks.gov"
-    },
-    "pti_center": {
-      "name": "Kansas Parent Training and Information Project",
-      "url": "https://kansasptip.org/"
-    }
+   "code": "KS",
+   "name": "Kansas",
+   "rights_school": null,
+   "rights_ei": {
+    "name": "Child and Family Rights Booklet (Kansas ECDS/KSITS)",
+    "url": "https://www.kdhe.ks.gov/DocumentCenter/View/5708/Child-and-Family-Rights-Booklet-English-PDF"
+   },
+   "parent_center": null,
+   "note": "Kansas Part C is administered by KDHE as Kansas Early Childhood Developmental Services (KECDS). Families Together, Inc. serves as the statewide PTI."
   },
   {
-    "code": "KY",
-    "name": "Kentucky",
-    "dd_agency": {
-      "name": "Division of Developmental and Intellectual Disabilities",
-      "url": "https://www.chfs.ky.gov/agencies/dbhdid/Pages/did.aspx"
-    },
-    "medicaid": {
-      "name": "Kentucky Medicaid",
-      "url": "https://www.chfs.ky.gov/"
-    },
-    "ei_program": {
-      "name": "Kentucky Early Intervention",
-      "url": "https://www.chfs.ky.gov/agencies/dbhdid/Pages/did.aspx"
-    },
-    "pti_center": {
-      "name": "Kentucky Special Parent Involvement Network",
-      "url": "https://www.kspin.org/"
-    }
+   "code": "KY",
+   "name": "Kentucky",
+   "rights_school": {
+    "name": "Procedural Safeguards Notice (KDE)",
+    "url": "https://www.education.ky.gov/specialed/excep/GuidanceResources/Documents/Procedural_Safeguards_Notice.pdf"
+   },
+   "rights_ei": {
+    "name": "KEIS Family Rights Handbook",
+    "url": "https://www.chfs.ky.gov/agencies/dph/dmch/ecdb/fs/KEIS_FamilyRightsHandbook.pdf"
+   },
+   "parent_center": null,
+   "note": "Kentucky's Part C program is called First Steps (KEIS - Kentucky Early Intervention System) and is administered by Cabinet for Health and Family Services, Department for Public Health. Procedural safeguards also codified in 902 KAR 30:180.",
+   "medicaid": {
+    "name": "Kentucky Medicaid",
+    "url": "https://www.chfs.ky.gov/"
+   },
+   "dd_agency": {
+    "name": "Division of Developmental and Intellectual Disabilities",
+    "url": "https://www.chfs.ky.gov/agencies/dbhdid/Pages/did.aspx"
+   }
   },
   {
-    "code": "LA",
-    "name": "Louisiana",
-    "dd_agency": {
-      "name": "Office for Citizens with DD",
-      "url": "https://www.ldh.la.gov/"
-    },
-    "medicaid": {
-      "name": "Louisiana Medicaid",
-      "url": "https://www.ldh.la.gov/"
-    },
-    "ei_program": {
-      "name": "Louisiana Early Intervention",
-      "url": "https://www.ldh.la.gov/"
-    },
-    "pti_center": {
-      "name": "Advocacy Center for Persons with Disabilities",
-      "url": "https://www.advocacylouisiana.org/"
-    }
+   "code": "LA",
+   "name": "Louisiana",
+   "rights_school": {
+    "name": "Louisiana's Educational Rights of Children with Disabilities",
+    "url": "https://doe.louisiana.gov/families-and-students/family-support-resources/family-special-education-resources"
+   },
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Part B procedural safeguards mentioned on resource page (available in multiple languages). Part C information not located in research; may be under a different state agency (health/human services)",
+   "medicaid": {
+    "name": "Louisiana Medicaid",
+    "url": "https://www.ldh.la.gov/"
+   }
   },
   {
-    "code": "ME",
-    "name": "Maine",
-    "dd_agency": {
-      "name": "Office of Aging and Disability Services",
-      "url": "https://www.maine.gov/dhhs/oads"
-    },
-    "medicaid": {
-      "name": "Maine Medicaid",
-      "url": "https://www.maine.gov/dhhs/ofi"
-    },
-    "ei_program": {
-      "name": "Maine Early Intervention",
-      "url": "https://www.maine.gov/dhhs/oads"
-    },
-    "pti_center": {
-      "name": "Parent Advocacy Center",
-      "url": "https://www.parentadvocacyonline.org/"
-    }
+   "code": "ME",
+   "name": "Maine",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Maine Department of Education special education pages at maine.gov/doe exist but procedural safeguards document not directly accessible",
+   "medicaid": {
+    "name": "Maine Medicaid",
+    "url": "https://www.maine.gov/dhhs/ofi"
+   },
+   "dd_agency": {
+    "name": "Office of Aging and Disability Services",
+    "url": "https://www.maine.gov/dhhs/oads"
+   }
   },
   {
-    "code": "MD",
-    "name": "Maryland",
-    "dd_agency": {
-      "name": "Developmental Disabilities Administration",
-      "url": "https://health.maryland.gov/dda/Pages/Home.aspx"
-    },
-    "medicaid": {
-      "name": "Maryland Medicaid",
-      "url": "https://health.maryland.gov/mmcp/Pages/home.aspx"
-    },
-    "ei_program": {
-      "name": "Maryland Early Intervention Services",
-      "url": "https://health.maryland.gov/dda/Pages/Home.aspx"
-    },
-    "pti_center": {
-      "name": "Parents' Place of Maryland",
-      "url": "https://ppmd.org/"
-    }
+   "code": "MD",
+   "name": "Maryland",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Maryland Department of Education exists (mde.maryland.gov) but procedural safeguards pages not accessible to automated research tools",
+   "medicaid": {
+    "name": "Maryland Medicaid",
+    "url": "https://health.maryland.gov/mmcp/Pages/home.aspx"
+   },
+   "dd_agency": {
+    "name": "Developmental Disabilities Administration",
+    "url": "https://health.maryland.gov/dda/Pages/Home.aspx"
+   }
   },
   {
-    "code": "MA",
-    "name": "Massachusetts",
-    "dd_agency": {
-      "name": "Department of Developmental Services",
-      "url": "https://www.mass.gov/dds"
-    },
-    "medicaid": {
-      "name": "Massachusetts Medicaid",
-      "url": "https://www.mass.gov/dds"
-    },
-    "ei_program": {
-      "name": "Massachusetts Early Intervention Program",
-      "url": "https://www.mass.gov/dds"
-    },
-    "pti_center": {
-      "name": "Federation for Children with Special Needs",
-      "url": "https://fcsn.org/"
-    }
+   "code": "MA",
+   "name": "Massachusetts",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Mass.gov education pages exist but are heavily JavaScript-rendered and access was blocked (HTTP 403) for some URLs"
   },
   {
-    "code": "MI",
-    "name": "Michigan",
-    "dd_agency": {
-      "name": "Michigan Developmental Disabilities Council",
-      "url": "https://www.michigan.gov/mdhhs"
-    },
-    "medicaid": {
-      "name": "Michigan Medicaid",
-      "url": "https://www.michigan.gov/mdhhs"
-    },
-    "ei_program": {
-      "name": "Michigan Early Intervention",
-      "url": "https://www.michigan.gov/mdhhs"
-    },
-    "pti_center": {
-      "name": "MISAN",
-      "url": "https://www.misan.org/"
-    }
+   "code": "MI",
+   "name": "Michigan",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Michigan Department of Education website (michigan.gov/mde) returns HTTP 403 (Forbidden); pages not accessible to automated research",
+   "medicaid": {
+    "name": "Michigan Medicaid",
+    "url": "https://www.michigan.gov/mdhhs"
+   }
   },
   {
-    "code": "MN",
-    "name": "Minnesota",
-    "dd_agency": {
-      "name": "Disability Services Division",
-      "url": "https://www.dhs.state.mn.us/"
-    },
-    "medicaid": {
-      "name": "Minnesota Medicaid",
-      "url": "https://www.dhs.state.mn.us/"
-    },
-    "ei_program": {
-      "name": "Minnesota Early Childhood Intervention",
-      "url": "https://www.dhs.state.mn.us/"
-    },
-    "pti_center": {
-      "name": "Parent Advocacy Coalition for Educational Rights",
-      "url": "https://www.pacer.org/"
-    }
+   "code": "MN",
+   "name": "Minnesota",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Minnesota Department of Education website (education.mn.gov) protected by Radware security verification; pages not accessible to automated tools",
+   "medicaid": {
+    "name": "Minnesota Medicaid",
+    "url": "https://www.dhs.state.mn.us/"
+   }
   },
   {
-    "code": "MS",
-    "name": "Mississippi",
-    "dd_agency": {
-      "name": "Bureau of Intellectual Disabilities",
-      "url": "https://www.dmh.ms.gov/whoweare/idd-programs/"
-    },
-    "medicaid": {
-      "name": "Mississippi Medicaid",
-      "url": "https://www.medicaid.ms.gov/"
-    },
-    "ei_program": {
-      "name": "Mississippi Early Intervention",
-      "url": "https://www.dmh.ms.gov/whoweare/idd-programs/"
-    },
-    "pti_center": {
-      "name": "Mississippi Parent Training and Information Center",
-      "url": "https://www.msptic.org/"
-    }
+   "code": "MS",
+   "name": "Mississippi",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Mississippi Department of Education website (mdek12.org) returns HTTP 403 (Forbidden); pages not accessible to automated research",
+   "medicaid": {
+    "name": "Mississippi Medicaid",
+    "url": "https://www.medicaid.ms.gov/"
+   },
+   "dd_agency": {
+    "name": "Bureau of Intellectual Disabilities",
+    "url": "https://www.dmh.ms.gov/whoweare/idd-programs/"
+   }
   },
   {
-    "code": "MO",
-    "name": "Missouri",
-    "dd_agency": {
-      "name": "Division of Developmental Disabilities",
-      "url": "https://dmh.mo.gov/dev-disabilities"
-    },
-    "medicaid": {
-      "name": "Missouri Medicaid",
-      "url": "https://dmh.mo.gov/"
-    },
-    "ei_program": {
-      "name": "Missouri Early Intervention",
-      "url": "https://dmh.mo.gov/dev-disabilities"
-    },
-    "pti_center": {
-      "name": "Missouri Parent Training and Information",
-      "url": "https://www.mopti.org/"
-    }
+   "code": "MO",
+   "name": "Missouri",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Missouri DESE has special education office; compliance section exists but specific procedural safeguards and early intervention pages not identified",
+   "medicaid": {
+    "name": "Missouri Medicaid",
+    "url": "https://dmh.mo.gov/"
+   },
+   "dd_agency": {
+    "name": "Division of Developmental Disabilities",
+    "url": "https://dmh.mo.gov/dev-disabilities"
+   }
   },
   {
-    "code": "MT",
-    "name": "Montana",
-    "dd_agency": {
-      "name": "Developmental Disabilities Program",
-      "url": "https://dphhs.mt.gov/"
-    },
-    "medicaid": {
-      "name": "Montana Medicaid",
-      "url": "https://dphhs.mt.gov/"
-    },
-    "ei_program": {
-      "name": "Montana Early Intervention",
-      "url": "https://dphhs.mt.gov/"
-    },
-    "pti_center": {
-      "name": "Montana Disability Rights Center",
-      "url": "https://www.montanadisabilityrights.org/"
-    }
+   "code": "MT",
+   "name": "Montana",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Montana OPI special education page confirmed; links to procedural safeguards and Part C documents not extracted in automated research",
+   "medicaid": {
+    "name": "Montana Medicaid",
+    "url": "https://dphhs.mt.gov/"
+   }
   },
   {
-    "code": "NE",
-    "name": "Nebraska",
-    "dd_agency": {
-      "name": "Division of Developmental Disabilities",
-      "url": "https://dhhs.ne.gov/"
-    },
-    "medicaid": {
-      "name": "Nebraska Medicaid",
-      "url": "https://dhhs.ne.gov/"
-    },
-    "ei_program": {
-      "name": "Nebraska Early Intervention",
-      "url": "https://dhhs.ne.gov/"
-    },
-    "pti_center": {
-      "name": "Disability Rights Nebraska",
-      "url": "https://www.disabilityrightsnebraska.org/"
-    }
+   "code": "NE",
+   "name": "Nebraska",
+   "rights_school": {
+    "name": "Parent Rights for Special Education (Age 3-21)",
+    "url": "https://www.education.ne.gov/sped/parent-information/"
+   },
+   "rights_ei": {
+    "name": "Part C Procedural Safeguards",
+    "url": "https://www.education.ne.gov/sped/parent-information/"
+   },
+   "parent_center": {
+    "name": "PTI Nebraska",
+    "url": "https://www.pti-nebraska.org/"
+   },
+   "note": "",
+   "medicaid": {
+    "name": "Nebraska Medicaid",
+    "url": "https://dhhs.ne.gov/"
+   }
   },
   {
-    "code": "NV",
-    "name": "Nevada",
-    "dd_agency": {
-      "name": "Aging & Disability Services Division",
-      "url": "https://aging.nv.gov/"
-    },
-    "medicaid": {
-      "name": "Nevada Medicaid",
-      "url": "https://dhcfp.nv.gov/"
-    },
-    "ei_program": {
-      "name": "Nevada Early Intervention",
-      "url": "https://aging.nv.gov/"
-    },
-    "pti_center": {
-      "name": "Nevada Disability Advocacy and Law Center",
-      "url": "https://www.ndalc.org/"
-    }
+   "code": "NV",
+   "name": "Nevada",
+   "rights_school": {
+    "name": "Special Education Procedural Safeguards",
+    "url": "https://doe.nv.gov/offices/office-of-comprehensive-student-services/dispute-resolution/state-complaint"
+   },
+   "rights_ei": {
+    "name": "Parent Rights and Responsibilities (Part C)",
+    "url": "https://www.adsd.nv.gov/"
+   },
+   "parent_center": {
+    "name": "Nevada Parents Encouraging Parents (Nevada PEP)",
+    "url": "https://nvpep.org/"
+   },
+   "note": "Nevada Part B resources primarily through dispute resolution portal; Part C administered by ADSD",
+   "medicaid": {
+    "name": "Nevada Medicaid",
+    "url": "https://dhcfp.nv.gov/"
+   }
   },
   {
-    "code": "NH",
-    "name": "New Hampshire",
-    "dd_agency": {
-      "name": "Division of Long Term Supports and Services",
-      "url": "https://www.maine.gov"
-    },
-    "medicaid": {
-      "name": "New Hampshire Medicaid",
-      "url": "https://www.maine.gov"
-    },
-    "ei_program": {
-      "name": "New Hampshire Early Intervention",
-      "url": "https://www.maine.gov"
-    },
-    "pti_center": {
-      "name": "Family Support Center",
-      "url": "https://www.nh-fsc.org/"
-    }
+   "code": "NH",
+   "name": "New Hampshire",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": {
+    "name": "Parent Information Center (PIC)",
+    "url": "https://picnh.org/"
+   },
+   "note": "Part B handbook accessible through education.nh.gov; Part C through DHHS (health department)",
+   "medicaid": {
+    "name": "New Hampshire Medicaid",
+    "url": "https://www.maine.gov"
+   }
   },
   {
-    "code": "NJ",
-    "name": "New Jersey",
-    "dd_agency": {
-      "name": "Division of Developmental Disabilities",
-      "url": "https://nj.gov/humanservices/"
-    },
-    "medicaid": {
-      "name": "New Jersey Medicaid",
-      "url": "https://nj.gov/humanservices/"
-    },
-    "ei_program": {
-      "name": "New Jersey Early Intervention System",
-      "url": "https://nj.gov/humanservices/"
-    },
-    "pti_center": {
-      "name": "NJPAC",
-      "url": "https://www.njpac.org/"
-    }
+   "code": "NJ",
+   "name": "New Jersey",
+   "rights_school": {
+    "name": "Parental Rights in Special Education (PRISE)",
+    "url": "https://www.nj.gov/education/specialed/parents/"
+   },
+   "rights_ei": {
+    "name": "NJEIS Family Rights (Procedural Safeguards)",
+    "url": "https://nj.gov/health/fhs/eis/"
+   },
+   "parent_center": null,
+   "note": "Part B administered by Department of Education; Part C (NJEIS) administered by Department of Health",
+   "medicaid": {
+    "name": "New Jersey Medicaid",
+    "url": "https://nj.gov/humanservices/"
+   }
   },
   {
-    "code": "NM",
-    "name": "New Mexico",
-    "dd_agency": {
-      "name": "Developmental Disabilities Support Division",
-      "url": "https://www.env.nm.gov/"
-    },
-    "medicaid": {
-      "name": "New Mexico Medicaid",
-      "url": "https://www.hsd.state.nm.us/"
-    },
-    "ei_program": {
-      "name": "New Mexico Early Intervention",
-      "url": "https://www.env.nm.gov/"
-    },
-    "pti_center": {
-      "name": "Parents Reaching Out",
-      "url": "https://www.parentsreachingout.org/"
-    }
+   "code": "NM",
+   "name": "New Mexico",
+   "rights_school": null,
+   "rights_ei": {
+    "name": "Early Intervention Programs under NMAC 8.9.8",
+    "url": "https://srca.nm.gov/"
+   },
+   "parent_center": {
+    "name": "Parents Reaching Out (P.R.O.)",
+    "url": "https://parentsreachingout.org/"
+   },
+   "note": "Both Part B and Part C accessible through regulatory frameworks; Contact state agencies directly for full documents",
+   "medicaid": {
+    "name": "New Mexico Medicaid",
+    "url": "https://www.hsd.state.nm.us/"
+   },
+   "dd_agency": {
+    "name": "Developmental Disabilities Support Division",
+    "url": "https://www.env.nm.gov/"
+   }
   },
   {
-    "code": "NY",
-    "name": "New York",
-    "dd_agency": {
-      "name": "Office for People With Developmental Disabilities",
-      "url": "https://opwdd.ny.gov/"
-    },
-    "medicaid": {
-      "name": "New York Medicaid",
-      "url": "https://www.health.ny.gov/health_care/medicaid/"
-    },
-    "ei_program": {
-      "name": "New York Early Intervention Program",
-      "url": "https://opwdd.ny.gov/"
-    },
-    "pti_center": {
-      "name": "New York Disability Advocacy Center",
-      "url": "https://www.nydisabilityadvocacy.org/"
-    }
+   "code": "NY",
+   "name": "New York",
+   "rights_school": {
+    "name": "Procedural Safeguards Notice",
+    "url": "https://www.nysed.gov/special-education"
+   },
+   "rights_ei": {
+    "name": "Section 69-4.17 Procedural Safeguards (Early Intervention)",
+    "url": "https://www.health.ny.gov/community/infants_children/early_intervention/index.htm"
+   },
+   "parent_center": {
+    "name": "Starbridge (Rochester-based statewide)",
+    "url": "https://www.starbridge.org/"
+   },
+   "note": "New York has 5 federally funded PTI centers statewide; Part C regulatory information accessible through health department",
+   "medicaid": {
+    "name": "New York Medicaid",
+    "url": "https://www.health.ny.gov/health_care/medicaid/"
+   }
   },
   {
-    "code": "NC",
-    "name": "North Carolina",
-    "dd_agency": {
-      "name": "Division of Mental Health, Developmental Disabilities and Substance Use Services",
-      "url": "https://www.ncdhhs.gov/divisions/mhddsus"
-    },
-    "medicaid": {
-      "name": "North Carolina Medicaid",
-      "url": "https://medicaid.ncdhhs.gov/"
-    },
-    "ei_program": {
-      "name": "North Carolina Early Intervention",
-      "url": "https://www.ncdhhs.gov/divisions/mhddsus"
-    },
-    "pti_center": {
-      "name": "Exceptional Children's Assistance Center",
-      "url": "https://www.ecac-parentcenter.org/"
-    }
+   "code": "NC",
+   "name": "North Carolina",
+   "rights_school": {
+    "name": "Exceptional Children Parent Rights Handbook",
+    "url": "https://www.dpi.nc.gov/districts-schools/classroom-resources/exceptional-children"
+   },
+   "rights_ei": {
+    "name": "North Carolina Early Intervention (NCEI) Program",
+    "url": "https://beearly.nc.gov/"
+   },
+   "parent_center": {
+    "name": "Exceptional Children's Assistance Center (ECAC)",
+    "url": "https://www.ecac-parentcenter.org/"
+   },
+   "note": "Part B and Part C resources from separate agencies; ECAC serves as statewide PTI center",
+   "medicaid": {
+    "name": "North Carolina Medicaid",
+    "url": "https://medicaid.ncdhhs.gov/"
+   },
+   "dd_agency": {
+    "name": "Division of Mental Health, Developmental Disabilities and Substance Use Services",
+    "url": "https://www.ncdhhs.gov/divisions/mhddsus"
+   }
   },
   {
-    "code": "ND",
-    "name": "North Dakota",
-    "dd_agency": {
-      "name": "Developmental Disabilities Division",
-      "url": "https://www.nd.gov/"
-    },
-    "medicaid": {
-      "name": "North Dakota Medicaid",
-      "url": "https://www.hhs.nd.gov/"
-    },
-    "ei_program": {
-      "name": "North Dakota Early Intervention",
-      "url": "https://www.nd.gov/"
-    },
-    "pti_center": {
-      "name": "North Dakota PTI",
-      "url": "https://www.ndpti.org/"
-    }
+   "code": "ND",
+   "name": "North Dakota",
+   "rights_school": {
+    "name": "State Performance Plan Part B FFY 2023-24",
+    "url": "https://www.nd.gov/dpi/sites/www/files/documents/SpeEd/ND-01%20SPP%20PART%20B%20FFY%202023-24.pdf"
+   },
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Part C administered by DHHS; Contact state directly for complete early intervention procedural safeguards",
+   "medicaid": {
+    "name": "North Dakota Medicaid",
+    "url": "https://www.hhs.nd.gov/"
+   },
+   "dd_agency": {
+    "name": "Developmental Disabilities Division",
+    "url": "https://www.nd.gov/"
+   }
   },
   {
-    "code": "OH",
-    "name": "Ohio",
-    "dd_agency": {
-      "name": "Department of Developmental Disabilities",
-      "url": "https://dodd.ohio.gov/"
-    },
-    "medicaid": {
-      "name": "Ohio Medicaid",
-      "url": "https://medicaid.ohio.gov/"
-    },
-    "ei_program": {
-      "name": "Ohio Early Intervention",
-      "url": "https://dodd.ohio.gov/"
-    },
-    "pti_center": {
-      "name": "Disability Advocacy Center",
-      "url": "https://www.disabilityadvocacycenter.org/"
-    }
+   "code": "OH",
+   "name": "Ohio",
+   "rights_school": {
+    "name": "A Guide to Parent Rights in Special Education",
+    "url": "https://education.ohio.gov/Topics/Special-Education"
+   },
+   "rights_ei": {
+    "name": "Ohio Administrative Code Chapter 5180-10 (Early Intervention)",
+    "url": "https://codes.ohio.gov/ohio-administrative-code/chapter-5180-10"
+   },
+   "parent_center": null,
+   "note": "Part B guide updated July 2025; Both part_b and part_c accessible; Contact state directory for OCECD materials",
+   "medicaid": {
+    "name": "Ohio Medicaid",
+    "url": "https://medicaid.ohio.gov/"
+   },
+   "dd_agency": {
+    "name": "Department of Developmental Disabilities",
+    "url": "https://dodd.ohio.gov/"
+   }
   },
   {
-    "code": "OK",
-    "name": "Oklahoma",
-    "dd_agency": {
-      "name": "Developmental Disabilities Services",
-      "url": "https://aem-prod.ok.gov/okdhs/services/dds.html"
-    },
-    "medicaid": {
-      "name": "Oklahoma Medicaid",
-      "url": "https://www.okmedicaid.gov/"
-    },
-    "ei_program": {
-      "name": "Oklahoma Early Intervention",
-      "url": "https://aem-prod.ok.gov/okdhs/services/dds.html"
-    },
-    "pti_center": {
-      "name": "Parents, Advocates, and Literacy Services",
-      "url": "https://www.opal.ok.gov/"
-    }
+   "code": "OK",
+   "name": "Oklahoma",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Oklahoma State Department of Education URL redirects to oklahoma.gov. Procedural safeguards information not accessible via WebFetch or curl. Recommend contacting (405) 521-3301."
   },
   {
-    "code": "OR",
-    "name": "Oregon",
-    "dd_agency": {
-      "name": "Office of Developmental Disabilities Services",
-      "url": "https://www.oregon.gov/odhs/idd/pages/default.aspx"
-    },
-    "medicaid": {
-      "name": "Oregon Medicaid",
-      "url": "https://www.oregon.gov/oha/hsd/ohp/pages/index.aspx"
-    },
-    "ei_program": {
-      "name": "Oregon Early Intervention",
-      "url": "https://www.oregon.gov/odhs/idd/pages/default.aspx"
-    },
-    "pti_center": {
-      "name": "Oregon Parent Training and Information",
-      "url": "https://www.oregonpti.org/"
-    }
+   "code": "OR",
+   "name": "Oregon",
+   "rights_school": {
+    "name": "Procedural Safeguards Notice",
+    "url": "https://www.oregon.gov/ode/rules-and-policies/Pages/Procedural-Safeguards.aspx"
+   },
+   "rights_ei": {
+    "name": "EI/ECSE Procedural Safeguards",
+    "url": "https://www.oregon.gov/ode/rules-and-policies/Pages/Procedural-Safeguards.aspx"
+   },
+   "parent_center": null,
+   "note": "Oregon Part B and C both at same procedural safeguards page. PTI center not yet identified. Contact: ode.specialeducationquestions@ode.oregon.gov, (503) 947-5600",
+   "medicaid": {
+    "name": "Oregon Medicaid",
+    "url": "https://www.oregon.gov/oha/hsd/ohp/pages/index.aspx"
+   },
+   "dd_agency": {
+    "name": "Office of Developmental Disabilities Services",
+    "url": "https://www.oregon.gov/odhs/idd/pages/default.aspx"
+   }
   },
   {
-    "code": "PA",
-    "name": "Pennsylvania",
-    "dd_agency": {
-      "name": "Office of Developmental Programs",
-      "url": "https://www.pa.gov/agencies/dhs/programs-services/intellectual-disabilities"
-    },
-    "medicaid": {
-      "name": "Pennsylvania Medicaid",
-      "url": "https://www.pa.gov/"
-    },
-    "ei_program": {
-      "name": "Pennsylvania Early Intervention",
-      "url": "https://www.pa.gov/agencies/dhs/programs-services/intellectual-disabilities"
-    },
-    "pti_center": {
-      "name": "Disability Rights Pennsylvania",
-      "url": "https://www.disabilityrightpa.org/"
-    }
+   "code": "PA",
+   "name": "Pennsylvania",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": {
+    "name": "PaTTAN (Pennsylvania Training and Technical Assistance Network)",
+    "url": "https://www.pattan.net/"
+   },
+   "note": "PaTTAN (https://www.pattan.net/) provides special education support but is technical assistance, not traditional PTI. Traditional Part B procedural safeguards notice not directly accessible. Contact: Bureau of Special Education through PDE website.",
+   "medicaid": {
+    "name": "Pennsylvania Medicaid",
+    "url": "https://www.pa.gov/"
+   },
+   "dd_agency": {
+    "name": "Office of Developmental Programs",
+    "url": "https://www.pa.gov/agencies/dhs/programs-services/intellectual-disabilities"
+   }
   },
   {
-    "code": "RI",
-    "name": "Rhode Island",
-    "dd_agency": {
-      "name": "Division of Developmental Disabilities",
-      "url": "https://www.maine.gov"
-    },
-    "medicaid": {
-      "name": "Rhode Island Medicaid",
-      "url": "https://www.maine.gov"
-    },
-    "ei_program": {
-      "name": "Rhode Island Early Intervention",
-      "url": "https://www.maine.gov"
-    },
-    "pti_center": {
-      "name": "Rhode Island Parent Training and Information",
-      "url": "https://www.ripti.org/"
-    }
+   "code": "RI",
+   "name": "Rhode Island",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Rhode Island Department of Education website not accessible during session (HTTP 403). Manual research needed. Recommend contacting RIDE directly at (401) 222-8100.",
+   "medicaid": {
+    "name": "Rhode Island Medicaid",
+    "url": "https://www.maine.gov"
+   }
   },
   {
-    "code": "SC",
-    "name": "South Carolina",
-    "dd_agency": {
-      "name": "Office of Intellectual and Developmental Disabilities",
-      "url": "https://scdhhs.gov/resources/waivers/intellectual-disability-and-related-disabilities-idrd-waiver"
-    },
-    "medicaid": {
-      "name": "South Carolina Medicaid",
-      "url": "https://www.scdhhs.gov/"
-    },
-    "ei_program": {
-      "name": "South Carolina Early Intervention",
-      "url": "https://scdhhs.gov/resources/waivers/intellectual-disability-and-related-disabilities-idrd-waiver"
-    },
-    "pti_center": {
-      "name": "South Carolina Parent Training and Information",
-      "url": "https://www.scpti.org/"
-    }
+   "code": "SC",
+   "name": "South Carolina",
+   "rights_school": {
+    "name": "Procedural Safeguards Notice",
+    "url": "https://ed.sc.gov/districts-schools/special-education-services/parent-resources/dispute-resolution-information/procedural-safeguards-notice/"
+   },
+   "rights_ei": null,
+   "parent_center": {
+    "name": "Family Connection of South Carolina",
+    "url": "https://familyconnectionsc.org/"
+   },
+   "note": "SC Part B confirmed. Part C BabyNet domain not resolving during session. PTI center verified as active and comprehensive.",
+   "medicaid": {
+    "name": "South Carolina Medicaid",
+    "url": "https://www.scdhhs.gov/"
+   },
+   "dd_agency": {
+    "name": "Office of Intellectual and Developmental Disabilities",
+    "url": "https://scdhhs.gov/resources/waivers/intellectual-disability-and-related-disabilities-idrd-waiver"
+   }
   },
   {
-    "code": "SD",
-    "name": "South Dakota",
-    "dd_agency": {
-      "name": "Division of Developmental Disabilities Services",
-      "url": "https://dakotaathome.sd.gov/"
-    },
-    "medicaid": {
-      "name": "South Dakota Medicaid",
-      "url": "https://dss.sd.gov/"
-    },
-    "ei_program": {
-      "name": "South Dakota Early Intervention",
-      "url": "https://dakotaathome.sd.gov/"
-    },
-    "pti_center": {
-      "name": "South Dakota Parent Training and Information",
-      "url": "https://www.sdpti.org/"
-    }
+   "code": "SD",
+   "name": "South Dakota",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "South Dakota Department of Education website exists but procedural safeguards documents not directly accessible via homepage. Recommend contacting (605) 773-3134 or visiting special education section of doe.sd.gov.",
+   "medicaid": {
+    "name": "South Dakota Medicaid",
+    "url": "https://dss.sd.gov/"
+   },
+   "dd_agency": {
+    "name": "Division of Developmental Disabilities Services",
+    "url": "https://dakotaathome.sd.gov/"
+   }
   },
   {
-    "code": "TN",
-    "name": "Tennessee",
-    "dd_agency": {
-      "name": "Department of Disability and Aging",
-      "url": "https://www.tn.gov/disability-and-aging/services.html"
-    },
-    "medicaid": {
-      "name": "Tennessee Medicaid",
-      "url": "https://www.tn.gov/health"
-    },
-    "ei_program": {
-      "name": "Tennessee Early Intervention",
-      "url": "https://www.tn.gov/disability-and-aging/services.html"
-    },
-    "pti_center": {
-      "name": "Tennessee Parent Training and Information",
-      "url": "https://www.tnpti.org/"
-    }
+   "code": "TN",
+   "name": "Tennessee",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Tennessee describes special education services under IDEA but procedural safeguards document not found via website. Recommend contacting Tennessee Department of Education at 710 James Robertson Parkway, Nashville, TN 37243."
   },
   {
-    "code": "TX",
-    "name": "Texas",
-    "dd_agency": {
-      "name": "IDD and Behavioral Health Services",
-      "url": "https://texas.gov/"
-    },
-    "medicaid": {
-      "name": "Texas Medicaid",
-      "url": "https://texas.gov/"
-    },
-    "ei_program": {
-      "name": "Texas Early Intervention",
-      "url": "https://texas.gov/"
-    },
-    "pti_center": {
-      "name": "PRIDEINT",
-      "url": "https://www.prideint.org/"
-    }
+   "code": "TX",
+   "name": "Texas",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Texas Education Agency (tea.texas.gov) has special education section but procedural safeguards document not directly accessible. Recommend contacting TEA at (512) 463-9734.",
+   "medicaid": {
+    "name": "Texas Medicaid",
+    "url": "https://texas.gov/"
+   }
   },
   {
-    "code": "UT",
-    "name": "Utah",
-    "dd_agency": {
-      "name": "Division of Services for People with Disabilities",
-      "url": "https://dspd.utah.gov/"
-    },
-    "medicaid": {
-      "name": "Utah Medicaid",
-      "url": "https://www.medicaid.utah.gov/"
-    },
-    "ei_program": {
-      "name": "Utah Early Intervention",
-      "url": "https://dspd.utah.gov/"
-    },
-    "pti_center": {
-      "name": "Disability Law Center",
-      "url": "https://www.disabilitylawcenter.org/"
-    }
+   "code": "UT",
+   "name": "Utah",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Utah State Board of Education website indicates procedural safeguards resources are available but specific URLs not accessible. Contact: (801) 538-7500 or 250 East 500 South, Salt Lake City, Utah 84111.",
+   "medicaid": {
+    "name": "Utah Medicaid",
+    "url": "https://www.medicaid.utah.gov/"
+   },
+   "dd_agency": {
+    "name": "Division of Services for People with Disabilities",
+    "url": "https://dspd.utah.gov/"
+   }
   },
   {
-    "code": "VT",
-    "name": "Vermont",
-    "dd_agency": {
-      "name": "Developmental Disabilities Services Division",
-      "url": "https://ddsd.vermont.gov/"
-    },
-    "medicaid": {
-      "name": "Vermont Medicaid",
-      "url": "https://dec.vermont.gov/"
-    },
-    "ei_program": {
-      "name": "Vermont Early Intervention",
-      "url": "https://ddsd.vermont.gov/"
-    },
-    "pti_center": {
-      "name": "Vermont Family Network",
-      "url": "https://www.vermontfamilynetwork.org/"
-    }
+   "code": "VT",
+   "name": "Vermont",
+   "rights_school": {
+    "name": "Notice of Procedural Safeguards: Rights of Parents of Students with Disabilities",
+    "url": "https://education.vermont.gov/special-education/laws-requirements"
+   },
+   "rights_ei": {
+    "name": "Early Intervention Services (Vermont Early Intervention Services)",
+    "url": "https://dcf.vermont.gov/cdd/families"
+   },
+   "parent_center": null,
+   "note": "Vermont's procedural safeguards document is confirmed to exist; contact Vermont Agency of Education Special Education at (802) 828-1256 or AOE.SpecialEd@vermont.gov for direct access to Part B notice.",
+   "medicaid": {
+    "name": "Vermont Medicaid",
+    "url": "https://dec.vermont.gov/"
+   },
+   "dd_agency": {
+    "name": "Developmental Disabilities Services Division",
+    "url": "https://ddsd.vermont.gov/"
+   }
   },
   {
-    "code": "VA",
-    "name": "Virginia",
-    "dd_agency": {
-      "name": "Division of Developmental Services",
-      "url": "https://www.dbhds.virginia.gov/"
-    },
-    "medicaid": {
-      "name": "Virginia Medicaid",
-      "url": "https://www.dmas.virginia.gov/"
-    },
-    "ei_program": {
-      "name": "Virginia Early Intervention",
-      "url": "https://www.dbhds.virginia.gov/"
-    },
-    "pti_center": {
-      "name": "Family Centered Early Intervention",
-      "url": "https://www.fceiconnect.org/"
-    }
+   "code": "VA",
+   "name": "Virginia",
+   "rights_school": null,
+   "rights_ei": null,
+   "parent_center": null,
+   "note": "Virginia's state education website has access restrictions preventing direct retrieval of procedural safeguards. Contact PEATC (the official PTI center) for procedural safeguards notices and parent rights information. DBHDS coordinates Part C services but no dedicated Part C page located. Virginia Department of Education: (804) 225-2720.",
+   "medicaid": {
+    "name": "Virginia Medicaid",
+    "url": "https://www.dmas.virginia.gov/"
+   },
+   "dd_agency": {
+    "name": "Division of Developmental Services",
+    "url": "https://www.dbhds.virginia.gov/"
+   }
   },
   {
-    "code": "WA",
-    "name": "Washington",
-    "dd_agency": {
-      "name": "DD Services Administration",
-      "url": "https://www.dshs.wa.gov/"
-    },
-    "medicaid": {
-      "name": "Washington Medicaid",
-      "url": "https://www.hca.wa.gov/"
-    },
-    "ei_program": {
-      "name": "Washington Early Intervention",
-      "url": "https://www.dshs.wa.gov/"
-    },
-    "pti_center": {
-      "name": "Washington Parent Training and Information",
-      "url": "https://www.wapti.org/"
-    }
+   "code": "WA",
+   "name": "Washington",
+   "rights_school": {
+    "name": "Notice of Special Education Procedural Safeguards",
+    "url": "https://ospi.k12.wa.us/student-success/special-education/family-engagement-and-guidance/parent-and-student-rights-procedural-safeguards"
+   },
+   "rights_ei": {
+    "name": "Early Support for Infants and Toddlers (Part C, ages 0-3)",
+    "url": "https://www.dshs.wa.gov/dda/"
+   },
+   "parent_center": {
+    "name": "PAVE (Washington Parent Training and Information Center)",
+    "url": "https://wapave.org/"
+   },
+   "note": "Washington's procedural safeguards are comprehensively available in multiple languages. OSPI Special Education: (360) 725-6075 or speced@k12.wa.us. For Part C early intervention, contact local DDA office or complete service request form through DSHS website.",
+   "medicaid": {
+    "name": "Washington Medicaid",
+    "url": "https://www.hca.wa.gov/"
+   },
+   "dd_agency": {
+    "name": "DD Services Administration",
+    "url": "https://www.dshs.wa.gov/"
+   }
   },
   {
-    "code": "WV",
-    "name": "West Virginia",
-    "dd_agency": {
-      "name": "Bureau for Behavioral Health and Health Facilities",
-      "url": "https://dhhr.wv.gov/"
-    },
-    "medicaid": {
-      "name": "West Virginia Medicaid",
-      "url": "https://dhhr.wv.gov/"
-    },
-    "ei_program": {
-      "name": "West Virginia Early Intervention",
-      "url": "https://dhhr.wv.gov/"
-    },
-    "pti_center": {
-      "name": "West Virginia Parent Training and Information",
-      "url": "https://www.wvpti.org/"
-    }
+   "code": "WV",
+   "name": "West Virginia",
+   "rights_school": {
+    "name": "Procedural Safeguards Brochure",
+    "url": "https://wvde.us/academics/special-education/general-supervision-system/forms-waivers/"
+   },
+   "rights_ei": {
+    "name": "WV Birth to Three (Part C Early Intervention)",
+    "url": "https://www.wveiicc.org"
+   },
+   "parent_center": null,
+   "note": "West Virginia's procedural safeguards and Part C materials are available from state agencies. PTI website is experiencing technical issues—contact by phone or email for current information. WVDE Special Education contact available through main education department office.",
+   "medicaid": {
+    "name": "West Virginia Medicaid",
+    "url": "https://dhhr.wv.gov/"
+   }
   },
   {
-    "code": "WI",
-    "name": "Wisconsin",
-    "dd_agency": {
-      "name": "Division of Medicaid Services",
-      "url": "https://www.dhs.wisconsin.gov/"
-    },
-    "medicaid": {
-      "name": "Wisconsin Medicaid",
-      "url": "https://www.dhs.wisconsin.gov/medicaid/"
-    },
-    "ei_program": {
-      "name": "Wisconsin Early Intervention",
-      "url": "https://www.dhs.wisconsin.gov/"
-    },
-    "pti_center": {
-      "name": "Wisconsin Family Assistance Center",
-      "url": "https://www.wifac.org/"
-    }
+   "code": "WI",
+   "name": "Wisconsin",
+   "rights_school": null,
+   "rights_ei": {
+    "name": "Birth to 3 Program (Part C, ages 0-3)",
+    "url": "https://www.dhs.wisconsin.gov/children/index.htm"
+   },
+   "parent_center": {
+    "name": "Wisconsin FACETS (Parent Training and Information Center)",
+    "url": "https://wifacets.org"
+   },
+   "note": "Wisconsin's Part B procedural safeguards are available through Wisconsin FACETS PTI center, which maintains materials in English, Spanish, and Hmong. Wisconsin DPI special education pages have access issues; contact FACETS or Wisconsin Wayfinder for comprehensive parent rights information.",
+   "medicaid": {
+    "name": "Wisconsin Medicaid",
+    "url": "https://www.dhs.wisconsin.gov/medicaid/"
+   },
+   "dd_agency": {
+    "name": "Division of Medicaid Services",
+    "url": "https://www.dhs.wisconsin.gov/"
+   }
   },
   {
-    "code": "WY",
-    "name": "Wyoming",
-    "dd_agency": {
-      "name": "Developmental Disabilities Section",
-      "url": "https://health.wyo.gov/"
-    },
-    "medicaid": {
-      "name": "Wyoming Medicaid",
-      "url": "https://health.wyo.gov/"
-    },
-    "ei_program": {
-      "name": "Wyoming Early Intervention",
-      "url": "https://health.wyo.gov/"
-    },
-    "pti_center": {
-      "name": "Wyoming Parent Information Center",
-      "url": "https://www.wypic.org/"
-    }
+   "code": "WY",
+   "name": "Wyoming",
+   "rights_school": {
+    "name": "WDE Procedural Safeguards (available in English and Spanish)",
+    "url": "https://edu.wyoming.gov/parents/special-education/dispute-resolution/"
+   },
+   "rights_ei": {
+    "name": "Early Intervention and Education Program (EIEP / Part C, ages 0-3)",
+    "url": "https://health.wyo.gov/behavioralhealth/early-intervention-education-program-eiep/"
+   },
+   "parent_center": null,
+   "note": "Wyoming maintains comprehensive procedural safeguards information in English and Spanish. Contact WDE Special Education Programs Division: (307) 777-2961 or wde-disputeinbox@wyo.gov for Part B documents. Early Intervention address: 122 West 25th Street, Herschler 2, Suite B, Cheyenne, WY 82002.",
+   "medicaid": {
+    "name": "Wyoming Medicaid",
+    "url": "https://health.wyo.gov/"
+   }
   }
-]
+ ]
+}

@@ -1,0 +1,22 @@
+{
+  "code": "LA",
+  "name": "Louisiana",
+  "part_b": {
+    "name": "Louisiana's Educational Rights of Children with Disabilities",
+    "url": "https://doe.louisiana.gov/families-and-students/family-support-resources/family-special-education-resources",
+    "pdf": null,
+    "checked": "HTTP 200: Found resource page titled 'Family Special Education Resources' on Louisiana DOE website"
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Not found"
+  },
+  "parent_center": {
+    "name": "Families Helping Families of Greater New Orleans",
+    "url": null,
+    "checked": "Listed on Louisiana DOE Family Special Education Resources page as Louisiana's PTI"
+  },
+  "note": "Part B procedural safeguards mentioned on resource page (available in multiple languages). Part C information not located in research; may be under a different state agency (health/human services)"
+}
