@@ -1,0 +1,40 @@
+{
+  "slug": "fine-print-traps",
+  "group": "Start Here",
+  "anchor": "turning-18",
+  "title": "Three Traps Nobody Warns You About",
+  "description": "Three traps parents hit: the diploma that ends special education, IEP changes made without a meeting, and the Medicaid renewal form that ends coverage.",
+  "summary": "The diploma that ends services, IEP changes without a meeting, and the Medicaid renewal form.",
+  "short_answer": "A regular high school diploma ends a student's special education services and requires written prior notice, IEP changes after the annual meeting can be made in a written document only if the parent agrees, and income-based Medicaid must be reconsidered without a new application if the renewal form arrives within 90 days of termination (disability-based Medicaid depends on the state).",
+  "h1": "Three Traps Nobody Warns You About",
+  "intro": "Some of the worst surprises are not in the denial letters. They come wrapped in good news: a diploma, a quick fix to the IEP, a renewal form in the mail. I went through the rules, and here are three worth flagging, each with the exact sentence from the rule so you can point to it.",
+  "sections": [
+    {
+      "h2": "The Diploma That Ends the Help",
+      "html": "        <p>Everybody loves a graduation. Here is the part nobody mentions at the ceremony. When a student with an IEP graduates with a regular high school diploma, the school's duty to provide special education stops.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;Children with disabilities who have graduated from high school with a regular high school diploma.&rdquo; <span class=\"rule-cite\">(34 CFR 300.102)</span></p>\n        <p>That is a good thing when a student is ready. It is a trap when the services were still needed, like job training or the transition work that gets a young person ready for life after school. So ask what kind of diploma it is before anyone hands it over.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;A regular high school diploma does not include a recognized equivalent of a diploma, such as a general equivalency diploma, certificate of completion, certificate of attendance, or similar lesser credential.&rdquo; <span class=\"rule-cite\">(34 CFR 300.102)</span></p>\n        <p>The school is not allowed to just spring it on you. Graduating is a change in placement, and that comes with written notice.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;Graduation from high school with a regular high school diploma constitutes a change in placement, requiring written prior notice in accordance with § 300.503.&rdquo; <span class=\"rule-cite\">(34 CFR 300.102)</span></p>\n        <p>Which diploma your student is on track for is something your district can tell you, and the answer changes what happens next. Ask early, in writing, and ask what services would continue and until what age in your state.</p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;Which diploma is my child on track to receive, and what happens to special education services and transition services if my child graduates with it? Please put the answer in writing.&rdquo;</p>"
+    },
+    {
+      "h2": "Changes to the IEP Without a Meeting",
+      "html": "        <p>An IEP can be changed after the annual meeting without calling everyone back to the table. That is handy when it is a small fix. It is a trap when changes slip in and you only find out later.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;the parent of a child with a disability and the public agency may agree not to convene an IEP Team meeting for the purposes of making those changes, and instead may develop a written document to amend or modify the child&#39;s current IEP&rdquo; <span class=\"rule-cite\">(34 CFR 300.324)</span></p>\n        <p>Read the words &ldquo;may agree.&rdquo; Skipping the meeting takes your agreement, and the change goes into a written document. You are allowed to say you would rather have a meeting. And you can always ask for the up to date version.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;Upon request, a parent must be provided with a revised copy of the IEP with the amendments incorporated.&rdquo; <span class=\"rule-cite\">(34 CFR 300.324)</span></p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;Before we change anything in the IEP, I would like it in writing. Please send me a revised copy with the amendments included, and let me know if you would rather meet.&rdquo;</p>"
+    },
+    {
+      "h2": "The Medicaid Renewal Form That Ends Coverage",
+      "html": "        <p>Medicaid has to be renewed. Miss the form and coverage can end, usually over paperwork, not over anything your child did. There is a federal safety net, and it comes with a catch you should know about.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;Reconsider in a timely manner the eligibility of an individual who is terminated for failure to submit the renewal form or necessary information, if the individual subsequently submits the renewal form within 90 days after the date of termination, or a longer period elected by the State, without requiring a new application&rdquo; <span class=\"rule-cite\">(42 CFR 435.916)</span></p>\n        <p>That sentence sits in the part of the rule for income-based (MAGI) Medicaid. For Medicaid based on disability, the rule says the state may use the same procedure, not that it must.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;The agency may adopt the procedures described at paragraph (a)(3) of this section for individuals whose eligibility cannot be renewed in accordance with paragraph (a)(2) of this section.&rdquo; <span class=\"rule-cite\">(42 CFR 435.916)</span></p>\n        <p>So here is what I would do. The day you notice a termination, call and ask in writing whether you can send the renewal form in and be reconsidered without a new application, and what the deadline is. Do not wait. The <a href=\"fine-print-sc-medicaid.html\">South Carolina Medicaid page</a> and the <a href=\"fine-print-medicaid.html\">Medicaid fine print</a> cover hearings if the answer is no.</p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;My child's Medicaid ended because the renewal form was not received. I am sending it in now. Can you reconsider the eligibility without a new application, and what is the deadline? Please answer in writing.&rdquo;</p>"
+    },
+    {
+      "h2": "A Way to Ask That Works",
+      "html": "        <p>All three traps have the same cure: ask early, ask in writing, keep the answer. The people on the other side are usually carrying too many cases, and a short clear request is easy to say yes to. If the answer is no, the <a href=\"fight-plan.html\">disagree-in-writing guide</a> shows the next step, and your state&#39;s parent center can help for free.</p>"
+    }
+  ],
+  "see_also": [
+    "fine-print-school",
+    "fine-print-18-26",
+    "fine-print-medicaid",
+    "request-letters"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against the text of 34 CFR 300.102 and 300.324 and 42 CFR 435.916 at ecfr.gov. Your state may add rules of its own, including which diplomas it awards and how it handles late Medicaid renewals.",
+  "sources": [
+    "https://www.ecfr.gov/current/title-34/subtitle-B/chapter-III/part-300",
+    "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-C/part-435"
+  ]
+}
