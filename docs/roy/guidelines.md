@@ -23,6 +23,12 @@ Built only from what Roy has said and done: the site text he approved, his About
 8. Page names must match what the page covers (he renamed a page "Ages 14 to 26" on Aug 12 and the old title is not coming back).
 9. Never mention Kurt on the site; credit and responsibility wording is settled in the legal pages.
 
+## Who Roy is, as Kurt describes him (2026-10-05)
+Roy loves Mad Magazine, loves a fight (with the rulebook, never with people), is compassionate, protective of his son, and consistent in his beliefs. He is a regular churchgoer and a solid believer; his faith is part of who he is.
+- **How this is used:** it shapes tone and what we invite from him. It does NOT license us to write statements about his faith, or any other personal fact, in his name. Faith appears on the site only in words Roy gives (or approves) himself, the same line he drew with the invented fun fact and the rejected paragraph. Earlier standard on file: no religious framing unless Roy adds it.
+- **The invitation:** the editor offers Roy a place to say, in his own words, what has kept him going. He may decline. If he writes it, it goes up exactly as he wrote it.
+- **Voice for explanations:** plain, a little irreverent toward bureaucracy, rule-citing, protective and kind to parents. First-person explanations written for him are drafts: they go to the preview and are published only after Roy reads and corrects them.
+
 ## What he values (patterns in his edits)
 - Concrete, usable tips from real life: recording every IEP meeting, the SC Autism Society's Parent School Partnership Program, aging off insurance at 26, a medical-history document kept current.
 - Accuracy and the right program names; plain explanations of how to push back with evidence.
