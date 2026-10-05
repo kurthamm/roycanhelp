@@ -52,3 +52,9 @@ Roy reacts. He does not know what he likes or wants until he sees what he does n
 
 ## Open questions only Roy can answer (do not guess)
 Look and feel of the site (he has not seen the new design), photos or a voice clip, a newsletter, a podcast, other states, how he wants to be credited off-site.
+
+## Voice and publishing (Kurt, 2026-10-05)
+- New content is written in Roy's voice (guide: `docs/roy/voice.md`, built only from his own pages and messages) and goes live directly. Roy asks for changes through his editor or the ChatGPT action; he is not a content generator and is never asked to write.
+- Still binding: no invented personal events, dates, numbers or feelings about Roy, his son or his family; no faith statements unless Roy writes them; people-first language; no em dashes; calm and firm, never combative. `tools/voice_guard.py` checks rewrites (quotes, scripts, links and numbers must not change).
+- Every rule quoted on the site is copied word for word from the official source and machine-checked before the page is written; agent-reported "verified" flags are never trusted.
+- South Carolina is Roy's state: it gets depth (state law, SCDHHS, BabyNet, SCDE pages). Other states get the federal pages plus the Your State page; no generated page per state.
