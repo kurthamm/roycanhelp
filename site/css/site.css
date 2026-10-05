@@ -240,3 +240,17 @@ footer .journey-nav { display: none; }
   a[href^="http"]:after { content: " (" attr(href) ")"; font-size: 0.85em; }
   a[href^="mailto:"]:after, a[href^="tel:"]:after, a[href^="/"]:after { content: ""; }
 }
+
+/* ---------- Page end: related pages and the last-checked date ---------- */
+.page-end { margin-top: 3rem; padding-top: 1.25rem; border-top: 2px solid var(--line); }
+.see-also { font-size: 1.05rem; }
+.last-checked { font-size: 0.95rem; color: var(--muted); margin-bottom: 0; }
+
+/* ---------- Printable checklists ---------- */
+.checklist { margin-top: 2.5rem; }
+.checklist h2 { margin-top: 0; }
+.checklist .from { color: var(--muted); font-size: 1rem; }
+ul.checks { list-style: none; padding: 0; }
+ul.checks li { position: relative; padding: 0.7rem 0 0.7rem 2.6rem; border-bottom: 1px solid var(--line); margin: 0; }
+ul.checks li:before { content: ""; position: absolute; left: 0.2rem; top: 0.95rem; width: 1.3rem; height: 1.3rem; border: 2px solid var(--blue); border-radius: 5px; background: var(--paper); }
+@media print { ul.checks li:before { border-color: #000; } .print-only-hide { display: none; } .checklist { break-inside: avoid; } }

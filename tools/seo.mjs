@@ -93,8 +93,9 @@ export function buildSitemap(root, lastmodFor) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
 }
 
+// A page that is not committed yet has no git date; today is its honest modified date.
 const gitDate = (root, f) =>
-  execFileSync('git', ['log', '-1', '--format=%cs', '--', join(root, f)], { encoding: 'utf8' }).trim();
+  execFileSync('git', ['log', '-1', '--format=%cs', '--', join(root, f)], { encoding: 'utf8' }).trim() || new Date().toISOString().slice(0, 10);
 
 // Live audit: fetch what search engines fetch, report anything they would trip on.
 export async function liveAudit(origin, fetchFn = fetch) {
