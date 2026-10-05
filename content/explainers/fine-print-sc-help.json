@@ -1,0 +1,45 @@
+{
+  "slug": "fine-print-sc-help",
+  "group": "Start Here",
+  "anchor": "roys-wisdom",
+  "title": "South Carolina Fine Print: Free Help",
+  "description": "Free help for South Carolina parents: Family Connection's education partners, SC Autism Society mentors, Disability Rights SC and the state ombudsperson.",
+  "summary": "Education partners, parent mentors, a legal advocacy agency and the state ombudsperson, all free.",
+  "short_answer": "South Carolina families can get free help: Family Connection's education partners (ages birth to 26) can attend IEP and 504 meetings, the SC Autism Society's Parent-School Partnership Program connects families with a parent mentor, Disability Rights South Carolina provides legal and advocacy support, and the state education department has an ombudsperson.",
+  "h1": "South Carolina Fine Print: Free Help, and Who to Call First",
+  "intro": "Roy learned the most from the people who had already been through it, and South Carolina has several free ways to find them. This page is about South Carolina only. Here is what each group says it does, in its own words.",
+  "sections": [
+    {
+      "h2": "Someone Who Will Sit Next to You at the IEP Meeting",
+      "html": "        <p>If you take one thing from the South Carolina pages, take this: you do not have to walk into that room alone, and the help is free. Family Connection of South Carolina is the state&#39;s parent center, and its education partners will come.</p>\n        <p class=\"rule-quote\">Family Connection says: &ldquo;Education Partners are available to families of children with disabilities, ages birth to 26, throughout South Carolina, either in person or using technology.&rdquo; <span class=\"rule-cite\">(Family Connection of South Carolina, Know Your Rights)</span></p>\n        <p class=\"rule-quote\">Family Connection says: &ldquo;Someone to attend IEP/504 meetings to provide support.&rdquo; <span class=\"rule-cite\">(Family Connection of South Carolina, Know Your Rights)</span></p>\n        <p class=\"rule-quote\">Family Connection says: &ldquo;Intensive one-on-one assistance to increase parent and family understanding of the education process.&rdquo; <span class=\"rule-cite\">(Family Connection of South Carolina, Know Your Rights)</span></p>\n        <p>Their page also says they help families look for the gentlest way to resolve a disagreement. The number to call is on their Know Your Rights page. <a href=\"https://www.familyconnectionsc.org/education/know-your-rights/\">Family Connection of South Carolina</a>.</p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;I would like an Education Partner to help me prepare for an IEP meeting and, if possible, attend. How do I make a referral?&rdquo;</p>"
+    },
+    {
+      "h2": "A Parent Mentor Through the SC Autism Society",
+      "html": "        <p>This is the one Roy&#39;s own pages recommend, the Parent School Partnership Program. If your child has autism, it connects you with a parent who has been there.</p>\n        <p class=\"rule-quote\">The SC Autism Society says: &ldquo;The Parent-School Partnership program is designed to assist families with students with Autism to reach their functional and academic potential in the educational system.&rdquo; <span class=\"rule-cite\">(SC Autism Society, Parent-School Partnership Program)</span></p>\n        <p class=\"rule-quote\">The SC Autism Society says: &ldquo;Helps families understand special educational rights and responsibilities&rdquo; <span class=\"rule-cite\">(SC Autism Society, Parent-School Partnership Program)</span></p>\n        <p class=\"rule-quote\">The SC Autism Society says: &ldquo;Helps families establish positive working relationships with school personnel&rdquo; <span class=\"rule-cite\">(SC Autism Society, Parent-School Partnership Program)</span></p>\n        <p>The page lists a phone number and an email for the program. Roy&#39;s <a href=\"roys-wisdom.html\">Wisdom</a> page has his own take on why a mentor matters.</p>"
+    },
+    {
+      "h2": "A Legal Voice When Rights Are Violated",
+      "html": "        <p>When something is wrong enough that a letter will not fix it, South Carolina has an agency set up for exactly that. Disability Rights South Carolina is Congress&#39;s answer to the question of who protects people with disabilities.</p>\n        <p class=\"rule-quote\">Disability Rights South Carolina says: &ldquo;Disability Rights South Carolina is the Protection and Advocacy System (P&A) for South Carolina.&rdquo; <span class=\"rule-cite\">(Disability Rights South Carolina)</span></p>\n        <p class=\"rule-quote\">Disability Rights South Carolina says: &ldquo;We provide resources and help callers understand and advocate for their disability rights.&rdquo; <span class=\"rule-cite\">(Disability Rights South Carolina)</span></p>\n        <p class=\"rule-quote\">Disability Rights South Carolina says: &ldquo;We provide assistance to people with disabilities whose rights are violated or who have been denied a service because of their disability&rdquo; <span class=\"rule-cite\">(Disability Rights South Carolina)</span></p>\n        <p>Their site has a request-help form. They also publish fact sheets that this site quotes, like the transition guide on the <a href=\"fine-print-sc-diploma.html\">diplomas page</a> and the Medicaid guide on the <a href=\"fine-print-sc-waitlist.html\">waitlist page</a>.</p>"
+    },
+    {
+      "h2": "The State's Own Ombudsperson Is Free Too",
+      "html": "        <p>Before it gets formal, there is a person at the state education department whose job is to answer questions and help sort things out. Family Connection describes the role this way.</p>\n        <p class=\"rule-quote\">Family Connection says: &ldquo;The SCDE Office of Special Education Services (OSES) employs an Ombudsperson (with a toll-free line 1-866-628-0910) that parents can call to ask questions regarding the laws and regulations pertaining to a specific concern.&rdquo; <span class=\"rule-cite\">(Family Connection of South Carolina, Know Your Rights)</span></p>\n        <p>The <a href=\"fine-print-sc-school.html\">South Carolina school disputes page</a> goes through every option in order, from a free facilitated meeting to a hearing.</p>"
+    },
+    {
+      "h2": "A Way to Ask That Works",
+      "html": "        <p>Pick one place to start and make one call. Say what the child needs, what has happened so far, and what you are hoping for, and ask what they can do. Everyone who answers these phones has heard it before, and they would rather you called early than late. Phone numbers and programs change, so check the pages linked below.</p>"
+    }
+  ],
+  "see_also": [
+    "fine-print-sc-school",
+    "roys-wisdom",
+    "fine-print-sc-law",
+    "be-in-charge"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against the pages it names (Family Connection of South Carolina, the SC Autism Society and Disability Rights South Carolina) on October 5, 2026. Phone numbers, staffing and programs change; confirm before you rely on them.",
+  "sources": [
+    "https://www.familyconnectionsc.org/education/know-your-rights/",
+    "https://scautism.org/autism-resources/parent-school-partnership/",
+    "https://www.disabilityrightssc.org/"
+  ]
+}
