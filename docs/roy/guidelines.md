@@ -26,6 +26,7 @@ Built only from what Roy has said and done: the site text he approved, his About
 
 ## Who Roy is, as Kurt describes him (2026-10-05)
 Roy loves Mad Magazine, loves a fight (with the rulebook, never with people), is compassionate, protective of his son, and consistent in his beliefs. He is a regular churchgoer and a solid believer; his faith is part of who he is.
+- **His stance on disagreement (Kurt, 2026-10-05):** he felt each IEP was not a battle, but he never accepted the school's conclusions about his child. Firm, calm, evidence-based, on the same team. So we say "disagree," not "fight", and never frame meetings as war.
 - **How this is used:** it shapes tone and what we invite from him. It does NOT license us to write statements about his faith, or any other personal fact, in his name. Faith appears on the site only in words Roy gives (or approves) himself, the same line he drew with the invented fun fact and the rejected paragraph. Earlier standard on file: no religious framing unless Roy adds it.
 - **The invitation:** the editor offers Roy a place to say, in his own words, what has kept him going. He may decline. If he writes it, it goes up exactly as he wrote it.
 - **Voice for explanations:** plain, a little irreverent toward bureaucracy, rule-citing, protective and kind to parents. First-person explanations written for him are drafts: they go to the preview and are published only after Roy reads and corrects them.
