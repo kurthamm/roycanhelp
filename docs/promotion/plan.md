@@ -11,10 +11,8 @@ Roy is the dad who read the documentation. The site wins by being the most usefu
 3. Every published answer gets title, description, canonical, structured data, an anchor, a sitemap entry and a menu or related-page link, handled by the editor's rules and `make check`.
 4. Strong answers graduate from a Wisdom entry to a standalone page when Search Console shows demand.
 
-## Distribution (Claude drafts, Claude sends what needs no one's identity)
-- Allies and resource-page listings (`allies.md`): outreach emails drafted for the site operator to send. Nothing goes out in Roy's name without Roy.
-- Parent communities: helpful public answers only, following each community's rules, never astroturf.
-- Press and podcast: held until there is a body of published answers to point at.
+## Distribution
+Dropped by Kurt (2026-10-05): no outreach to organizations, no press pitches. The site grows by publishing more useful content in Roy's voice and by search. (`allies.md` remains only as a verified reference list.)
 
 ## Measurement (weekly, `tools/seo_weekly.py`)
 Index status of every page, queries and pages up or down, positions 8 to 20 (striking distance), low-CTR pages, Roy's commits in the window. Findings change the queue order and the title and description of pages.
