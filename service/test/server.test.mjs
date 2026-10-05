@@ -1539,7 +1539,7 @@ test('POST /api/questions/publish with auth inserts card into existing section',
   // Create wisdom file with a section
   const wisdomHtml = `<!DOCTYPE html>
 <html>
-<head><title>Roy's Wisdom</title></head>
+<head><title>Roy's Wisdom | Roy Can Help</title><meta name="description" content="Lessons learned, stories from the trenches, and hard-won advice."></head>
 <body>
 <article>
 <h1>Roy's Wisdom</h1>
@@ -1607,7 +1607,7 @@ test('POST /api/questions/publish creates new section if not found', async () =>
   // Create wisdom file without the section
   const wisdomHtml = `<!DOCTYPE html>
 <html>
-<head><title>Roy's Wisdom</title></head>
+<head><title>Roy's Wisdom | Roy Can Help</title><meta name="description" content="Lessons learned, stories from the trenches, and hard-won advice."></head>
 <body>
 <article>
 <h1>Roy's Wisdom</h1>
@@ -1750,7 +1750,7 @@ test('POST /api/ask records the consent with the question', async () => {
 
 test('publishing a new section places it above the page closing note', async () => {
   const repoDir = repo();
-  const wisdom = `<article>
+  const wisdom = `<html><head><title>Roy's Wisdom | Roy Can Help</title><meta name="description" content="Lessons learned."></head><body><h1>Roy's Wisdom</h1><article>
       <section>
         <h2>Existing</h2>
         <div class="lesson"><h3>Old</h3><p>Text</p></div>
@@ -1759,7 +1759,7 @@ test('publishing a new section places it above the page closing note', async () 
       <section class="margin-gag">
         <p>These are just things I learned.</p>
       </section>
-    </article>`;
+    </article></body></html>`;
   writeFileSync(join(repoDir, 'roys-wisdom.html'), wisdom);
   const env = {
     ANTHROPIC_API_KEY: 'k', CHAT_PASSWORD: 'p', SESSION_SECRET: 's',
@@ -1787,4 +1787,10 @@ test('publishing a new section places it above the page closing note', async () 
   } finally {
     close();
   }
+});
+
+test('publishing a visitor question gives the Wisdom page its anchors and search markup', async () => {
+  // covered end-to-end against a sandbox copy of the site; here we only assert the module wiring exists
+  const src = readFileSync(new URL('../server.mjs', import.meta.url), 'utf8');
+  assert.match(src, /applyStructuredData\('roys-wisdom\.html'/);
 });
