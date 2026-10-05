@@ -29,11 +29,12 @@ Built only from what Roy has said and done: the site text he approved, his About
 - Seeing where a change landed (he asked "where did you put that?" and "I refreshed and don't see it").
 - Fixing what is wrong rather than leaving it, and removing what is unreliable.
 
-## What additions must be
-- Additive only. Never rewrite text Roy added; never restore text he removed (enforced by `tools/roy-guard.mjs`).
-- Built from his own pages and verified official sources, never invented. Facts checked at the source and dated.
-- In his spirit: plain, practical, first-person where it is his, no marketing language, no selling.
-- Visible to him: the editor tells him what others changed so he can correct it, and his decision stands.
+## How we work with Roy (Kurt's operating rule, 2026-10-05)
+Roy reacts. He does not know what he likes or wants until he sees what he does not like or want. So the work is not limited to the things he has said.
+- **Honor what he has specifically asked for.** His added text stays exactly as he wrote it. What he removed stays gone. His wording rules (above) always apply. Enforced by `tools/roy-guard.mjs` and `tools/voice-check.mjs`.
+- **Everything unrelated to a specific request of his is open to improvement.** Keep building: design, structure, search, new pages, tools, fact checks, links. Silence from Roy is not a prohibition.
+- **Show him, let him correct.** The editor tells Roy what others changed, and he can say "undo that" or "change that"; his decision stands and becomes a new rule here. Big visual changes go to the preview first.
+- **New material is built from his own words and verified official sources, never invented**, and marked so he can see where it came from.
 
 ## Open questions only Roy can answer (do not guess)
 Look and feel of the site (he has not seen the new design), photos or a voice clip, a newsletter, a podcast, other states, how he wants to be credited off-site.
