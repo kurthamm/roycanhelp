@@ -44,3 +44,8 @@ Rules for every answer: cite the law, regulation or the agency's own published p
 - [ ] How do I keep records so I can prove what the school or agency said?
 - [ ] How do I write a letter that cites the rule and gets a response?
 - [ ] Who can help me for free in South Carolina?
+
+## Only Roy can answer (his words, his choice, skip anytime)
+- [ ] In your own words, what kept you going when it was hardest? (Optional. If you share your faith, it goes up exactly as you write it.)
+- [ ] What is the one thing you wish someone had told you in the waiting room?
+- [ ] What would you say to a parent who just heard the word no?
