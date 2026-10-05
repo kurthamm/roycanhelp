@@ -19,7 +19,6 @@
   --red: #d62828;
   --yellow: #ffd166;
   --gray: #999;
-  --navy: #10264f;
 
   /* Semantic aliases */
   --color-bg: var(--bg);
@@ -31,7 +30,6 @@
 
   /* Dark mode will override these */
   --color-card-bg: var(--bg);
-  --color-headline: var(--navy);
   --color-link: var(--red);
   --color-link-hover-bg: var(--yellow);
 
@@ -96,11 +94,6 @@ h1 {
   margin-top: var(--space-lg);
 }
 
-/* Home page headline */
-.home main h1 {
-  color: var(--color-headline);
-}
-
 h2 {
   font-size: var(--font-size-h2);
 }
@@ -149,7 +142,6 @@ a:focus-visible {
     --color-border: var(--ink);
     --color-gray: var(--gray);
     --color-card-bg: #242424;
-    --color-headline: #9fc0ef;
     --color-link: #ff6b6b;
     --color-link-hover-bg: #f4d35e;
   }
