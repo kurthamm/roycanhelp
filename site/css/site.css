@@ -307,3 +307,7 @@ ul.checks li:before { content: ""; position: absolute; left: 0.2rem; top: 0.95re
 
 .in-short { background: var(--sun-soft, #fff3cf); border-left: 6px solid var(--sun, #ffc94d); border-radius: 12px; padding: 0.8rem 1.1rem; font-size: 1.05em; }
 .state-note { background: var(--blue-soft); border-left: 6px solid var(--blue); border-radius: 12px; padding: 0.8rem 1.1rem; }
+
+.state-asks { margin-top: 2rem; }
+.state-asks ol { padding-left: 1.3rem; }
+.state-asks li { margin: 0 0 0.8rem; }
