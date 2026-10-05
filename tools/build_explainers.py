@@ -61,6 +61,7 @@ def page(tpl, slug, title, desc, main):
     return re.sub(r'<main[\s\S]*?</main>', lambda m: main, s, 1)
 
 def explainer_main(sp):
+    if not sp.get('short_answer'): raise SystemExit(f"{sp['slug']}: short_answer is required (the answer in one or two sentences, for readers and AI search)")
     secs = '\n'.join(f'      <section>\n        <h2>{x["h2"]}</h2>\n{x["html"]}\n      </section>' for x in sp['sections'])
     also = ', '.join(f'<a href="{s}.html">{LABELS.get(s, s)}</a>' for s in sp.get('see_also', []) + ['explainers'])
     srcs = ''
@@ -70,6 +71,7 @@ def explainer_main(sp):
     <article>
       <h1>{sp["h1"]}</h1>
       <section class="hero">
+        <p class="in-short"><strong>In short:</strong> {sp["short_answer"]}</p>
         <p>{sp["intro"]}</p>
       </section>
 {secs}
@@ -123,3 +125,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+import subprocess as _sp
+_sp.run(['python3', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'build_llms.py')], check=True)

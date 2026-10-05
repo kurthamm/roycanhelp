@@ -304,3 +304,5 @@ ul.checks li:before { content: ""; position: absolute; left: 0.2rem; top: 0.95re
 .search-results a { font-weight: 800; font-size: 1.1em; }
 .search-results p { margin: 0.3rem 0 0; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.in-short { background: var(--sun-soft, #fff3cf); border-left: 6px solid var(--sun, #ffc94d); border-radius: 12px; padding: 0.8rem 1.1rem; font-size: 1.05em; }
