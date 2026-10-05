@@ -55,3 +55,13 @@ test('undoLast refuses a change that did not come from the editor', async () => 
   wf(j(dir, 'a.txt'), 'v2'); g('add', '.'); g('commit', '-m', 'manual change');
   await assert.rejects(undoLast(dir), /not made through the editor/);
 });
+
+test('a failed undo reports the error and leaves no revert in progress', async () => {
+  const { dir, g } = undoRepo();
+  wf(j(dir, 'a.txt'), 'v2'); g('add', '.');
+  g('commit', '--author', 'Roy via Chat <chat@roycanhelp.org>', '-m', 'Roy: change a');
+  wf(j(dir, 'a.txt'), 'uncommitted edit'); // revert refuses to overwrite local changes
+  await assert.rejects(undoLast(dir));
+  assert.throws(() => g('rev-parse', '-q', '--verify', 'REVERT_HEAD'));
+  assert.equal(g('log', '-1', '--format=%s').trim(), 'Roy: change a');
+});

@@ -169,3 +169,15 @@ test('recent site changes are listed, and need the key', async () => {
   assert.equal(h[0].what, 'Roy: fix');
   s.close();
 });
+
+test('a message sent while an undo is running is refused', async () => {
+  let finish;
+  const s = await start(async () => ({}), undefined, { undo: () => new Promise(r => { finish = () => r({ undone: 'x' }); }) });
+  const undoing = authed(s.base, '/api/gpt/undo', { method: 'POST' });
+  await new Promise(r => setTimeout(r, 30));
+  assert.equal((await post(s.base, { message: 'hi' })).status, 409);
+  finish();
+  await undoing;
+  assert.equal((await post(s.base, { message: 'hi' })).status, 202);
+  s.close();
+});

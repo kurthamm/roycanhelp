@@ -43,7 +43,13 @@ export async function undoLast(repoDir) {
   if (/^Revert /.test(last.message)) {
     throw new Error('The most recent change is already an undo. Make a new change instead of undoing the undo.');
   }
-  await git(repoDir, '-c', `user.name=${EXPECTED_AUTHOR}`, '-c', `user.email=${EXPECTED_EMAIL}`, 'revert', '--no-edit', 'HEAD');
+  try {
+    await git(repoDir, '-c', `user.name=${EXPECTED_AUTHOR}`, '-c', `user.email=${EXPECTED_EMAIL}`, 'revert', '--no-edit', 'HEAD');
+  } catch (err) {
+    // A failed revert leaves the repo mid-revert, which would break the next edit. Put it back, then report the real error.
+    await git(repoDir, 'revert', '--abort').catch(() => {});
+    throw err;
+  }
   try {
     await git(repoDir, 'push', 'origin', 'HEAD:main');
   } catch (err) {

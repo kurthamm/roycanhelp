@@ -210,7 +210,7 @@ export function mountGptRelay(app, { env, runTurn, commit, logUsage, undo, histo
     if (typeof message !== 'string' || !message.trim() || message.length > MAX_MESSAGE) {
       return res.status(400).json({ error: `message must be 1 to ${MAX_MESSAGE} characters` });
     }
-    if (running) return res.status(409).json({ error: 'The editor is still working on the previous message', jobId: running });
+    if (running) return res.status(409).json({ error: 'The editor is still working on the previous request', ...(running !== 'undo' && { jobId: running }) });
     const { jobId } = startJob(async job => {
       try {
         const out = await runTurn({ message, sessionId: sessionId ?? undefined, siteDir: env.SITE_DIR, onText: t => job.chunks.push(t) });
@@ -228,10 +228,13 @@ export function mountGptRelay(app, { env, runTurn, commit, logUsage, undo, histo
 
   app.post('/api/gpt/undo', requireKey, async (req, res) => {
     if (running) return res.status(409).json({ error: 'The editor is still working; wait for it to finish before undoing.' });
+    running = 'undo'; // blocks new messages while the repo is being reverted
     try {
       res.json(await undo(env.SITE_REPO_DIR));
     } catch (err) {
       res.status(409).json({ error: err.message });
+    } finally {
+      running = null;
     }
   });
 
