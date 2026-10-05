@@ -165,7 +165,10 @@
   {
    "code": "FL",
    "name": "Florida",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Notice of Procedural Safeguards for Parents of Students with Disabilities",
+    "url": "https://www.fldoe.org/academics/exceptional-student-edu/parent-info/"
+   },
    "rights_ei": {
     "name": "Your Rights - Early Steps",
     "url": "https://floridaearlysteps.com/your-rights/"
@@ -494,7 +497,10 @@
    "code": "NH",
    "name": "New Hampshire",
    "rights_school": null,
-   "rights_ei": null,
+   "rights_ei": {
+    "name": "Birth-3 Family Centered Early Supports and Services (FCESS)",
+    "url": "https://www.dhhs.nh.gov/programs-services/disability-care/developmental-services/birth-3-family-centered-early-supports-0"
+   },
    "parent_center": {
     "name": "Parent Information Center (PIC)",
     "url": "https://picnh.org/"
@@ -614,7 +620,10 @@
     "name": "Ohio Administrative Code Chapter 5180-10 (Early Intervention)",
     "url": "https://codes.ohio.gov/ohio-administrative-code/chapter-5180-10"
    },
-   "parent_center": null,
+   "parent_center": {
+    "name": "OCECD (Ohio Coalition for the Education of Children with Disabilities)",
+    "url": "https://ocecd.org/"
+   },
    "note": "Part B guide updated July 2025; Both part_b and part_c accessible; Contact state directory for OCECD materials",
    "medicaid": {
     "name": "Ohio Medicaid",
