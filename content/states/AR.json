@@ -5,18 +5,18 @@
     "name": "Arkansas Department of Education - Special Education",
     "url": "https://www.arkansased.gov/divisions/special-education/",
     "pdf": null,
-    "checked": "Main special education page (may require direct visit)"
+    "checked": "Special education portal URL identified; site not fully accessible on second pass, 2026-10-05"
   },
   "part_c": {
     "name": "Arkansas Early Intervention Program",
     "url": "https://humanservices.arkansas.gov/divisions/developmental-disabilities-services/early-intervention-program/",
     "pdf": null,
-    "checked": "DHS administers early intervention program"
+    "checked": "DHS administers early intervention program; procedural safeguards not confirmed, 2026-10-05"
   },
   "parent_center": {
     "name": "Arkansas Parents, Families & Friends (PTI)",
     "url": "https://www.arkansaspti.org/",
-    "checked": "Verified through Parent Center Hub"
+    "checked": "Organization identified through Parent Center Hub; website needs verification, 2026-10-05"
   },
-  "note": "URLs identified for both Part B and C. May require direct website visit to locate procedural safeguards documents."
+  "note": "Arkansas education website difficult to access during research. Recommend contacting Arkansas Department of Education and DHS directly for official procedural safeguards notices for Part B and Part C."
 }

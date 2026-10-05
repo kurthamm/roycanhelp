@@ -5,18 +5,18 @@
     "name": "Arizona Department of Education - Special Education",
     "url": "https://www.azed.gov/special-education/",
     "pdf": null,
-    "checked": "Site accessible but may have access restrictions"
+    "checked": "Site returns HTTP 403; procedural safeguards document location not confirmed, 2026-10-05"
   },
   "part_c": {
-    "name": "Arizona Early Intervention Program",
-    "url": "https://azohioap.az.gov/",
+    "name": null,
+    "url": null,
     "pdf": null,
-    "checked": "AHCCCS administers early intervention services"
+    "checked": "AHCCCS administers early intervention; official procedural safeguards not located, 2026-10-05"
   },
   "parent_center": {
-    "name": "Raising Special Kids (Arizona PTI)",
-    "url": "https://www.raisingspecialkids.org/",
-    "checked": "Verified through Parent Center Hub"
+    "name": "Encircle Families (formerly Raising Special Kids)",
+    "url": "https://encirclefamilies.org/",
+    "checked": "2026-10-05: raisingspecialkids.org redirects (301) to encirclefamilies.org, same Phoenix address; Arizona parent training center."
   },
-  "note": "AZ Dept of Education site requires direct visit. Raising Special Kids can provide parent resources."
+  "note": "Arizona education department site blocked during research. Encircle Families is a family support organization but may not be the federally-designated PTI. Recommend contacting AHCCCS directly for official Part C procedural safeguards."
 }

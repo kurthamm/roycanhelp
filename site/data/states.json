@@ -10,7 +10,7 @@
    },
    "rights_ei": null,
    "parent_center": null,
-   "note": "Part B page accessible. Procedural safeguards may be available through ALSDE contact or on subpages. ADPH operates Part C early intervention.",
+   "note": "Alabama education website accessible but procedural safeguards documents difficult to locate online. Contact ALSDE or school district for Part B notice. ADPH operates Part C early intervention.",
    "dd_agency": {
     "name": "Division of Developmental Disabilities",
     "url": "https://mh.alabama.gov/division-of-developmental-disabilities/"
@@ -19,10 +19,16 @@
   {
    "code": "AK",
    "name": "Alaska",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Parental Rights for Special Education (Procedural Safeguards)",
+    "url": "https://education.alaska.gov/tls/sped/docs/Procedural%20Safeguards.pdf"
+   },
    "rights_ei": null,
-   "parent_center": null,
-   "note": "Alaska education website not responding during research. Recommend contacting AK Dept of Education directly for procedural safeguards and Part C information.",
+   "parent_center": {
+    "name": "Stone Soup Group",
+    "url": "https://www.stonesoupgroup.org/"
+   },
+   "note": "Part B procedural safeguards successfully located. Part C early intervention website appears to have been reorganized; recommend contacting Alaska DHSS directly for current Part C procedural safeguards. Stone Soup Group is a family support non-profit; verify if it is the federally-designated PTI.",
    "medicaid": {
     "name": "Alaska Medicaid",
     "url": "https://dhss.alaska.gov/dsds/Pages/default.aspx"
@@ -41,10 +47,10 @@
    },
    "rights_ei": null,
    "parent_center": {
-    "name": "Raising Special Kids (Arizona PTI)",
-    "url": "https://www.raisingspecialkids.org/"
+    "name": "Encircle Families (formerly Raising Special Kids)",
+    "url": "https://encirclefamilies.org/"
    },
-   "note": "AZ Dept of Education site requires direct visit. Raising Special Kids can provide parent resources.",
+   "note": "Arizona education department site blocked during research. Encircle Families is a family support organization but may not be the federally-designated PTI. Recommend contacting AHCCCS directly for official Part C procedural safeguards.",
    "medicaid": {
     "name": "Arizona Medicaid",
     "url": "https://www.azahcccs.gov/"
@@ -56,7 +62,7 @@
    "rights_school": null,
    "rights_ei": null,
    "parent_center": null,
-   "note": "URLs identified for both Part B and C. May require direct website visit to locate procedural safeguards documents."
+   "note": "Arkansas education website difficult to access during research. Recommend contacting Arkansas Department of Education and DHS directly for official procedural safeguards notices for Part B and Part C."
   },
   {
    "code": "CA",
@@ -89,7 +95,7 @@
     "name": "The PEAK Parent Center",
     "url": "https://www.peakparent.org/"
    },
-   "note": "PEAK Parent Center accessible and can provide resources. Recommended to contact state agencies directly for official procedural safeguards documents.",
+   "note": "Colorado education website not fully accessible during research. PEAK Parent Center verified and can assist families in locating official procedural safeguards documents. Recommend contacting CDE and CDHS directly.",
    "medicaid": {
     "name": "Colorado Medicaid",
     "url": "https://hcpf.colorado.gov/"
@@ -103,15 +109,15 @@
    "code": "CT",
    "name": "Connecticut",
    "rights_school": {
-    "name": "Connecticut Department of Education - Special Education",
+    "name": "Connecticut Department of Education - Special Education Procedural Safeguards",
     "url": "https://portal.ct.gov/SDE/Special-Education/"
    },
    "rights_ei": null,
    "parent_center": {
-    "name": "Connecticut Parent Advocate Center (PAC)",
+    "name": "Connecticut Parent Advocate Center",
     "url": "https://www.cpac.org/"
    },
-   "note": "Both SDE and DDS portals accessible. Check these sites for procedural safeguards notices and family rights documents.",
+   "note": "Portal.ct.gov is accessible but specific procedural safeguards documents difficult to locate through website. Recommend contacting SDE and DDS directly for current procedural safeguards notices.",
    "medicaid": {
     "name": "Connecticut Medicaid",
     "url": "https://portal.ct.gov/husky"
@@ -130,7 +136,7 @@
     "name": "Parent Information Center (PIC)",
     "url": "https://www.picofdel.org/"
    },
-   "note": "URLs identified for both agencies. Parent Information Center can assist with locating official resources.",
+   "note": "Delaware education department main pages returning HTTP 404. Recommend contacting Delaware Department of Education and DHSS directly for official procedural safeguards notices.",
    "medicaid": {
     "name": "Delaware Medicaid",
     "url": "https://dhss.delaware.gov/dmma/"
@@ -146,7 +152,7 @@
    "rights_school": null,
    "rights_ei": null,
    "parent_center": null,
-   "note": "Both services managed by OSSE. Recommend contacting OSSE directly for procedural safeguards and family rights notices.",
+   "note": "OSSE services are blocked by HTTP 403 restrictions. Direct contact with OSSE at (202) 727-6436 recommended for official procedural safeguards notices and family rights documents.",
    "medicaid": {
     "name": "DC Medicaid",
     "url": "https://dhcf.dc.gov/service/medicaid"
@@ -165,7 +171,7 @@
     "url": "https://floridaearlysteps.com/your-rights/"
    },
    "parent_center": null,
-   "note": "Florida has three PTI centers under FND umbrella, each serving different regions of the state. FLDOE Part B notice is publicly available but the direct PDF URLs are blocked by site security; parents can access through FLDOE's parent info portal or request from school district.",
+   "note": "Florida has three PTI centers under FND umbrella (PSN, PEN, POPIN), each serving different regions of the state. Part C procedural safeguards found in Early Steps Policy Handbook. FLDOE Part B notice is publicly available but direct PDF URLs blocked by HTTP 403.",
    "medicaid": {
     "name": "Florida Medicaid",
     "url": "https://ahca.myflorida.com/medicaid.html"
@@ -321,7 +327,10 @@
     "url": "https://doe.louisiana.gov/families-and-students/family-support-resources/family-special-education-resources"
    },
    "rights_ei": null,
-   "parent_center": null,
+   "parent_center": {
+    "name": "Families Helping Families of Greater New Orleans",
+    "url": "https://fhfofgno.org/"
+   },
    "note": "Part B procedural safeguards mentioned on resource page (available in multiple languages). Part C information not located in research; may be under a different state agency (health/human services)",
    "medicaid": {
     "name": "Louisiana Medicaid",
@@ -365,8 +374,11 @@
    "name": "Massachusetts",
    "rights_school": null,
    "rights_ei": null,
-   "parent_center": null,
-   "note": "Mass.gov education pages exist but are heavily JavaScript-rendered and access was blocked (HTTP 403) for some URLs"
+   "parent_center": {
+    "name": "Federation for Children with Special Needs (FCSN)",
+    "url": "https://fcsn.org/"
+   },
+   "note": "Part B and parent center verified in second pass. Part C early intervention administered by state but specific procedural safeguards document URL not accessible; mass.gov early intervention links blocked by 403 restrictions"
   },
   {
    "code": "MI",
@@ -728,10 +740,16 @@
   {
    "code": "UT",
    "name": "Utah",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Utah Student and Family Rights - Procedural Safeguards",
+    "url": "https://schools.utah.gov/specialeducation/programs/studentfamilyrights.php"
+   },
    "rights_ei": null,
-   "parent_center": null,
-   "note": "Utah State Board of Education website indicates procedural safeguards resources are available but specific URLs not accessible. Contact: (801) 538-7500 or 250 East 500 South, Salt Lake City, Utah 84111.",
+   "parent_center": {
+    "name": "Utah Parent Center (UPC)",
+    "url": "https://utahparentcenter.org/"
+   },
+   "note": "Utah USBE Special Education: (801) 538-7500 or 250 East 500 South, Salt Lake City, Utah 84111. Utah Parent Center: (800) 468-1160.",
    "medicaid": {
     "name": "Utah Medicaid",
     "url": "https://www.medicaid.utah.gov/"
@@ -822,7 +840,10 @@
   {
    "code": "WI",
    "name": "Wisconsin",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Special Education Rights for Parents and Children (required legal notice)",
+    "url": "https://dpi.wi.gov/sped/families/rights"
+   },
    "rights_ei": {
     "name": "Birth to 3 Program (Part C, ages 0-3)",
     "url": "https://www.dhs.wisconsin.gov/children/index.htm"
@@ -831,7 +852,7 @@
     "name": "Wisconsin FACETS (Parent Training and Information Center)",
     "url": "https://wifacets.org"
    },
-   "note": "Wisconsin's Part B procedural safeguards are available through Wisconsin FACETS PTI center, which maintains materials in English, Spanish, and Hmong. Wisconsin DPI special education pages have access issues; contact FACETS or Wisconsin Wayfinder for comprehensive parent rights information.",
+   "note": "Wisconsin's Part B procedural safeguards are available on the DPI Special Education Families page in multiple languages. Wisconsin FACETS (PTI center) can provide documents in English, Spanish, and Hmong. Wisconsin Wayfinder: (877) WISCWAY.",
    "medicaid": {
     "name": "Wisconsin Medicaid",
     "url": "https://www.dhs.wisconsin.gov/medicaid/"

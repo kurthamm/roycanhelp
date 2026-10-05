@@ -2,21 +2,21 @@
   "code": "AK",
   "name": "Alaska",
   "part_b": {
-    "name": null,
-    "url": null,
-    "pdf": null,
-    "checked": "Contact Alaska Department of Education"
+    "name": "Parental Rights for Special Education (Procedural Safeguards)",
+    "url": "https://education.alaska.gov/tls/sped/docs/Procedural%20Safeguards.pdf",
+    "pdf": "https://education.alaska.gov/tls/sped/docs/Procedural%20Safeguards.pdf",
+    "checked": "PDF document verified accessible (HTTP 200), second pass 2026-10-05"
   },
   "part_c": {
     "name": null,
     "url": null,
     "pdf": null,
-    "checked": "Contact Alaska DHSS for early intervention"
+    "checked": "Early intervention redirects to public assistance department; official procedural safeguards not found, 2026-10-05"
   },
   "parent_center": {
-    "name": "Disability Information and Support Center (Alaska PTI)",
-    "url": "https://www.alaskadisability.org/",
-    "checked": "Verified through Parent Center Hub"
+    "name": "Stone Soup Group",
+    "url": "https://www.stonesoupgroup.org/",
+    "checked": "Verified through direct website access, 2026-10-05"
   },
-  "note": "Alaska education website not responding during research. Recommend contacting AK Dept of Education directly for procedural safeguards and Part C information."
+  "note": "Part B procedural safeguards successfully located. Part C early intervention website appears to have been reorganized; recommend contacting Alaska DHSS directly for current Part C procedural safeguards. Stone Soup Group is a family support non-profit; verify if it is the federally-designated PTI."
 }

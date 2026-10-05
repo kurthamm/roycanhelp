@@ -2,10 +2,10 @@
   "code": "MA",
   "name": "Massachusetts",
   "part_b": {
-    "name": null,
-    "url": null,
+    "name": "Parent's Notice of Procedural Safeguards (English Version)",
+    "url": "https://www.mass.gov/doc/parents-notice-of-procedural-safeguards-english-version/download",
     "pdf": null,
-    "checked": "Not found"
+    "checked": "Located on Massachusetts DOE Families & Guardians page; updated May 2025; available in multiple languages"
   },
   "part_c": {
     "name": null,
@@ -14,9 +14,9 @@
     "checked": "Not found"
   },
   "parent_center": {
-    "name": null,
-    "url": null,
-    "checked": "Not found"
+    "name": "Federation for Children with Special Needs (FCSN)",
+    "url": "https://fcsn.org/",
+    "checked": "Verified as Massachusetts PTI (2026-10-05); nonprofit providing services to families of children with disabilities; located at Schrafft Center, Boston; operates Parent to Parent and other support programs"
   },
-  "note": "Mass.gov education pages exist but are heavily JavaScript-rendered and access was blocked (HTTP 403) for some URLs"
+  "note": "Part B and parent center verified in second pass. Part C early intervention administered by state but specific procedural safeguards document URL not accessible; mass.gov early intervention links blocked by 403 restrictions"
 }
