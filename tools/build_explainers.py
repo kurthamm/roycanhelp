@@ -20,11 +20,11 @@ STATIC = [
     {'slug': 'fight-plan', 'group': 'Tools', 'label': 'How to Disagree', 'summary': 'What to do when the school, Early Intervention or Medicaid says no: the steps and the deadlines.'},
     {'slug': 'checklists', 'group': 'Tools', 'label': 'Printable Checklists', 'summary': 'Steps from these pages, ready to print and check off.'},
 ]
-GROUPS = ['School', 'Money', 'Health', 'Adulthood', 'Tools']
+GROUPS = ['Start Here', 'School', 'Money', 'Health', 'Adulthood', 'Tools']
 LABELS = {  # short names used in "See also" lines
     'diagnosis': 'The Diagnosis', 'early-intervention': 'Birth to Three', 'school-ieps': 'School Years', 'turning-18': 'Ages 14 to 26',
     'qualify': 'Do You Qualify?', 'paying-for-care': 'Paying for It', 'protecting-benefits': 'Protecting the Money', 'therapies': 'Therapies',
-    'glossary': 'Glossary', 'states': 'Your State', 'fight-plan': 'How to Disagree', 'checklists': 'Printable Checklists', 'explainers': 'All Explainers',
+    'glossary': 'Glossary', 'be-in-charge': 'Be in Charge', 'iep-meeting-decoded': 'The IEP Meeting, Decoded', 'ssi-deeming': 'SSI Deeming', 'tefra-katie-beckett': 'TEFRA / Katie Beckett', 'states': 'Your State', 'fight-plan': 'How to Disagree', 'checklists': 'Printable Checklists', 'explainers': 'All Explainers',
 }
 
 def esc_attr(s): return html.escape(s, quote=True)
