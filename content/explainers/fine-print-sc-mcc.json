@@ -1,0 +1,39 @@
+{
+  "slug": "fine-print-sc-mcc",
+  "group": "Money",
+  "anchor": "paying-for-care",
+  "title": "South Carolina Fine Print: The MCC Waiver",
+  "description": "South Carolina's Medically Complex Children waiver: who it serves, and self-directed attendant care that lets a parent or relative be paid hourly.",
+  "summary": "The Medically Complex Children waiver, and how a parent can be paid for the care.",
+  "short_answer": "South Carolina's Medically Complex Children (MCC) waiver serves children who meet hospital level of care and have chronic health conditions expected to last more than 12 months. Self-directed children's attendant care, for participants ages 1 to 21, lets eligible parents, relatives or guardians be paid hourly instead of using an agency, and families request it through their Waiver Nurse Case Manager.",
+  "h1": "South Carolina Fine Print: The Medically Complex Children Waiver (and Paying a Parent)",
+  "intro": "One of the biggest things I found in the South Carolina threads was a program many parents had never heard of: a waiver for medically complex children that can pay a family member to give the care. This page is about South Carolina only. Here is what SCDHHS says, word for word.",
+  "sections": [
+    {
+      "h2": "A Waiver for Children With Serious Medical Conditions",
+      "html": "        <p>Most of what South Carolina parents hear about waivers is the long list for the disability waivers. There is another one, run by the state Medicaid agency, for children whose conditions are medical. It does not go through the same door. Here is what SCDHHS says the Medically Complex Children (MCC) waiver does:</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;serves children who meet hospital level of care (LOC), and have chronic physical/health conditions expected to last longer than 12 months.&rdquo; <span class=\"rule-cite\">(SCDHHS, Medically Complex Children (MCC) Waiver)</span></p>\n        <p>SCDHHS adds that the child also has to meet state criteria about medications, medical supervision, hospitalizations, nursing, therapies and specialists. If that sounds like your child, there is a referral link on the program page. Katie Beckett (TEFRA) is a separate program, and the <a href=\"fine-print-sc-medicaid.html\">South Carolina Medicaid page</a> covers it.</p>"
+    },
+    {
+      "h2": "A Parent Can Be Paid for the Care",
+      "html": "        <p>This is the line that surprises families, and the one I would put in front of anyone with a child on this waiver.</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;Self-directed children&#39;s attendant care is a home-based service for MCC waiver participants ages one to age 21. It allows the option for eligible parents, relatives or guardians to be paid hourly to deliver the extraordinary care their child needs for day-to-day activities.&rdquo; <span class=\"rule-cite\">(SCDHHS, Medically Complex Children (MCC) Waiver)</span></p>\n        <p>Read the details. The choice is yours, and it replaces the agency, not adds to it.</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;This option is self-directed and would be used instead of an in-home care agency and personal care aide (PCA).&rdquo; <span class=\"rule-cite\">(SCDHHS, Medically Complex Children (MCC) Waiver)</span></p>\n        <p>The state also says how to ask.</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;Interested families who have a child who is covered by the MCC waiver can begin requesting the service on July 1, 2025, by contacting their Waiver Nurse Case Manager.&rdquo; <span class=\"rule-cite\">(SCDHHS, Medically Complex Children (MCC) Waiver)</span></p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;My child is on the Medically Complex Children waiver. Can we request self-directed children's attendant care, who is eligible to be paid, and what are the next steps and the background check requirements?&rdquo;</p>"
+    },
+    {
+      "h2": "Where to Look for the Details",
+      "html": "        <p>The program page links to a brochure, a flyer, a process description, FAQs, background check FAQs and roles and responsibilities, and to contact numbers for families. Read the FAQs before you call. I also would not assume the rules stay the same, because this service started recently. Disability Rights South Carolina and <a href=\"https://familyconnectionsc.org/\">Family Connection of South Carolina</a> can walk you through it for free.</p>"
+    },
+    {
+      "h2": "A Way to Ask That Works",
+      "html": "        <p>Start with the Waiver Nurse Case Manager, ask in writing, and keep the answer. Case managers carry big caseloads, and a short, specific request moves faster. The <a href=\"fine-print-sc-waitlist.html\">waiver waitlist page</a> covers the disability waivers if your child is on those lists instead.</p>"
+    }
+  ],
+  "see_also": [
+    "fine-print-sc-medicaid",
+    "fine-print-sc-waitlist",
+    "paying-for-care",
+    "tefra-katie-beckett"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against the SCDHHS Medically Complex Children (MCC) Waiver page on October 5, 2026. The attendant care service began July 1, 2025; details and eligibility change, so confirm with SCDHHS.",
+  "sources": [
+    "https://www.scdhhs.gov/resources/waivers/medically-complex-children-mcc-waiver"
+  ]
+}
