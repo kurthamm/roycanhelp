@@ -1,6 +1,6 @@
 # Roy Can Help
 
-> A field guide for parents of children with disabilities, written from one dad's experience in South Carolina. The federal rules apply anywhere. Every rule quoted is checked against the source text. Not legal or medical advice.
+> A field guide for parents of children with disabilities, written from one dad's experience in South Carolina. The federal rules apply anywhere. On the Fine Print and letters pages every quoted rule is checked word for word against the federal text. Not legal or medical advice.
 
 ## Pages
 
@@ -21,6 +21,7 @@
 - [The Fine Print on ABLE Accounts](https://roycanhelp.org/fine-print-able.html): ABLE account rules most parents never hear about: who qualifies, who can contribute, what SSI ignores, what you can spend, and the Medicaid repayment rule.
 - [The Fine Print on Behavior and Discipline](https://roycanhelp.org/fine-print-behavior.html): School discipline rules for a child with an IEP: the ten day count, services while out, the meeting about the behavior, and support first.
 - [The Fine Print in Early Intervention](https://roycanhelp.org/fine-print-early-intervention.html): Early Intervention rules most parents never hear about: you can refer your child, the 45 day clock, what is free, and the move at age three.
+- [The Fine Print on Evaluation and Diagnosis](https://roycanhelp.org/fine-print-evaluation.html): Evaluation rules most parents never hear about: you can ask for one, the 60 day clock, no single test, and why a diagnosis is not the same as eligibility.
 - [The Fine Print Nobody Hands You in Medicaid](https://roycanhelp.org/fine-print-medicaid.html): Medicaid rules most parents never hear about: a no must have reasons, the fair hearing, the 90 day ceiling, and the higher bar for children.
 - [The Fine Print Nobody Hands You at School](https://roycanhelp.org/fine-print-school.html): Rights in the special education rules that most parents never hear about, each with the exact sentence from the rule and what to say.
 - [The Fine Print on SSI](https://roycanhelp.org/fine-print-ssi.html): SSI rules most parents never hear about: the 60 day appeal clock, the review at 18, when parent income stops counting, and what is set aside.
