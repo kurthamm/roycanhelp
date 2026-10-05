@@ -1,0 +1,22 @@
+{
+  "code": "CT",
+  "name": "Connecticut",
+  "part_b": {
+    "name": "Connecticut Department of Education - Special Education",
+    "url": "https://portal.ct.gov/SDE/Special-Education/",
+    "pdf": null,
+    "checked": "HTTP 200 OK; Main special education portal"
+  },
+  "part_c": {
+    "name": "Connecticut Birth to Three System",
+    "url": "https://portal.ct.gov/DDS/Birth-to-Three/",
+    "pdf": null,
+    "checked": "DDS administers Birth to Three program (Part C)"
+  },
+  "parent_center": {
+    "name": "Connecticut Parent Advocate Center (PAC)",
+    "url": "https://www.cpac.org/",
+    "checked": "HTTP 200 OK; Verified through Parent Center Hub"
+  },
+  "note": "Both SDE and DDS portals accessible. Check these sites for procedural safeguards notices and family rights documents."
+}

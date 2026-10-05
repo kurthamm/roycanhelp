@@ -1,0 +1,22 @@
+{
+  "code": "DC",
+  "name": "District of Columbia",
+  "part_b": {
+    "name": "DC Office of the State Superintendent - Special Education",
+    "url": "https://osse.dc.gov/service/special-education",
+    "pdf": null,
+    "checked": "OSSE manages special education services"
+  },
+  "part_c": {
+    "name": "DC Office of the State Superintendent - Early Intervention",
+    "url": "https://osse.dc.gov/service/early-intervention-program",
+    "pdf": null,
+    "checked": "OSSE administers early intervention"
+  },
+  "parent_center": {
+    "name": "DC Coalition of Parent Centers",
+    "url": "https://dcparentcoalition.org/",
+    "checked": "Verified through Parent Center Hub"
+  },
+  "note": "Both services managed by OSSE. Recommend contacting OSSE directly for procedural safeguards and family rights notices."
+}

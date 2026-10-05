@@ -1,0 +1,22 @@
+{
+  "code": "MO",
+  "name": "Missouri",
+  "part_b": {
+    "name": null,
+    "url": "https://dese.mo.gov/office-special-education",
+    "pdf": null,
+    "checked": "Office of Special Education page exists at dese.mo.gov; procedural safeguards document location not directly identified in automated research"
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Not found"
+  },
+  "parent_center": {
+    "name": null,
+    "url": null,
+    "checked": "Not found"
+  },
+  "note": "Missouri DESE has special education office; compliance section exists but specific procedural safeguards and early intervention pages not identified"
+}

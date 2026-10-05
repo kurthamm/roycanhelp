@@ -1,0 +1,22 @@
+{
+  "code": "AL",
+  "name": "Alabama",
+  "part_b": {
+    "name": "Alabama Department of Education - Special Education",
+    "url": "https://www.alabamaachieves.org/special-education/",
+    "pdf": null,
+    "checked": "HTTP 200; Main special education page confirmed accessible"
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Early intervention lead agency contact required"
+  },
+  "parent_center": {
+    "name": "Alabama Parent Teacher Center (APTC)",
+    "url": "https://aptcpti.org/",
+    "checked": "Verified through Parent Center Hub"
+  },
+  "note": "Part B page accessible. Procedural safeguards may be available through ALSDE contact or on subpages. ADPH operates Part C early intervention."
+}

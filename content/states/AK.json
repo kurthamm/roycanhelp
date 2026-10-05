@@ -1,0 +1,22 @@
+{
+  "code": "AK",
+  "name": "Alaska",
+  "part_b": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Contact Alaska Department of Education"
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Contact Alaska DHSS for early intervention"
+  },
+  "parent_center": {
+    "name": "Disability Information and Support Center (Alaska PTI)",
+    "url": "https://www.alaskadisability.org/",
+    "checked": "Verified through Parent Center Hub"
+  },
+  "note": "Alaska education website not responding during research. Recommend contacting AK Dept of Education directly for procedural safeguards and Part C information."
+}

@@ -1,0 +1,22 @@
+{
+  "code": "CA",
+  "name": "California",
+  "part_b": {
+    "name": "California Department of Education - Special Education Services",
+    "url": "https://www.cde.ca.gov/sp/se/",
+    "pdf": null,
+    "checked": "HTTP accessible (via redirect); Procedural safeguards page: https://www.cde.ca.gov/sp/se/ps/"
+  },
+  "part_c": {
+    "name": "California Early Start Program",
+    "url": "https://www.dds.ca.gov/consumers/regional-centers/early-start/",
+    "pdf": null,
+    "checked": "HTTP accessible (via redirect); DDS administers Part C"
+  },
+  "parent_center": {
+    "name": "California Parent Center",
+    "url": "https://www.caparentcenter.org/",
+    "checked": "Verified through Parent Center Hub"
+  },
+  "note": "Both Part B and C pages confirmed accessible. California CDE maintains procedural safeguards at /sp/se/ps/ path."
+}

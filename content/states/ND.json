@@ -1,0 +1,22 @@
+{
+  "code": "ND",
+  "name": "North Dakota",
+  "part_b": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Removed: linked the State Performance Plan, not the parent rights notice."
+  },
+  "part_c": {
+    "name": "Early Intervention Services (DHHS Developmental Disabilities)",
+    "url": "https://www.hhs.nd.gov/dpi/",
+    "pdf": null,
+    "checked": "Verified through ND DHHS Developmental Disabilities division; Direct contact recommended"
+  },
+  "parent_center": {
+    "name": "Pathfinders (ND PTI)",
+    "url": "https://pathfindersfamily.org/",
+    "checked": "Operational PTI center; phone: (701) 837-7500"
+  },
+  "note": "Part C administered by DHHS; Contact state directly for complete early intervention procedural safeguards"
+}

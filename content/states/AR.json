@@ -1,0 +1,22 @@
+{
+  "code": "AR",
+  "name": "Arkansas",
+  "part_b": {
+    "name": "Arkansas Department of Education - Special Education",
+    "url": "https://www.arkansased.gov/divisions/special-education/",
+    "pdf": null,
+    "checked": "Main special education page (may require direct visit)"
+  },
+  "part_c": {
+    "name": "Arkansas Early Intervention Program",
+    "url": "https://humanservices.arkansas.gov/divisions/developmental-disabilities-services/early-intervention-program/",
+    "pdf": null,
+    "checked": "DHS administers early intervention program"
+  },
+  "parent_center": {
+    "name": "Arkansas Parents, Families & Friends (PTI)",
+    "url": "https://www.arkansaspti.org/",
+    "checked": "Verified through Parent Center Hub"
+  },
+  "note": "URLs identified for both Part B and C. May require direct website visit to locate procedural safeguards documents."
+}
