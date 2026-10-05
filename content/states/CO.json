@@ -5,18 +5,18 @@
     "name": "Colorado Department of Education - Special Education",
     "url": "https://cde.colorado.gov/special-education",
     "pdf": null,
-    "checked": "Main special education page"
+    "checked": "Main special education page identified; site not accessible on second pass, 2026-10-05"
   },
   "part_c": {
     "name": "Colorado Department of Human Services - Early Intervention",
     "url": "https://cdhs.colorado.gov/early-intervention",
     "pdf": null,
-    "checked": "CDHS manages early intervention"
+    "checked": "CDHS manages early intervention; procedural safeguards document not confirmed, 2026-10-05"
   },
   "parent_center": {
     "name": "The PEAK Parent Center",
     "url": "https://www.peakparent.org/",
-    "checked": "HTTP 200 OK; Verified through Parent Center Hub"
+    "checked": "Parent center organization verified accessible, 2026-10-05"
   },
-  "note": "PEAK Parent Center accessible and can provide resources. Recommended to contact state agencies directly for official procedural safeguards documents."
+  "note": "Colorado education website not fully accessible during research. PEAK Parent Center verified and can assist families in locating official procedural safeguards documents. Recommend contacting CDE and CDHS directly."
 }

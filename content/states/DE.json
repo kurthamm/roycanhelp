@@ -5,18 +5,18 @@
     "name": "Delaware Department of Education - Special Education",
     "url": "https://delaware.gov/education/special-education/",
     "pdf": null,
-    "checked": "Main special education department page"
+    "checked": "Main special education page returns HTTP 404; procedural safeguards document not located, 2026-10-05"
   },
   "part_c": {
     "name": "Delaware DHSS - Early Care",
     "url": "https://dhss.delaware.gov/divisions/family-services/",
     "pdf": null,
-    "checked": "DHSS administers early intervention"
+    "checked": "DHSS administers early intervention; procedural safeguards not confirmed, 2026-10-05"
   },
   "parent_center": {
     "name": "Parent Information Center (PIC)",
     "url": "https://www.picofdel.org/",
-    "checked": "Verified through Parent Center Hub"
+    "checked": "Organization name and URL identified; website accessibility needs verification, 2026-10-05"
   },
-  "note": "URLs identified for both agencies. Parent Information Center can assist with locating official resources."
+  "note": "Delaware education department main pages returning HTTP 404. Recommend contacting Delaware Department of Education and DHSS directly for official procedural safeguards notices."
 }
