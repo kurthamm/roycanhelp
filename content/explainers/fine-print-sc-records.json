@@ -1,0 +1,40 @@
+{
+  "slug": "fine-print-sc-records",
+  "group": "School",
+  "anchor": "school-ieps",
+  "title": "South Carolina Fine Print: School Records",
+  "description": "South Carolina special education records can be destroyed after notice. What the regulation says, your 45 day window, and why to get a copy first.",
+  "summary": "The 45 day notice before special education records are destroyed, and why to get a copy first.",
+  "short_answer": "In South Carolina a school district must notify parents 45 calendar days before it destroys special education records, and tell them they can request a copy of the data. If parents request destruction the records must be destroyed, and if they do not the district may keep or destroy them at its discretion, so ask for a complete copy first.",
+  "h1": "South Carolina Fine Print: Special Education Records Can Be Destroyed",
+  "intro": "A thread on a South Carolina forum asked about scheduled special education record deletion, and I realized most parents have never heard of it. This page is about South Carolina only. Here is what the state regulation and the federal rule say, word for word.",
+  "sections": [
+    {
+      "h2": "The School Has to Tell You Before It Destroys Your Child's Records",
+      "html": "        <p>In South Carolina, special education records do not live forever. When the school no longer needs them, it can destroy them, and the regulation says you get notice first.</p>\n        <p class=\"rule-quote\">The state says: &ldquo;Until no longer needed to provide educational services to the student or for the necessary school district purposes such as auditing or monitoring, then notify the parents that they have a right to have these records destroyed.&rdquo; <span class=\"rule-cite\">(S.C. Code of Regulations 12-906.2)</span></p>\n        <p>And there is a clock on the notice.</p>\n        <p class=\"rule-quote\">The state says: &ldquo;In all instances of destruction, the parents of the student must be notified forty-five calendar days prior to destruction that they have a right to request and be provided a copy of any personally identifiable data which has been obtained or used while providing educational services for their children.&rdquo; <span class=\"rule-cite\">(S.C. Code of Regulations 12-906.2)</span></p>\n        <p>Read that closely. It is a notice 45 days before, and it comes with your right to ask for a copy. If you move or change addresses, make sure the school has your current one.</p>"
+    },
+    {
+      "h2": "It Is Your Call: Destroy or Keep",
+      "html": "        <p>Here is the part that surprises people. You can ask for the records to be destroyed, and then the school has to do it. If you do nothing, the school decides.</p>\n        <p class=\"rule-quote\">The state says: &ldquo;If the parents so request, the records must be destroyed. If the parents do not request destruction, the school district may retain these records permanently or destroy them at their discretion.&rdquo; <span class=\"rule-cite\">(S.C. Code of Regulations 12-906.2)</span></p>\n        <p class=\"rule-quote\">The federal rule says: &ldquo;The information must be destroyed at the request of the parents.&rdquo; <span class=\"rule-cite\">(34 CFR 300.624)</span></p>\n        <p>Some information stays no matter what. The regulation says the basic record does not fall under this.</p>\n        <p class=\"rule-quote\">The state says: &ldquo;This retention does not apply to the permanent record of a student&#39;s name, address, telephone number, grades, attendance record, classes attended, grade level completed, and year of completion.&rdquo; <span class=\"rule-cite\">(S.C. Code of Regulations 12-906.2)</span></p>"
+    },
+    {
+      "h2": "What I Would Do: Get a Complete Copy First",
+      "html": "        <p>These records document your child&#39;s needs: evaluations, IEPs, progress data. That paperwork can matter years later, so I would not let it be destroyed, or destroy it myself, before I had a complete copy. The notice is your window. When it arrives, ask for the copy.</p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;I received a notice about destruction of my child&#39;s special education records. Please send me a complete copy of everything in the file, including evaluations, IEPs, and progress data, and tell me the date the records are scheduled to be destroyed.&rdquo;</p>\n        <p>The <a href=\"fine-print-school.html\">school fine print</a> has the rule for seeing the records at any time, and the <a href=\"request-letters.html\">letters page</a> has a request you can copy.</p>"
+    },
+    {
+      "h2": "A Way to Ask That Works",
+      "html": "        <p>Do it in writing and keep a copy of what you sent. The records office is probably handling a lot of files at once, and a short, specific request is easy to fill. If something looks wrong, <a href=\"https://www.disabilityrightssc.org/\">Disability Rights South Carolina</a> and <a href=\"https://familyconnectionsc.org/\">Family Connection of South Carolina</a> can help for free.</p>"
+    }
+  ],
+  "see_also": [
+    "fine-print-school",
+    "request-letters",
+    "school-ieps",
+    "fine-print-sc-school"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against S.C. Code of Regulations 12-906.2 (as published by Justia, current through Register Vol. 49, No. 6, June 27, 2025) and 34 CFR 300.624 at ecfr.gov. Check scstatehouse.gov for the latest text of the regulation, and ask your district for its schedule.",
+  "sources": [
+    "https://regulations.justia.com/states/south-carolina/chapter-12/article-9/subarticle-6/section-12-906-2/",
+    "https://www.ecfr.gov/current/title-34/subtitle-B/chapter-III/part-300/subpart-F/subject-group-ECFR3a9bd2f2d4fa1c6/section-300.624"
+  ]
+}
