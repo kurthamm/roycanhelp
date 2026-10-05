@@ -7,16 +7,21 @@ Only the Wisdom page is heavily South Carolina (26 mentions). The other pages ar
 - 9 states list a Protection and Advocacy agency where the Parent Training and Information center belongs (for example AL, AR, FL, HI, ID, MN, MT, NE, PA).
 A site whose promise is "specs beat opinions" cannot ship that. Fix before scaling.
 
-## Plan
-1. Rebuild the state data from the official directories only: Part C lead agencies (ECTA Center), Parent Training and Information centers (Center for Parent Information and Resources), Protection and Advocacy systems (NDRN), developmental disabilities councils (ACL), state special education offices (Dept. of Education IDEA contacts), Medicaid waiver pages (medicaid.gov), state ABLE programs (ABLE National Resource Center). Each record carries source URL and last-checked date. A link and label audit runs in the daily live audit.
-2. One page per state (51 URLs): "[State] early intervention, IEP rights, Medicaid waivers and benefits for children with disabilities". Federal rights summary linked to Roy's federal pages, then the verified state contacts, then a "last checked" date. Roy's South Carolina material becomes "one family's example" and links from the SC page. This is what captures state-specific searches.
-3. Reframe titles, H1s and descriptions of the federal pages as national. Keep Roy's story and voice; label South Carolina specifics as such (the about page already does).
-4. Build once, refresh yearly: a script regenerates state pages from the data; the editor can rerun it.
-5. Traffic assets that other sites link to: a "denial letter" template citing the rule, a 60-day evaluation clock explainer, an IEP meeting checklist, a printable "what the school must tell you in writing" card. Each is a page plus a PDF.
-6. Allies: national organizations (Autism Society of America, The Arc, NDRN, Parent Center Hub) and each state's PTI and P&A, once the state pages exist, because the state page is a natural thing for them to link to.
+## Direction (revised 2026-10-04): this site is about Roy
+The first draft of this plan borrowed the Mediprimer playbook: a directory, one page per state, data at scale. That is wrong for this site. Mediprimer is a reference utility. roycanhelp.org is a person: the dad who read the documentation. His voice and first-hand experience are the product and the reason to link to, share or trust the site. Programmatic state pages would bury that.
 
-## Making it easy for Roy
-- Parents' questions arrive pre-drafted and verified, so he approves instead of writing.
-- He can forward any real parent message into his chat ("a parent asked me this: ...") and it becomes a question and answer.
-- Everything is one chat in his ChatGPT. Direct instructions run immediately.
-- Weekly, the editor offers the next three drafted answers at once so he can say "yes to all" or edit one.
+### What changes
+- Dropped as a lead strategy: 51 generated state pages. Instead, repair the existing state picker data (it has dead links and mislabeled agencies) so it is accurate, and keep it as a small tool.
+- Grow by being more Roy:
+  1. Visible Roy: a real About page and story in chapters, only with facts he confirms, a photo or voice only if he supplies it. Podcast and short video over SEO pages.
+  2. Every answer in his three parts: what happened to us, what the rule says (with citation), what I would do. This is first-hand experience plus evidence, which is what search rewards.
+  3. Win branded and story searches first (his name, "Roy Can Help", the autism dad engineer angle, the questions his lessons answer).
+  4. People-driven traffic: his church and Gamecock network, Partners in Policymaking alumni, the SC Autism Society, parents sharing a page that helped them, human-interest press, podcast guests who bring their own audiences, speaking at autism society events.
+  5. Parent testimonials, with consent.
+- Not SC-specific, the Roy way: the rule is national, the story is his. Each page gives the federal rule, what happened to his family in South Carolina, and how to find your state's version. Parents from other states can share how their state differed, curated by Roy. That builds community around him and covers other states without turning him into a database.
+
+### Making it easy for Roy
+Pre-drafted, verified questions from his own words and notes, forwarded parent messages become Q&A, one chat in his ChatGPT, direct instructions run at once, three drafts offered at a time.
+
+### Still true from before
+Federal rights are national already. Only the Wisdom page is heavily South Carolina. State data in site/data/states.json must be repaired from official directories (parent training centers, protection and advocacy systems, early intervention coordinators), with last-checked dates and a link audit.
