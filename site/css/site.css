@@ -257,3 +257,6 @@ ul.checks li:before { content: ""; position: absolute; left: 0.2rem; top: 0.95re
 
 /* Draft banner: visible only while a page is waiting for Roy's review */
 .draft-note { background: var(--sun-soft); border-left: 6px solid var(--sun); border-radius: 12px; padding: 0.9rem 1.2rem; margin-bottom: 1.5rem; font-size: 1.02rem; }
+
+/* Draft banner: visible only while a page is waiting for Roy's review */
+.draft-note { background: var(--sun-soft); border-left: 6px solid var(--sun); border-radius: 12px; padding: 0.9rem 1.2rem; margin-bottom: 1.5rem; font-size: 1.02rem; }
