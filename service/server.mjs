@@ -1,6 +1,6 @@
 import express from 'express';
 import { makeSession, verifySession, checkPassword } from './auth.mjs';
-import { commitAll, undoLast, recentChanges } from './gitops.mjs';
+import { commitAll, undoLast, recentChanges, lastChange } from './gitops.mjs';
 import { logUsage } from './usage.mjs';
 import { mountGptRelay } from './gpt-relay.mjs';
 import { applyStructuredData } from '../tools/structured-data.mjs';
@@ -711,7 +711,7 @@ ${lessonCard}
       ...init,
       headers: { ...init.headers, cookie: `session=${makeSession(env.SESSION_SECRET)}` },
     });
-    mountGptRelay(app, { env, runTurn, commit: commitAll, logUsage, undo: undoLast, history: recentChanges, adminFetch, origin: 'https://roycanhelp.org' });
+    mountGptRelay(app, { env, runTurn, commit: commitAll, logUsage, undo: undoLast, history: recentChanges, head: async dir => (await lastChange(dir)).hash, adminFetch, origin: 'https://roycanhelp.org' });
   } else {
     console.log('GPT relay disabled: GPT_ACTION_KEY is not set');
   }

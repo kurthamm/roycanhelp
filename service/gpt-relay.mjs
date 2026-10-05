@@ -133,7 +133,7 @@ async function readDraftStream(body) {
   return result;
 }
 
-export function mountGptRelay(app, { env, runTurn, commit, logUsage, undo, history, adminFetch, origin }) {
+export function mountGptRelay(app, { env, runTurn, commit, logUsage, undo, history, head, adminFetch, origin }) {
   const key = env.GPT_ACTION_KEY;
   if (!key || key.length < 32) throw new Error('GPT_ACTION_KEY must be set to at least 32 characters');
   const keyDigest = digest(key);
@@ -213,9 +213,12 @@ export function mountGptRelay(app, { env, runTurn, commit, logUsage, undo, histo
     if (running) return res.status(409).json({ error: 'The editor is still working on the previous request', ...(running !== 'undo' && { jobId: running }) });
     const { jobId } = startJob(async job => {
       try {
+        const before = await head(env.SITE_REPO_DIR);
         const out = await runTurn({ message, sessionId: sessionId ?? undefined, siteDir: env.SITE_DIR, onText: t => job.chunks.push(t) });
         if (out.sessionId) sessionId = out.sessionId;
-        job.changedSite = (await commit(env.SITE_REPO_DIR, `Roy: ${message.substring(0, 60)}`)) !== null;
+        await commit(env.SITE_REPO_DIR, `Roy: ${message.substring(0, 60)}`);
+        // The editor sometimes commits and pushes itself (promoting a preview), so compare history, not just the leftovers.
+        job.changedSite = (await head(env.SITE_REPO_DIR)) !== before;
         if (out.usage) logUsage(env.USAGE_LOG, { ts: new Date().toISOString(), sessionId, via: 'gpt', ...out.usage });
       } finally {
         running = null;
