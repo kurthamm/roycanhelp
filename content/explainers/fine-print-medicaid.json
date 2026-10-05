@@ -1,0 +1,47 @@
+{
+  "slug": "fine-print-medicaid",
+  "group": "Money",
+  "anchor": "paying-for-care",
+  "title": "The Fine Print Nobody Hands You in Medicaid",
+  "description": "Medicaid rules most parents never hear about: a no must have reasons, the fair hearing, the 90 day ceiling, and the higher bar for children.",
+  "summary": "A no needs reasons, the hearing right, the 90 day ceiling, and what EPSDT says for children.",
+  "h1": "The Fine Print Nobody Hands You in Medicaid",
+  "intro": "Medicaid letters read like they were written to be skimmed and filed. But the rules behind them say a lot about what you are owed. Each one below comes with the exact sentence from the federal regulation, so you can point to it, and something calm to say.",
+  "sections": [
+    {
+      "h2": "A No Has to Come With Reasons",
+      "html": "        <p>If Medicaid turns down a request, or ends a service, you are owed more than a form letter that says denied. The notice has to say what the state is doing and why.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;At the time the agency denies an individual&#39;s claim for eligibility, benefits or services&rdquo; <span class=\"rule-cite\">(42 CFR 431.206)</span></p>\n        <p class=\"rule-quote\">The rule says: &ldquo;A clear statement of the specific reasons supporting the intended action&rdquo; <span class=\"rule-cite\">(42 CFR 431.210)</span></p>\n        <p class=\"rule-quote\">The rule says: &ldquo;The specific regulations that support, or the change in Federal or State law that requires, the action&rdquo; <span class=\"rule-cite\">(42 CFR 431.210)</span></p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;Thank you for the notice. Could you tell me which regulation supports this decision and send me the specific reasons in writing?&rdquo;</p>"
+    },
+    {
+      "h2": "They Have to Tell You About the Hearing",
+      "html": "        <p>A fair hearing is the formal way to ask someone else to look at a decision. The state is supposed to tell you about it in writing, when you apply and when it says no.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;Of his or her right to a fair hearing and right to request an expedited fair hearing&rdquo; <span class=\"rule-cite\">(42 CFR 431.206)</span></p>\n        <p>You also do not have to go it alone, and you do not have to be a lawyer.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;That he may represent himself or use legal counsel, a relative, a friend, or other spokesman&rdquo; <span class=\"rule-cite\">(42 CFR 431.206)</span></p>"
+    },
+    {
+      "h2": "The 90 Day Ceiling, and Why to Move Sooner",
+      "html": "        <p>There is a deadline for asking for a hearing, and it is shorter than people expect. Federal rules set a ceiling, and your state can set a shorter one.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;a reasonable time, not to exceed 90 days from the date that notice of action is mailed&rdquo; <span class=\"rule-cite\">(42 CFR 431.221)</span></p>\n        <p>And the state is not allowed to get in your way.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;The agency may not limit or interfere with the applicant&#39;s or beneficiary&#39;s freedom to make a request for a hearing&rdquo; <span class=\"rule-cite\">(42 CFR 431.221)</span></p>\n        <p>Ask for the hearing as soon as you decide. Do it in writing and keep a copy. The <a href=\"fight-plan.html\">disagree-in-writing guide</a> has the steps.</p>"
+    },
+    {
+      "h2": "Notice Before a Service Stops",
+      "html": "        <p>When the state plans to cut or end something you already have, it generally has to warn you first.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;The State or local agency must send a notice at least 10 days before the date of action&rdquo; <span class=\"rule-cite\">(42 CFR 431.211)</span></p>\n        <p>There are exceptions in other sections of the rules, so check the notice you get for the dates. The notice also has to explain what happens to your coverage if you ask for a hearing, so read that part closely.</p>"
+    },
+    {
+      "h2": "For Children, the Bar Is Higher",
+      "html": "        <p>Medicaid has a special program for children and young people called EPSDT, short for Early and Periodic Screening, Diagnostic, and Treatment. The definition is wider than many families are told.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;Health care, treatment, and other measures to correct or ameliorate any defects and chronic conditions discovered&rdquo; <span class=\"rule-cite\">(42 CFR 440.40)</span></p>\n        <p>The state also has to explain the program to families in everyday language, including what is available and how to get it, and that those services cost children under 18 nothing.</p>\n        <p class=\"rule-quote\">The rule says: &ldquo;Using clear and nontechnical language&rdquo; <span class=\"rule-cite\">(42 CFR 441.56)</span></p>\n        <p class=\"rule-quote\">The rule says: &ldquo;services provided under the EPSDT program are without cost to eligible individuals under 18 years of age&rdquo; <span class=\"rule-cite\">(42 CFR 441.56)</span></p>\n        <p>Whether a particular therapy is covered depends on your state and on your child&#39;s needs, so ask. The <a href=\"paying-for-care.html\">Paying for It</a> page is the place to start.</p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;Under EPSDT, is this service covered if my child&#39;s doctor says it is needed? If you say no, please send me the reason in writing.&rdquo;</p>"
+    },
+    {
+      "h2": "Making Too Much? One More Door",
+      "html": "        <p>If your family&#39;s income is the problem, read <a href=\"tefra-katie-beckett.html\">TEFRA / Katie Beckett</a>, a state option that looks at your child&#39;s income alone, and <a href=\"ssi-deeming.html\">SSI Deeming</a> for how parent income counts until 18. Ask your state Medicaid office whether it offers the option and what it is called there.</p>"
+    }
+  ],
+  "see_also": [
+    "paying-for-care",
+    "tefra-katie-beckett",
+    "fight-plan",
+    "fine-print-early-intervention"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against the text of 42 CFR 431.206, 431.210, 431.211, 431.221, 440.40 and 441.56 at ecfr.gov. Your state may add rules of its own.",
+  "sources": [
+    "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-C/part-431/subpart-E",
+    "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-C/part-441/subpart-B"
+  ]
+}
