@@ -1,0 +1,40 @@
+{
+  "slug": "fine-print-sc-respite",
+  "group": "Money",
+  "anchor": "paying-for-care",
+  "title": "South Carolina Fine Print: Respite Help",
+  "description": "South Carolina respite help: the Respite Coalition's vouchers, who they focus on (including families on waiver waitlists), and what they cannot pay for.",
+  "summary": "The SC Respite Coalition voucher, who it focuses on, and what it cannot pay for.",
+  "short_answer": "The South Carolina Respite Coalition awards vouchers of $500 to eligible family caregivers, focusing on caregivers with no other respite, those in middle age, and families on waiting lists. Vouchers cannot pay the family caregiver, a family member who lives in the home, care while the caregiver works, or care that happened before the voucher was issued.",
+  "h1": "South Carolina Fine Print: Respite Help for Family Caregivers",
+  "intro": "Parents in South Carolina talk about respite the way you talk about sleep: you know you need it and you are not sure where it comes from. This page is about South Carolina only. Here is what the Respite Coalition and the state disability agency say on their own pages, word for word.",
+  "sections": [
+    {
+      "h2": "Respite Is a Real Thing, and There Is a Voucher",
+      "html": "        <p>Respite means a break for the person doing the hands-on caregiving. South Carolina parents bring up how hard it is to get one. There is a statewide nonprofit that gives out vouchers, and the state disability agency defines respite broadly.</p>\n        <p class=\"rule-quote\">DDSN says: &ldquo;Respite may be used on a regular basis to provide relief to caregivers or in response to a family emergency or crisis.&rdquo; <span class=\"rule-cite\">(SC DDSN, Respite)</span></p>\n        <p class=\"rule-quote\">The SC Respite Coalition says: &ldquo;The focus of the Respite Voucher Program is caregiver relief. We award vouchers in the amount of $500 to eligible family caregivers.&rdquo; <span class=\"rule-cite\">(SC Respite Coalition, Respite Voucher Program)</span></p>\n        <p>That amount is what the page says today, so confirm it before you plan around it.</p>"
+    },
+    {
+      "h2": "Families on Waiting Lists Are on Their List",
+      "html": "        <p>This is the line I would point to if you are waiting on a waiver. The program says who it tries to reach.</p>\n        <p class=\"rule-quote\">The SC Respite Coalition says: &ldquo;We focus on family caregivers with no other respite, those in middle age, and families on waiting lists.&rdquo; <span class=\"rule-cite\">(SC Respite Coalition, Respite Voucher Program)</span></p>\n        <p>The <a href=\"fine-print-sc-waitlist.html\">waiver waitlist page</a> explains the list itself. If you are on one, you are the kind of family this program says it is for.</p>"
+    },
+    {
+      "h2": "What the Voucher Cannot Pay For",
+      "html": "        <p>Read this part before you apply, so you do not plan around something it will not cover.</p>\n        <p class=\"rule-quote\">The SC Respite Coalition says: &ldquo;They may not be used to: - Pay the family caregiver directly for the care he/she is providing - Pay a family member who currently resides in the home - Pay for care while the caregiver goes to work&rdquo; <span class=\"rule-cite\">(SC Respite Coalition, Respite Voucher Program)</span></p>\n        <p class=\"rule-quote\">The SC Respite Coalition says: &ldquo;Pay for care that occurred before the voucher was issued&rdquo; <span class=\"rule-cite\">(SC Respite Coalition, Respite Voucher Program)</span></p>\n        <p>So the voucher is for a real break, arranged before the care happens, with someone who does not live with you. The staff help each approved family find a provider.</p>"
+    },
+    {
+      "h2": "A Way to Ask That Works",
+      "html": "        <p>Apply early and keep a copy of the application. The staff at a small nonprofit are stretched, so a complete, polite application helps them help you. The application and an emergency voucher form are linked from the program page, and <a href=\"https://familyconnectionsc.org/\">Family Connection of South Carolina</a> can point you to more help. Amounts and rules change, so use the pages linked below.</p>"
+    }
+  ],
+  "see_also": [
+    "fine-print-sc-waitlist",
+    "paying-for-care",
+    "fine-print-sc-medicaid",
+    "be-in-charge"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against the SC Respite Coalition Respite Voucher Program page and the DDSN Respite page on October 5, 2026. Amounts, rules and funding change; confirm with the program.",
+  "sources": [
+    "https://www.screspitecoalition.org/programs-services/respite-voucher-program/",
+    "https://ddsn.sc.gov/ddsn-divisions/intellectual-disability-and-related-disabilities/respite"
+  ]
+}
