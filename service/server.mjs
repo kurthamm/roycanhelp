@@ -3,6 +3,7 @@ import { makeSession, verifySession, checkPassword } from './auth.mjs';
 import { commitAll, undoLast, recentChanges } from './gitops.mjs';
 import { logUsage } from './usage.mjs';
 import { mountGptRelay } from './gpt-relay.mjs';
+import { applyStructuredData } from '../tools/structured-data.mjs';
 import { mkdirSync, existsSync, writeFileSync, readFileSync, appendFileSync } from 'node:fs';
 import { join, resolve, sep } from 'node:path';
 import { randomUUID } from 'node:crypto';
@@ -579,7 +580,8 @@ ${lessonCard}
       }
 
       // Write updated wisdom file
-      writeFileSync(wisdomPath, updatedWisdom);
+      // Same search markup and question anchors the editor's own edits get, built before anything is written.
+      writeFileSync(wisdomPath, applyStructuredData('roys-wisdom.html', updatedWisdom, new Date().toISOString().slice(0, 10)));
 
       // Commit the change
       const committed = await commitAll(env.SITE_REPO_DIR, 'Roy: published a visitor question to Wisdom');

@@ -7,7 +7,7 @@ import { createHash, randomUUID, timingSafeEqual } from 'node:crypto';
 // so the GPT can never do something /admin/ cannot.
 // Long operations outlast a ChatGPT action's wait, so they return a job id that is polled.
 
-const MAX_MESSAGE = 8000;
+const MAX_MESSAGE = 50000;
 const MAX_UPLOAD = 15 * 1024 * 1024;
 const JOB_TTL_MS = 60 * 60 * 1000;
 
@@ -142,7 +142,7 @@ export function mountGptRelay(app, { env, runTurn, commit, logUsage, undo, histo
   let sessionId = null;
 
   const clientIp = req => (req.get('x-forwarded-for') ?? req.ip ?? '').split(',')[0].trim();
-  const json = express.json({ limit: '32kb' });
+  const json = express.json({ limit: '256kb' });
 
   const requireKey = (req, res, next) => {
     const m = /^Bearer (.+)$/.exec(req.get('authorization') ?? '');

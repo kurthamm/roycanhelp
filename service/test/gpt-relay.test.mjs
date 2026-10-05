@@ -90,7 +90,7 @@ test('agent failure is reported, not hidden', async () => {
 test('bad message bodies are rejected', async () => {
   const s = await start(async () => ({}));
   assert.equal((await post(s.base, { message: '' })).status, 400);
-  assert.equal((await post(s.base, { message: 'x'.repeat(9000) })).status, 400);
+  assert.equal((await post(s.base, { message: 'x'.repeat(60000) })).status, 400);
   assert.equal((await post(s.base, {})).status, 400);
   s.close();
 });
