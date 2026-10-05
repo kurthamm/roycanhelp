@@ -1,0 +1,51 @@
+{
+  "slug": "ssi-deeming",
+  "group": "Money",
+  "title": "SSI Deeming, Explained: Why Your Income Counts",
+  "description": "How Social Security counts a parent's income and resources toward a child's SSI, what is not counted, when it stops, and the exception.",
+  "summary": "Why a parent's paycheck can block a child's SSI, what is left out, and when it ends.",
+  "anchor": "turning-18",
+  "h1": "Why Your Paycheck Counts Against Your Child (Until They Turn 18)",
+  "intro": "Here is the quiet rule that makes a lot of families say \"we make too much for SSI.\" It has a name, deeming, and once you know how it works, you know where it ends. It ends at 18, and Roy's <a href=\"turning-18.html\">Ages 14 to 26</a> page explains why that matters.",
+  "sections": [
+    {
+      "h2": "What Deeming Is",
+      "html": "        <p>Supplemental Security Income (SSI) is based on need. For a child under 18, Social Security treats some of the parents' income and resources as available to the child, even if the parents never hand over a dime. The process of figuring out how much to count has a name: deeming.</p>"
+    },
+    {
+      "h2": "When It Applies",
+      "html": "        <p>Social Security's 2026 guidance says deeming applies when the parents have income and resources it must consider, and the child:</p>\n        <ul>\n          <li>is under age 18, and</li>\n          <li>lives at home with a parent or adoptive parent, or lives away at school but comes home on some weekends, holidays or school vacations and is subject to parental control.</li>\n        </ul>\n        <p>A stepparent's income and resources count too, as long as the child's parent lives in the home."
+    },
+    {
+      "h2": "What Does Not Get Counted",
+      "html": "        <p>Not everything counts. Social Security lists examples of income it does not deem, including Temporary Assistance for Needy Families, certain Department of Veterans Affairs pensions, foster care payments for an ineligible child, and income used to make court-ordered support payments. Examples of resources it does not deem include the home the family lives in, one vehicle used for transportation, and money in certain retirement or pension funds.</p>\n        <p>For the income and resources that do count, only a portion is deemed to the child. Social Security makes allowances for the parents' own living costs and for other children in the household before it decides what to count."
+    },
+    {
+      "h2": "The Resource Math",
+      "html": "        <p>For resources, the Social Security Handbook says the balance of countable resources above $2,000 for one parent, or $3,000 for two parents (or a parent and the parent's spouse), is deemed to the child. These are the dollar figures in the handbook today. Always confirm current numbers at ssa.gov before you make a decision, because they are the kind of thing that changes.</p>"
+    },
+    {
+      "h2": "When It Stops",
+      "html": "        <p>Deeming stops the month after a child turns 18. Social Security says it plainly: a child who could not get SSI because of deeming may be able to get SSI at 18. If your child was turned down because of your income, that is the moment to apply again.</p>"
+    },
+    {
+      "h2": "The Exception Almost Nobody Hears About",
+      "html": "        <p>The Social Security Handbook describes a waiver of normal deeming for very few circumstances. Parental income and resources are not deemed to a child under 18 who is disabled, received one or more months of SSI at the reduced benefit rate because of living in a medical treatment facility, is eligible for Medicaid under a State home care plan, and would be ineligible for SSI because of deemed parental income or resources. That \"State home care plan\" is the door described on the <a href=\"tefra-katie-beckett.html\">TEFRA / Katie Beckett</a> page.</p>"
+    },
+    {
+      "h2": "What To Do With This",
+      "html": "        <p>Do not assume you are out. Apply anyway, as the <a href=\"qualify.html\">Do You Qualify?</a> page says, and if the answer is no, ask for it in writing and read the reason. Then use the <a href=\"fight-plan.html\">disagree-in-writing guide</a> if something looks wrong."
+    }
+  ],
+  "see_also": [
+    "qualify",
+    "turning-18",
+    "tefra-katie-beckett",
+    "protecting-benefits"
+  ],
+  "checked": "The deeming rules were checked against Social Security's 2026 Spotlight on Deeming Parental Income and Resources and section 2169 of the Social Security Handbook.",
+  "sources": [
+    "https://www.ssa.gov/ssi/spotlights/spot-deeming.htm",
+    "https://www.ssa.gov/OP_Home/handbook/handbook.21/handbook-2169.html"
+  ]
+}

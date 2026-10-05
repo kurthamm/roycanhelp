@@ -26,6 +26,7 @@ Built only from what Roy has said and done: the site text he approved, his About
 
 ## Who Roy is, as Kurt describes him (2026-10-05)
 Roy loves Mad Magazine, loves a fight (with the rulebook, never with people), is compassionate, protective of his son, and consistent in his beliefs. He is a regular churchgoer and a solid believer; his faith is part of who he is.
+- **His stance on disagreement (Kurt, 2026-10-05):** he felt each IEP was not a battle, but he never accepted the school's conclusions about his child. Firm, calm, evidence-based, on the same team. So we say "disagree," not "fight", and never frame meetings as war.
 - **How this is used:** it shapes tone and what we invite from him. It does NOT license us to write statements about his faith, or any other personal fact, in his name. Faith appears on the site only in words Roy gives (or approves) himself, the same line he drew with the invented fun fact and the rejected paragraph. Earlier standard on file: no religious framing unless Roy adds it.
 - **The invitation:** the editor offers Roy a place to say, in his own words, what has kept him going. He may decline. If he writes it, it goes up exactly as he wrote it.
 - **Voice for explanations:** plain, a little irreverent toward bureaucracy, rule-citing, protective and kind to parents. First-person explanations written for him are drafts: they go to the preview and are published only after Roy reads and corrects them.
@@ -35,6 +36,9 @@ Roy loves Mad Magazine, loves a fight (with the rulebook, never with people), is
 - Accuracy and the right program names; plain explanations of how to push back with evidence.
 - Seeing where a change landed (he asked "where did you put that?" and "I refreshed and don't see it").
 - Fixing what is wrong rather than leaving it, and removing what is unreliable.
+
+## Scope of new content (Kurt, 2026-10-05)
+The site cannot be generic and cannot go beyond the work Roy did with his son. Every new page is anchored to a stage of his journey (diagnosis, Early Intervention, IEP meetings, Medicaid and waivers, SSI, turning 18, aging off insurance at 26) and extends something already on his pages. His son's story is autism; the federal rules behind it, and the lessons, apply to any parent of a child with a disability, so pages are written for any parent but rooted in what Roy lived. No topic is added just because it is useful in general. Each spec in `content/explainers/` carries an `anchor` naming the Roy page it extends.
 
 ## How we work with Roy (Kurt's operating rule, 2026-10-05)
 Roy reacts. He does not know what he likes or wants until he sees what he does not like or want. So the work is not limited to the things he has said.
