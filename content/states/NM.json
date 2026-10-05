@@ -1,1 +1,22 @@
-{"code":"NM","name":"New Mexico","part_b":{"name":"Laws, Rules & Guidance - Special Education","url":"https://webnew.ped.state.nm.us/bureaus/special-education/laws-rules-guidance/","pdf":null,"checked":"Verified; Contains procedural safeguards chapter in regulatory framework"},"part_c":{"name":"Early Intervention Programs under NMAC 8.9.8","url":"https://srca.nm.gov/","pdf":null,"checked":"Verified; Regulatory framework accessible through State Records Center"},"parent_center":{"name":"Parents Reaching Out (P.R.O.)","url":"https://parentsreachingout.org/","checked":"Operational PTI center; phones: (800) 524-5176 or (505) 247-0192"},"note":"Both Part B and Part C accessible through regulatory frameworks; Contact state agencies directly for full documents"}
+{
+  "code": "NM",
+  "name": "New Mexico",
+  "part_b": {
+    "name": "Procedural Safeguards Notice (New Mexico Public Education Department)",
+    "url": "https://web.ped.nm.gov/wp-content/uploads/2025/01/Eng-Procedural-Safeguards-12-23-2020.pdf",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "part_c": {
+    "name": "Early Intervention Programs under NMAC 8.9.8",
+    "url": "https://srca.nm.gov/",
+    "pdf": null,
+    "checked": "Verified; Regulatory framework accessible through State Records Center"
+  },
+  "parent_center": {
+    "name": "Parents Reaching Out (P.R.O.)",
+    "url": "https://parentsreachingout.org/",
+    "checked": "Operational PTI center; phones: (800) 524-5176 or (505) 247-0192"
+  },
+  "note": "Both Part B and Part C accessible through regulatory frameworks; Contact state agencies directly for full documents"
+}

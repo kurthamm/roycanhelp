@@ -5,18 +5,19 @@ Step 1: curl with a browser user agent; any 2xx passes.
 Step 2: for the rest, load in headless Chromium. A real page title passes. A bot-challenge page (Cloudflare, "Just a moment")
 passes because a real browser gets through it. Connection errors, 404 / not found / access denied / error titles fail.
 build_states.py drops everything listed in _unverified.json."""
-import glob, json, re, subprocess, sys
+import glob, json, os, re, subprocess, sys
 from concurrent.futures import ThreadPoolExecutor
 UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36'
 CHROMIUM = '/snap/bin/chromium'
 BAD_TITLE = re.compile(r'404|not found|can.t find|apologies|can.t be found|cannot be found|access denied|forbidden|error|unavailable|privacy|invalid|could not be satisfied|no longer', re.I)
 CHALLENGE = re.compile(r'just a moment|attention required|checking your browser|verify you are human', re.I)
+FC_OK = {(a, b, c) for a, b, c in json.load(open('content/states/_firecrawl_ok.json'))} if os.path.exists('content/states/_firecrawl_ok.json') else set()  # confirmed by Firecrawl; bot-blocked for curl
 jobs = []
 for f in sorted(glob.glob('content/states/[A-Z][A-Z].json')):
     s = json.load(open(f))
     for k in ('part_b', 'part_c', 'parent_center'):
         x = s.get(k)
-        if x and x.get('url') and x.get('name'): jobs.append((s['code'], k, x['url']))
+        if x and x.get('url') and x.get('name') and (s['code'], k, x['url']) not in FC_OK: jobs.append((s['code'], k, x['url']))
 def curl_ok(u):
     r = subprocess.run(['curl', '-sL', '-o', '/dev/null', '-A', UA, '--max-time', '25', '-w', '%{http_code}', u], capture_output=True, text=True)
     return r.stdout.strip().startswith('2')

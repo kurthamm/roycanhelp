@@ -8,10 +8,10 @@
     "checked": "Site returns HTTP 403; procedural safeguards document location not confirmed, 2026-10-05"
   },
   "part_c": {
-    "name": null,
-    "url": null,
+    "name": "Child and Family Rights in the Arizona Early Intervention Program",
+    "url": "https://des.az.gov/file/3680/download",
     "pdf": null,
-    "checked": "AHCCCS administers early intervention; official procedural safeguards not located, 2026-10-05"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "parent_center": {
     "name": "Encircle Families (formerly Raising Special Kids)",

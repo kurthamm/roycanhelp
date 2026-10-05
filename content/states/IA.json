@@ -1,1 +1,23 @@
-{"code":"IA","name":"Iowa","part_b":{"name":"Procedural Safeguards Manual: Rights of Parents of Students with Disabilities","url":"https://educate.iowa.gov/media/2041/download?inline=","pdf":null,"checked":"Iowa Department of Education. Official procedural safeguards manual for IDEA Part B (ages 3-21). Available on Department website along with other language versions."},"part_c":{"name":"IDEA Part C Procedural Safeguards Manual for Parents","url":"https://educate.iowa.gov/media/11808/download?inline=","pdf":null,"checked":"Iowa Department of Education. Procedural safeguards manual for Early ACCESS, Iowa's Part C early intervention program (ages birth-3)."},"parent_center":{"name":"Access For Special Kids (ASK) Resource Center","url":"http://askresource.org","checked":"Verified via parentcenterhub.org. Located at 5665 Greendale Rd, Suite D, Johnston, IA 50131. Phone: (515) 243-1713 or (800) 450-8667."},"note":"Iowa's Part C program is called Early ACCESS and is a partnership between Iowa Departments of Education, Public Health, Human Services, and University of Iowa Child Health Specialty Clinics. ASK Resource Center serves the entire state."}
+{
+  "code": "IA",
+  "name": "Iowa",
+  "part_b": {
+    "name": "Procedural Safeguards Manual: Rights of Parents of Students with Disabilities",
+    "url": "https://educate.iowa.gov/media/2041/download?inline=",
+    "pdf": null,
+    "checked": "Iowa Department of Education. Official procedural safeguards manual for IDEA Part B (ages 3-21). Available on Department website along with other language versions."
+  },
+  "part_c": {
+    "name": "IDEA Part C Procedural Safeguards Manual for Parents",
+    "url": "https://educate.iowa.gov/media/11808/download?inline=",
+    "pdf": null,
+    "checked": "Iowa Department of Education. Procedural safeguards manual for Early ACCESS, Iowa's Part C early intervention program (ages birth-3)."
+  },
+  "parent_center": {
+    "name": "Access for Special Kids (ASK) Resource Center (Iowa)",
+    "url": "https://www.askresource.org/about/what-ASK-does-do/parent-training-and-information-center-ptic",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "note": "Iowa's Part C program is called Early ACCESS and is a partnership between Iowa Departments of Education, Public Health, Human Services, and University of Iowa Child Health Specialty Clinics. ASK Resource Center serves the entire state."
+}

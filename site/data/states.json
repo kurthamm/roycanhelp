@@ -8,7 +8,10 @@
     "name": "Alabama Department of Education - Special Education",
     "url": "https://www.alabamaachieves.org/special-education/"
    },
-   "rights_ei": null,
+   "rights_ei": {
+    "name": "Alabama Early Intervention (Department of Rehabilitation Services)",
+    "url": "https://www.rehab.alabama.gov/services/ei"
+   },
    "parent_center": null,
    "note": "Alabama education website accessible but procedural safeguards documents difficult to locate online. Contact ALSDE or school district for Part B notice. ADPH operates Part C early intervention.",
    "dd_agency": {
@@ -23,7 +26,10 @@
     "name": "Parental Rights for Special Education (Procedural Safeguards)",
     "url": "https://education.alaska.gov/tls/sped/docs/Procedural%20Safeguards.pdf"
    },
-   "rights_ei": null,
+   "rights_ei": {
+    "name": "Alaska Part C policies, including family rights and procedural safeguards",
+    "url": "https://health.alaska.gov/media/ccmfvl34/ak-ei-ilp-part-c-policies.pdf"
+   },
    "parent_center": {
     "name": "Stone Soup Group",
     "url": "https://www.stonesoupgroup.org/"
@@ -45,7 +51,10 @@
     "name": "Arizona Department of Education - Special Education",
     "url": "https://www.azed.gov/special-education/"
    },
-   "rights_ei": null,
+   "rights_ei": {
+    "name": "Child and Family Rights in the Arizona Early Intervention Program",
+    "url": "https://des.az.gov/file/3680/download"
+   },
    "parent_center": {
     "name": "Encircle Families (formerly Raising Special Kids)",
     "url": "https://encirclefamilies.org/"
@@ -59,9 +68,15 @@
   {
    "code": "AR",
    "name": "Arkansas",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Procedural Safeguards Notice (Arkansas Department of Education)",
+    "url": "https://arksped.ade.arkansas.gov/documents/grantsanddata/Procedural_Safeguards_Notice.pdf"
+   },
    "rights_ei": null,
-   "parent_center": null,
+   "parent_center": {
+    "name": "The Center for Exceptional Families (Arkansas)",
+    "url": "https://thecenterforexceptionalfamilies.org/programs/parent-training-and-information-centers/"
+   },
    "note": "Arkansas education website difficult to access during research. Recommend contacting Arkansas Department of Education and DHS directly for official procedural safeguards notices for Part B and Part C."
   },
   {
@@ -75,7 +90,10 @@
     "name": "California Early Start Program",
     "url": "https://www.dds.ca.gov/consumers/regional-centers/early-start/"
    },
-   "parent_center": null,
+   "parent_center": {
+    "name": "DREDF Parent Training and Information Center (California)",
+    "url": "https://dredf.org/vertical/pti/"
+   },
    "note": "Both Part B and C pages confirmed accessible. California CDE maintains procedural safeguards at /sp/se/ps/ path.",
    "medicaid": {
     "name": "California Medicaid",
@@ -89,7 +107,10 @@
   {
    "code": "CO",
    "name": "Colorado",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Dispute Resolution and Procedural Safeguards (Colorado Department of Education)",
+    "url": "https://ed.cde.state.co.us/spedlaw"
+   },
    "rights_ei": null,
    "parent_center": {
     "name": "The PEAK Parent Center",
@@ -130,7 +151,10 @@
   {
    "code": "DE",
    "name": "Delaware",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Rights and Dispute Resolution Information (Delaware Department of Education)",
+    "url": "https://education.delaware.gov/legacy/home/instruction-and-assessment/exceptional-children/special-education/for-families/rights-and-disputes/"
+   },
    "rights_ei": null,
    "parent_center": {
     "name": "Parent Information Center (PIC)",
@@ -149,9 +173,18 @@
   {
    "code": "DC",
    "name": "District of Columbia",
-   "rights_school": null,
-   "rights_ei": null,
-   "parent_center": null,
+   "rights_school": {
+    "name": "Rights of Parents of Students with Disabilities: IDEA Part B Notice of Procedural Safeguards",
+    "url": "https://osse.dc.gov/publication/rights-parents-students-disabilities-idea-part-b-notice-procedural-safeguards"
+   },
+   "rights_ei": {
+    "name": "Families Have Rights: IDEA Part C Procedural Safeguards",
+    "url": "https://osse.dc.gov/publication/families-have-rights-idea-part-c-procedural-safeguards"
+   },
+   "parent_center": {
+    "name": "Advocates for Justice and Education (DC)",
+    "url": "https://www.aje-dc.org/training-2/"
+   },
    "note": "OSSE services are blocked by HTTP 403 restrictions. Direct contact with OSSE at (202) 727-6436 recommended for official procedural safeguards notices and family rights documents.",
    "medicaid": {
     "name": "DC Medicaid",
@@ -173,7 +206,10 @@
     "name": "Your Rights - Early Steps",
     "url": "https://floridaearlysteps.com/your-rights/"
    },
-   "parent_center": null,
+   "parent_center": {
+    "name": "Family Network on Disabilities (Florida)",
+    "url": "https://fndusa.org/"
+   },
    "note": "Florida has three PTI centers under FND umbrella (PSN, PEN, POPIN), each serving different regions of the state. Part C procedural safeguards found in Early Steps Policy Handbook. FLDOE Part B notice is publicly available but direct PDF URLs blocked by HTTP 403.",
    "medicaid": {
     "name": "Florida Medicaid",
@@ -195,7 +231,10 @@
     "name": "Notice of Infant/Toddler and Family Rights Under Babies Can't Wait",
     "url": "https://dph.georgia.gov/document/document/english-parent-rights-bookletpdf/download"
    },
-   "parent_center": null,
+   "parent_center": {
+    "name": "Parent to Parent of Georgia",
+    "url": "https://www.p2pga.org/about-us/our-programs/pti/"
+   },
    "note": "Georgia Part C program is called Babies Can't Wait and is administered by the Department of Public Health. Parent to Parent of Georgia serves as both state PTI and PTAC (Parent Technical Assistance Center) for Southeast Region B."
   },
   {
@@ -209,7 +248,10 @@
     "name": "Hawaii IDEA Part C Early Intervention Policies and Procedures",
     "url": "https://health.hawaii.gov/eis/files/2025/03/HawaiiIDEAPartCEIPoliciesandProcedures-FINAL-07.1.2024-OSEP-Approved.pdf"
    },
-   "parent_center": null,
+   "parent_center": {
+    "name": "Special Parent Information Network (Hawaii)",
+    "url": "https://spinhawaii.org/resource-guide/advocacy/hawaii-parent-training-info-center/"
+   },
    "note": "Hawaii's Part C program is administered by the Department of Health, Early Intervention Services (EIS). The PTI serves Hawaii and Pacific Island territories including American Samoa, Guam, FSM, Marshall Islands, Northern Mariana Islands, and Palau.",
    "medicaid": {
     "name": "Hawaii Medicaid",
@@ -282,7 +324,10 @@
     "url": "https://educate.iowa.gov/media/2041/download?inline="
    },
    "rights_ei": null,
-   "parent_center": null,
+   "parent_center": {
+    "name": "Access for Special Kids (ASK) Resource Center (Iowa)",
+    "url": "https://www.askresource.org/about/what-ASK-does-do/parent-training-and-information-center-ptic"
+   },
    "note": "Iowa's Part C program is called Early ACCESS and is a partnership between Iowa Departments of Education, Public Health, Human Services, and University of Iowa Child Health Specialty Clinics. ASK Resource Center serves the entire state.",
    "medicaid": {
     "name": "Iowa Medicaid",
@@ -292,12 +337,18 @@
   {
    "code": "KS",
    "name": "Kansas",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Procedural Safeguards, Parent Rights (Kansas State Department of Education)",
+    "url": "https://www.ksde.gov/policy-and-funding/special-education/special-education-law/notices-and-forms/parents-rights"
+   },
    "rights_ei": {
     "name": "Child and Family Rights Booklet (Kansas ECDS/KSITS)",
     "url": "https://www.kdhe.ks.gov/DocumentCenter/View/5708/Child-and-Family-Rights-Booklet-English-PDF"
    },
-   "parent_center": null,
+   "parent_center": {
+    "name": "Families Together, Inc. (Kansas)",
+    "url": "https://familiestogetherinc.org/how-we-help/programs/"
+   },
    "note": "Kansas Part C is administered by KDHE as Kansas Early Childhood Developmental Services (KECDS). Families Together, Inc. serves as the statewide PTI."
   },
   {
@@ -311,7 +362,10 @@
     "name": "KEIS Family Rights Handbook",
     "url": "https://www.chfs.ky.gov/agencies/dph/dmch/ecdb/fs/KEIS_FamilyRightsHandbook.pdf"
    },
-   "parent_center": null,
+   "parent_center": {
+    "name": "KY-SPIN, Kentucky Special Parent Involvement Network",
+    "url": "https://prd.webapps.chfs.ky.gov/kyfaces/Kinship/SPIN"
+   },
    "note": "Kentucky's Part C program is called First Steps (KEIS - Kentucky Early Intervention System) and is administered by Cabinet for Health and Family Services, Department for Public Health. Procedural safeguards also codified in 902 KAR 30:180.",
    "medicaid": {
     "name": "Kentucky Medicaid",
@@ -329,7 +383,10 @@
     "name": "Louisiana's Educational Rights of Children with Disabilities",
     "url": "https://doe.louisiana.gov/families-and-students/family-support-resources/family-special-education-resources"
    },
-   "rights_ei": null,
+   "rights_ei": {
+    "name": "EarlySteps Parents' Rights (Louisiana Department of Health)",
+    "url": "https://ldh.la.gov/assets/docs/OCDD/EarlySteps/PracticeManualDocs/Ch2-ParentsRights081126.pdf"
+   },
    "parent_center": {
     "name": "Families Helping Families of Greater New Orleans",
     "url": "https://fhfofgno.org/"
@@ -343,9 +400,15 @@
   {
    "code": "ME",
    "name": "Maine",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Child Development Services Procedural Safeguards (Maine, ages 3 to 5)",
+    "url": "https://www.maine.gov/doe/cds/proceduralsafeguards"
+   },
    "rights_ei": null,
-   "parent_center": null,
+   "parent_center": {
+    "name": "Maine Parent Federation",
+    "url": "https://www.mpf.org/programs/pti/"
+   },
    "note": "Maine Department of Education special education pages at maine.gov/doe exist but procedural safeguards document not directly accessible",
    "medicaid": {
     "name": "Maine Medicaid",
@@ -376,7 +439,10 @@
    "code": "MA",
    "name": "Massachusetts",
    "rights_school": null,
-   "rights_ei": null,
+   "rights_ei": {
+    "name": "Early Intervention Family Rights and Procedural Safeguards (Massachusetts)",
+    "url": "https://www.mass.gov/lists/early-intervention-family-rights-procedural-safeguards-forms"
+   },
    "parent_center": {
     "name": "Federation for Children with Special Needs (FCSN)",
     "url": "https://fcsn.org/"
@@ -386,7 +452,10 @@
   {
    "code": "MI",
    "name": "Michigan",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Procedural Safeguards Notice (Michigan Department of Education)",
+    "url": "https://www.michigan.gov/-/media/Project/Websites/mde/specialeducation/proc-safe/Procedural_Safeguards_Notice.pdf?rev=b38501b73e7649fcb913042c3b36c5cc"
+   },
    "rights_ei": null,
    "parent_center": null,
    "note": "Michigan Department of Education website (michigan.gov/mde) returns HTTP 403 (Forbidden); pages not accessible to automated research",
@@ -399,8 +468,14 @@
    "code": "MN",
    "name": "Minnesota",
    "rights_school": null,
-   "rights_ei": null,
-   "parent_center": null,
+   "rights_ei": {
+    "name": "Summary of Your Part C Procedural Safeguards (Minnesota)",
+    "url": "https://education.mn.gov/mdeprod/idcplg?IdcService=GET_FILE&dDocName=057476&RevisionSelectionMethod=latestReleased&Rendition=primary"
+   },
+   "parent_center": {
+    "name": "PACER Center (Minnesota)",
+    "url": "https://www.pacer.org/"
+   },
    "note": "Minnesota Department of Education website (education.mn.gov) protected by Radware security verification; pages not accessible to automated tools",
    "medicaid": {
     "name": "Minnesota Medicaid",
@@ -410,7 +485,10 @@
   {
    "code": "MS",
    "name": "Mississippi",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Procedural Safeguards (Mississippi Department of Education)",
+    "url": "https://www.mdek12.org/sites/default/files/Offices/MDE/OAE/OSE/special-education-library/procedural-20safeguards-20webinar-2_20151118112430_2894355eee.pdf?sfvrsn=2"
+   },
    "rights_ei": null,
    "parent_center": null,
    "note": "Mississippi Department of Education website (mdek12.org) returns HTTP 403 (Forbidden); pages not accessible to automated research",
@@ -442,9 +520,18 @@
   {
    "code": "MT",
    "name": "Montana",
-   "rights_school": null,
-   "rights_ei": null,
-   "parent_center": null,
+   "rights_school": {
+    "name": "Procedural Safeguards (Montana Office of Public Instruction)",
+    "url": "https://opi.mt.gov/Portals/182/Page%20Files/Special%20Education/Guides/Procedural%20Safeguards.pdf"
+   },
+   "rights_ei": {
+    "name": "Part C Early Intervention Guidance and Forms (Montana)",
+    "url": "https://dphhs.mt.gov/ecfsd/childcare/montanamilestones/part-c-early-intervention-guidance-and-forms"
+   },
+   "parent_center": {
+    "name": "Montana Empowerment Center",
+    "url": "https://mtempowermentcenter.org/"
+   },
    "note": "Montana OPI special education page confirmed; links to procedural safeguards and Part C documents not extracted in automated research",
    "medicaid": {
     "name": "Montana Medicaid",
@@ -496,7 +583,10 @@
   {
    "code": "NH",
    "name": "New Hampshire",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Procedural Safeguards (New Hampshire Department of Education)",
+    "url": "https://www.education.nh.gov/sites/g/files/ehbemt326/files/inline-documents/sonh/procedural-safeguards-december-2024.pdf"
+   },
    "rights_ei": {
     "name": "Birth-3 Family Centered Early Supports and Services (FCESS)",
     "url": "https://www.dhhs.nh.gov/programs-services/disability-care/developmental-services/birth-3-family-centered-early-supports-0"
@@ -528,7 +618,10 @@
   {
    "code": "NM",
    "name": "New Mexico",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Procedural Safeguards Notice (New Mexico Public Education Department)",
+    "url": "https://web.ped.nm.gov/wp-content/uploads/2025/01/Eng-Procedural-Safeguards-12-23-2020.pdf"
+   },
    "rights_ei": {
     "name": "Early Intervention Programs under NMAC 8.9.8",
     "url": "https://srca.nm.gov/"
@@ -596,9 +689,15 @@
   {
    "code": "ND",
    "name": "North Dakota",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Parent Guide to Special Education (North Dakota)",
+    "url": "https://www.nd.gov/dpi/sites/www/files/documents/SpeEd/Guidelines/Parent%20Guide%20to%20Special%20Education%202018.pdf"
+   },
    "rights_ei": null,
-   "parent_center": null,
+   "parent_center": {
+    "name": "Pathfinder Family Center (North Dakota)",
+    "url": "https://pathfinder-nd.org/pfc/index.php"
+   },
    "note": "Part C administered by DHHS; Contact state directly for complete early intervention procedural safeguards",
    "medicaid": {
     "name": "North Dakota Medicaid",
@@ -637,7 +736,10 @@
   {
    "code": "OK",
    "name": "Oklahoma",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Parents Rights (Oklahoma State Department of Education)",
+    "url": "https://oklahoma.gov/content/dam/ok/en/osde/documents/services/special-education/parents-rights/Parent%20Rights%20-%20September%202024.pdf"
+   },
    "rights_ei": null,
    "parent_center": null,
    "note": "Oklahoma State Department of Education URL redirects to oklahoma.gov. Procedural safeguards information not accessible via WebFetch or curl. Recommend contacting (405) 521-3301."
@@ -684,8 +786,14 @@
    "code": "RI",
    "name": "Rhode Island",
    "rights_school": null,
-   "rights_ei": null,
-   "parent_center": null,
+   "rights_ei": {
+    "name": "Early Intervention Safeguards (Rhode Island)",
+    "url": "https://eohhs.ri.gov/sites/g/files/xkgbur226/files/Portals/0/Uploads/Documents/Early-Intervention/RIEI_Safeguards_Funding19_06.pdf"
+   },
+   "parent_center": {
+    "name": "Rhode Island Parent Information Network (RIPIN)",
+    "url": "https://ripin.org/backtoschool/"
+   },
    "note": "Rhode Island Department of Education website not accessible during session (HTTP 403). Manual research needed. Recommend contacting RIDE directly at (401) 222-8100."
   },
   {
@@ -695,7 +803,10 @@
     "name": "Procedural Safeguards Notice",
     "url": "https://ed.sc.gov/districts-schools/special-education-services/parent-resources/dispute-resolution-information/procedural-safeguards-notice/"
    },
-   "rights_ei": null,
+   "rights_ei": {
+    "name": "BabyNet Notice of Family Rights and Safeguards (South Carolina)",
+    "url": "https://www.scdhhs.gov/sites/dhhs/files/babynet/NOTICE%20OF%20FAMILY%20RIGHTS%20AND%20SAFEGUARDS%2001dec21_0.pdf"
+   },
    "parent_center": {
     "name": "Family Connection of South Carolina",
     "url": "https://familyconnectionsc.org/"
@@ -713,9 +824,15 @@
   {
    "code": "SD",
    "name": "South Dakota",
-   "rights_school": null,
+   "rights_school": {
+    "name": "Parental Rights and Procedural Safeguards (South Dakota Department of Education)",
+    "url": "https://doe.sd.gov/sped/parentalrights.aspx"
+   },
    "rights_ei": null,
-   "parent_center": null,
+   "parent_center": {
+    "name": "South Dakota Parent Connection",
+    "url": "https://sdparent.org/about/information-center/"
+   },
    "note": "South Dakota Department of Education website exists but procedural safeguards documents not directly accessible via homepage. Recommend contacting (605) 773-3134 or visiting special education section of doe.sd.gov.",
    "medicaid": {
     "name": "South Dakota Medicaid",
@@ -737,9 +854,15 @@
   {
    "code": "TX",
    "name": "Texas",
-   "rights_school": null,
+   "rights_school": {
+    "name": "The Notice of Procedural Safeguards (Texas Education Agency)",
+    "url": "https://tea.texas.gov/taa-letters/notice-procedural-safeguards"
+   },
    "rights_ei": null,
-   "parent_center": null,
+   "parent_center": {
+    "name": "Partners Resource Network (Texas parent training centers)",
+    "url": "https://prntexas.org/texas-ptis/"
+   },
    "note": "Texas Education Agency (tea.texas.gov) has special education section but procedural safeguards document not directly accessible. Recommend contacting TEA at (512) 463-9734.",
    "medicaid": {
     "name": "Texas Medicaid",
@@ -753,7 +876,10 @@
     "name": "Utah Student and Family Rights - Procedural Safeguards",
     "url": "https://schools.utah.gov/specialeducation/programs/studentfamilyrights.php"
    },
-   "rights_ei": null,
+   "rights_ei": {
+    "name": "Baby Watch Early Intervention Program (Utah)",
+    "url": "https://familyhealth.utah.gov/oec/baby-watch-early-intervention/"
+   },
    "parent_center": {
     "name": "Utah Parent Center (UPC)",
     "url": "https://utahparentcenter.org/"
@@ -779,7 +905,10 @@
     "name": "Early Intervention Services (Vermont Early Intervention Services)",
     "url": "https://dcf.vermont.gov/cdd/families"
    },
-   "parent_center": null,
+   "parent_center": {
+    "name": "Vermont Family Network",
+    "url": "https://www.vermontfamilynetwork.org/"
+   },
    "note": "Vermont's procedural safeguards document is confirmed to exist; contact Vermont Agency of Education Special Education at (802) 828-1256 or AOE.SpecialEd@vermont.gov for direct access to Part B notice.",
    "medicaid": {
     "name": "Vermont Medicaid",
@@ -813,7 +942,10 @@
     "name": "Notice of Special Education Procedural Safeguards",
     "url": "https://ospi.k12.wa.us/student-success/special-education/family-engagement-and-guidance/parent-and-student-rights-procedural-safeguards"
    },
-   "rights_ei": null,
+   "rights_ei": {
+    "name": "Parent Rights and Procedural Safeguards (Washington DCYF)",
+    "url": "https://www.dcyf.wa.gov/sites/default/files/pubs/FS_0005.pdf"
+   },
    "parent_center": {
     "name": "PAVE (Washington Parent Training and Information Center)",
     "url": "https://wapave.org/"
@@ -839,7 +971,10 @@
     "name": "WV Birth to Three (Part C Early Intervention)",
     "url": "https://www.wveiicc.org"
    },
-   "parent_center": null,
+   "parent_center": {
+    "name": "West Virginia Parent Training and Information",
+    "url": "https://wvpti-inc.org/"
+   },
    "note": "West Virginia's procedural safeguards and Part C materials are available from state agencies. PTI website is experiencing technical issues—contact by phone or email for current information. WVDE Special Education contact available through main education department office.",
    "medicaid": {
     "name": "West Virginia Medicaid",

@@ -1,1 +1,23 @@
-{"code":"TX","name":"Texas","part_b":{"name":null,"url":null,"pdf":null,"checked":"Texas Education Agency special education pages tested but procedural safeguards notice not located via WebFetch or curl"},"part_c":{"name":null,"url":null,"pdf":null,"checked":"Not located"},"parent_center":{"name":null,"url":null,"checked":"Not verified"},"note":"Texas Education Agency (tea.texas.gov) has special education section but procedural safeguards document not directly accessible. Recommend contacting TEA at (512) 463-9734."}
+{
+  "code": "TX",
+  "name": "Texas",
+  "part_b": {
+    "name": "The Notice of Procedural Safeguards (Texas Education Agency)",
+    "url": "https://tea.texas.gov/taa-letters/notice-procedural-safeguards",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Not located"
+  },
+  "parent_center": {
+    "name": "Partners Resource Network (Texas parent training centers)",
+    "url": "https://prntexas.org/texas-ptis/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "note": "Texas Education Agency (tea.texas.gov) has special education section but procedural safeguards document not directly accessible. Recommend contacting TEA at (512) 463-9734."
+}

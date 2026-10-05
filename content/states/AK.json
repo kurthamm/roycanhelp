@@ -8,10 +8,10 @@
     "checked": "PDF document verified accessible (HTTP 200), second pass 2026-10-05"
   },
   "part_c": {
-    "name": null,
-    "url": null,
+    "name": "Alaska Part C policies, including family rights and procedural safeguards",
+    "url": "https://health.alaska.gov/media/ccmfvl34/ak-ei-ilp-part-c-policies.pdf",
     "pdf": null,
-    "checked": "Early intervention redirects to public assistance department; official procedural safeguards not found, 2026-10-05"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "parent_center": {
     "name": "Stone Soup Group",

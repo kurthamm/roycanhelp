@@ -2,10 +2,10 @@
   "code": "DE",
   "name": "Delaware",
   "part_b": {
-    "name": "Delaware Department of Education - Special Education",
-    "url": "https://delaware.gov/education/special-education/",
+    "name": "Rights and Dispute Resolution Information (Delaware Department of Education)",
+    "url": "https://education.delaware.gov/legacy/home/instruction-and-assessment/exceptional-children/special-education/for-families/rights-and-disputes/",
     "pdf": null,
-    "checked": "Main special education page returns HTTP 404; procedural safeguards document not located, 2026-10-05"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "part_c": {
     "name": "Delaware DHSS - Early Care",

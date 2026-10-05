@@ -8,10 +8,10 @@
     "checked": "HTTP 200: Found resource page titled 'Family Special Education Resources' on Louisiana DOE website"
   },
   "part_c": {
-    "name": null,
-    "url": null,
+    "name": "EarlySteps Parents' Rights (Louisiana Department of Health)",
+    "url": "https://ldh.la.gov/assets/docs/OCDD/EarlySteps/PracticeManualDocs/Ch2-ParentsRights081126.pdf",
     "pdf": null,
-    "checked": "Not found"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "parent_center": {
     "name": "Families Helping Families of Greater New Orleans",

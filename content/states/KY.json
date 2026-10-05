@@ -1,1 +1,23 @@
-{"code":"KY","name":"Kentucky","part_b":{"name":"Procedural Safeguards Notice (KDE)","url":"https://www.education.ky.gov/specialed/excep/GuidanceResources/Documents/Procedural_Safeguards_Notice.pdf","pdf":"https://www.education.ky.gov/specialed/excep/GuidanceResources/Documents/Procedural_Safeguards_Notice.pdf","checked":"Kentucky Department of Education. Official procedural safeguards notice for IDEA Part B special education (ages 3-21). Available in multiple languages."},"part_c":{"name":"KEIS Family Rights Handbook","url":"https://www.chfs.ky.gov/agencies/dph/dmch/ecdb/fs/KEIS_FamilyRightsHandbook.pdf","pdf":"https://www.chfs.ky.gov/agencies/dph/dmch/ecdb/fs/KEIS_FamilyRightsHandbook.pdf","checked":"Kentucky Cabinet for Health and Family Services. Comprehensive family rights handbook for Kentucky's Early Intervention System (KEIS/First Steps), Part C program, ages birth-3."},"parent_center":{"name":"Kentucky Special Parent Involvement Network (KY-SPIN)","url":"http://www.kyspin.com","checked":"Verified via parentcenterhub.org. Located at 10301-B Deering Road, Louisville, KY 40272. Phone: (800) 525-7746 or (502) 937-6894."},"note":"Kentucky's Part C program is called First Steps (KEIS - Kentucky Early Intervention System) and is administered by Cabinet for Health and Family Services, Department for Public Health. Procedural safeguards also codified in 902 KAR 30:180."}
+{
+  "code": "KY",
+  "name": "Kentucky",
+  "part_b": {
+    "name": "Procedural Safeguards Notice (KDE)",
+    "url": "https://www.education.ky.gov/specialed/excep/GuidanceResources/Documents/Procedural_Safeguards_Notice.pdf",
+    "pdf": "https://www.education.ky.gov/specialed/excep/GuidanceResources/Documents/Procedural_Safeguards_Notice.pdf",
+    "checked": "Kentucky Department of Education. Official procedural safeguards notice for IDEA Part B special education (ages 3-21). Available in multiple languages."
+  },
+  "part_c": {
+    "name": "KEIS Family Rights Handbook",
+    "url": "https://www.chfs.ky.gov/agencies/dph/dmch/ecdb/fs/KEIS_FamilyRightsHandbook.pdf",
+    "pdf": "https://www.chfs.ky.gov/agencies/dph/dmch/ecdb/fs/KEIS_FamilyRightsHandbook.pdf",
+    "checked": "Kentucky Cabinet for Health and Family Services. Comprehensive family rights handbook for Kentucky's Early Intervention System (KEIS/First Steps), Part C program, ages birth-3."
+  },
+  "parent_center": {
+    "name": "KY-SPIN, Kentucky Special Parent Involvement Network",
+    "url": "https://prd.webapps.chfs.ky.gov/kyfaces/Kinship/SPIN",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "note": "Kentucky's Part C program is called First Steps (KEIS - Kentucky Early Intervention System) and is administered by Cabinet for Health and Family Services, Department for Public Health. Procedural safeguards also codified in 902 KAR 30:180."
+}

@@ -1,1 +1,23 @@
-{"code":"KS","name":"Kansas","part_b":{"name":"Special Education Notices/Forms (KSDE)","url":"https://www.ksde.org/Agency/Division-of-Learning-Services/Special-Education-and-Title-Services/Special_Education/Special-Education-Notices-Forms","pdf":null,"checked":"Kansas State Department of Education. Portal to procedural safeguards notice and parent rights documents in multiple languages for IDEA Part B (ages 3-21)."},"part_c":{"name":"Child and Family Rights Booklet (Kansas ECDS/KSITS)","url":"https://www.kdhe.ks.gov/DocumentCenter/View/5708/Child-and-Family-Rights-Booklet-English-PDF","pdf":null,"checked":"Kansas Department of Health and Environment. Official procedural safeguards notice for Part C early intervention program, Kansas Infant-Toddler Services (KSITS), ages birth-3."},"parent_center":{"name":"Families Together, Inc.","url":"http://www.familiestogetherinc.org","checked":"Verified via parentcenterhub.org. Located at 3033 W Second N, Suite 122, Wichita, KS 67203. Phone: (316) 945-7747 or regional numbers listed."},"note":"Kansas Part C is administered by KDHE as Kansas Early Childhood Developmental Services (KECDS). Families Together, Inc. serves as the statewide PTI."}
+{
+  "code": "KS",
+  "name": "Kansas",
+  "part_b": {
+    "name": "Procedural Safeguards, Parent Rights (Kansas State Department of Education)",
+    "url": "https://www.ksde.gov/policy-and-funding/special-education/special-education-law/notices-and-forms/parents-rights",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "part_c": {
+    "name": "Child and Family Rights Booklet (Kansas ECDS/KSITS)",
+    "url": "https://www.kdhe.ks.gov/DocumentCenter/View/5708/Child-and-Family-Rights-Booklet-English-PDF",
+    "pdf": null,
+    "checked": "Kansas Department of Health and Environment. Official procedural safeguards notice for Part C early intervention program, Kansas Infant-Toddler Services (KSITS), ages birth-3."
+  },
+  "parent_center": {
+    "name": "Families Together, Inc. (Kansas)",
+    "url": "https://familiestogetherinc.org/how-we-help/programs/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "note": "Kansas Part C is administered by KDHE as Kansas Early Childhood Developmental Services (KECDS). Families Together, Inc. serves as the statewide PTI."
+}

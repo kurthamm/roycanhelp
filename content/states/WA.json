@@ -8,10 +8,10 @@
     "checked": "Verified on Office of Superintendent of Public Instruction (OSPI) website; available in English and 25+ languages in PDF and Word formats"
   },
   "part_c": {
-    "name": null,
-    "url": null,
+    "name": "Parent Rights and Procedural Safeguards (Washington DCYF)",
+    "url": "https://www.dcyf.wa.gov/sites/default/files/pubs/FS_0005.pdf",
     "pdf": null,
-    "checked": "Removed: pointed at the DSHS developmental disabilities page, but Part C in Washington is run by DCYF (Early Support for Infants and Toddlers); needs a verified DCYF family-rights URL."
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "parent_center": {
     "name": "PAVE (Washington Parent Training and Information Center)",

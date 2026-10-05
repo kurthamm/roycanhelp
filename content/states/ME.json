@@ -2,10 +2,10 @@
   "code": "ME",
   "name": "Maine",
   "part_b": {
-    "name": null,
-    "url": null,
+    "name": "Child Development Services Procedural Safeguards (Maine, ages 3 to 5)",
+    "url": "https://www.maine.gov/doe/cds/proceduralsafeguards",
     "pdf": null,
-    "checked": "Not found"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "part_c": {
     "name": null,
@@ -14,9 +14,10 @@
     "checked": "Not found"
   },
   "parent_center": {
-    "name": null,
-    "url": null,
-    "checked": "Not found"
+    "name": "Maine Parent Federation",
+    "url": "https://www.mpf.org/programs/pti/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "note": "Maine Department of Education special education pages at maine.gov/doe exist but procedural safeguards document not directly accessible"
 }

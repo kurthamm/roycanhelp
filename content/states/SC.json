@@ -1,1 +1,22 @@
-{"code":"SC","name":"South Carolina","part_b":{"name":"Procedural Safeguards Notice","url":"https://ed.sc.gov/districts-schools/special-education-services/parent-resources/dispute-resolution-information/procedural-safeguards-notice/","pdf":null,"checked":"HTTP 200 PDF; filename: 68567669_scde-_procedural_safeguards_notice-final.pdf; Last-Modified: Mon, 20 Jun 2022"},"part_c":{"name":null,"url":"https://babynet.sc.gov/","pdf":null,"checked":"Domain not found; known as BabyNet but URL unreachable"},"parent_center":{"name":"Family Connection of South Carolina","url":"https://familyconnectionsc.org/","checked":"HTTP 200; verified as official PTI center with statewide scope"},"note":"SC Part B confirmed. Part C BabyNet domain not resolving during session. PTI center verified as active and comprehensive."}
+{
+  "code": "SC",
+  "name": "South Carolina",
+  "part_b": {
+    "name": "Procedural Safeguards Notice",
+    "url": "https://ed.sc.gov/districts-schools/special-education-services/parent-resources/dispute-resolution-information/procedural-safeguards-notice/",
+    "pdf": null,
+    "checked": "HTTP 200 PDF; filename: 68567669_scde-_procedural_safeguards_notice-final.pdf; Last-Modified: Mon, 20 Jun 2022"
+  },
+  "part_c": {
+    "name": "BabyNet Notice of Family Rights and Safeguards (South Carolina)",
+    "url": "https://www.scdhhs.gov/sites/dhhs/files/babynet/NOTICE%20OF%20FAMILY%20RIGHTS%20AND%20SAFEGUARDS%2001dec21_0.pdf",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "parent_center": {
+    "name": "Family Connection of South Carolina",
+    "url": "https://familyconnectionsc.org/",
+    "checked": "HTTP 200; verified as official PTI center with statewide scope"
+  },
+  "note": "SC Part B confirmed. Part C BabyNet domain not resolving during session. PTI center verified as active and comprehensive."
+}

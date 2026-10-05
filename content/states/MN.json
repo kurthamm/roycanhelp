@@ -8,15 +8,16 @@
     "checked": "Not found"
   },
   "part_c": {
-    "name": null,
-    "url": null,
+    "name": "Summary of Your Part C Procedural Safeguards (Minnesota)",
+    "url": "https://education.mn.gov/mdeprod/idcplg?IdcService=GET_FILE&dDocName=057476&RevisionSelectionMethod=latestReleased&Rendition=primary",
     "pdf": null,
-    "checked": "Not found"
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "parent_center": {
-    "name": null,
-    "url": null,
-    "checked": "Not found"
+    "name": "PACER Center (Minnesota)",
+    "url": "https://www.pacer.org/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
   },
   "note": "Minnesota Department of Education website (education.mn.gov) protected by Radware security verification; pages not accessible to automated tools"
 }

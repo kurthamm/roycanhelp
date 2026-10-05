@@ -1,1 +1,23 @@
-{"code":"RI","name":"Rhode Island","part_b":{"name":null,"url":null,"pdf":null,"checked":"RIDE website (ride.ri.gov) returns HTTP 403 Forbidden for all paths tested"},"part_c":{"name":null,"url":null,"pdf":null,"checked":"Not accessible"},"parent_center":{"name":null,"url":null,"checked":"Not verified"},"note":"Rhode Island Department of Education website not accessible during session (HTTP 403). Manual research needed. Recommend contacting RIDE directly at (401) 222-8100."}
+{
+  "code": "RI",
+  "name": "Rhode Island",
+  "part_b": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "RIDE website (ride.ri.gov) returns HTTP 403 Forbidden for all paths tested"
+  },
+  "part_c": {
+    "name": "Early Intervention Safeguards (Rhode Island)",
+    "url": "https://eohhs.ri.gov/sites/g/files/xkgbur226/files/Portals/0/Uploads/Documents/Early-Intervention/RIEI_Safeguards_Funding19_06.pdf",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "parent_center": {
+    "name": "Rhode Island Parent Information Network (RIPIN)",
+    "url": "https://ripin.org/backtoschool/",
+    "pdf": null,
+    "checked": "2026-10-05: found by search and read with Firecrawl (status 200, page mentions the topic); reviewed by hand."
+  },
+  "note": "Rhode Island Department of Education website not accessible during session (HTTP 403). Manual research needed. Recommend contacting RIDE directly at (401) 222-8100."
+}
