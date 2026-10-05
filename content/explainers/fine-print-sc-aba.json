@@ -1,0 +1,43 @@
+{
+  "slug": "fine-print-sc-aba",
+  "group": "Money",
+  "anchor": "therapies",
+  "title": "South Carolina Fine Print: ABA and Medicaid",
+  "description": "ABA therapy and South Carolina Medicaid: who is covered to age 21, the diagnosis report SCDHHS requires, who requests approval, and the provider waitlist.",
+  "summary": "Medicaid covers ABA to age 21, the diagnosis report required, who gets the approval, and the waitlist.",
+  "short_answer": "South Carolina Medicaid covers autism treatment, including ABA, for members 0 to 21 with an ASD diagnosis who meet medical necessity. The diagnosis has to come from a comprehensive testing report by a psychologist, licensed psychoeducational specialist or developmental pediatrician, the provider requests prior authorization, and SCDHHS says providers often have waiting lists.",
+  "h1": "South Carolina Fine Print: ABA Therapy and Medicaid",
+  "intro": "ABA is one of the first things parents ask about after a diagnosis, and the answer in South Carolina has a few steps that are easy to trip on. This page is about South Carolina only. Here is what SCDHHS says on its own pages, word for word.",
+  "sections": [
+    {
+      "h2": "Medicaid Covers ABA for Children, up to Age 21",
+      "html": "        <p>If your child has an autism diagnosis and Medicaid, South Carolina covers therapy, including ABA. The state spells out who qualifies.</p>\n        <p class=\"rule-quote\">The state says: &ldquo;Any member 0-21, diagnosed with ASD and who meets medical necessity, is eligible for ASD treatment services.&rdquo; <span class=\"rule-cite\">(SCDHHS, Autism Spectrum Disorder Services, FAQs for Members)</span></p>\n        <p class=\"rule-quote\">The state says: &ldquo;Medicaid covers applied behavior analysis (ABA) as well as other evidence-based treatments.&rdquo; <span class=\"rule-cite\">(SCDHHS, Autism Spectrum Disorder Services, FAQs for Members)</span></p>\n        <p>That is for children on Healthy Connections Medicaid. Private insurance is a different law, covered on the <a href=\"fine-print-sc-law.html\">South Carolina law page</a>.</p>"
+    },
+    {
+      "h2": "The Diagnosis Paper Has to Come From the Right Person",
+      "html": "        <p>This is a step that is easy to miss. SCDHHS wants the diagnosis documented in a particular way.</p>\n        <p class=\"rule-quote\">The state says: &ldquo;In order to meet medical necessity for ASD services, members age 0-21 need to have a diagnosis of ASD based on a comprehensive testing report from a psychologist, licensed psychoeducational specialist (LPES) or developmental pediatrician that indicates that ASD treatment services are necessary for their behavioral health care.&rdquo; <span class=\"rule-cite\">(SCDHHS, Autism Spectrum Disorder Services, FAQs for Members)</span></p>\n        <p>So if the diagnosis came from someone else, or without a full testing report, ask the provider what Medicaid needs before you wait. The state page lists where to find these professionals.</p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;What diagnostic report does Medicaid require for ABA services for my child, and does the one we have meet it? If not, who can do the comprehensive testing?&rdquo;</p>"
+    },
+    {
+      "h2": "The Provider Asks for the Approval, Not You",
+      "html": "        <p>You do not file a prior authorization yourself. The provider does.</p>\n        <p class=\"rule-quote\">The state says: &ldquo;ASD treatment providers are responsible for obtaining prior authorization for any assessment or ASD treatment services.&rdquo; <span class=\"rule-cite\">(SCDHHS, Autism Spectrum Disorder Services, FAQs for Members)</span></p>\n        <p>Which means the first call is to a provider that takes Medicaid, and the provider handles the paperwork. If your child is in a managed care plan, the same services apply.</p>\n        <p class=\"rule-quote\">The state says: &ldquo;Yes. Contact your MCO about receiving services for your member ages 0-21.&rdquo; <span class=\"rule-cite\">(SCDHHS, Autism Spectrum Disorder Services, FAQs for Members)</span></p>"
+    },
+    {
+      "h2": "The Waitlist Is Real, and the State Says So",
+      "html": "        <p>Parents tell each other that providers are full. The state agrees.</p>\n        <p class=\"rule-quote\">The state says: &ldquo;Nationwide, and in South Carolina, there is a need for increased capacity of ASD providers. It is not uncommon for providers to have a waiting list for services.&rdquo; <span class=\"rule-cite\">(SCDHHS, Autism Spectrum Disorder Services, FAQs for Members)</span></p>\n        <p>So call several, ask to be added to every list, and ask each one how long the wait is and how they will contact you. A therapy waitlist is not a no. Ask Medicaid for the provider search tool and keep going down it.</p>"
+    },
+    {
+      "h2": "A Way to Ask That Works",
+      "html": "        <p>Short and kind wins. Say who your child is, that Medicaid is the payer, and what you need, and then send it in an email so there is a date on it. <a href=\"https://familyconnectionsc.org/\">Family Connection of South Carolina</a> keeps a therapy directory and can help you find providers. Roy&#39;s <a href=\"therapies.html\">Therapies</a> page covers the waitlist problem from the family side.</p>"
+    }
+  ],
+  "see_also": [
+    "therapies",
+    "fine-print-sc-law",
+    "fine-print-sc-medicaid",
+    "fine-print-evaluation"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against the SCDHHS Autism Spectrum Disorder Services FAQs for Members on October 5, 2026. Rules and providers change; confirm with SCDHHS or your plan.",
+  "sources": [
+    "https://www.scdhhs.gov/resources/programs-and-initiatives/autism-spectrum-disorder-services/members/faqs-members"
+  ]
+}
