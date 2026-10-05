@@ -33,3 +33,36 @@ export async function lastChange(repoDir) {
   return { hash, author, email, message };
 }
 
+
+// Undo the most recent editor change. Single level on purpose: undoing an undo would re-apply the change.
+export async function undoLast(repoDir) {
+  const last = await lastChange(repoDir);
+  if (last.email !== EXPECTED_EMAIL) {
+    throw new Error(`The most recent change was not made through the editor (${last.author}), so it will not be undone automatically.`);
+  }
+  if (/^Revert /.test(last.message)) {
+    throw new Error('The most recent change is already an undo. Make a new change instead of undoing the undo.');
+  }
+  try {
+    await git(repoDir, '-c', `user.name=${EXPECTED_AUTHOR}`, '-c', `user.email=${EXPECTED_EMAIL}`, 'revert', '--no-edit', 'HEAD');
+  } catch (err) {
+    // A failed revert leaves the repo mid-revert, which would break the next edit. Put it back, then report the real error.
+    await git(repoDir, 'revert', '--abort').catch(() => {});
+    throw err;
+  }
+  try {
+    await git(repoDir, 'push', 'origin', 'HEAD:main');
+  } catch (err) {
+    console.error(`PUSH FAILED after undo: ${err.message}`);
+  }
+  return { undone: last.message };
+}
+
+// The most recent changes to the site, newest first, so Roy can see what changed and when.
+export async function recentChanges(repoDir, limit = 20) {
+  const { stdout } = await git(repoDir, 'log', `-${limit}`, '--format=%cI%x00%an%x00%s');
+  return stdout.trim().split('\n').filter(Boolean).map(line => {
+    const [when, who, what] = line.split('\0');
+    return { when, who, what };
+  });
+}
