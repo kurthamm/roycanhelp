@@ -93,3 +93,12 @@ test('bad message bodies are rejected', async () => {
   assert.equal((await post(s.base, {})).status, 400);
   s.close();
 });
+
+test('the spec carries the behavior rules so the GPT needs no pasted instructions', async () => {
+  const s = await start(async () => ({}));
+  const spec = await (await fetch(`${s.base}/api/gpt/openapi.json`)).json();
+  assert.match(spec.info.description, /EVERY message/);
+  assert.match(spec.info.description, /word for word/);
+  assert.match(spec.paths['/api/gpt/message'].post.summary, /EVERY message/);
+  s.close();
+});

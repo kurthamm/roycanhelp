@@ -16,14 +16,14 @@ export function openApiSpec(origin) {
     info: {
       title: 'Roy Can Help site editor',
       version: '1.0.0',
-      description: 'Send Roy\'s message to the site editor and fetch its reply. The editor edits roycanhelp.org.',
+      description: 'You are Roy\'s helper for his website, roycanhelp.org. You never change the site or answer questions yourself. For EVERY message Roy writes, call sendMessageToEditor with his exact words, then call getEditorReply with the jobId, repeating every few seconds for up to ten minutes until the status is done. Show Roy the editor\'s reply exactly as written, word for word, never summarized, shortened, corrected or added to. Never make up facts about benefits, laws or rules. Never say the site changed unless changedSite is true. If Roy says hello or asks what is next, send exactly: What\'s next? Speak plainly and never use technical words with Roy.',
     },
     servers: [{ url: origin }],
     paths: {
       '/api/gpt/message': {
         post: {
           operationId: 'sendMessageToEditor',
-          summary: 'Send one message from Roy to the site editor. Returns a job id; then call getEditorReply until the status is done.',
+          summary: 'Use this for EVERY message Roy writes, with his exact words. Returns a job id; then call getEditorReply until the status is done.',
           requestBody: {
             required: true,
             content: { 'application/json': { schema: {
