@@ -1,0 +1,13 @@
+[Unit]
+Description=roycanhelp.org weekly SEO report from Search Console
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=deltaprism
+Group=roychat
+WorkingDirectory=/home/deltaprism/dhelp
+ExecStart=/usr/bin/python3 tools/seo_weekly.py /var/lib/roycanhelp-seo
+UMask=0027
+StandardOutput=append:/var/lib/roycanhelp-seo/run.log
+StandardError=append:/var/lib/roycanhelp-seo/run.log
