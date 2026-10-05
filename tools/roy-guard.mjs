@@ -1,5 +1,3 @@
-import { readdirSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 
 // Roy's territory. Text that Roy's editor added is his: nobody else rewrites it.
@@ -60,16 +58,16 @@ const blameAuthors = (cwd, rev, file, lines) => {
 export function checkRemovedStayRemoved(cwd, root = 'site') {
   const errors = [];
   const removed = removedByRoy(cwd);
-  for (const f of readdirSync(join(cwd, root)).filter(f => f.endsWith('.html'))) {
-    const rel = `${root}/${f}`;
-    const lines = readFileSync(join(cwd, rel), 'utf8').split('\n');
+  // Judge what is committed. Roy's live edits are uncommitted until his editor saves them, and they must never be blocked.
+  const files = git(cwd, 'ls-tree', '--name-only', 'HEAD', `${root}/`).split('\n').filter(f => f.endsWith('.html'));
+  for (const rel of files) {
+    const lines = git(cwd, 'show', `HEAD:${rel}`).split('\n');
     lines.forEach((raw, i) => {
       const text = plain(raw);
       if (text.length < MIN_CHARS) return;
       for (const r of removed) {
         if (r.file === rel && text.includes(r.text)) {
           const [author] = blameAuthors(cwd, 'HEAD', rel, [i + 1, i + 1]);
-          // An uncommitted line blames to "Not Committed Yet"; only Roy's own re-adding is allowed.
           if (author !== ROY) errors.push(`${rel}:${i + 1}: Roy removed this on purpose (${r.subject}): "${r.text.slice(0, 90)}"`);
         }
       }
