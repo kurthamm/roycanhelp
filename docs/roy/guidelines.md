@@ -36,6 +36,9 @@ Roy loves Mad Magazine, loves a fight (with the rulebook, never with people), is
 - Seeing where a change landed (he asked "where did you put that?" and "I refreshed and don't see it").
 - Fixing what is wrong rather than leaving it, and removing what is unreliable.
 
+## Scope of new content (Kurt, 2026-10-05)
+The site cannot be generic and cannot go beyond the work Roy did with his son. Every new page is anchored to a stage of his journey (diagnosis, Early Intervention, IEP meetings, Medicaid and waivers, SSI, turning 18, aging off insurance at 26) and extends something already on his pages. His son's story is autism; the federal rules behind it, and the lessons, apply to any parent of a child with a disability, so pages are written for any parent but rooted in what Roy lived. No topic is added just because it is useful in general. Each spec in `content/explainers/` carries an `anchor` naming the Roy page it extends.
+
 ## How we work with Roy (Kurt's operating rule, 2026-10-05)
 Roy reacts. He does not know what he likes or wants until he sees what he does not like or want. So the work is not limited to the things he has said.
 - **Honor what he has specifically asked for.** His added text stays exactly as he wrote it. What he removed stays gone. His wording rules (above) always apply. Enforced by `tools/roy-guard.mjs` and `tools/voice-check.mjs`.
