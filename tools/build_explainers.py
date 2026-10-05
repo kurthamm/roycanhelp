@@ -20,7 +20,7 @@ STATIC = [
     {'slug': 'fight-plan', 'group': 'Tools', 'label': 'How to Disagree', 'summary': 'What to do when the school, Early Intervention or Medicaid says no: the steps and the deadlines.'},
     {'slug': 'checklists', 'group': 'Tools', 'label': 'Printable Checklists', 'summary': 'Steps from these pages, ready to print and check off.'},
 ]
-GROUPS = ['Start Here', 'School', 'Money', 'Health', 'Adulthood', 'Tools']
+GROUPS = ['Start Here', 'Early Years', 'School', 'Money', 'Health', 'Adulthood', 'Tools']
 LABELS = {  # short names used in "See also" lines
     'diagnosis': 'The Diagnosis', 'early-intervention': 'Birth to Three', 'school-ieps': 'School Years', 'turning-18': 'Ages 14 to 26',
     'qualify': 'Do You Qualify?', 'paying-for-care': 'Paying for It', 'protecting-benefits': 'Protecting the Money', 'therapies': 'Therapies',
