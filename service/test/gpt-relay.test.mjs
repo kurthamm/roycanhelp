@@ -4,14 +4,16 @@ import express from 'express';
 import { mountGptRelay } from '../gpt-relay.mjs';
 
 const KEY = 'k'.repeat(40);
+let headCalls = 0;
 
 async function start(runTurn, commit = async () => 'abc123', extra = {}) {
+  headCalls = 0;
   const app = express();
   const usage = [];
   mountGptRelay(app, {
     env: { GPT_ACTION_KEY: KEY, SITE_DIR: '/site', SITE_REPO_DIR: '/repo', USAGE_LOG: '/log' },
     runTurn, commit, logUsage: (f, row) => usage.push(row), origin: 'https://example.test',
-    undo: async () => ({ undone: 'Roy: x' }), history: async () => [{ when: '2026-10-05T00:00:00Z', who: 'Roy via Chat', what: 'Roy: fix' }], adminFetch: async () => new Response('{}'), ...extra,
+    undo: async () => ({ undone: 'Roy: x' }), head: async () => (headCalls++ ? 'new' : 'old'), history: async () => [{ when: '2026-10-05T00:00:00Z', who: 'Roy via Chat', what: 'Roy: fix' }], adminFetch: async () => new Response('{}'), ...extra,
   });
   const server = await new Promise(r => { const s = app.listen(0, '127.0.0.1', () => r(s)); });
   const base = `http://127.0.0.1:${server.address().port}`;
@@ -180,4 +182,16 @@ test('a message sent while an undo is running is refused', async () => {
   await undoing;
   assert.equal((await post(s.base, { message: 'hi' })).status, 202);
   s.close();
+});
+
+test('changedSite is true when the editor committed on its own and false when nothing changed', async () => {
+  // the editor committed itself: the commit step finds nothing left, but history moved
+  const a = await start(async () => ({}), async () => null);
+  const moved = await poll(a.base, (await (await post(a.base, { message: 'make it live' })).json()).jobId);
+  assert.equal(moved.changedSite, true);
+  a.close();
+  const b = await start(async () => ({}), async () => null, { head: async () => 'same' });
+  const same = await poll(b.base, (await (await post(b.base, { message: 'just a question' })).json()).jobId);
+  assert.equal(same.changedSite, false);
+  b.close();
 });
