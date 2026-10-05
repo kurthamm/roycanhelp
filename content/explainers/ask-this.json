@@ -6,11 +6,11 @@
   "description": "Plain-English questions to ask when you hear no, wait, or sign here, at school, with Medicaid, with insurance, and at the doctor.",
   "summary": "What to ask when you hear no, wait, or sign here, and what to ask when nobody says anything.",
   "h1": "If They Say This, Ask This (And If They Do Not Say It, Ask Anyway)",
-  "intro": "Nobody hands you a list of your rights. You find out by asking. So here is the short version, in plain words: what you might hear, what to ask, and the reason you are allowed to. You do not need all of it today. Pick one card.",
+  "intro": "Nobody hands you a list of your rights. You find out by asking. So here is the short version, in plain words: what you might hear, what to ask back, and the federal rule that gives you permission to ask. You do not need all of it today. Pick one card.",
   "sections": [
     {
       "h2": "Two Kinds of No: Stretched Thin, or Cutting Corners",
-      "html": "        <p>Most people across the table are doing a hard job with limited time and limited help. Some are at their limit. A few cut corners. At first you usually cannot tell which, and you do not have to decide. The same calm questions work either way. This is not you against them. It is you, and them, and whatever support there actually is.</p>\n        <ul>\n          <li><strong>Stretched thin</strong> sounds like: \"We do not have anyone for that right now.\" They tell you what they cannot do and why, and they open up when you ask, \"What is possible, and by when?\" Be kind, work with them, and get the plan and the date in writing.</li>\n          <li><strong>Cutting corners</strong> sounds like: vague answers, nothing in writing, no reasons given, and a deadline that keeps slipping. Stay polite, put your request in writing, ask for the reason in writing, and use the steps in the <a href=\"fight-plan.html\">disagree-in-writing guide</a>.</li>\n        </ul>\n        <p>Either way, the goal is the same: the support your child actually gets, and a record of what was promised."
+      "html": "        <p>Most people across the table are doing a hard job with limited time and limited help. Some are at their limit. A few cut corners. You usually cannot tell which one you are talking to at first, and you do not have to figure it out. The same calm questions work either way. This is not you against them. It is you and them and whatever support actually exists.</p>\n        <ul>\n          <li><strong>Stretched thin</strong> sounds like: \"We do not have anyone for that right now.\" They tell you what they cannot do and why, and they are willing to answer \"What is possible, and by when?\" Be kind, work with them, and get the answer in writing along with the date.</li>\n          <li><strong>Cutting corners</strong> sounds like: vague answers, nothing in writing, no explanations, and a deadline that moves every time you ask. Stay polite, put your request in writing, ask for the reason in writing, and follow the steps in the <a href=\"fight-plan.html\">disagree-in-writing guide</a>.</li>\n        </ul>\n        <p>Either way, the goal is the same: the actual support your child gets, and a written record of what was promised."
     },
     {
       "h2": "At School",
@@ -30,11 +30,11 @@
     },
     {
       "h2": "When Nobody Says Anything",
-      "html": "        <p>Sometimes the trouble is what nobody tells you. These are worth asking even if nobody brings them up.</p>\n        <ul>\n          <li>Nobody mentioned services: <strong>\"What programs might my child qualify for, and who do I call to start?\"</strong></li>\n          <li>Nobody mentioned a waiting list: <strong>\"Is there a waiting list for home and community based services, and how do I get on it?\"</strong></li>\n          <li>Nobody mentioned an appeal: <strong>\"What are my options if I disagree?\"</strong></li>\n          <li>Nobody explained something: <strong>\"Could you explain that in plain words and send it to me in writing?\"</strong></li>\n        </ul>"
+      "html": "<p>Sometimes the trouble is what nobody tells you. These are worth asking even if nobody brings them up.</p>\n        <ul>\n          <li>Nobody mentioned services: <strong>\"What programs might my child qualify for, and who do I call to start?\"</strong></li>\n          <li>Nobody mentioned a waiting list: <strong>\"Is there a waiting list for home and community based services, and how do I get on it?\"</strong></li>\n          <li>Nobody mentioned an appeal: <strong>\"What are my options if I disagree?\"</strong></li>\n          <li>Nobody explained something: <strong>\"Could you explain that in plain words and send it to me in writing?\"</strong></li>\n        </ul>"
     },
     {
       "h2": "A Way to Say It",
-      "html": "        <p>Calm, polite and specific works best. \"Thank you. I want to understand this before I agree. Could you walk me through it and send it to me in writing?\" If the answer is still no, the <a href=\"fight-plan.html\">disagree-in-writing guide</a> shows what comes next.</p>"
+      "html": "<p>Calm, polite and specific works best. \"Thank you. I want to understand this before I agree. Could you walk me through it and send it to me in writing?\" If the answer is still no, the <a href=\"fight-plan.html\">disagree-in-writing guide</a> shows what comes next."
     }
   ],
   "see_also": [

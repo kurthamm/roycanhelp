@@ -6,27 +6,27 @@
   "summary": "The Medicaid option that counts the child's income only, and the exact conditions in the law.",
   "anchor": "roys-wisdom",
   "h1": "Too Much Income for SSI? Meet the Medicaid Door Called Katie Beckett",
-  "intro": "If your family makes too much for SSI, there may still be a door. It is called the TEFRA or Katie Beckett option, it lives in a federal statute, and a lot of parents never hear about it because it is a state option, not a guarantee. Here is exactly what the law says.",
+  "intro": "If your family makes too much for SSI, there may still be a door. It is called TEFRA or Katie Beckett, it lives in the federal law, and a lot of parents never hear about it because it is a state choice, not a guarantee. Here is exactly what the law says and how to ask.",
   "sections": [
     {
       "h2": "The Short Version",
-      "html": "        <p>Federal law lets a state choose to give Medicaid to certain children with disabilities who live at home, by treating the child as if they were getting SSI. That means the family's income stops being the deciding factor. The program is named after the Tax Equity and Fiscal Responsibility Act of 1982 (TEFRA). Roy's <a href=\"roys-wisdom.html\">Wisdom</a> page has the short version of why it matters for families who make too much for SSI.</p>"
+      "html": "        <p>Federal law lets a state choose to give Medicaid to certain children with disabilities who live at home. The way it works is the state treats the child as if they were getting SSI. That means the family's income stops being the gate. The program is named for the Tax Equity and Fiscal Responsibility Act of 1982, also called TEFRA. Roy's <a href=\"roys-wisdom.html\">Wisdom</a> page has the short version of why it matters for families who make too much for SSI."
     },
     {
       "h2": "What the Law Requires",
-      "html": "        <p>The statute is section 1902(e)(3) of the Social Security Act. It says that, at the option of the State, a child is covered if all of these are true:</p>\n        <ol>\n          <li>The child is 18 years of age or younger and qualifies as disabled under Social Security's definition (section 1614(a)).</li>\n          <li>The State determines that the child requires the level of care provided in a hospital, nursing facility, or intermediate care facility for individuals with intellectual disabilities.</li>\n          <li>The State determines that it is appropriate to provide that care outside an institution.</li>\n          <li>The estimated Medicaid cost of care outside an institution is not greater than the estimated cost of care inside an appropriate institution.</li>\n          <li>The child would be eligible for Medicaid if they were in a medical institution.</li>\n        </ol>\n        <p>A child who meets all of that is deemed, for Medicaid purposes only, to be receiving SSI. The family's income is no longer the test."
+      "html": "        <p>The rule is in section 1902(e)(3) of the Social Security Act. A child qualifies if all of these are true:</p>\n        <ol>\n          <li>The child is 18 years of age or younger and qualifies as disabled under Social Security's definition.</li>\n          <li>The state determines that the child requires the level of care that would be provided in a hospital, nursing facility, or intermediate care facility for people with intellectual disabilities.</li>\n          <li>The state determines that it makes sense to provide that care outside an institution.</li>\n          <li>The estimated Medicaid cost of care outside an institution is not greater than the estimated cost inside an institution.</li>\n          <li>The child would be eligible for Medicaid if they were in an institution.</li>\n        </ol>\n        <p>A child who meets all of that is treated, for Medicaid purposes only, as if they were receiving SSI. The family's income no longer decides eligibility."
     },
     {
       "h2": "It Is a State Option",
-      "html": "        <p>The first four words of the statute are \"at the option of the State.\" Not every state offers it, and states may call it something different. Ask your state Medicaid agency whether it has a TEFRA or Katie Beckett option, what it is called there, and what the application looks like.</p>"
+      "html": "        <p>The law starts with \"at the option of the State.\" Not every state offers it, and states call it different names. Call or write your state Medicaid agency and ask whether it has a TEFRA or Katie Beckett option, what the program is called in your state, and what the application looks like."
     },
     {
       "h2": "How It Connects to SSI",
-      "html": "        <p>This is the same \"State home care plan\" that appears in the exception on the <a href=\"ssi-deeming.html\">SSI Deeming</a> page. Once a child qualifies, the Medicaid benefits for children, including EPSDT, are explained on the <a href=\"paying-for-care.html\">Paying for It</a> page."
+      "html": "        <p>This is the same \"state home care plan\" that shows up in the exception on the <a href=\"ssi-deeming.html\">SSI Deeming</a> page. Once a child qualifies, the Medicaid benefits available to children, including EPSDT, are explained on the <a href=\"paying-for-care.html\">Paying for It</a> page."
     },
     {
       "h2": "How To Ask",
-      "html": "        <ul>\n          <li>Call or write your state Medicaid agency and ask whether it offers a TEFRA or Katie Beckett option.</li>\n          <li>Ask what documents it needs to show your child's level of care needs.</li>\n          <li>Keep every date, name and copy. Ask for the decision in writing.</li>\n        </ul>\n        <p>If the answer is no, you are entitled to an explanation and often a fair hearing. The <a href=\"fight-plan.html\">disagree-in-writing guide</a> shows how to ask, including the federal 90 day ceiling for Medicaid hearing requests.</p>"
+      "html": "        <ul>\n          <li>Call or write your state Medicaid agency and ask whether it offers a TEFRA or Katie Beckett option.</li>\n          <li>Ask what documents it needs to show your child's level of care.</li>\n          <li>Keep every date, name and copy. Ask for the decision in writing.</li>\n        </ul>\n        <p>If the answer is no, you are entitled to an explanation and usually a fair hearing. The <a href=\"fight-plan.html\">disagree-in-writing guide</a> shows how to ask, including the federal 90-day window for requesting a Medicaid hearing."
     }
   ],
   "see_also": [

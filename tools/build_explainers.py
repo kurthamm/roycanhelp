@@ -115,12 +115,29 @@ def fix_nav(slugs_current):
             n = n.replace(entry, '<li><a href="explainers.html" aria-current="page">Explainers</a></li>', 1)
         if n != t: open(f, 'w').write(n)
 
+# ---- home page: link every explainer directly (helps search engines find and crawl them) ----
+def update_home(specs):
+    p = 'site/index.html'
+    t = open(p).read()
+    items = ''.join(f'\n          <li><a href="{sp["slug"]}.html"><strong>{sp["h1"] if len(sp["h1"]) < 70 else sp["title"]}</strong><span>{sp["summary"]}</span></a></li>' for sp in sorted(specs, key=lambda x: (GROUPS.index(x["group"]), x["title"])))
+    block = ('<!-- home-explainers:start -->\n      <section class="help">\n        <h2>The fine print, one rule at a time</h2>\n'
+             '        <p>Short pages with the exact rule, the sentence that proves it, and what to say. South Carolina has its own set.</p>\n'
+             f'        <ul class="help-grid">{items}\n        </ul>\n      </section>\n      <!-- home-explainers:end -->')
+    if 'home-explainers:start' in t:
+        t = re.sub(r'<!-- home-explainers:start -->[\s\S]*?<!-- home-explainers:end -->', lambda m: block, t, 1)
+    else:
+        anchor = '      <section class="margin-gag">'
+        assert anchor in t, 'home page anchor not found'
+        t = t.replace(anchor, block + '\n\n' + anchor, 1)
+    open(p, 'w').write(t)
+
 def main():
     specs = load_specs(); tpl = template()
     for sp in specs:
         open(f'site/{sp["slug"]}.html', 'w').write(page(tpl, sp['slug'], sp['title'] + SUFFIX, sp['description'], explainer_main(sp)))
     open('site/explainers.html', 'w').write(page(tpl, 'explainers', 'Explainers and Tools for Parents' + SUFFIX, 'The hard parts of special education, benefits and Medicaid explained in plain English with the rules cited, plus printable tools.', hub_main(specs)))
     fix_nav({sp['slug'] for sp in specs} | {'explainers', 'fight-plan', 'checklists'})
+    update_home(specs)
     print(f'built {len(specs)} explainer(s) + hub')
 
 if __name__ == '__main__':
