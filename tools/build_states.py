@@ -13,7 +13,17 @@ from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
-OLD = {s['code']: s for s in json.load(open('site/data/states.json'))} if os.path.exists('site/data/states.json') else {}
+def load_old():
+    if not os.path.exists('site/data/states.json'): return {}
+    d = json.load(open('site/data/states.json'))
+    return {s['code']: s for s in (d['states'] if isinstance(d, dict) else d)}
+OLD = load_old()
+# A link shared by several states is a homepage, not that state's program (e.g. maine.gov listed for NH and RI): never keep those.
+_counts = {}
+for _s in OLD.values():
+    for _k in ('medicaid', 'dd_agency'):
+        if _s.get(_k): _counts[_s[_k]['url']] = _counts.get(_s[_k]['url'], 0) + 1
+SHARED = {u for u, n in _counts.items() if n > 1} | {'https://www.maine.gov'}  # whole-state portal, not a Medicaid page
 BAD = set()
 if os.path.exists('content/states/_old-link-check.json'):
     for j, status, _ in json.load(open('content/states/_old-link-check.json')):
@@ -43,14 +53,14 @@ def main():
         used = {v['url'] for v in (rec['rights_school'], rec['rights_ei'], rec['parent_center']) if v}
         for key in ('medicaid', 'dd_agency'):
             o = old.get(key)
-            if o and (code, key) not in BAD and o['url'].startswith('https://') and o['url'] not in used:
+            if o and (code, key) not in BAD and o['url'].startswith('https://') and o['url'] not in used and o['url'] not in SHARED:
                 rec[key] = {'name': o['name'], 'url': o['url']}
                 used.add(o['url'])
         out.append(rec)
     out.sort(key=lambda r: r['name'])
     codes = {r['code'] for r in out}
     if len(out) != 51: problems.append(f"expected 51 jurisdictions, found {len(out)}; missing {sorted(set(OLD) - codes)}")
-    json.dump({'checked': date.today().strftime('%B %Y'), 'states': out}, open('site/data/states.json', 'w'), indent=1, ensure_ascii=False)
+    json.dump({'checked': date.fromtimestamp(os.path.getmtime('content/states/_unverified.json')).strftime('%B %Y'), 'states': out}, open('site/data/states.json', 'w'), indent=1, ensure_ascii=False)
     print(f"{len(out)} states written; problems: {len(problems)}")
     for p in problems: print('  -', p)
     return 1 if any('expected 51' in p for p in problems) else 0

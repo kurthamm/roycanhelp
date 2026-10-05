@@ -487,11 +487,7 @@
     "name": "Parent Information Center (PIC)",
     "url": "https://picnh.org/"
    },
-   "note": "Part B handbook accessible through education.nh.gov; Part C through DHHS (health department)",
-   "medicaid": {
-    "name": "New Hampshire Medicaid",
-    "url": "https://www.maine.gov"
-   }
+   "note": "Part B handbook accessible through education.nh.gov; Part C through DHHS (health department)"
   },
   {
    "code": "NJ",
@@ -582,10 +578,7 @@
   {
    "code": "ND",
    "name": "North Dakota",
-   "rights_school": {
-    "name": "State Performance Plan Part B FFY 2023-24",
-    "url": "https://www.nd.gov/dpi/sites/www/files/documents/SpeEd/ND-01%20SPP%20PART%20B%20FFY%202023-24.pdf"
-   },
+   "rights_school": null,
    "rights_ei": null,
    "parent_center": null,
    "note": "Part C administered by DHHS; Contact state directly for complete early intervention procedural safeguards",
@@ -655,10 +648,7 @@
    "name": "Pennsylvania",
    "rights_school": null,
    "rights_ei": null,
-   "parent_center": {
-    "name": "PaTTAN (Pennsylvania Training and Technical Assistance Network)",
-    "url": "https://www.pattan.net/"
-   },
+   "parent_center": null,
    "note": "PaTTAN (https://www.pattan.net/) provides special education support but is technical assistance, not traditional PTI. Traditional Part B procedural safeguards notice not directly accessible. Contact: Bureau of Special Education through PDE website.",
    "medicaid": {
     "name": "Pennsylvania Medicaid",
@@ -675,11 +665,7 @@
    "rights_school": null,
    "rights_ei": null,
    "parent_center": null,
-   "note": "Rhode Island Department of Education website not accessible during session (HTTP 403). Manual research needed. Recommend contacting RIDE directly at (401) 222-8100.",
-   "medicaid": {
-    "name": "Rhode Island Medicaid",
-    "url": "https://www.maine.gov"
-   }
+   "note": "Rhode Island Department of Education website not accessible during session (HTTP 403). Manual research needed. Recommend contacting RIDE directly at (401) 222-8100."
   },
   {
    "code": "SC",
@@ -800,10 +786,7 @@
     "name": "Notice of Special Education Procedural Safeguards",
     "url": "https://ospi.k12.wa.us/student-success/special-education/family-engagement-and-guidance/parent-and-student-rights-procedural-safeguards"
    },
-   "rights_ei": {
-    "name": "Early Support for Infants and Toddlers (Part C, ages 0-3)",
-    "url": "https://www.dshs.wa.gov/dda/"
-   },
+   "rights_ei": null,
    "parent_center": {
     "name": "PAVE (Washington Parent Training and Information Center)",
     "url": "https://wapave.org/"

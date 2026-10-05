@@ -1,1 +1,23 @@
-{"code":"PA","name":"Pennsylvania","part_b":{"name":null,"url":"https://www.pa.gov/agencies/education/programs-and-services/instruction/elementary-and-secondary-education/special-education.html","pdf":null,"checked":"Special Education page exists at URL (HTTP 200) but procedural safeguards notice link not visible; PATTAN mentioned as resource"},"part_c":{"name":null,"url":null,"pdf":null,"checked":"Not located"},"parent_center":{"name":"PaTTAN (Pennsylvania Training and Technical Assistance Network)","url":"https://www.pattan.net/","checked":"HTTP 200; verified as special education technical assistance network"},"note":"PaTTAN (https://www.pattan.net/) provides special education support but is technical assistance, not traditional PTI. Traditional Part B procedural safeguards notice not directly accessible. Contact: Bureau of Special Education through PDE website."}
+{
+  "code": "PA",
+  "name": "Pennsylvania",
+  "part_b": {
+    "name": null,
+    "url": "https://www.pa.gov/agencies/education/programs-and-services/instruction/elementary-and-secondary-education/special-education.html",
+    "pdf": null,
+    "checked": "Special Education page exists at URL (HTTP 200) but procedural safeguards notice link not visible; PATTAN mentioned as resource"
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Not located"
+  },
+  "parent_center": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Removed: PaTTAN is a state technical-assistance network, not the parent training center (PEAL is); needs a verified PEAL URL."
+  },
+  "note": "PaTTAN (https://www.pattan.net/) provides special education support but is technical assistance, not traditional PTI. Traditional Part B procedural safeguards notice not directly accessible. Contact: Bureau of Special Education through PDE website."
+}

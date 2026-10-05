@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.appendChild(heading);
 
     const groups = [
-      { title: 'Your rights, in your state\'s own words', blurb: 'Nobody hands you a list of your rights. Every state has to put them in writing, so here is where your state keeps them. If a link below is missing, just ask the school for the Procedural Safeguards Notice. They have to give you one (34 CFR 300.504).', items: [
+      { title: 'Your rights, in your state\'s own words', keepEmpty: true, blurb: 'Nobody hands you a list of your rights. Every state has to put them in writing, so here is where your state keeps them. If a link below is missing, just ask the school for the Procedural Safeguards Notice. They have to give you one (34 CFR 300.504).', items: [
         state.rights_school && { label: 'School (ages 3 to 21): ' + state.rights_school.name, url: state.rights_school.url, cta: 'Read your rights →' },
         state.rights_ei && { label: 'Early Intervention (birth to 3): ' + state.rights_ei.name, url: state.rights_ei.url, cta: 'Read your rights →' }
       ] },
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     groups.forEach(g => {
       const items = g.items.filter(Boolean);
-      if (!items.length) return;
+      if (!items.length && !g.keepEmpty) return;
       const section = document.createElement('section');
       section.className = 'state-group';
       const h3 = document.createElement('h3');
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         div.appendChild(a);
         services.appendChild(div);
       });
-      section.appendChild(services);
+      if (items.length) section.appendChild(services);
       wrapper.appendChild(section);
     });
 

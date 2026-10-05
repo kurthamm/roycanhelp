@@ -1,1 +1,22 @@
-{"code":"WA","name":"Washington","part_b":{"name":"Notice of Special Education Procedural Safeguards","url":"https://ospi.k12.wa.us/student-success/special-education/family-engagement-and-guidance/parent-and-student-rights-procedural-safeguards","pdf":null,"checked":"Verified on Office of Superintendent of Public Instruction (OSPI) website; available in English and 25+ languages in PDF and Word formats"},"part_c":{"name":"Early Support for Infants and Toddlers (Part C, ages 0-3)","url":"https://www.dshs.wa.gov/dda/","pdf":null,"checked":"IDEA Part C program administered by Department of Social and Health Services (DSHS), Developmental Disabilities Administration; services for children birth to age 3"},"parent_center":{"name":"PAVE (Washington Parent Training and Information Center)","url":"https://wapave.org/","checked":"Verified PTI center; 6316 S. 12th Street, Tacoma, WA 98465-1900; (253) 565-2266 or (800) 5-PARENT (572-7368); pave@wapave.org"},"note":"Washington's procedural safeguards are comprehensively available in multiple languages. OSPI Special Education: (360) 725-6075 or speced@k12.wa.us. For Part C early intervention, contact local DDA office or complete service request form through DSHS website."}
+{
+  "code": "WA",
+  "name": "Washington",
+  "part_b": {
+    "name": "Notice of Special Education Procedural Safeguards",
+    "url": "https://ospi.k12.wa.us/student-success/special-education/family-engagement-and-guidance/parent-and-student-rights-procedural-safeguards",
+    "pdf": null,
+    "checked": "Verified on Office of Superintendent of Public Instruction (OSPI) website; available in English and 25+ languages in PDF and Word formats"
+  },
+  "part_c": {
+    "name": null,
+    "url": null,
+    "pdf": null,
+    "checked": "Removed: pointed at the DSHS developmental disabilities page, but Part C in Washington is run by DCYF (Early Support for Infants and Toddlers); needs a verified DCYF family-rights URL."
+  },
+  "parent_center": {
+    "name": "PAVE (Washington Parent Training and Information Center)",
+    "url": "https://wapave.org/",
+    "checked": "Verified PTI center; 6316 S. 12th Street, Tacoma, WA 98465-1900; (253) 565-2266 or (800) 5-PARENT (572-7368); pave@wapave.org"
+  },
+  "note": "Washington's procedural safeguards are comprehensively available in multiple languages. OSPI Special Education: (360) 725-6075 or speced@k12.wa.us. For Part C early intervention, contact local DDA office or complete service request form through DSHS website."
+}
