@@ -257,3 +257,12 @@ ul.checks li:before { content: ""; position: absolute; left: 0.2rem; top: 0.95re
 
 /* Draft banner: visible only while a page is waiting for Roy's review */
 .draft-note { background: var(--sun-soft); border-left: 6px solid var(--sun); border-radius: 12px; padding: 0.9rem 1.2rem; margin-bottom: 1.5rem; font-size: 1.02rem; }
+
+/* ---------- "If they say this, ask this" cards ---------- */
+.say-ask { background: var(--paper); border: 2px solid var(--line); border-radius: 18px; padding: 1.1rem 1.4rem; margin: 1rem 0; }
+.say-ask p { margin: 0 0 0.6rem; }
+.say-ask span { display: inline-block; min-width: 6.5rem; font-size: 0.85rem; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.say-ask .ask { font-weight: 800; color: var(--blue-deep); }
+.say-ask .ask span { color: var(--blue); }
+.say-ask .why { font-size: 0.98rem; color: var(--muted); margin-bottom: 0; padding-top: 0.5rem; border-top: 1px dashed var(--line); }
+@media (prefers-color-scheme: dark) { .say-ask .ask { color: #cfe3fb; } }
