@@ -279,3 +279,8 @@ ul.checks li:before { content: ""; position: absolute; left: 0.2rem; top: 0.95re
 @media (prefers-color-scheme: dark) { .service-name { color: #cfe3fb; } }
 .service a { font-weight: 800; }
 .page-note { margin-top: 2rem; }
+
+/* ---------- Fine print pages ---------- */
+.rule-quote { background: var(--blue-soft); border-left: 6px solid var(--blue); border-radius: 12px; padding: 0.9rem 1.1rem; font-style: italic; }
+.rule-cite { font-style: normal; font-weight: 800; white-space: nowrap; }
+.say-this { background: var(--sun-soft, #fff4c2); border-radius: 12px; padding: 0.9rem 1.1rem; }

@@ -57,6 +57,7 @@ def page(tpl, slug, title, desc, main):
     s = re.sub(r'(<meta property="og:title" content=")[^"]*"', lambda m: m.group(1) + t + '"', s, 1)
     s = re.sub(r'(<meta name="twitter:title" content=")[^"]*"', lambda m: m.group(1) + esc_attr(title.replace(SUFFIX, '')) + '"', s, 1)
     s = s.replace('contact.html', f'{slug}.html')
+    s = s.replace(f'href="{slug}.html">Contact', 'href="contact.html">Contact')  # nav and footer Contact links must keep pointing at the contact page
     return re.sub(r'<main[\s\S]*?</main>', lambda m: main, s, 1)
 
 def explainer_main(sp):
