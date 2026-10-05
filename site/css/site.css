@@ -294,3 +294,13 @@ ul.checks li:before { content: ""; position: absolute; left: 0.2rem; top: 0.95re
 
 /* ---------- Timeline stops ---------- */
 .date-box { background: var(--sun-soft, #fff3cf); border-left: 6px solid var(--sun, #ffc94d); border-radius: 12px; padding: 0.8rem 1.1rem; }
+
+/* ---------- Search ---------- */
+.site-search { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
+.site-search input[type="search"] { flex: 1 1 16rem; min-width: 0; padding: 0.75rem 1rem; border: 2px solid var(--blue); border-radius: 999px; font: inherit; }
+.site-search button { padding: 0.75rem 1.4rem; border: 0; border-radius: 999px; background: var(--blue); color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+.search-results { list-style: none; padding: 0; }
+.search-results li { background: #fff; border-radius: 14px; padding: 0.9rem 1.2rem; margin: 0 0 0.8rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.search-results a { font-weight: 800; font-size: 1.1em; }
+.search-results p { margin: 0.3rem 0 0; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
