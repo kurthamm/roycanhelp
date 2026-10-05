@@ -1,4 +1,5 @@
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { extname } from 'node:path';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 
@@ -6,6 +7,21 @@ export const ORIGIN = 'https://roycanhelp.org';
 const TITLE_MAX = 65;
 const DESC_MIN = 70;
 const DESC_MAX = 160;
+
+// Everything in the site folder is public. Planning notes, drafts and data exports must live outside it.
+const PUBLIC_EXTENSIONS = new Set(['.html', '.css', '.js', '.json', '.xml', '.txt', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.ico', '.pdf', '.webmanifest']);
+export function publicFileErrors(root) {
+  const bad = [];
+  const walk = dir => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const p = join(dir, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (!PUBLIC_EXTENSIONS.has(extname(e.name).toLowerCase())) bad.push(`${p}: file type is not meant to be public; move it out of the site folder`);
+    }
+  };
+  walk(root);
+  return bad;
+}
 
 const pageFiles = root => readdirSync(root).filter(f => f.endsWith('.html')).sort();
 const urlFor = file => (file === 'index.html' ? `${ORIGIN}/` : `${ORIGIN}/${file}`);
@@ -50,7 +66,7 @@ export function sitemapUrls(xml) {
 }
 
 export function seoCheck(root) {
-  const errors = [];
+  const errors = [...publicFileErrors(root)];
   const indexable = [];
   for (const f of pageFiles(root)) {
     const html = readFileSync(join(root, f), 'utf8');

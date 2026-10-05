@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { checkPage, seoCheck, buildSitemap, liveAudit, ORIGIN } from '../seo.mjs';
+import { checkPage, seoCheck, buildSitemap, liveAudit, publicFileErrors, ORIGIN } from '../seo.mjs';
 
 const DESC = 'A description that is comfortably long enough to satisfy the minimum length rule for search snippets.';
 const page = (file, extra = '') => `<!doctype html><html lang="en"><head><title>Page | Roy Can Help</title>
@@ -67,4 +67,11 @@ test('live audit flags a 404 page and an unredirected www host', async () => {
 
 test('live audit throws when the sitemap is unreachable', async () => {
   await assert.rejects(liveAudit(ORIGIN, async () => new Response('', { status: 500 })), /sitemap\.xml returned 500/);
+});
+
+test('planning notes inside the public site folder are rejected', () => {
+  const dir = site({ 'index.html': page('index.html'), 'plan.md': '# secret plan', 'robots.txt': ROBOTS });
+  const errs = publicFileErrors(dir);
+  assert.equal(errs.length, 1);
+  assert.match(errs[0], /plan\.md/);
 });
