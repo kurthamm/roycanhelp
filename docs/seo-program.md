@@ -14,14 +14,7 @@ Privacy constraint: the site's privacy page says it does not track behavior. So 
 5. Settings, Users and permissions, add Roy (Full) so he can see it too.
 
 ### 2. Let the program read Search Console (service account)
-1. https://console.cloud.google.com, create project `roycanhelp-seo`.
-2. APIs and Services, Library, enable **Google Search Console API** and **PageSpeed Insights API**.
-3. APIs and Services, Credentials, Create credentials, **API key**, restrict it to PageSpeed Insights API. Copy it.
-4. IAM and Admin, Service accounts, Create `seo-reader`. Keys, Add key, JSON. A file downloads.
-5. In Search Console, Settings, Users and permissions, Add user: the service account email (ends `iam.gserviceaccount.com`), permission **Restricted**.
-6. Put the JSON on the server, never in chat or git:
-   `sudo install -m 640 -o root -g roychat key.json /etc/roycanhelp/gsc-service-account.json`
-7. Add to `/etc/roycanhelp/env`: `PAGESPEED_API_KEY=<the key from step 3>`
+Already done. The existing service account `claude-ops@aihammcloud.iam.gserviceaccount.com` (key in `~/.config/google-service-accounts/claude-ops.json`, shared with the mediprimer SEO job) was added to the `roycanhelp.org` Search Console property as Full on 2026-10-05. The weekly job runs as the `deltaprism` user so it can read that key; the key is never copied into the repo or `/etc/roycanhelp`.
 
 ### 3. Bing Webmaster Tools (also feeds DuckDuckGo, Yahoo, Copilot, and ChatGPT search)
 1. https://www.bing.com/webmasters, sign in, **Import from Google Search Console**. It verifies the site and copies the sitemap.
@@ -61,7 +54,7 @@ Tell Claude: "setup done". It checks each credential, runs a first report, and t
 |---|---|---|
 | On every Roy publish | IndexNow ping, sitemap and structured data rebuild, `make check` | Bing told within seconds |
 | Daily 05:30 | Live audit: every page's status, speed, title, description, canonical, redirects, noindex on /admin/ | `/var/log/roycanhelp/seo.log`, failed unit if broken |
-| Weekly (Mon 06:00) | Rank tracker positions for the approved search list. Search Console: queries, pages, clicks, impressions, CTR, position, 28 days against the previous 28. URL Inspection on every sitemap URL (indexed? last crawled? which canonical did Google choose?). Bing stats. PageSpeed and Core Web Vitals on key pages. Server log: bot visits, 404s, referrers. Roy's commits for the same window. | `/var/lib/roychat/seo/latest.md` plus dated archive |
+| Weekly (Mon 06:00) | Rank tracker positions for the approved search list. Search Console: queries, pages, clicks, impressions, CTR, position, 28 days against the previous 28. URL Inspection on every sitemap URL (indexed? last crawled? which canonical did Google choose?). Bing stats. PageSpeed and Core Web Vitals on key pages. Server log: bot visits, 404s, referrers. Roy's commits for the same window. | `/var/lib/roycanhelp-seo/latest.md` plus a dated archive in the same folder |
 | Monthly | Content gaps: queries with impressions but no page that answers them. Outreach list for links. | Section of the weekly report |
 
 The weekly report is plain English and ends with at most five recommendations ranked by expected payoff:

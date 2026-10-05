@@ -75,3 +75,11 @@ test('planning notes inside the public site folder are rejected', () => {
   assert.equal(errs.length, 1);
   assert.match(errs[0], /plan\.md/);
 });
+
+test('every file type the admin upload accepts is allowed in the site folder', () => {
+  const dir = site({});
+  for (const name of ['a.png', 'a.jpg', 'a.jpeg', 'a.gif', 'a.webp', 'a.svg', 'a.pdf', 'a.doc', 'a.docx', 'a.txt', 'a.rtf', 'a.odt']) {
+    writeFileSync(join(dir, name), 'x');
+  }
+  assert.deepEqual(publicFileErrors(dir), []);
+});
