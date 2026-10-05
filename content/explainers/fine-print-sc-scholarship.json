@@ -1,0 +1,45 @@
+{
+  "slug": "fine-print-sc-scholarship",
+  "group": "School",
+  "anchor": "school-ieps",
+  "title": "South Carolina Fine Print: Scholarship",
+  "description": "South Carolina's scholarship fund and a child with an IEP: leaving public school, what the federal rule says about services, and what to ask first.",
+  "summary": "Leaving public school for the scholarship, what happens to the IEP, and what to ask first.",
+  "short_answer": "To take part in South Carolina's Education Scholarship Trust Fund a student must be withdrawn from their resident public school, and the federal rule says a parentally placed private school child with a disability has no individual right to the services the child would get in public school. The district must still locate and evaluate such children, so ask in writing what it will provide before leaving.",
+  "h1": "South Carolina Fine Print: The Scholarship and Your Child's IEP",
+  "intro": "A parent on a South Carolina forum warned that private schools there are not required to give IEPs, and I wanted to see what the rules actually say. This page is about South Carolina only, and it takes no side on school choice. Here are the program's own words and the federal rule.",
+  "sections": [
+    {
+      "h2": "Read the Fine Print on Leaving Public School",
+      "html": "        <p>South Carolina&#39;s Education Scholarship Trust Fund pays families to build their own education for a child. It helps some families a great deal, and I am not here to tell you whether to apply. I just want you to see what it costs in school services.</p>\n        <p class=\"rule-quote\">The program says: &ldquo;As part of participation in the ESTF program, a student must be withdrawn from their resident public school.&rdquo; <span class=\"rule-cite\">(sc-estf-program.com)</span></p>\n        <p>Withdrawn means the zoned public school is out. For a child with an IEP, that matters, because the school that wrote and carries out the IEP is the one your child leaves. The requirements also say a student cannot homeschool under the state&#39;s homeschool options in the same year (the page lists Option 1, Option 2 and Option 3), so ask the program how your plan fits.</p>"
+    },
+    {
+      "h2": "What Happens to the IEP",
+      "html": "        <p>When parents place a child in a private school themselves, the federal rule says the child does not carry the same entitlement along.</p>\n        <p class=\"rule-quote\">The federal rule says: &ldquo;No parentally-placed private school child with a disability has an individual right to receive some or all of the special education and related services that the child would receive if enrolled in a public school.&rdquo; <span class=\"rule-cite\">(34 CFR 300.137)</span></p>\n        <p>The district still has a duty to find and evaluate these children.</p>\n        <p class=\"rule-quote\">The federal rule says: &ldquo;Each LEA must locate, identify, and evaluate all children with disabilities who are enrolled by their parents in private, including religious, elementary schools and secondary schools located in the school district served by the LEA&rdquo; <span class=\"rule-cite\">(34 CFR 300.131)</span></p>\n        <p>So being evaluated is possible. Getting the same services is a different thing. Whether a scholarship family counts as parentally placed in a private school is the kind of question to put to the district in writing, before you decide, not after.</p>\n        <p>If your child has a 504 plan instead of an IEP, ask the same question about 504 services, in writing.</p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;If we leave public school through the scholarship program, what special education services, if any, will the district provide to my child, and how do we keep the evaluation and IEP records current? Please answer in writing.&rdquo;</p>"
+    },
+    {
+      "h2": "What the Money Can Pay For",
+      "html": "        <p>To be fair to the program, the scholarship can pay for some of what a child with a disability needs.</p>\n        <p class=\"rule-quote\">The program says: &ldquo;Families can use scholarship funds to create a customized, flexible education for their student, including paying for approved expenses like tutoring, educational therapies and out-of-district attendance fees.&rdquo; <span class=\"rule-cite\">(sc-estf-program.com)</span></p>\n        <p>Weigh that against what the IEP provides today. Roy&#39;s <a href=\"school-ieps.html\">School Years</a> page explains what an IEP is worth, and the <a href=\"fine-print-school.html\">school fine print</a> covers your rights while your child is enrolled.</p>"
+    },
+    {
+      "h2": "The Program Is Capped, and There Is a Waitlist",
+      "html": "        <p>As of this writing the program is full for the coming year.</p>\n        <p class=\"rule-quote\">The program says: &ldquo;The application for the 2026-2027 school year has been closed as the statutory student cap has been reached.&rdquo; <span class=\"rule-cite\">(sc-estf-program.com)</span></p>\n        <p>Check the program site for the current status, and ask Family Connection of South Carolina or Disability Rights South Carolina if you want help weighing the options.</p>"
+    },
+    {
+      "h2": "A Way to Ask That Works",
+      "html": "        <p>Get the district&#39;s answer in writing before you leave, keep copies of the evaluation and the IEP, and thank the person who helps. Being kind to the people answering gets you the clearest answers.</p>"
+    }
+  ],
+  "see_also": [
+    "school-ieps",
+    "fine-print-school",
+    "fine-print-sc-school",
+    "request-letters"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against the SC ESTF program site (sc-estf-program.com) and 34 CFR 300.131 and 300.137 at ecfr.gov on October 5, 2026. Program rules, amounts and deadlines change; confirm with the program and your district.",
+  "sources": [
+    "https://sc-estf-program.com/en/",
+    "https://ed.sc.gov/newsroom/strategic-engagement/education-scholarship-trust-fund-program/",
+    "https://www.ecfr.gov/current/title-34/subtitle-B/chapter-III/part-300"
+  ]
+}

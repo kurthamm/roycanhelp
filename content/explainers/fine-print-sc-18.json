@@ -1,0 +1,43 @@
+{
+  "slug": "fine-print-sc-18",
+  "group": "Money",
+  "anchor": "turning-18",
+  "title": "South Carolina Fine Print: Medicaid at 18 and 19",
+  "description": "South Carolina Medicaid when a child with a disability grows up: the age 18 and 19 edges, adult Medicaid for disability, and the Working Disabled program.",
+  "summary": "The age 18 and 19 edges, adult Medicaid for disability, and the Working Disabled program.",
+  "short_answer": "In South Carolina, Katie Beckett (TEFRA) Medicaid is for children 18 or under and the income-based children's program is for those under 19. Adults with disabilities can apply for Aged, Blind or Disabled Medicaid (income at or below 100% of the federal poverty level, with disability established by Social Security) or the Working Disabled program (family income under 250% and the person's own unearned income at or under 100% of the poverty level).",
+  "h1": "South Carolina Fine Print: Medicaid When Your Child Turns 18 and 19",
+  "intro": "South Carolina parents ask the same thing over and over: what happens to Medicaid when my child grows up? This page is about South Carolina only. Here is how SCDHHS describes the age edges and the adult programs, word for word.",
+  "sections": [
+    {
+      "h2": "Children's Medicaid Has an Age Edge",
+      "html": "        <p>A lot of South Carolina families find out the hard way that the programs a child is on do not follow them into adulthood. The state&#39;s own eligibility page shows where the edges are.</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;Be under 19 years of age&rdquo; <span class=\"rule-cite\">(SCDHHS, Program Eligibility and Income Limits)</span></p>\n        <p>That one is for the Partners for Healthy Children program, the income-based children&#39;s coverage. The Katie Beckett (TEFRA) program has an even earlier edge.</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;Be age 18 or under&rdquo; <span class=\"rule-cite\">(SCDHHS, Program Eligibility and Income Limits)</span></p>\n        <p>Put your child&#39;s 18th and 19th birthdays on the calendar now, and plan the next coverage before the date, not after. The <a href=\"fine-print-sc-medicaid.html\">South Carolina Medicaid page</a> explains Katie Beckett.</p>"
+    },
+    {
+      "h2": "Adult Medicaid for a Person With a Disability",
+      "html": "        <p>The adult program for people with disabilities is called Aged, Blind or Disabled (ABD). Here is who it is for and what it needs.</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;An applicant must be at least 65 years of age or blind or living with a disability. If the Social Security Administration has not established disability, it will need to be determined before Medicaid eligibility can be established.&rdquo; <span class=\"rule-cite\">(SCDHHS, Program Eligibility and Income Limits)</span></p>\n        <p>That second sentence is the catch. Disability has to be established, usually through Social Security, so the SSI review at 18 matters here too; see the <a href=\"fine-print-ssi.html\">SSI fine print</a>. And ABD has an income ceiling.</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;Income Limits (At or below 100% of the Federal Poverty Level (FPL))&rdquo; <span class=\"rule-cite\">(SCDHHS, Program Eligibility and Income Limits)</span></p>\n        <p>The dollar amounts change every year and sit on the state page, so look them up before you plan around them.</p>\n        <p class=\"say-this\"><strong>Say:</strong> &ldquo;My child turns 18 on this date. What adult Medicaid programs could my child qualify for, what do you need to show disability, and when should we apply?&rdquo;</p>"
+    },
+    {
+      "h2": "Working and Disabled: a Different Door",
+      "html": "        <p>South Carolina has a program for people with disabilities who work and earn more than the ABD limit. A young adult with a part-time job might qualify. Here is how the state describes it.</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;Be totally and permanently disabled according to the Supplemental Security Income (SSI) definition of disability&rdquo; <span class=\"rule-cite\">(SCDHHS, Program Eligibility and Income Limits)</span></p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;Be working--have earned income&rdquo; <span class=\"rule-cite\">(SCDHHS, Program Eligibility and Income Limits)</span></p>\n        <p>The income test has two steps, and the family numbers are bigger than you might expect.</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;The first step determines if the family&#39;s total net income, after certain deductions, is at or must be less than 250% of the FPL for a family of that size.&rdquo; <span class=\"rule-cite\">(SCDHHS, Program Eligibility and Income Limits)</span></p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;The second step determines if the individual&#39;s unearned income is equal to or less than 100% of the FPL for an individual.&rdquo; <span class=\"rule-cite\">(SCDHHS, Program Eligibility and Income Limits)</span></p>\n        <p>Check the current figures on the state page. The <a href=\"fine-print-ssi.html\">SSI fine print</a> explains how a student&#39;s job can be treated, and Roy&#39;s <a href=\"turning-18.html\">Ages 14 to 26</a> page is where this fits in the bigger picture.</p>"
+    },
+    {
+      "h2": "When in Doubt, Apply Anyway",
+      "html": "        <p>Eligibility rules are a maze. The state says to apply even if you are not sure.</p>\n        <p class=\"rule-quote\">SCDHHS says: &ldquo;If you are not sure if you’re eligible for Medicaid programs using the guidelines below, we urge you to apply for Medicaid anyway&rdquo; <span class=\"rule-cite\">(SCDHHS, Program Eligibility and Income Limits)</span></p>\n        <p>I would take them at their word. The worst a no does is give you a written reason, and the <a href=\"fine-print-medicaid.html\">Medicaid fine print</a> shows what you can do with it.</p>"
+    },
+    {
+      "h2": "A Way to Ask That Works",
+      "html": "        <p>Start about a year before the 18th birthday. Ask in writing what programs are open to an adult with a disability, and keep every answer. <a href=\"https://familyconnectionsc.org/\">Family Connection of South Carolina</a> helps families through this transition for free, and the dollar limits above are from the state page as of 2026, so check them before you rely on them.</p>"
+    }
+  ],
+  "see_also": [
+    "turning-18",
+    "fine-print-sc-medicaid",
+    "fine-print-18-26",
+    "fine-print-ssi"
+  ],
+  "checked": "Every quoted sentence on this page was checked, word for word, against the SCDHHS Program Eligibility and Income Limits page on October 5, 2026. Dollar limits are effective as of 2026 and change; programs can be renamed or closed. Confirm with SCDHHS.",
+  "sources": [
+    "https://scdhhs.gov/members/program-eligibility-and-income-limits"
+  ]
+}
