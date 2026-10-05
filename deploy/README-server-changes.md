@@ -9,3 +9,8 @@
 - `roycanhelp-seo.timer` (daily live audit) and `roycanhelp-seoweekly.timer` (Monday report).
 
 To undo the full-authority change: restore the unit backup, delete `/etc/sudoers.d/roychat-full`, `systemctl daemon-reload`, restart `roycanhelp-chat`.
+
+## Research tooling (2026-10-05)
+- Firecrawl API key: `~/.config/firecrawl/key` (owner read only). Used by `tools/state_gap_fill.py` and one-off page reads of sites that block this server. Firecrawl refuses Reddit.
+- Reddit text comes from the public PullPush archive via `tools/reddit_archive.py` (no usernames stored, raw data in the gitignored `content/research/raw/`, used only to find themes).
+- IndexNow key file is public by design (`site/<key>.txt`); `tools/indexnow.py --days N` notifies Bing and other engines about changed pages.
