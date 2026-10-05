@@ -6,6 +6,7 @@ writes one markdown file. Fail-fast: any Google error raises and the job fails.
 
 Writes OUT_DIR/latest.md and OUT_DIR/YYYY-MM-DD.md.
 """
+import json
 import pathlib
 import re
 import subprocess
@@ -86,7 +87,8 @@ def main(out_dir):
 
     L += ["## Index status (URL Inspection)"]
     problems = []
-    for u in sitemap_urls():
+    urls = sitemap_urls()
+    for u in urls:
         r = svc.urlInspection().index().inspect(body={"inspectionUrl": u, "siteUrl": SITE}).execute()["inspectionResult"]["indexStatusResult"]
         ok = r.get("verdict") == "PASS"
         canon_ok = r.get("googleCanonical") in (None, u)
@@ -120,6 +122,25 @@ def main(out_dir):
     for r in sorted(cur_q, key=lambda r: -r["impressions"])[:15]:
         L.append(f"- \"{r['keys'][0]}\": {int(r['impressions'])} impressions, {int(r['clicks'])} clicks, position {r['position']:.1f}")
     L += ([] if cur_q else ["- none yet"]) + [""]
+
+    # ---- scoreboard: one line per week, appended to rank-history.jsonl so progress is measured, not assumed
+    p1 = sum(1 for r in cur_q if r["position"] <= 10)
+    p2 = sum(1 for r in cur_q if 10 < r["position"] <= 20)
+    deeper = sum(1 for r in cur_q if r["position"] > 20)
+    seen = {r["keys"][0] for r in cur_p}
+    zero = [u for u in urls if u not in seen]
+    snap = {"date": str(date.today()), "window": f"{cur_start}..{end}", "urls": len(urls), "indexed": len(urls) - len(problems),
+            "impressions": ci, "clicks": cc, "queries_page1": p1, "queries_page2": p2, "queries_deeper": deeper, "pages_with_no_impressions": len(zero)}
+    hist = out / "rank-history.jsonl"
+    prior = [json.loads(l) for l in hist.read_text().splitlines() if l.strip()] if hist.exists() else []
+    with hist.open("a") as f:
+        f.write(json.dumps(snap) + "\n")
+    L += ["## Scoreboard (week over week)"]
+    for k, label in (("indexed", "Pages indexed"), ("impressions", "Impressions"), ("clicks", "Clicks"), ("queries_page1", "Queries on page 1"), ("queries_page2", "Queries on page 2"), ("queries_deeper", "Queries deeper than page 2"), ("pages_with_no_impressions", "Pages with no impressions")):
+        was = f" (last week {prior[-1][k]})" if prior else " (first snapshot)"
+        L.append(f"- {label}: {snap[k]}{'' if k == 'indexed' else ''}{was}" + (f" of {snap['urls']}" if k == 'indexed' else ""))
+    L += [""]
+    L += subprocess.check_output(["python3", str(REPO / "tools/ai_signals.py")], text=True).splitlines() + [""]
 
     L += ["## Roy's changes in the window"] + [f"- {c}" for c in roy_commits(str(prev_start))] + [""]
 

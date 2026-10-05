@@ -1,0 +1,43 @@
+# Roy Can Help
+
+> A field guide for parents of children with disabilities, written from one dad's experience in South Carolina. The federal rules apply anywhere. Every rule quoted is checked against the source text. Not legal or medical advice.
+
+## Pages
+
+- [About Roy, a Dad Who Read the Documentation](https://roycanhelp.org/about.html): Who Roy is, why he wrote this field guide, and how it works: practical advice for parents of children with disabilities, from a dad and engineer.
+- [Accessibility](https://roycanhelp.org/accessibility.html): Roy Can Help aims to meet WCAG 2.2 Level AA accessibility standards so information is available to everyone, regardless of ability.
+- [Ask Roy a Question About Disability Services](https://roycanhelp.org/ask-roy.html): Questions from parents about disabilities, benefits, school, and life. Real answers from a dad who's been there.
+- [If They Say This, Ask This](https://roycanhelp.org/ask-this.html): Plain-English questions to ask when you hear no, wait, or sign here, at school, with Medicaid, with insurance, and at the doctor.
+- [Be in Charge: Understand It Before You Say Yes](https://roycanhelp.org/be-in-charge.html): At the IEP table and in the exam room the rule is the same: ask questions, get it in writing, keep your records, and say yes only when you understand.
+- [The Road From Birth to 26](https://roycanhelp.org/birth-to-26.html): A timeline of the dates and rules that matter from Early Intervention to age 26, with what to put on your calendar and where to read more.
+- [Printable Checklists for Parents](https://roycanhelp.org/checklists.html): Printable checklists pulled from Roy's pages: getting into Early Intervention, asking for a school evaluation, ages 14 to 26, and protecting benefits.
+- [Contact and Corrections](https://roycanhelp.org/contact.html): How to contact Roy about corrections, accessibility, and deletion requests.
+- [Just Diagnosed? What to Do First: A 90-Day Plan](https://roycanhelp.org/diagnosis.html): What to do in the first 90 days after a disability diagnosis, the traps to avoid, and what is different for Down syndrome and autism.
+- [Full Disclaimer](https://roycanhelp.org/disclaimer.html): Roy Can Help is not medical advice. Read the full disclaimer on what this field guide for parents is and is not.
+- [Early Intervention (Birth to 3): How to Get In](https://roycanhelp.org/early-intervention.html): How to get your child into early intervention from birth to three, what services look like, and what happens at age three.
+- [Explainers and Tools for Parents](https://roycanhelp.org/explainers.html): The hard parts of special education, benefits and Medicaid explained in plain English with the rules cited, plus printable tools.
+- [How to Disagree With the Experts, in Writing](https://roycanhelp.org/fight-plan.html): What to do when the school, Early Intervention or Medicaid says no: the steps, the deadlines, and where to get free help, with the rules cited.
+- [The Fine Print on Turning 18 and 26](https://roycanhelp.org/fine-print-18-26.html): Rules for the move to adulthood: the plan at 16, school rights at the age of majority, and staying on a parent's health plan until 26.
+- [The Fine Print on ABLE Accounts](https://roycanhelp.org/fine-print-able.html): ABLE account rules most parents never hear about: who qualifies, who can contribute, what SSI ignores, what you can spend, and the Medicaid repayment rule.
+- [The Fine Print on Behavior and Discipline](https://roycanhelp.org/fine-print-behavior.html): School discipline rules for a child with an IEP: the ten day count, services while out, the meeting about the behavior, and support first.
+- [The Fine Print in Early Intervention](https://roycanhelp.org/fine-print-early-intervention.html): Early Intervention rules most parents never hear about: you can refer your child, the 45 day clock, what is free, and the move at age three.
+- [The Fine Print Nobody Hands You in Medicaid](https://roycanhelp.org/fine-print-medicaid.html): Medicaid rules most parents never hear about: a no must have reasons, the fair hearing, the 90 day ceiling, and the higher bar for children.
+- [The Fine Print Nobody Hands You at School](https://roycanhelp.org/fine-print-school.html): Rights in the special education rules that most parents never hear about, each with the exact sentence from the rule and what to say.
+- [The Fine Print on SSI](https://roycanhelp.org/fine-print-ssi.html): SSI rules most parents never hear about: the 60 day appeal clock, the review at 18, when parent income stops counting, and what is set aside.
+- [Disability Acronyms Decoded: IEP, IFSP, SSI, EPSDT](https://roycanhelp.org/glossary.html): Disability, education, and benefits jargon decoded in plain English. A decoder ring for the acronyms parents run into.
+- [The IEP Meeting, Decoded: Who Gets a Chair](https://roycanhelp.org/iep-meeting-decoded.html): Who the law says must be at your child's IEP meeting, who you can add, how it gets scheduled, and how often it has to happen.
+- [Roy Can Help: a field guide from a dad in the waiting room](https://roycanhelp.org/): A field guide for parents of children with disabilities. Practical advice and resources from a dad who's been in the waiting room.
+- [Paying for Care: SSI, Medicaid, Waivers and ABLE](https://roycanhelp.org/paying-for-care.html): SSI, Medicaid, Medicaid waivers, EPSDT and ABLE accounts explained for parents of children with disabilities, plus the traps to avoid.
+- [Privacy and Consumer Health Data](https://roycanhelp.org/privacy.html): This site does not sell your data, does not share it for advertising, and does not track your behavior. Read the full privacy policy.
+- [Special Needs Trusts and ABLE: Protect SSI](https://roycanhelp.org/protecting-benefits.html): How third-party and first-party trusts, ABLE accounts and representative payees protect a child's SSI and Medicaid, and the mistakes that cost benefits.
+- [Does Your Child Qualify? SSI, SSDI and Waivers](https://roycanhelp.org/qualify.html): Most children with disabilities qualify for at least three or four programs. SSI, SSDI, and disability benefits explained by the numbers.
+- [Ready-to-Send Letters for Parents](https://roycanhelp.org/request-letters.html): Short, polite letters you can copy and send: second opinion on an evaluation, school records, IEP meeting, Medicaid and SSI denials, and more.
+- [Roy's Wisdom: Hard-Won Lessons for Parents](https://roycanhelp.org/roys-wisdom.html): Lessons learned, stories from the trenches, and hard-won advice distilled from the questions parents ask Roy.
+- [IEP Meetings, School Evaluations and Your Rights](https://roycanhelp.org/school-ieps.html): How to request a school evaluation, what an IEP is, your procedural and discipline rights, and scripts for common meeting situations.
+- [Search Roy Can Help](https://roycanhelp.org/search.html): Search every page on Roy Can Help for a topic like IEP, Medicaid denial, SSI at 18, Early Intervention or turning 26.
+- [SSI Deeming, Explained: Why Your Income Counts](https://roycanhelp.org/ssi-deeming.html): How Social Security counts a parent's income and resources toward a child's SSI, what is not counted, when it stops, and the exception.
+- [Find Your State: Disability Services and Contacts](https://roycanhelp.org/states.html): Pick your state to find the people in charge of early intervention, Medicaid, developmental disabilities services, and parent help.
+- [TEFRA / Katie Beckett Medicaid, Explained](https://roycanhelp.org/tefra-katie-beckett.html): How the TEFRA / Katie Beckett option lets a state give Medicaid to a child with a disability based on the child's income, not the parents'.
+- [Terms of Use](https://roycanhelp.org/terms.html): Terms of use for roycanhelp.org: who publishes the site and the rules for using it.
+- [ABA, OT, PT and Speech Therapy: Who Pays](https://roycanhelp.org/therapies.html): What ABA, OT, PT and speech therapy do, who pays (school, insurance, Medicaid or private), and how to survive the waitlists.
+- [Ages 14 to 26](https://roycanhelp.org/turning-18.html): What changes at 18: decision-making options, SSI redetermination, adult Medicaid and waivers, and transition planning.

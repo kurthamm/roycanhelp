@@ -42,5 +42,6 @@
   "checked": "Every quoted sentence on this page was checked, word for word, against the text of 26 U.S.C. 529A (including the notes carrying section 103 of Public Law 113-295) as published by the Cornell Legal Information Institute. Dollar limits change every year; confirm them with your ABLE program. This is not tax or legal advice.",
   "sources": [
     "https://www.law.cornell.edu/uscode/text/26/529A"
-  ]
+  ],
+  "short_answer": "ABLE accounts are open to people whose disability began before age 46 (or who have a disability certification), and anyone can contribute. For SSI the account is ignored up to $100,000, though housing withdrawals count, and Medicaid may claim what is left after the person dies."
 }
