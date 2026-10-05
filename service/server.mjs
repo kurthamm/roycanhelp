@@ -1,6 +1,6 @@
 import express from 'express';
 import { makeSession, verifySession, checkPassword } from './auth.mjs';
-import { commitAll } from './gitops.mjs';
+import { commitAll, undoLast, recentChanges } from './gitops.mjs';
 import { logUsage } from './usage.mjs';
 import { mountGptRelay } from './gpt-relay.mjs';
 import { mkdirSync, existsSync, writeFileSync, readFileSync, appendFileSync } from 'node:fs';
@@ -704,7 +704,12 @@ ${lessonCard}
 
   // Optional: lets Roy's private custom GPT drive this same editor. Off unless the key is configured.
   if (env.GPT_ACTION_KEY) {
-    mountGptRelay(app, { env, runTurn, commit: commitAll, logUsage, origin: 'https://roycanhelp.org' });
+    // Reaches this same server's /admin/ endpoints with a freshly signed session, so the GPT can do exactly what /admin/ can.
+    const adminFetch = (path, init = {}) => fetch(`http://127.0.0.1:${env.PORT}${path}`, {
+      ...init,
+      headers: { ...init.headers, cookie: `session=${makeSession(env.SESSION_SECRET)}` },
+    });
+    mountGptRelay(app, { env, runTurn, commit: commitAll, logUsage, undo: undoLast, history: recentChanges, adminFetch, origin: 'https://roycanhelp.org' });
   } else {
     console.log('GPT relay disabled: GPT_ACTION_KEY is not set');
   }

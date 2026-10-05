@@ -5,12 +5,13 @@ import { mountGptRelay } from '../gpt-relay.mjs';
 
 const KEY = 'k'.repeat(40);
 
-async function start(runTurn, commit = async () => 'abc123') {
+async function start(runTurn, commit = async () => 'abc123', extra = {}) {
   const app = express();
   const usage = [];
   mountGptRelay(app, {
     env: { GPT_ACTION_KEY: KEY, SITE_DIR: '/site', SITE_REPO_DIR: '/repo', USAGE_LOG: '/log' },
     runTurn, commit, logUsage: (f, row) => usage.push(row), origin: 'https://example.test',
+    undo: async () => ({ undone: 'Roy: x' }), history: async () => [{ when: '2026-10-05T00:00:00Z', who: 'Roy via Chat', what: 'Roy: fix' }], adminFetch: async () => new Response('{}'), ...extra,
   });
   const server = await new Promise(r => { const s = app.listen(0, '127.0.0.1', () => r(s)); });
   const base = `http://127.0.0.1:${server.address().port}`;
@@ -100,5 +101,71 @@ test('the spec carries the behavior rules so the GPT needs no pasted instruction
   assert.match(spec.info.description, /EVERY message/);
   assert.match(spec.info.description, /word for word/);
   assert.match(spec.paths['/api/gpt/message'].post.summary, /EVERY message/);
+  s.close();
+});
+
+const authed = (base, path, init = {}) => fetch(`${base}${path}`, { ...init, headers: { authorization: `Bearer ${KEY}`, 'content-type': 'application/json', ...init.headers } });
+
+test('admin endpoints are forwarded as-is, with the body, and need the key', async () => {
+  const calls = [];
+  const s = await start(async () => ({}), undefined, { adminFetch: async (path, init) => { calls.push([path, init.method, init.body]); return new Response(JSON.stringify([{ id: 'q1' }]), { status: 200, headers: { 'content-type': 'application/json' } }); } });
+  assert.equal((await fetch(`${s.base}/api/gpt/questions`)).status, 401);
+  const list = await (await authed(s.base, '/api/gpt/questions')).json();
+  assert.equal(list[0].id, 'q1');
+  await authed(s.base, '/api/gpt/questions/update', { method: 'POST', body: JSON.stringify({ id: 'q1', draft: 'hello' }) });
+  assert.deepEqual(calls[1], ['/api/questions/update', 'POST', JSON.stringify({ id: 'q1', draft: 'hello' })]);
+  s.close();
+});
+
+test('an admin error is passed through, not hidden', async () => {
+  const s = await start(async () => ({}), undefined, { adminFetch: async () => new Response('Question not found', { status: 404 }) });
+  const r = await authed(s.base, '/api/gpt/questions/publish', { method: 'POST', body: JSON.stringify({ id: 'nope' }) });
+  assert.equal(r.status, 404);
+  assert.equal(await r.text(), 'Question not found');
+  s.close();
+});
+
+test('drafting an answer streams from admin and returns the draft by polling', async () => {
+  const sse = 'event: progress\ndata: {"text":"working"}\n\nevent: done\ndata: {"ok":true,"draft":"The drafted answer."}\n\n';
+  const s = await start(async () => ({}), undefined, { adminFetch: async () => new Response(sse, { status: 200 }) });
+  const { jobId } = await (await authed(s.base, '/api/gpt/questions/draft', { method: 'POST', body: JSON.stringify({ id: 'q1' }) })).json();
+  let r;
+  for (let i = 0; i < 50; i++) { r = await (await authed(s.base, `/api/gpt/questions/draft/${jobId}`)).json(); if (r.status !== 'running') break; await new Promise(x => setTimeout(x, 10)); }
+  assert.equal(r.status, 'done');
+  assert.equal(r.reply, 'The drafted answer.');
+  s.close();
+});
+
+test('undo returns what was undone, and reports why it cannot', async () => {
+  const s = await start(async () => ({}));
+  assert.deepEqual(await (await authed(s.base, '/api/gpt/undo', { method: 'POST' })).json(), { undone: 'Roy: x' });
+  s.close();
+  const t = await start(async () => ({}), undefined, { undo: async () => { throw new Error('already an undo'); } });
+  const r = await authed(t.base, '/api/gpt/undo', { method: 'POST' });
+  assert.equal(r.status, 409);
+  assert.match((await r.json()).error, /already an undo/);
+  t.close();
+});
+
+test('upload sends each attached file through the admin upload with a clean name', async () => {
+  const sent = [];
+  const file = http => http.createServer((q, r) => r.end('FILEBYTES'));
+  const { createServer } = await import('node:http');
+  const dl = createServer((q, r) => r.end('FILEBYTES'));
+  await new Promise(r => dl.listen(0, '127.0.0.1', r));
+  const s = await start(async () => ({}), undefined, { adminFetch: async (path, init) => { sent.push([path, init.headers['x-filename'], init.body.toString()]); return new Response(JSON.stringify({ path: 'files/My-Doc.pdf' }), { status: 200 }); } });
+  // http links are refused, so no byte is fetched
+  const bad = await (await authed(s.base, '/api/gpt/upload', { method: 'POST', body: JSON.stringify({ openaiFileIdRefs: [{ name: 'a b.pdf', download_link: `http://127.0.0.1:${dl.address().port}/f` }] }) })).json();
+  assert.equal(bad[0].ok, false);
+  assert.match(bad[0].error, /https/);
+  assert.equal(sent.length, 0);
+  dl.close(); s.close();
+});
+
+test('recent site changes are listed, and need the key', async () => {
+  const s = await start(async () => ({}));
+  assert.equal((await fetch(`${s.base}/api/gpt/history`)).status, 401);
+  const h = await (await authed(s.base, '/api/gpt/history')).json();
+  assert.equal(h[0].what, 'Roy: fix');
   s.close();
 });

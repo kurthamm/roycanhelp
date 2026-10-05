@@ -25,3 +25,33 @@ test('commitAll commits as chat author, null when clean', async () => {
   assert.equal(await commitAll(dir, 'nothing'), null);
 });
 
+
+import { undoLast, recentChanges } from '../gitops.mjs';
+import { execFileSync as run } from 'node:child_process';
+import { mkdtempSync as mk, writeFileSync as wf } from 'node:fs';
+import { tmpdir as td } from 'node:os';
+import { join as j } from 'node:path';
+
+function undoRepo() {
+  const dir = mk(j(td(), 'undo-'));
+  const g = (...a) => run('git', a, { cwd: dir, encoding: 'utf8' });
+  g('init', '-b', 'main'); g('config', 'user.email', 'k@x'); g('config', 'user.name', 'K');
+  wf(j(dir, 'a.txt'), 'v1'); g('add', '.'); g('commit', '-m', 'start');
+  return { dir, g };
+}
+
+test('undoLast reverts an editor change once and refuses to undo an undo', async () => {
+  const { dir, g } = undoRepo();
+  wf(j(dir, 'a.txt'), 'v2'); g('add', '.');
+  g('commit', '--author', 'Roy via Chat <chat@roycanhelp.org>', '-m', 'Roy: change a');
+  assert.deepEqual(await undoLast(dir), { undone: 'Roy: change a' });
+  assert.equal(run('cat', [j(dir, 'a.txt')], { encoding: 'utf8' }), 'v1');
+  await assert.rejects(undoLast(dir), /already an undo/);
+  assert.equal((await recentChanges(dir, 5))[0].what, 'Revert "Roy: change a"');
+});
+
+test('undoLast refuses a change that did not come from the editor', async () => {
+  const { dir, g } = undoRepo();
+  wf(j(dir, 'a.txt'), 'v2'); g('add', '.'); g('commit', '-m', 'manual change');
+  await assert.rejects(undoLast(dir), /not made through the editor/);
+});
