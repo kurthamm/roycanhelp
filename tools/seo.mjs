@@ -9,7 +9,7 @@ const DESC_MIN = 70;
 const DESC_MAX = 160;
 
 // Everything in the site folder is public. Planning notes, drafts and data exports must live outside it.
-const PUBLIC_EXTENSIONS = new Set(['.html', '.css', '.js', '.json', '.xml', '.txt', '.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg', '.ico', '.pdf', '.doc', '.docx', '.rtf', '.odt', '.webmanifest']);
+const PUBLIC_EXTENSIONS = new Set(['.html', '.css', '.js', '.json', '.xml', '.txt', '.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg', '.ico', '.pdf', '.woff2', '.doc', '.docx', '.rtf', '.odt', '.webmanifest']);
 export function publicFileErrors(root) {
   const bad = [];
   const walk = dir => {
