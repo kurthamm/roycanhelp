@@ -8,7 +8,9 @@ export const RULES = [
   { re: /\b(autistic|disabled|handicapped|retarded|special needs)\s+(child|children|person|people|kid|kids|adult|adults|son|daughter)\b/gi, why: 'Roy: use people-first language (a child with autism)' },
   { re: /inspiration porn/gi, why: 'Roy: do not use the word "porn"; he had this phrase removed' },
   { re: /—/g, why: 'Kurt: no em dashes' },
-  { re: /\b(fuck\w*|shit\w*|bullshit|damn\w*|crap\w*|piss\w*|asshole)\b/gi, why: 'Roy: clean language for a family audience' },
+  { re: /\b(fuck\w*|shit\w*|bullshit|damn\w*|crap\w*|piss\w*|asshole|hell|bullocks|bastard\w*|bitch\w*|ass|asses)\b/gi, why: 'Roy: clean language for a family audience' },
+  { re: /\b(stupid\w*|idiot\w*|moron\w*|dumb\w*)\b/gi, why: 'Roy: no bad words, including mild put-downs' },
+  { re: /\babortion\w*|\bpro-?life\b|\bpro-?choice\b|\bterminat\w*\s+(a |the |your )?pregnan\w*|\bselective reduction\b|\bprenatal (testing|screening|diagnosis)\b/gi, why: 'Roy: nothing close to abortion on the site' },
 ];
 
 const visibleText = html => html.replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ');

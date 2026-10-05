@@ -23,3 +23,14 @@ test('each of Roy\'s rules is caught', () => {
 test('markup, scripts and attributes are not scanned', () => {
   assert.deepEqual(voiceCheck(site('<script>var kid = 1;</script><a class="kid" href="kids.html">child</a>')), []);
 });
+
+test('mild put-downs and anything close to abortion are caught', () => {
+  const msgs = voiceCheck(site('<p>What a stupid idea. A hell of a mess. The abortion debate. Prenatal testing results.</p>')).join('\n');
+  assert.match(msgs, /mild put-downs/);
+  assert.match(msgs, /clean language/);
+  assert.match(msgs, /close to abortion/);
+});
+
+test('ordinary words that contain a rule word are fine', () => {
+  assert.deepEqual(voiceCheck(site('<p>Hello. The class passed the test. A shellfish allergy, a hellenic course, an assessment.</p>')), []);
+});

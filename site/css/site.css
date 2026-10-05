@@ -254,3 +254,6 @@ ul.checks { list-style: none; padding: 0; }
 ul.checks li { position: relative; padding: 0.7rem 0 0.7rem 2.6rem; border-bottom: 1px solid var(--line); margin: 0; }
 ul.checks li:before { content: ""; position: absolute; left: 0.2rem; top: 0.95rem; width: 1.3rem; height: 1.3rem; border: 2px solid var(--blue); border-radius: 5px; background: var(--paper); }
 @media print { ul.checks li:before { border-color: #000; } .print-only-hide { display: none; } .checklist { break-inside: avoid; } }
+
+/* Draft banner: visible only while a page is waiting for Roy's review */
+.draft-note { background: var(--sun-soft); border-left: 6px solid var(--sun); border-radius: 12px; padding: 0.9rem 1.2rem; margin-bottom: 1.5rem; font-size: 1.02rem; }
