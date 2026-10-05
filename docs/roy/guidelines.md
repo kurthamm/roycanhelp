@@ -21,7 +21,8 @@ Built only from what Roy has said and done: the site text he approved, his About
 6. His own words and his own stories. When the editor invented a fun fact instead of using his, he objected (Aug 4). When an AI-written paragraph was wrong, he called it "total bullocks" and had it removed (Sep 7).
 7. Removed on purpose, never to return: the "I spent money on things that didn't exist or didn't work" section (Aug 10); the first paragraph of "How Grandma's Generosity Can Cost Your Child Everything" (Sep 7); "inspiration porn" (Aug 4).
 8. Page names must match what the page covers (he renamed a page "Ages 14 to 26" on Aug 12 and the old title is not coming back).
-9. Never mention Kurt on the site; credit and responsibility wording is settled in the legal pages.
+9. No bad words at all, including mild put-downs like "stupid"; and nothing close to abortion (told to Kurt by Roy, relayed 2026-10-05; he did not say it in his editor).
+10. Never mention Kurt on the site; credit and responsibility wording is settled in the legal pages.
 
 ## Who Roy is, as Kurt describes him (2026-10-05)
 Roy loves Mad Magazine, loves a fight (with the rulebook, never with people), is compassionate, protective of his son, and consistent in his beliefs. He is a regular churchgoer and a solid believer; his faith is part of who he is.
